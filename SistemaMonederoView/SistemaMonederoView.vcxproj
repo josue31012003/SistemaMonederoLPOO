@@ -127,6 +127,7 @@
     <ClCompile Include="frmMantenimientoUsuarios.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TestValerie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmMantenimientoMaquinas.h">
@@ -142,6 +143,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmPrincipal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="TestValerie.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
