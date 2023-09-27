@@ -213,6 +213,7 @@ namespace SistemaMonederoView {
 			this->textBox2->Text = this->objTarjeta->getEstado();
 		}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
