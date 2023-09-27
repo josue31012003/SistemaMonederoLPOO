@@ -1,28 +1,18 @@
 #pragma once
-#include "Usuario.h"
+
+using namespace System;
 
 namespace SistemaMonederoModel {
-
-	using namespace System;
-
 	public ref class Tarjeta {
 
 	private:
-		int codigo;
-		String^ fechaAlta;
-		String^ fechaBaja;
-		String^ Estado;
+		int Codigo;
+		String^ FechaAlta;
+		String^ FechaBaja;
+		int Estado;
 
 	public:
 		Tarjeta();
-		Tarjeta(int codigo, String^ fechaAlta, String^ fechaBaja, String^ Estado);
-		int getcodigo();
-		void setcodigo(int codigo);
-		String^ getfechaAlta();
-		void setfechaAlta(String^ fechaAlta);
-		String^ getfechaBaja();
-		void setfechaBaja(String^ fechaBaja);
-		String^ getEstado();
-		void setEstado(String^ Estado);
+		Tarjeta(int Codigo, String^ FechaAlta, String^ FechaBaja, int Estado);
 	};
 }

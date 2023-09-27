@@ -112,11 +112,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="TarjetaController.h" />
     <ClInclude Include="UsuarioController.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TarjetaController.cpp" />
     <ClCompile Include="UsuarioController.cpp" />
   </ItemGroup>
   <ItemGroup>

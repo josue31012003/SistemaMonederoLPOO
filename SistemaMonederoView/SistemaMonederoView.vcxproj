@@ -121,19 +121,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="frmEditarTarjeta.cpp" />
     <ClCompile Include="frmMantenimientoMaquinas.cpp" />
     <ClCompile Include="frmMantenimientoNuevoUsuario.cpp" />
     <ClCompile Include="frmMantenimientoTarjetas.cpp" />
     <ClCompile Include="frmMantenimientoUsuarios.cpp" />
-    <ClCompile Include="frmNuevaTarjeta.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="frmEditarTarjeta.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="frmMantenimientoMaquinas.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -146,17 +141,11 @@
     <ClInclude Include="frmMantenimientoUsuarios.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="frmNuevaTarjeta.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="frmPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmEditarTarjeta.resx">
-      <DependentUpon>frmEditarTarjeta.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoMaquinas.resx">
       <DependentUpon>frmMantenimientoMaquinas.h</DependentUpon>
     </EmbeddedResource>
@@ -168,9 +157,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoUsuarios.resx">
       <DependentUpon>frmMantenimientoUsuarios.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNuevaTarjeta.resx">
-      <DependentUpon>frmNuevaTarjeta.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
