@@ -213,7 +213,15 @@ namespace SistemaMonederoView {
 			this->textBox2->Text = this->objTarjeta->getEstado();
 		}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		int codigoTarjeta = Convert::ToInt32(this->textBox1->Text);
+		String^ fechaAlta = this->dateTimePicker1->Text;
+		String^ fechaBaja = this->dateTimePicker2->Text;
+		String^ Estado = this->textBox2->Text;
+		Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigoTarjeta, fechaAlta, fechaBaja, Estado);
+		TarjetaController^ objTarjetaController = gcnew TarjetaController();
+		objTarjetaController->actualizarTarjeta(ObjTarjeta);
+		MessageBox::Show("La Tarjeta se ha actualizado con éxito");
+		this->Close();
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
