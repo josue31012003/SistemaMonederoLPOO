@@ -43,7 +43,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CLRSupport>true</CLRSupport>
@@ -117,6 +117,7 @@
     <ClInclude Include="HistorialTransaccion.h" />
     <ClInclude Include="MaquinaCompra.h" />
     <ClInclude Include="MaquinaRecarga.h" />
+    <ClInclude Include="Plato.h" />
     <ClInclude Include="Tarjeta.h" />
     <ClInclude Include="Usuario.h" />
   </ItemGroup>
@@ -126,6 +127,7 @@
     <ClCompile Include="HistorialTransaccion.cpp" />
     <ClCompile Include="MaquinaCompra.cpp" />
     <ClCompile Include="MaquinaRecarga.cpp" />
+    <ClCompile Include="Plato.cpp" />
     <ClCompile Include="Tarjeta.cpp" />
     <ClCompile Include="Usuario.cpp" />
   </ItemGroup>
