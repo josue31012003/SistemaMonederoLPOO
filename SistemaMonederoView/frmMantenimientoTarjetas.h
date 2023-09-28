@@ -196,6 +196,7 @@ namespace SistemaMonederoView {
 			this->groupBox1->TabIndex = 14;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Busqueda de Tarjetas";
+			this->groupBox1->Enter += gcnew System::EventHandler(this, &frmMantenimientoTarjetas::groupBox1_Enter);
 			// 
 			// button4
 			// 
@@ -282,6 +283,8 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	Tarjeta^ ObjTarjeta = objTarjetaController->buscarTarjetaxCodigo(codigoEditar);
 	frmEditarTarjeta^ ventanaEditarTarjeta = gcnew frmEditarTarjeta(ObjTarjeta);
 	ventanaEditarTarjeta->ShowDialog();
+}
+private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
