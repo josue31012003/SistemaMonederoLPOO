@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 using namespace SistemaMonederoController;
 
-namespace ConstruccionController {
+namespace SistemaMonederoController {
 
 	public ref class PlatoController {
 	public:
