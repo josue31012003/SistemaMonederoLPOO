@@ -22,6 +22,7 @@ void Plato::setCodigo(int codigo) {
 	this->codigo = codigo;
 }
 
+
 String^ Plato::getPrecio() {
 	return this->Precio;
 }
@@ -29,12 +30,14 @@ void Plato::setPrecio(String^ Precio) {
 	this->Precio = Precio;
 }
 
+
 String^ Plato::getOrigen() {
 	return this->Origen;
 }
 void Plato::setOrigen(String^ Origen) {
 	this->Origen = Origen;
 }
+
 
 String^ Plato::getNombre() {
 	return this->Nombre;
