@@ -27,9 +27,6 @@
     <ClCompile Include="frmMantenimientoNuevoUsuario.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
-    <ClCompile Include="frmMantenimientoMaquinas.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
     <ClCompile Include="frmMantenimientoTarjetas.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
@@ -37,6 +34,15 @@
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
     <ClCompile Include="frmEditarTarjeta.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="frmMantenimientoMaquinaCompra.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="frmNuevaMaquinaCompra.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="fmrEditarMaquinaCompra.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,16 +56,19 @@
     <ClInclude Include="frmMantenimientoNuevoUsuario.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="frmMantenimientoMaquinas.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="frmMantenimientoTarjetas.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="frmNuevaTarjeta.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="frmEditarTarjeta.h">
+    <ClInclude Include="frmMantenimientoMaquinaCompra.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="frmNuevaMaquinaCompra.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="fmrEditarMaquinaCompra.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
