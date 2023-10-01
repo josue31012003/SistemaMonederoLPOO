@@ -118,7 +118,6 @@
     <ClInclude Include="UsuarioController.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\Valerie\PreG\Ciclo_2023-2\LPOO\Proyecto\Construccion\ConstruccionController\PlatoController.cpp" />
     <ClCompile Include="MaquinaCompraController.cpp" />
     <ClCompile Include="TarjetaController.cpp" />
     <ClCompile Include="UsuarioController.cpp" />
