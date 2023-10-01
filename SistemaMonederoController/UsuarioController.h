@@ -10,8 +10,12 @@ namespace SistemaMonederoController {
 
 		public: 
 			UsuarioController();
-			List<Usuario^>^ buscarUsuarios(String^ TipodeUsuario); 
-
+			List<Usuario^>^ buscarUsuarios(String^ TipodeUsuario);
+			/*Estos métodos ayudan mucho siempre */
+			List < Usuario^>^ buscarAll(); 
+			void escribirArchivo(List<Usuario^>^ ListaUsuarios ); 
+			void eliminarUsuarioFisico(int codigo); 
+			void agregarUsuario(Usuario^ ObjUsuario); 
 
 	};
 

@@ -13,6 +13,7 @@ namespace SistemaMonederoView {
 	using namespace SistemaMonederoController; 
 	using namespace System::Collections::Generic; 
 	using namespace SistemaMonederoModel;
+	using namespace SistemaMonederoController; 
 	/// <summary>
 	/// Resumen de frmMantenimientoUsuarios
 	/// </summary>
@@ -124,7 +125,7 @@ namespace SistemaMonederoView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Comensal", L"Administrador" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Comensal", L"Administrador", L"Todos" });
 			this->comboBox1->Location = System::Drawing::Point(185, 50);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(149, 24);
@@ -148,6 +149,7 @@ namespace SistemaMonederoView {
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"Eliminar";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &frmMantenimientoUsuarios::button2_Click);
 			// 
 			// button3
 			// 
@@ -295,6 +297,8 @@ namespace SistemaMonederoView {
 
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 
+	//Para llamar la ventana "AGREGAR":
+
 		frmMantenimientoNuevoUsuario^ ventanaNuevoUsuario = gcnew frmMantenimientoNuevoUsuario();
 		//ventanaNuevoUsuario -> MdiParent = this;
 		ventanaNuevoUsuario -> ShowDialog();
@@ -302,5 +306,14 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
-};
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	UsuarioController^ objeto; 
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
+	int codigoUsuarioEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	objeto -> eliminarUsuarioFisico (codigoUsuarioEliminar);
+	MessageBox::Show("El usuario seleccionado ha sido eliminado con éxito");
+
+	}
+	};
 }

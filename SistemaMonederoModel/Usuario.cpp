@@ -6,6 +6,8 @@ Usuario::Usuario() {
 
 }
 Usuario::Usuario(int Codigo, String^ Nombre, String^ ApPaterno, String^ ApMaterno, String^ FechaNacimiento, String^ DNI, String^ IdentificacionRFID, String^ TipoUsuario) {
+	
+	this->Codigo = Codigo; 
 	this->Nombre = Nombre;
 	this->ApPaterno = ApPaterno;
 	this->ApMaterno = ApMaterno;
@@ -25,6 +27,7 @@ Usuario::Usuario(int Codigo, String^ Nombre, String^ ApPaterno, String^ ApMatern
 			this->Codigo = Codigo;
 		}
 
+
 		String^ Usuario::getNombre() {
 			return this->Nombre;
 		}
@@ -33,14 +36,12 @@ Usuario::Usuario(int Codigo, String^ Nombre, String^ ApPaterno, String^ ApMatern
 		}
 
 
-
 		String^ Usuario::getApPaterno() {
 			return this->ApPaterno;
 		}
 		void Usuario::setApPaterno(String^ ApPaterno) {
 			this->ApPaterno = ApPaterno;
 		}
-
 
 
 		String^ Usuario::getApMaterno() {
@@ -69,7 +70,6 @@ Usuario::Usuario(int Codigo, String^ Nombre, String^ ApPaterno, String^ ApMatern
 		}
 
 
-
 		String^ Usuario::getIdentificacionRFID() {
 			return this->IdentificacionRFID;
 		}
@@ -84,3 +84,4 @@ Usuario::Usuario(int Codigo, String^ Nombre, String^ ApPaterno, String^ ApMatern
 		void Usuario::setTipoUsuario(String^ TipoUsuario) {
 			this->TipoUsuario = TipoUsuario;
 		}
+
