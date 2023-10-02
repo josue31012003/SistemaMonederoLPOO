@@ -125,6 +125,7 @@ Plato^ PlatoController::buscarPlatoxCodigo(int codigo) {
 
 }
 
+/*MODIFICACION DE VALORES DE ATRIBUTOS DE OBJETO*/
 void PlatoController::editarPlato(Plato^ objPlato) {
 
     List<Plato^>^ listaPlatos = buscarAll();
@@ -146,6 +147,7 @@ void PlatoController::editarPlato(Plato^ objPlato) {
     escribirArchivo(listaPlatos);
 }
 
+/*BUSQUEDA DE ITEMS SEGUN CRITERIO DE BUSQUEDA*/
 List<String^>^ PlatoController::obtenerOrigenes() {
 
     List<Plato^>^ listaPlatos = buscarAll();

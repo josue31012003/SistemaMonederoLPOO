@@ -232,45 +232,53 @@ namespace SistemaMonederoView {
 
 		}
 #pragma endregion
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 
-	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ Origen = this->comboBox2->Text;
-		PlatoController^ ObjPlatoController = gcnew PlatoController();
-		List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxOrigen(Origen);
-		mostrarGrilla(listaPlatos);
-	}
-	private: void mostrarGrilla(List<Plato^>^ listaPlatos) {
-		this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
-		for (int i = 0; i < listaPlatos->Count; i++) {
-			Plato^ objPlato = listaPlatos[i];
-			array<String^>^ filaGrilla = gcnew array<String^>(4);
-			filaGrilla[0] = Convert::ToString(objPlato->getCodigo());
-			filaGrilla[1] = objPlato->getNombre();
-			filaGrilla[2] = objPlato->getOrigen();
-			filaGrilla[3] = objPlato->getPrecio();
-			this->dataGridView1->Rows->Add(filaGrilla);
-		}
+}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ Origen = this->comboBox2->Text;
+	PlatoController^ ObjPlatoController = gcnew PlatoController();
+	List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxOrigen(Origen);
+	mostrarGrilla(listaPlatos);
+}
 
+		/*MOSTRAR GRILLA*/
+private: void mostrarGrilla(List<Plato^>^ listaPlatos) {
+	this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
+	for (int i = 0; i < listaPlatos->Count; i++) {
+		Plato^ objPlato = listaPlatos[i];
+		array<String^>^ filaGrilla = gcnew array<String^>(4);
+		filaGrilla[0] = Convert::ToString(objPlato->getCodigo());
+		filaGrilla[1] = objPlato->getNombre();
+		filaGrilla[2] = objPlato->getOrigen();
+		filaGrilla[3] = objPlato->getPrecio();
+		this->dataGridView1->Rows->Add(filaGrilla);
 	}
+
+}
+
+	   /*MOSTRAR VENTANA DE NUEVO PLATO*/
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	frmMantNuevoPlato^ ventanaNuevoPlato = gcnew frmMantNuevoPlato();
 	ventanaNuevoPlato->ShowDialog();
 }
+
+	   /*ELIMINAR*/
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	PlatoController^ ObjPlatoController;
 
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
 	ObjPlatoController->eliminarPlatoFisico(codigoEliminar);
-	MessageBox::Show("El plato se ha sido eliminado con éxito");
 
+	MessageBox::Show("El plato se ha sido eliminado con éxito");
 }
+
+	   /*BUSQUEDA*/
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
@@ -281,6 +289,8 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	frmEditPlato^ ventanaEditPlato = gcnew frmEditPlato(objPlato);
 	ventanaEditPlato->ShowDialog();
 }
+
+	   /*PERSISTENCIA DE ITEMS DE CRITERIO DE BUSQUEDA*/
 private: System::Void frmMantProductos_Load(System::Object^ sender, System::EventArgs^ e) {
 
 	PlatoController^ objPlatoController = gcnew PlatoController();
@@ -289,7 +299,6 @@ private: System::Void frmMantProductos_Load(System::Object^ sender, System::Even
 	this->comboBox2->Items->Clear();
 
 	for (int i = 0; i < listaOrigenes->Count; i++) {
-
 		this->comboBox2->Items->Add(listaOrigenes[i]);
 	}
 }

@@ -187,12 +187,15 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmMantNuevoPlato";
 			this->Text = L"frmMantNuevoPlato";
+			this->Load += gcnew System::EventHandler(this, &frmMantNuevoPlato::frmMantNuevoPlato_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+
+		/*PERSISTENCIA DE DATOS, NUEVO, AGREGAR*/
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	int codigo = Convert::ToInt32(this->textBox1->Text);
@@ -200,14 +203,19 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ Origen = this->textBox3->Text;
 	String^ Precio = this->textBox4->Text;
 	Plato^ objPlato = gcnew Plato(codigo, Nombre, Origen, Precio);
+
 	PlatoController^ objPlatoController = gcnew PlatoController();
 	objPlatoController->agregarPlato(objPlato);
 	MessageBox::Show("El plato ha sido agregado con exito");
 	this->Close();
-
 }
+
+	   /*CANCELAR*/
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+
+private: System::Void frmMantNuevoPlato_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

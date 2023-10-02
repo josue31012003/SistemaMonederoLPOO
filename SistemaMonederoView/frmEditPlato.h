@@ -2,6 +2,7 @@
 
 namespace SistemaMonederoView {
 
+	/*AGREGAR NAMESPACES DE MODEL Y CONTROLLER*/
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -25,6 +26,7 @@ namespace SistemaMonederoView {
 			//
 		}
 
+		/*CONSTRUCTOR DE FORM CON OBJETO Y LOS ATRIBUTOS DE ESTE*/
 		frmEditPlato(Plato^ objPlato)
 		{
 			InitializeComponent();
@@ -56,6 +58,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
+	/*AGREGAR OBJETO DEL CONSTRUCTOR QUE RECIBE PARAMETRO*/
 	private: Plato^ objPlato;
 
 	private:
@@ -150,6 +153,7 @@ namespace SistemaMonederoView {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(142, 22);
 			this->textBox1->TabIndex = 4;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &frmEditPlato::textBox1_TextChanged);
 			// 
 			// label4
 			// 
@@ -204,8 +208,11 @@ namespace SistemaMonederoView {
 
 		}
 #pragma endregion
+
+		/*GRABAR O GUARDAR MODIFICACIONES HECHAS DESPUES DEL LOAD*/
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
+	/*PERSISTENCIA DE DATOS MODIFICADOS*/
 	int codigoPlato = Convert::ToInt32(this->textBox1->Text);
 	String^ Nombre = this->textBox2->Text;
 	String^ Origen = this->textBox3->Text;
@@ -214,18 +221,18 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio);
 	PlatoController^ objPlatoController = gcnew PlatoController();
 
+	/*MODIFICAR VALORES DE ATRIBUTOS DE OBJETO. VER MAS EN PLATOCONTROLLER.CPP*/
 	objPlatoController->editarPlato(objPlato);
 	MessageBox::Show("El plato ha sido modificado con exito");
 	this->Close();
 
-
-	/*this->objPlato->setCodigo(Convert::ToInt32(this->textBox1->Text));
-	this->objPlato->setNombre(this->textBox2->Text);
-	this->objPlato->setOrigen(this->textBox3->Text);
-	this->objPlato->setPrecio(this->textBox4->Text);*/
-
-
+	/*MODELO DE MODIFICACION SIN CREACION DE FUNCION (NO OLVIDAR ESCRIBIR EN ARCHIVO TXT)
+	this->objPlato->setCodigo(Convert::ToInt32(objPlato->getCodigo()));
+	this->objPlato->setNombre(objPlato->getNombre());*/
+	
 }
+
+	   /*CARGAR VALORES DE ATRIBUTOS DEL OBJETO SELECCIONADO EN VENTANA*/
 private: System::Void frmEditPlato_Load(System::Object^ sender, System::EventArgs^ e) {
 
 	this->textBox1->Text = Convert::ToString(this->objPlato->getCodigo());
@@ -234,9 +241,14 @@ private: System::Void frmEditPlato_Load(System::Object^ sender, System::EventArg
 	this->textBox4->Text = this->objPlato->getPrecio();
 
 }
+
+	   /*CANCELAR*/
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	this->Close();
+}
+
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
