@@ -119,20 +119,6 @@
   <ItemGroup>
     <ClCompile Include="PlatoController.cpp" />
     <ClCompile Include="TarjetaController.cpp" />
-    <ClCompile Include="MaquinaCompraController.cpp" />
-    <ClCompile Include="TarjetaController.cpp" />
-    <ClCompile Include="MaquinaCompraController.cpp" />
-    <ClCompile Include="TarjetaController.cpp" />
-    <ClCompile Include="MaquinaCompraController.cpp" />
-    <ClCompile Include="TarjetaController.cpp" />
-    <ClCompile Include="MaquinaCompraController.cpp" />
-    <ClCompile Include="TarjetaController.cpp" />
-    <ClCompile Include="MaquinaCompraController.cpp" />
-    <ClCompile Include="TarjetaController.cpp" />
-    <ClCompile Include="MaquinaCompraController.cpp" />
-    <ClCompile Include="TarjetaController.cpp" />
-    <ClCompile Include="MaquinaCompraController.cpp" />
-    <ClCompile Include="TarjetaController.cpp" />
     <ClCompile Include="UsuarioController.cpp" />
   </ItemGroup>
   <ItemGroup>
