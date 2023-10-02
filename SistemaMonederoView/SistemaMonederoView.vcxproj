@@ -128,6 +128,7 @@
     <ClCompile Include="frmNuevaTarjeta.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TestValerie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmEditarTarjeta.h">
@@ -146,6 +147,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmPrincipal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="TestValerie.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
