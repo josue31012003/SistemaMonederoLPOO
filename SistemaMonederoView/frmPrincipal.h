@@ -1,6 +1,6 @@
 #pragma once
 #include "frmMantenimientoUsuarios.h"
-#include "frmMantenimientoMaquinaCompra.h"
+#include "frmMantenimientoMaquinas.h"
 #include "frmMantenimientoTarjetas.h"
 #include "frmMantProductos.h"
 
@@ -46,11 +46,12 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::ToolStripMenuItem^ mantenimientoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ usuariosToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ayudaToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ máquinasToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ tarjetasToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ maquinaCompraToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ maquinaRecargaToolStripMenuItem;
+
+
 	private: System::Windows::Forms::ToolStripMenuItem^ platosToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ maquinaToolStripMenuItem;
 
 	protected:
 
@@ -73,12 +74,10 @@ namespace SistemaMonederoView {
 			this->tendenciaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mantenimientoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->usuariosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->máquinasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->maquinaCompraToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->maquinaRecargaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->tarjetasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->platosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ayudaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->maquinaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -117,7 +116,7 @@ namespace SistemaMonederoView {
 			// 
 			this->mantenimientoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
 				this->usuariosToolStripMenuItem,
-					this->máquinasToolStripMenuItem, this->tarjetasToolStripMenuItem, this->platosToolStripMenuItem
+					this->tarjetasToolStripMenuItem, this->platosToolStripMenuItem, this->maquinaToolStripMenuItem
 			});
 			this->mantenimientoToolStripMenuItem->Name = L"mantenimientoToolStripMenuItem";
 			this->mantenimientoToolStripMenuItem->Size = System::Drawing::Size(124, 24);
@@ -126,45 +125,21 @@ namespace SistemaMonederoView {
 			// usuariosToolStripMenuItem
 			// 
 			this->usuariosToolStripMenuItem->Name = L"usuariosToolStripMenuItem";
-			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(217, 26);
 			this->usuariosToolStripMenuItem->Text = L"Usuarios";
 			this->usuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::usuariosToolStripMenuItem_Click);
-			// 
-			// máquinasToolStripMenuItem
-			// 
-			this->máquinasToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->maquinaCompraToolStripMenuItem,
-					this->maquinaRecargaToolStripMenuItem
-			});
-			this->máquinasToolStripMenuItem->Name = L"máquinasToolStripMenuItem";
-			this->máquinasToolStripMenuItem->Size = System::Drawing::Size(224, 26);
-			this->máquinasToolStripMenuItem->Text = L"Máquinas";
-			this->máquinasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::máquinasToolStripMenuItem_Click);
-			// 
-			// maquinaCompraToolStripMenuItem
-			// 
-			this->maquinaCompraToolStripMenuItem->Name = L"maquinaCompraToolStripMenuItem";
-			this->maquinaCompraToolStripMenuItem->Size = System::Drawing::Size(208, 26);
-			this->maquinaCompraToolStripMenuItem->Text = L"Maquina Compra";
-			this->maquinaCompraToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::maquinaCompraToolStripMenuItem_Click);
-			// 
-			// maquinaRecargaToolStripMenuItem
-			// 
-			this->maquinaRecargaToolStripMenuItem->Name = L"maquinaRecargaToolStripMenuItem";
-			this->maquinaRecargaToolStripMenuItem->Size = System::Drawing::Size(208, 26);
-			this->maquinaRecargaToolStripMenuItem->Text = L"Maquina Recarga";
 			// 
 			// tarjetasToolStripMenuItem
 			// 
 			this->tarjetasToolStripMenuItem->Name = L"tarjetasToolStripMenuItem";
-			this->tarjetasToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->tarjetasToolStripMenuItem->Size = System::Drawing::Size(217, 26);
 			this->tarjetasToolStripMenuItem->Text = L"Tarjetas";
 			this->tarjetasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::tarjetasToolStripMenuItem_Click);
 			// 
 			// platosToolStripMenuItem
 			// 
 			this->platosToolStripMenuItem->Name = L"platosToolStripMenuItem";
-			this->platosToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->platosToolStripMenuItem->Size = System::Drawing::Size(217, 26);
 			this->platosToolStripMenuItem->Text = L"Productos";
 			this->platosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::platosToolStripMenuItem_Click);
 			// 
@@ -173,6 +148,13 @@ namespace SistemaMonederoView {
 			this->ayudaToolStripMenuItem->Name = L"ayudaToolStripMenuItem";
 			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(65, 24);
 			this->ayudaToolStripMenuItem->Text = L"Ayuda";
+			// 
+			// maquinaToolStripMenuItem
+			// 
+			this->maquinaToolStripMenuItem->Name = L"maquinaToolStripMenuItem";
+			this->maquinaToolStripMenuItem->Size = System::Drawing::Size(217, 26);
+			this->maquinaToolStripMenuItem->Text = L"Maquina";
+			this->maquinaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::maquinaToolStripMenuItem_Click);
 			// 
 			// frmPrincipal
 			// 
@@ -207,15 +189,18 @@ private: System::Void tarjetasToolStripMenuItem_Click(System::Object^ sender, Sy
 
 }
 private: System::Void maquinaCompraToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	frmMantenimientoMaquinaCompra^ ventanaMantMaquinaCompra = gcnew frmMantenimientoMaquinaCompra();
-	ventanaMantMaquinaCompra->MdiParent = this;
-	ventanaMantMaquinaCompra->Show();
+
 }
 private: System::Void platosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	frmMantProductos^ ventanaMantProductos = gcnew frmMantProductos();
 	ventanaMantProductos->MdiParent = this;
 	ventanaMantProductos->Show();
 
+}
+private: System::Void maquinaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	frmMantenimientoMaquinas^ ventanaMantMaquinas = gcnew frmMantenimientoMaquinas();
+	ventanaMantMaquinas->MdiParent = this;
+	ventanaMantMaquinas->Show();
 }
 };
 }

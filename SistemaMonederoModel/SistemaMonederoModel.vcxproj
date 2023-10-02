@@ -115,6 +115,7 @@
     <ClInclude Include="Administrador.h" />
     <ClInclude Include="Comensal.h" />
     <ClInclude Include="HistorialTransaccion.h" />
+    <ClInclude Include="Maquina.h" />
     <ClInclude Include="MaquinaCompra.h" />
     <ClInclude Include="MaquinaRecarga.h" />
     <ClInclude Include="Plato.h" />
@@ -125,6 +126,7 @@
     <ClCompile Include="Administrador.cpp" />
     <ClCompile Include="Comensal.cpp" />
     <ClCompile Include="HistorialTransaccion.cpp" />
+    <ClCompile Include="Maquina.cpp" />
     <ClCompile Include="MaquinaCompra.cpp" />
     <ClCompile Include="MaquinaRecarga.cpp" />
     <ClCompile Include="Plato.cpp" />

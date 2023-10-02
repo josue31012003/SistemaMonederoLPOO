@@ -5,9 +5,8 @@ using namespace SistemaMonederoModel;
 MaquinaRecarga::MaquinaRecarga() {
 
 }
-MaquinaRecarga::MaquinaRecarga(int Codigo, String^ UbicacionMaquinaRecarga, double MontoAbono, String^ FechaRecarga) {
-	this->Codigo = Codigo;
-	this->UbicacionMaquinaRecarga = UbicacionMaquinaRecarga;
-	this->MontoAbono = MontoAbono;
+MaquinaRecarga::MaquinaRecarga(int Codigo, String^ UbicacionMaquina, String^ tipoMaquina, double MontoAbonado, String^ FechaRecarga) {
+
+	this->MontoAbonado = MontoAbonado;
 	this->FechaRecarga = FechaRecarga;
 }

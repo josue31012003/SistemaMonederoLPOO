@@ -11,7 +11,7 @@ namespace SistemaMonederoController {
 		List<Tarjeta^>^ buscarTarjetas(String^ Estado);
 		List<Tarjeta^>^ buscarAll();
 		void escribirArchivo(List<Tarjeta^>^ listaTarjetas);
-		void eliminarTarjetaFisica(int codigo);
+		void eliminarTarjetaFisica(int Codigo);
 		void agregarTarjeta(Tarjeta^ ObjTarjeta);
 		Tarjeta^ buscarTarjetaxCodigo(int codigo);
 		void actualizarTarjeta(Tarjeta^ ObjTarjeta);

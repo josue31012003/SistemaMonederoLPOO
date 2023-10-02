@@ -1,20 +1,19 @@
 #pragma once
 
+#include "Maquina.h"
 using namespace System;
 
 namespace SistemaMonederoModel {
 
-	public ref class MaquinaRecarga {
+	public ref class MaquinaRecarga :Maquina {
 
 	private:
-		int Codigo;
-		String^ UbicacionMaquinaRecarga;
-		double MontoAbono;
+		double MontoAbonado;
 		String^ FechaRecarga;
 
 	public:
 		MaquinaRecarga();
-		MaquinaRecarga(int Codigo, String^ UbicacionMaquinaRecarga, double MontoAbono, String^ FechaRecarga);
+		MaquinaRecarga(int Codigo,String^UbicacionMaquina, String^tipoMaquina, double MontoAbonado, String^FechaRecarga);
 
 	};
 }

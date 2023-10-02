@@ -1,24 +1,16 @@
 #pragma once
-
+#include "Maquina.h"
 using namespace System;
 
-namespace SistemaMonederoModel {
-	public ref class MaquinaCompra {
-	private:
-		int Codigo;
-		//double PrecioProducto;
-		//String^ FechaCompra;
-		//String^ ListaProductos;
-		//int CantProductos;
-		String^ UbicacionMaquinaCompra;
 
+namespace SistemaMonederoModel {
+	public ref class MaquinaCompra : Maquina {
+
+	private:
+		
 	public:
 		MaquinaCompra();
-		MaquinaCompra(int Codigo/*, double PrecioProducto, String^ FechaCompra, String^ ListaProductos, int CantProductos*/, String^ UbicacionMaquinaCompra);
-		int getCodigo();
-		void setCodigo(int Codigo);
-		String^ getUbicacionMaquinaCompra();
-		void setUbicacionMaquinaCompra(String^ UbicacionMaquinaCompra);
+		MaquinaCompra(int Codigo, String^ UbicacionMaquina, String^ tipoMaquina);
 
 	};
 
