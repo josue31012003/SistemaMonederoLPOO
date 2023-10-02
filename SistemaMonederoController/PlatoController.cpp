@@ -4,37 +4,37 @@
 using namespace SistemaMonederoController;
 using namespace System::IO; /*Este espacio de nombres sirve para manejar los archivos de texto*/
 
-
 PlatoController::PlatoController() {
 
 }
 
-List<Plato^>^ PlatoController::buscarPlatosxOrigen(String^ Origen) {
-	/*En esta lista vamos a colocar la información de los Platos que encontremos en el archivo de texto*/
-	List<Plato^>^ listaPlatosEncontrados = gcnew List<Plato^>();
-	array<String^>^ lineas = File::ReadAllLines("Platos.txt");
+List<Plato^>^ PlatoController::buscarPlatosxOrigen(String^ OrigenBuscado) {
 
-	String^ separadores = ";"; /*Aqui defino el caracter por el cual voy a separar la informacion de cada linea*/
+    /*En esta lista vamos a colocar la información de los Platos que encontremos en el archivo de texto*/
 
-	/*Esta instruccion for each nos permite ir elemento por elemento de un array*/
+    List<Plato^>^ listaPlatosEncontrados = gcnew List<Plato^>();
+    array<String^>^ lineas = File::ReadAllLines("Platos.txt");
+    String^ separadores = ";"; /*Aqui defino el caracter por el cual voy a separar la informacion de cada linea*/
 
-	for each (String ^ lineaPlato in lineas) {
+    /*Esta instruccion for each nos permite ir elemento por elemento de un array*/
 
-		/*Voy a separar cada elemento del String por ; con el split*/
+    for each (String ^ lineaPlato in lineas) {
 
-		array<String^>^ datos = lineaPlato->Split(separadores->ToCharArray());
+        /*Voy a separar cada elemento del String por ; con el split*/
 
-		int codigoPlato = Convert::ToInt32(datos[0]);
-		String^ Nombre = datos[1];
-		String^ Origen = datos[2];
-		String^ Precio = datos[3];
+        array<String^>^ datos = lineaPlato->Split(separadores->ToCharArray());
 
-		if (Origen->Contains(Origen)) {
-			Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio);
-			listaPlatosEncontrados->Add(objPlato);
-		}
-	}
+        int codigoPlato = Convert::ToInt32(datos[0]);
+        String^ Nombre = datos[1];
+        String^ Origen = datos[2];
+        String^ Precio = datos[3];
 
-	return listaPlatosEncontrados;
+        if (Origen->Contains(OrigenBuscado)) {
+            Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio);
+            listaPlatosEncontrados->Add(objPlato);
+        }
+    }
+
+    return listaPlatosEncontrados;
 
 }
