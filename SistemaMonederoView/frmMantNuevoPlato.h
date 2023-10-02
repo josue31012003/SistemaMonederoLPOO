@@ -2,6 +2,7 @@
 
 namespace SistemaMonederoView {
 
+	/*CERRAR ACA*/
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -55,6 +56,7 @@ namespace SistemaMonederoView {
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
+		/*CERRAR ACA*/
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
