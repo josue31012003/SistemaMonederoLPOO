@@ -1,0 +1,3 @@
+1;Lomo Saltado;Criollo;14
+2;Ceviche;Marino;12
+3;Arroz Chaufa;Oriental;10
