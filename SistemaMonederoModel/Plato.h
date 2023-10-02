@@ -2,7 +2,7 @@
 
 using namespace System; //Esto es para la clase String
 
-namespace SistemaMonederoController {
+namespace SistemaMonederoModel {
 
 	public ref class Plato {
 

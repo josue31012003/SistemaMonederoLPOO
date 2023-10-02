@@ -2,7 +2,7 @@
 
 using namespace System;
 using namespace System::Collections::Generic;
-using namespace SistemaMonederoController;
+using namespace SistemaMonederoModel;
 
 namespace SistemaMonederoController {
 

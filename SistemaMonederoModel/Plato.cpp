@@ -1,6 +1,6 @@
 #include "Plato.h"
 
-using namespace SistemaMonederoController;
+using namespace SistemaMonederoModel;
 
 Plato::Plato() {
 
