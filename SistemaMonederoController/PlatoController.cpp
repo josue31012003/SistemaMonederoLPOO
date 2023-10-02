@@ -158,7 +158,7 @@ List<String^>^ PlatoController::obtenerOrigenes() {
         int existe = 0;
         for (int j = 0; j < listaOrigenes->Count; j++) {
             
-            if (listaOrigenes[j]->Contains(Origen)) {
+            if (listaOrigenes[j]==Origen) {
                 existe = 1;
             }
         }

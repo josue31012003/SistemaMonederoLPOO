@@ -18,6 +18,7 @@ namespace SistemaMonederoController {
 			void agregarUsuario(Usuario^ ObjUsuario); 
 			Usuario^ buscarUsuarioxCodigo(int Codigo); 
 			void actualizarUsuario(Usuario^ ObjUsuario);
+			List<String^>^ obtenerTiposdeUsuario();
 
 	};
 

@@ -6,4 +6,3 @@
 6;José;Apellido1;Apellido2;15/11/2003;73958785;5555555;Administrador
 10;Lionel;Messi;Cuccitini;24/06/1987;10101010;101010;Administrador
 9;Luchito;Suarez;Suarez;24/08/1989;999999;9999999;Comensal
-6546156;ElPepe;-;-;19/05/2009;75684984;165451546451;Comensal

@@ -255,6 +255,7 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmMantenimientoUsuarios";
 			this->Text = L"frmMantenimientoUsuarios";
+			this->Load += gcnew System::EventHandler(this, &frmMantenimientoUsuarios::frmMantenimientoUsuarios_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -335,5 +336,18 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 		ventanaEditarUsuario->ShowDialog(); 
 
 	}
+private: System::Void frmMantenimientoUsuarios_Load(System::Object^ sender, System::EventArgs^ e) {
+
+	UsuarioController^ objUsuarioController = gcnew UsuarioController();
+	List<String^>^ listaOrigenes = objUsuarioController->obtenerTiposdeUsuario();
+
+	this->comboBox1->Items->Clear();
+
+	for (int i = 0; i < listaOrigenes->Count; i++) {
+
+		this->comboBox1->Items->Add(listaOrigenes[i]);
+	}
+	this->comboBox1->Items->Add("Todos");
+}
 };
 }

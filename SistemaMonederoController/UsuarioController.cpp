@@ -1,5 +1,5 @@
 #include "UsuarioController.h"
-using namespace SistemaMonederoController; 
+using namespace SistemaMonederoController;
 using namespace System::IO;  /*Espacio de nombres que sirve para manejar archivos de texto*/
 
 UsuarioController::UsuarioController() {
@@ -126,4 +126,29 @@ void UsuarioController :: actualizarUsuario(Usuario^ ObjUsuario) {
 		}	
 	}
 	escribirArchivo(listaUsuarios); 
+}
+
+List<String^>^ UsuarioController::obtenerTiposdeUsuario() {
+	List<Usuario^>^ listaUsuarios = buscarAll();
+	List<String^>^ listaTiposUsuario = gcnew List<String^>();
+
+	for (int i = 0; i < listaUsuarios->Count; i++) {
+
+		String^ TipoUsuario = listaUsuarios[i]->getTipoUsuario();
+
+		int existe = 0;
+		for (int j = 0; j < listaTiposUsuario->Count; j++) {
+
+			if (listaTiposUsuario[j]->Contains(TipoUsuario)) {
+				existe = 1;
+			}
+		}
+
+		if (existe == 0) {
+			listaTiposUsuario->Add(TipoUsuario);
+		}
+
+	}
+	return listaTiposUsuario;
+
 }
