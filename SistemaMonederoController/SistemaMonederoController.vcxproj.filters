@@ -21,7 +21,7 @@
     <ClInclude Include="TarjetaController.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="MaquinaCompraController.h">
+    <ClInclude Include="PlatoController.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClCompile Include="TarjetaController.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="MaquinaCompraController.cpp">
+    <ClCompile Include="PlatoController.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

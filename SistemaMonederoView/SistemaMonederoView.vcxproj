@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="fmrEditarMaquinaCompra.cpp" />
     <ClCompile Include="frmEditarTarjeta.cpp" />
+    <ClCompile Include="frmEditarUsuario.cpp" />
     <ClCompile Include="frmMantenimientoMaquinaCompra.cpp" />
     <ClCompile Include="frmMantenimientoNuevoUsuario.cpp" />
     <ClCompile Include="frmMantenimientoTarjetas.cpp" />
@@ -135,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fmrEditarMaquinaCompra.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmEditarUsuario.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMantenimientoMaquinaCompra.h">
@@ -165,6 +169,9 @@
   <ItemGroup>
     <EmbeddedResource Include="fmrEditarMaquinaCompra.resx">
       <DependentUpon>fmrEditarMaquinaCompra.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarUsuario.resx">
+      <DependentUpon>frmEditarUsuario.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoMaquinaCompra.resx">
       <DependentUpon>frmMantenimientoMaquinaCompra.h</DependentUpon>

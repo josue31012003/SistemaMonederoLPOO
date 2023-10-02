@@ -1,5 +1,6 @@
 #pragma once
 #include "frmMantenimientoNuevoUsuario.h"
+#include "frmEditarUsuario.h"
 
 
 namespace SistemaMonederoView {
@@ -159,6 +160,7 @@ namespace SistemaMonederoView {
 			this->button3->TabIndex = 4;
 			this->button3->Text = L"Editar";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &frmMantenimientoUsuarios::button3_Click);
 			// 
 			// button4
 			// 
@@ -265,11 +267,19 @@ namespace SistemaMonederoView {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		
 		String^ TipoUsuario = this->comboBox1->Text; //De esta manera se obtiene el texto de la casilla
 		UsuarioController^ ObjUsuarioController = gcnew UsuarioController();
-		List<Usuario^>^ ListaUsuarios = ObjUsuarioController -> buscarUsuarios(TipoUsuario);
-		mostrarGrilla(ListaUsuarios);
+		if (TipoUsuario == "Todos") {//Condicional necesario para agregar la opción "TODOS"
+			List<Usuario^>^ ListaUsuarios = ObjUsuarioController->buscarAll();
+			mostrarGrilla(ListaUsuarios); 
+		}
+		else {
+			List<Usuario^>^ ListaUsuarios = ObjUsuarioController->buscarUsuarios(TipoUsuario);
+			mostrarGrilla(ListaUsuarios); 
+		}
+		  
+		
 	}
 
 		   private: void mostrarGrilla(List<Usuario^>^ ListaUsuarios) {
@@ -307,7 +317,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	
+	//CÓDIGO PARA ELIMINAR
 	UsuarioController^ objeto; 
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoUsuarioEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
@@ -315,5 +325,15 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	MessageBox::Show("El usuario seleccionado ha sido eliminado con éxito");
 
 	}
-	};
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
+		int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+		UsuarioController^ ObjUsuarioController = gcnew UsuarioController(); 
+		Usuario^ ObjUsuario = ObjUsuarioController->buscarUsuarioxCodigo(codigoEditar);
+		frmEditarUsuario^ ventanaEditarUsuario = gcnew frmEditarUsuario(ObjUsuario);
+		ventanaEditarUsuario->ShowDialog(); 
+
+	}
+};
 }

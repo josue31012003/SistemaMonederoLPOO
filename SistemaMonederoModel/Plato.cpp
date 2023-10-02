@@ -42,6 +42,7 @@ void Plato::setOrigen(String^ Origen) {
 String^ Plato::getNombre() {
 	return this->Nombre;
 }
+
 void Plato::setNombre(String^ Nombre) {
 	this->Nombre = Nombre;
 }

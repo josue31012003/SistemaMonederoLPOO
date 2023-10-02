@@ -16,6 +16,8 @@ namespace SistemaMonederoController {
 			void escribirArchivo(List<Usuario^>^ ListaUsuarios ); 
 			void eliminarUsuarioFisico(int codigo); 
 			void agregarUsuario(Usuario^ ObjUsuario); 
+			Usuario^ buscarUsuarioxCodigo(int Codigo); 
+			void actualizarUsuario(Usuario^ ObjUsuario);
 
 	};
 

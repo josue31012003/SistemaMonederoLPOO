@@ -99,3 +99,31 @@ void UsuarioController::agregarUsuario(Usuario^ ObjUsuario) {
 	listaUsuarios->Add(ObjUsuario);
 	escribirArchivo(listaUsuarios);
 }
+
+Usuario^ UsuarioController :: buscarUsuarioxCodigo(int Codigo) {
+	List <Usuario^>^ listaUsuarios = buscarAll();
+	for (int i = 0; i < listaUsuarios->Count; i++) {
+		if (listaUsuarios[i]->getCodigo() == Codigo) {
+			return listaUsuarios[i]; 
+		}
+	}
+}
+
+void UsuarioController :: actualizarUsuario(Usuario^ ObjUsuario) {
+	List <Usuario^>^ listaUsuarios = buscarAll();
+	for (int i = 0; i < listaUsuarios->Count; i++) {
+
+		if (listaUsuarios[i]->getCodigo() == ObjUsuario -> getCodigo()) {
+			//Voy a actualizar 
+			listaUsuarios[i]->setNombre(ObjUsuario -> getNombre());
+			listaUsuarios[i]->setApPaterno(ObjUsuario->getApPaterno());
+			listaUsuarios[i]->setApMaterno(ObjUsuario->getApMaterno());
+			listaUsuarios[i]->setFechaNacimiento(ObjUsuario->getFechaNacimiento());
+			listaUsuarios[i]->setDNI(ObjUsuario->getDNI()); 
+			listaUsuarios[i]->setIdentificacionRFID(ObjUsuario->getIdentificacionRFID());
+			listaUsuarios[i]->setTipoUsuario(ObjUsuario->getTipoUsuario());
+			break; 
+		}	
+	}
+	escribirArchivo(listaUsuarios); 
+}
