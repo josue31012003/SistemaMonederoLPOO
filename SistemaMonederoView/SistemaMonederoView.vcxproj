@@ -121,17 +121,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="fmrEditarMaquinaCompra.cpp" />
     <ClCompile Include="frmEditarTarjeta.cpp" />
+    <ClCompile Include="frmMantenimientoMaquinaCompra.cpp" />
     <ClCompile Include="frmMantenimientoNuevoUsuario.cpp" />
     <ClCompile Include="frmMantenimientoTarjetas.cpp" />
     <ClCompile Include="frmMantenimientoUsuarios.cpp" />
+    <ClCompile Include="frmNuevaMaquinaCompra.cpp" />
     <ClCompile Include="frmNuevaTarjeta.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TestValerie.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="frmEditarTarjeta.h">
+    <ClInclude Include="fmrEditarMaquinaCompra.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmMantenimientoMaquinaCompra.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMantenimientoNuevoUsuario.h">
@@ -141,6 +147,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMantenimientoUsuarios.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmNuevaMaquinaCompra.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmNuevaTarjeta.h">
@@ -154,7 +163,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmEditarTarjeta.resx" />
+    <EmbeddedResource Include="fmrEditarMaquinaCompra.resx">
+      <DependentUpon>fmrEditarMaquinaCompra.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenimientoMaquinaCompra.resx">
+      <DependentUpon>frmMantenimientoMaquinaCompra.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoNuevoUsuario.resx">
       <DependentUpon>frmMantenimientoNuevoUsuario.h</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoUsuarios.resx">
       <DependentUpon>frmMantenimientoUsuarios.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevaMaquinaCompra.resx">
+      <DependentUpon>frmNuevaMaquinaCompra.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNuevaTarjeta.resx">
       <DependentUpon>frmNuevaTarjeta.h</DependentUpon>

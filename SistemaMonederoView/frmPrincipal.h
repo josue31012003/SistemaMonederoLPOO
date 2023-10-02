@@ -1,5 +1,6 @@
 #pragma once
 #include "frmMantenimientoUsuarios.h"
+#include "frmMantenimientoMaquinaCompra.h"
 #include "frmMantenimientoTarjetas.h"
 
 
@@ -196,6 +197,9 @@ private: System::Void tarjetasToolStripMenuItem_Click(System::Object^ sender, Sy
 
 }
 private: System::Void maquinaCompraToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	frmMantenimientoMaquinaCompra^ ventanaMantMaquinaCompra = gcnew frmMantenimientoMaquinaCompra();
+	ventanaMantMaquinaCompra->MdiParent = this;
+	ventanaMantMaquinaCompra->Show();
 }
 };
 }
