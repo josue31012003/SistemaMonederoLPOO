@@ -193,6 +193,7 @@ namespace SistemaMonederoView {
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(175, 22);
 			this->textBox3->TabIndex = 9;
+			this->textBox3->TextChanged += gcnew System::EventHandler(this, &frmMantenimientoNuevoUsuario::textBox3_TextChanged);
 			// 
 			// textBox4
 			// 
@@ -222,7 +223,7 @@ namespace SistemaMonederoView {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->radioButton1->Location = System::Drawing::Point(249, 310);
 			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(97, 20);
+			this->radioButton1->Size = System::Drawing::Size(94, 20);
 			this->radioButton1->TabIndex = 14;
 			this->radioButton1->TabStop = true;
 			this->radioButton1->Text = L"Comensal";
@@ -235,7 +236,7 @@ namespace SistemaMonederoView {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->radioButton2->Location = System::Drawing::Point(362, 310);
 			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(124, 20);
+			this->radioButton2->Size = System::Drawing::Size(121, 20);
 			this->radioButton2->TabIndex = 15;
 			this->radioButton2->TabStop = true;
 			this->radioButton2->Text = L"Administrador";
@@ -328,6 +329,8 @@ private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void dateTimePicker1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
