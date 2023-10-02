@@ -9,24 +9,32 @@ PlatoController::PlatoController() {
 
 }
 
-List<Plato^>^ PlatoController::buscarPlatos(String^ Origen) {
+List<Plato^>^ PlatoController::buscarPlatosxOrigen(String^ Origen) {
 	/*En esta lista vamos a colocar la información de los Platos que encontremos en el archivo de texto*/
 	List<Plato^>^ listaPlatosEncontrados = gcnew List<Plato^>();
 	array<String^>^ lineas = File::ReadAllLines("Platos.txt");
 
 	String^ separadores = ";"; /*Aqui defino el caracter por el cual voy a separar la informacion de cada linea*/
+
 	/*Esta instruccion for each nos permite ir elemento por elemento de un array*/
-	for each (String ^ lineaCarrera in lineas) {
+
+	for each (String ^ lineaPlato in lineas) {
+
 		/*Voy a separar cada elemento del String por ; con el split*/
-		array<String^>^ datos = lineaCarrera->Split(separadores->ToCharArray());
+
+		array<String^>^ datos = lineaPlato->Split(separadores->ToCharArray());
+
 		int codigoPlato = Convert::ToInt32(datos[0]);
 		String^ Nombre = datos[1];
 		String^ Origen = datos[2];
 		String^ Precio = datos[3];
+
 		if (Origen->Contains(Origen)) {
 			Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio);
 			listaPlatosEncontrados->Add(objPlato);
 		}
 	}
+
 	return listaPlatosEncontrados;
+
 }

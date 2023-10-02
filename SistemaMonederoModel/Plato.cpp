@@ -6,11 +6,11 @@ Plato::Plato() {
 
 }
 
-Plato::Plato(int codigo, String^ Precio, String^ Origen, String^ Nombre) {
+Plato::Plato(int codigo, String^ Nombre, String^ Origen, String^ Precio) {
 	this->codigo = codigo;
-	this->Precio = Precio;
-	this->Origen = Origen;
 	this->Nombre = Nombre;
+	this->Origen = Origen;
+	this->Precio = Precio;
 }
 
 /*Las propiedades son metodos que nos permiten acceder y modificar
@@ -23,11 +23,12 @@ void Plato::setCodigo(int codigo) {
 }
 
 
-String^ Plato::getPrecio() {
-	return this->Precio;
+String^ Plato::getNombre() {
+	return this->Nombre;
 }
-void Plato::setPrecio(String^ Precio) {
-	this->Precio = Precio;
+
+void Plato::setNombre(String^ Nombre) {
+	this->Nombre = Nombre;
 }
 
 
@@ -39,10 +40,9 @@ void Plato::setOrigen(String^ Origen) {
 }
 
 
-String^ Plato::getNombre() {
-	return this->Nombre;
+String^ Plato::getPrecio() {
+	return this->Precio;
 }
-
-void Plato::setNombre(String^ Nombre) {
-	this->Nombre = Nombre;
+void Plato::setPrecio(String^ Precio) {
+	this->Precio = Precio;
 }

@@ -9,7 +9,7 @@ namespace SistemaMonederoController {
 	public ref class PlatoController {
 	public:
 		PlatoController();
-		List<Plato^>^ buscarPlatos(String^ Nombre);
+		List<Plato^>^ buscarPlatosxOrigen(String^ Origen);
 	};
 
 }
