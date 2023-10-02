@@ -9,7 +9,19 @@ namespace SistemaMonederoController {
 	public ref class PlatoController {
 	public:
 		PlatoController();
+
 		List<Plato^>^ buscarPlatosxOrigen(String^ Origen);
+
+		List<Plato^>^ buscarAll();
+
+		void escribirArchivo(List<Plato^>^ listaPlatos);
+
+		void eliminarPlatoFisico(int codigo);
+
+		void agregarPlato(Plato^ objPlato);
+
+		Plato^ buscarPlatoxCodigo(int codigo);
+
 	};
 
 }

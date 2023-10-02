@@ -1,4 +1,5 @@
 #pragma once
+#include "frmMantNuevoPlato.h"
 
 namespace SistemaMonederoView {
 
@@ -56,6 +57,9 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ button4;
 
 
 
@@ -78,14 +82,17 @@ namespace SistemaMonederoView {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -101,9 +108,37 @@ namespace SistemaMonederoView {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(553, 183);
+			this->dataGridView1->Size = System::Drawing::Size(553, 136);
 			this->dataGridView1->TabIndex = 0;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmMantProductos::dataGridView1_CellContentClick);
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Código";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 125;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Nombre";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 125;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Origen";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 125;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Precio";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
 			// 
 			// label1
 			// 
@@ -146,39 +181,44 @@ namespace SistemaMonederoView {
 			this->comboBox2->Size = System::Drawing::Size(121, 24);
 			this->comboBox2->TabIndex = 5;
 			// 
-			// Column4
+			// button1
 			// 
-			this->Column4->HeaderText = L"Código";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->Width = 125;
+			this->button1->Location = System::Drawing::Point(526, 394);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 6;
+			this->button1->Text = L"Eliminar";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmMantProductos::button1_Click);
 			// 
-			// Column1
+			// button3
 			// 
-			this->Column1->HeaderText = L"Nombre";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 125;
+			this->button3->Location = System::Drawing::Point(282, 394);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->TabIndex = 7;
+			this->button3->Text = L"Añadir";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &frmMantProductos::button3_Click);
 			// 
-			// Column3
+			// button4
 			// 
-			this->Column3->HeaderText = L"Origen";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 125;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Precio";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 125;
+			this->button4->Location = System::Drawing::Point(404, 394);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->TabIndex = 8;
+			this->button4->Text = L"Editar";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &frmMantProductos::button4_Click);
 			// 
 			// frmMantProductos
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(895, 457);
+			this->Controls->Add(this->button4);
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->dataGridView1);
 			this->Name = L"frmMantProductos";
@@ -191,6 +231,7 @@ namespace SistemaMonederoView {
 		}
 #pragma endregion
 	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -215,5 +256,25 @@ namespace SistemaMonederoView {
 		}
 
 	}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	frmMantNuevoPlato^ ventanaNuevoPlato = gcnew frmMantNuevoPlato();
+	ventanaNuevoPlato->ShowDialog();
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	PlatoController^ objPlatoEliminar;
+
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
+	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	objPlatoEliminar->eliminarPlatoFisico(codigoEliminar);
+	MessageBox::Show("El plato se ha sido eliminado con éxito");
+
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
+	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	PlatoController^ objPlatoEditar = gcnew PlatoController();
+	Plato^ objPlato = objPlatoEditar->buscarPlatoxCodigo(codigoEditar);
+}
 };
 }

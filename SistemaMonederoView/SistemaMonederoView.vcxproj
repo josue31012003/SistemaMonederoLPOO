@@ -124,10 +124,12 @@
     <ClCompile Include="fmrEditarMaquinaCompra.cpp" />
     <ClCompile Include="frmEditarTarjeta.cpp" />
     <ClCompile Include="frmEditarUsuario.cpp" />
+    <ClCompile Include="frmEditPlato.cpp" />
     <ClCompile Include="frmMantenimientoMaquinaCompra.cpp" />
     <ClCompile Include="frmMantenimientoNuevoUsuario.cpp" />
     <ClCompile Include="frmMantenimientoTarjetas.cpp" />
     <ClCompile Include="frmMantenimientoUsuarios.cpp" />
+    <ClCompile Include="frmMantNuevoPlato.cpp" />
     <ClCompile Include="frmMantProductos.cpp" />
     <ClCompile Include="frmNuevaMaquinaCompra.cpp" />
     <ClCompile Include="frmNuevaTarjeta.cpp" />
@@ -142,6 +144,9 @@
     <ClInclude Include="frmEditarUsuario.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmEditPlato.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmMantenimientoMaquinaCompra.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -152,6 +157,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMantenimientoUsuarios.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmMantNuevoPlato.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMantProductos.h">
@@ -174,6 +182,9 @@
     <EmbeddedResource Include="frmEditarUsuario.resx">
       <DependentUpon>frmEditarUsuario.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEditPlato.resx">
+      <DependentUpon>frmEditPlato.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoMaquinaCompra.resx">
       <DependentUpon>frmMantenimientoMaquinaCompra.h</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoUsuarios.resx">
       <DependentUpon>frmMantenimientoUsuarios.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantNuevoPlato.resx">
+      <DependentUpon>frmMantNuevoPlato.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantProductos.resx">
       <DependentUpon>frmMantProductos.h</DependentUpon>
