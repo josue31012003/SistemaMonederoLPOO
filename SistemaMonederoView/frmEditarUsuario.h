@@ -324,9 +324,11 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ IdentificacionRFID = this->textBox5->Text; 
 	String^ TipoUsuario = this->comboBox1->Text; 
 	//	String^ Usuario = this->textBox6->Text; 
-	//	String^ Password = this->textBox7->Text; 
+	//	String^ Password = this->textBox7->Text;
+
 	Usuario^ ObjUsuario = gcnew Usuario(codigoUsuario, Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario); 
-	UsuarioController^ ObjUsuarioController = gcnew UsuarioController(); 
+	UsuarioController^ ObjUsuarioController = gcnew UsuarioController();
+
 	ObjUsuarioController->actualizarUsuario(ObjUsuario);
 	MessageBox::Show("El proyecto se ha actualizado con éxito"); 
 	this->Close(); 

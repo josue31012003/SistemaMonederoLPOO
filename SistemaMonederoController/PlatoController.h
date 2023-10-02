@@ -7,6 +7,7 @@ using namespace SistemaMonederoModel;
 namespace SistemaMonederoController {
 
 	public ref class PlatoController {
+
 	public:
 		PlatoController();
 
@@ -21,6 +22,8 @@ namespace SistemaMonederoController {
 		void agregarPlato(Plato^ objPlato);
 
 		Plato^ buscarPlatoxCodigo(int codigo);
+
+		void editarPlato(Plato^ objPlato);
 
 	};
 

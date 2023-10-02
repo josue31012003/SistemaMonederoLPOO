@@ -1,5 +1,6 @@
 #pragma once
 #include "frmMantNuevoPlato.h"
+#include "frmEditPlato.h"
 
 namespace SistemaMonederoView {
 
@@ -261,11 +262,11 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	ventanaNuevoPlato->ShowDialog();
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	PlatoController^ objPlatoEliminar;
+	PlatoController^ ObjPlatoController;
 
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
-	objPlatoEliminar->eliminarPlatoFisico(codigoEliminar);
+	ObjPlatoController->eliminarPlatoFisico(codigoEliminar);
 	MessageBox::Show("El plato se ha sido eliminado con éxito");
 
 }
@@ -273,8 +274,11 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
-	PlatoController^ objPlatoEditar = gcnew PlatoController();
-	Plato^ objPlato = objPlatoEditar->buscarPlatoxCodigo(codigoEditar);
+	PlatoController^ ObjPlatoController = gcnew PlatoController();
+	Plato^ objPlato = ObjPlatoController->buscarPlatoxCodigo(codigoEditar);
+
+	frmEditPlato^ ventanaEditPlato = gcnew frmEditPlato(objPlato);
+	ventanaEditPlato->ShowDialog();
 }
 };
 }

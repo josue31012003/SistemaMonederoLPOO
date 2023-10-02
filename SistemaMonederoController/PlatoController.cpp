@@ -124,3 +124,24 @@ Plato^ PlatoController::buscarPlatoxCodigo(int codigo) {
     }
 
 }
+
+void PlatoController::editarPlato(Plato^ objPlato) {
+
+    List<Plato^>^ listaPlatos = buscarAll();
+
+    for (int i = 0; i < listaPlatos->Count; i++) {
+
+        if (listaPlatos[i]->getCodigo() == objPlato->getCodigo()) {
+
+            listaPlatos[i]->setCodigo(objPlato->getCodigo());
+            listaPlatos[i]->setNombre(objPlato->getNombre());
+            listaPlatos[i]->setOrigen(objPlato->getOrigen());
+            listaPlatos[i]->setPrecio(objPlato->getPrecio());
+
+            break;
+
+        }
+    }
+
+    escribirArchivo(listaPlatos);
+}

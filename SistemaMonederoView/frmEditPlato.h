@@ -8,6 +8,8 @@ namespace SistemaMonederoView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SistemaMonederoModel;
+	using namespace SistemaMonederoController;
 
 	/// <summary>
 	/// Summary for frmEditPlato
@@ -21,6 +23,14 @@ namespace SistemaMonederoView {
 			//
 			//TODO: Add the constructor code here
 			//
+		}
+
+		frmEditPlato(Plato^ objPlato)
+		{
+			InitializeComponent();
+			
+			this->objPlato = objPlato;
+
 		}
 
 	protected:
@@ -46,6 +56,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
+	private: Plato^ objPlato;
 
 	private:
 		/// <summary>
@@ -82,6 +93,7 @@ namespace SistemaMonederoView {
 			this->button2->TabIndex = 5;
 			this->button2->Text = L"Cancelar";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &frmEditPlato::button2_Click);
 			// 
 			// button1
 			// 
@@ -91,6 +103,7 @@ namespace SistemaMonederoView {
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"Grabar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmEditPlato::button1_Click);
 			// 
 			// groupBox1
 			// 
@@ -183,11 +196,46 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmEditPlato";
 			this->Text = L"frmEditPlato";
+			this->Load += gcnew System::EventHandler(this, &frmEditPlato::frmEditPlato_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	};
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	int codigoPlato = Convert::ToInt32(this->textBox1->Text);
+	String^ Nombre = this->textBox2->Text;
+	String^ Origen = this->textBox3->Text;
+	String^ Precio = this->textBox4->Text;
+
+	Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio);
+	PlatoController^ objPlatoController = gcnew PlatoController();
+
+	objPlatoController->editarPlato(objPlato);
+	MessageBox::Show("El plato ha sido modificado con exito");
+	this->Close();
+
+
+	/*this->objPlato->setCodigo(Convert::ToInt32(this->textBox1->Text));
+	this->objPlato->setNombre(this->textBox2->Text);
+	this->objPlato->setOrigen(this->textBox3->Text);
+	this->objPlato->setPrecio(this->textBox4->Text);*/
+
+
+}
+private: System::Void frmEditPlato_Load(System::Object^ sender, System::EventArgs^ e) {
+
+	this->textBox1->Text = Convert::ToString(this->objPlato->getCodigo());
+	this->textBox2->Text = this->objPlato->getNombre();
+	this->textBox3->Text = this->objPlato->getOrigen();
+	this->textBox4->Text = this->objPlato->getPrecio();
+
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	this->Close();
+}
+};
 }
