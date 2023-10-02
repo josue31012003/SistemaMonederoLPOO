@@ -25,6 +25,8 @@ namespace SistemaMonederoController {
 
 		void editarPlato(Plato^ objPlato);
 
+		List<String^>^ obtenerOrigenes();
+
 	};
 
 }

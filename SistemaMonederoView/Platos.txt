@@ -2,3 +2,4 @@
 3;Arroz Chaufa;Oriental;10
 5;Pollo a la Brasa;Criollo;20
 1;Lomo Saltado;Criollo;12
+4;Ramen;Japonés;17

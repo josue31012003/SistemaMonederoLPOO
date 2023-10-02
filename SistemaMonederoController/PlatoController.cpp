@@ -145,3 +145,29 @@ void PlatoController::editarPlato(Plato^ objPlato) {
 
     escribirArchivo(listaPlatos);
 }
+
+List<String^>^ PlatoController::obtenerOrigenes() {
+
+    List<Plato^>^ listaPlatos = buscarAll();
+    List<String^>^ listaOrigenes = gcnew List<String^>();
+
+    for (int i = 0; i < listaPlatos->Count; i++){
+
+        String^ Origen = listaPlatos[i]->getOrigen();
+
+        int existe = 0;
+        for (int j = 0; j < listaOrigenes->Count; j++) {
+            
+            if (listaOrigenes[j]->Contains(Origen)) {
+                existe = 1;
+            }
+        }
+        if (existe==0) {
+            listaOrigenes->Add(Origen);
+        }
+
+    }
+
+    return listaOrigenes;
+
+}

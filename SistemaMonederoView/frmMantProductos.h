@@ -224,6 +224,7 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->dataGridView1);
 			this->Name = L"frmMantProductos";
 			this->Text = L"frmMantProductos";
+			this->Load += gcnew System::EventHandler(this, &frmMantProductos::frmMantProductos_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
@@ -279,6 +280,18 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 
 	frmEditPlato^ ventanaEditPlato = gcnew frmEditPlato(objPlato);
 	ventanaEditPlato->ShowDialog();
+}
+private: System::Void frmMantProductos_Load(System::Object^ sender, System::EventArgs^ e) {
+
+	PlatoController^ objPlatoController = gcnew PlatoController();
+	List<String^>^ listaOrigenes = objPlatoController->obtenerOrigenes();
+
+	this->comboBox2->Items->Clear();
+
+	for (int i = 0; i < listaOrigenes->Count; i++) {
+
+		this->comboBox2->Items->Add(listaOrigenes[i]);
+	}
 }
 };
 }
