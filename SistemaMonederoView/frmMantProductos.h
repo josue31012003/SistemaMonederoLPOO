@@ -176,7 +176,7 @@ namespace SistemaMonederoView {
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Criollo", L"Marino", L"Oriental" });
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Criollo", L"Marino", L"Oriental", L"Todos" });
 			this->comboBox2->Location = System::Drawing::Point(190, 83);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(121, 24);
@@ -242,8 +242,16 @@ private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ Origen = this->comboBox2->Text;
 	PlatoController^ ObjPlatoController = gcnew PlatoController();
-	List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxOrigen(Origen);
-	mostrarGrilla(listaPlatos);
+	//List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxOrigen(Origen);
+	//mostrarGrilla(listaPlatos);
+	if (Origen == "Todos") {//Condicional necesario para agregar la opción "TODOS"
+		List<Plato^>^ listaPlatos = ObjPlatoController->buscarAll();
+		mostrarGrilla(listaPlatos);
+	}
+	else {
+		List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxOrigen(Origen); 
+		mostrarGrilla(listaPlatos); 
+	}
 }
 
 		/*MOSTRAR GRILLA*/

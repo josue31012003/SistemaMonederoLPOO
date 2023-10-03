@@ -179,7 +179,7 @@ namespace SistemaMonederoView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Activo", L"Inactivo" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Activo", L"Inactivo", L"Todos" });
 			this->comboBox1->Location = System::Drawing::Point(168, 70);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(183, 24);
@@ -234,12 +234,18 @@ namespace SistemaMonederoView {
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ Estado = this->comboBox1->Text;
-
 		TarjetaController^ ObjTarjetaController = gcnew TarjetaController();
+	//	List<Tarjeta^>^ listaTarjeta = ObjTarjetaController->buscarTarjetas(Estado);
+	//	mostrarGrilla(listaTarjeta);
 
-		List<Tarjeta^>^ listaTarjeta = ObjTarjetaController->buscarTarjetas(Estado);
-
-		mostrarGrilla(listaTarjeta);
+		if (Estado == "Todos") {//Condicional necesario para agregar la opción "TODOS"
+			List<Tarjeta^>^ listaTarjeta = ObjTarjetaController->buscarAll();
+			mostrarGrilla(listaTarjeta);
+		}
+		else {
+			List<Tarjeta^>^ listaTarjeta = ObjTarjetaController->buscarTarjetas(Estado);
+			mostrarGrilla(listaTarjeta); 
+		}
 	}
 		private: void mostrarGrilla(List<Tarjeta^>^ listaTarjetas) {
 

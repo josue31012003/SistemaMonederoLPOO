@@ -110,7 +110,7 @@ namespace SistemaMonederoView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Maquina de Compra", L"Maquina de Recarga" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Maquina de Compra", L"Maquina de Recarga", L"Todos" });
 			this->comboBox1->Location = System::Drawing::Point(160, 70);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(180, 24);
@@ -215,12 +215,18 @@ namespace SistemaMonederoView {
 	}
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ tipoMaquina = this->comboBox1->Text;
-
 	MaquinaController^ ObjMaquinaController = gcnew MaquinaController();
+//	List<Maquina^>^ listaMaquina = ObjMaquinaController->buscarMaquinas(tipoMaquina);
+//	mostrarGrilla(listaMaquina);
+	if (tipoMaquina == "Todos") {//Condicional necesario para agregar la opción "TODOS"
+		List<Maquina^>^ listaMaquina = ObjMaquinaController->buscarAll();
+		mostrarGrilla(listaMaquina);
+	}
+	else {
+		List<Maquina^>^ listaMaquina = ObjMaquinaController->buscarMaquinas(tipoMaquina); 
+		mostrarGrilla(listaMaquina); 
+	}
 
-	List<Maquina^>^ listaMaquina = ObjMaquinaController->buscarMaquinas(tipoMaquina);
-
-	mostrarGrilla(listaMaquina);
 }
 		private: void mostrarGrilla(List<Maquina^>^ listaMaquinas) {
 
