@@ -94,6 +94,7 @@ namespace SistemaMonederoView {
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos del plato";
+			this->groupBox1->Enter += gcnew System::EventHandler(this, &frmMantNuevoPlato::groupBox1_Enter);
 			// 
 			// textBox4
 			// 
@@ -204,6 +205,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ Nombre = this->textBox2->Text;
 	String^ Origen = this->textBox3->Text;
 	String^ Precio = this->textBox4->Text;
+
 	Plato^ objPlato = gcnew Plato(codigo, Nombre, Origen, Precio);
 
 	PlatoController^ objPlatoController = gcnew PlatoController();
@@ -218,6 +220,8 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 }
 
 private: System::Void frmMantNuevoPlato_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

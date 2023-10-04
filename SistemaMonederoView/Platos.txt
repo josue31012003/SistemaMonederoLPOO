@@ -1,5 +1,5 @@
 2;Ceviche;Marino;12
 3;Arroz Chaufa;Oriental;10
-5;Pollo a la Brasa;Criollo;20
+5;Pollo a la Brasa;Criollo;15
 1;Lomo Saltado;Criollo;12
 4;Ramen;Japonés;17
