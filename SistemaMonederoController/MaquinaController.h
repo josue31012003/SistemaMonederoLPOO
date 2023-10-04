@@ -18,6 +18,7 @@ namespace SistemaMonederoController {
 		void agregarMaquina(Maquina^ ObjMaquina);
 		Maquina^ buscarMaquinaxCodigo(int Codigo);
 		void actualizarMaquina(Maquina^ ObjMaquina);
+		List<String^>^ obtenerTipos();
 
 	};
 

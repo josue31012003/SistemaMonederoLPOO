@@ -1,5 +1,7 @@
 #include "MaquinaController.h"
+
 using namespace SistemaMonederoController;
+using namespace SistemaMonederoModel;
 using namespace System::IO;  /*Espacio de nombres que sirve para manejar archivos de texto*/
 
 MaquinaController::MaquinaController() {
@@ -36,7 +38,6 @@ List<Maquina^>^ MaquinaController::buscarMaquinas(String^ tipoMaquina) {
 
 }
 
-
 //MÉTODO QUE SE ENCARGA DE BUSCAR A TODOS LOS USUARIOS DE UN TXT Y LOS PONE EN UN ARREGLO 
 
 List < Maquina^>^ MaquinaController::buscarAll() {
@@ -62,6 +63,7 @@ List < Maquina^>^ MaquinaController::buscarAll() {
 
 
 }
+
 void MaquinaController::escribirArchivo(List<Maquina^>^ Lista) {
 
 	array<String^>^ lineasArchivo = gcnew array<String^>(Lista->Count);
@@ -72,7 +74,6 @@ void MaquinaController::escribirArchivo(List<Maquina^>^ Lista) {
 	File::WriteAllLines("Maquinas.txt", lineasArchivo);
 
 }
-
 
 void MaquinaController::eliminarMaquinaFisico(int Codigo) {
 	List <Maquina^>^ listaMaquinas = buscarAll();
@@ -90,6 +91,7 @@ void MaquinaController::agregarMaquina(Maquina^ ObjMaquina) {
 	listaMaquinas->Add(ObjMaquina);
 	escribirArchivo(listaMaquinas);
 }
+
 Maquina^ MaquinaController::buscarMaquinaxCodigo(int Codigo) {
 	List <Maquina^>^ listaMaquinas = buscarAll();
 	for (int i = 0; i < listaMaquinas->Count; i++) {
@@ -112,4 +114,29 @@ void MaquinaController::actualizarMaquina(Maquina^ ObjMaquina) {
 		}
 	}
 	escribirArchivo(listaMaquinas);
+}
+
+List<String^>^ MaquinaController::obtenerTipos() {
+
+	List<Maquina^>^ listaPlatos = buscarAll();
+	List<String^>^ listaTipos = gcnew List<String^>();
+
+	for (int i = 0; i < listaPlatos->Count; i++) {
+
+		String^ TipoMaquina = listaPlatos[i]->gettipoMaquina();
+
+		int existe = 0;
+		for (int j = 0; j < listaTipos->Count; j++) {
+
+			if (listaTipos[j] == TipoMaquina) {
+				existe = 1;
+			}
+		}
+		if (existe == 0) {
+			listaTipos->Add(TipoMaquina);
+		}
+
+	}
+
+	return listaTipos;
 }

@@ -110,7 +110,6 @@ namespace SistemaMonederoView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Maquina de Compra", L"Maquina de Recarga", L"Todos" });
 			this->comboBox1->Location = System::Drawing::Point(160, 70);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(180, 24);
@@ -204,6 +203,7 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->button1);
 			this->Name = L"frmMantenimientoMaquinas";
 			this->Text = L"frmMantenimientoMaquinas";
+			this->Load += gcnew System::EventHandler(this, &frmMantenimientoMaquinas::frmMantenimientoMaquinas_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -267,6 +267,18 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	Maquina^ ObjMaquina = objMaquinaController->buscarMaquinaxCodigo(codigoEditar);
 	frmEditarMaquina^ ventanaEditarMaquina = gcnew frmEditarMaquina(ObjMaquina);
 	ventanaEditarMaquina->ShowDialog();
+}
+private: System::Void frmMantenimientoMaquinas_Load(System::Object^ sender, System::EventArgs^ e) {
+
+	MaquinaController^ objMaquinaController = gcnew MaquinaController();
+	List<String^>^ listaTipos = objMaquinaController->obtenerTipos();
+
+	this->comboBox1->Items->Clear();
+
+	for (int i = 0; i < listaTipos->Count; i++) {
+		this->comboBox1->Items->Add(listaTipos[i]);
+	}
+	this->comboBox1->Items->Add("Todos");
 }
 };
 }
