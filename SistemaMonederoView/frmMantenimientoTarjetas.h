@@ -184,6 +184,7 @@ namespace SistemaMonederoView {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(183, 24);
 			this->comboBox1->TabIndex = 13;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmMantenimientoTarjetas::comboBox1_SelectedIndexChanged);
 			// 
 			// groupBox1
 			// 
@@ -291,6 +292,8 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	ventanaEditarTarjeta->ShowDialog();
 }
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

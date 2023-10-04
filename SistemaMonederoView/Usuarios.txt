@@ -1,6 +1,6 @@
 1;Josue;Moreno;Ciña;31/01/2003;73958780;123456;Comensal
 2;Daniel;Chocobar;Coronado;11/11/2003;73958781;111111;Comensal
-3;Valerie;Cabrera;Mays;10/11/2003;73958782;222222;Administrador
+3;Valerie;Cabrera;Mays;16/08/2004;73958782;222222;Administrador
 4;Anthony;Valladolid;Ballon;13/11/2003;73958783;333333;Administrador
 5;Juan;Apellido1;Apellido2;14/11/2003;73958784;4444444;Comensal
 6;José;Apellido1;Apellido2;15/11/2003;73958785;5555555;Administrador

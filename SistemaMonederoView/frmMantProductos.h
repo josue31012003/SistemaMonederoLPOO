@@ -176,7 +176,6 @@ namespace SistemaMonederoView {
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Criollo", L"Marino", L"Oriental", L"Todos" });
 			this->comboBox2->Location = System::Drawing::Point(190, 83);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(121, 24);
@@ -239,19 +238,15 @@ private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e)
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+
+	   /*BUSCAR*/
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ Origen = this->comboBox2->Text;
 	PlatoController^ ObjPlatoController = gcnew PlatoController();
-	//List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxOrigen(Origen);
-	//mostrarGrilla(listaPlatos);
-	if (Origen == "Todos") {//Condicional necesario para agregar la opción "TODOS"
-		List<Plato^>^ listaPlatos = ObjPlatoController->buscarAll();
-		mostrarGrilla(listaPlatos);
-	}
-	else {
-		List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxOrigen(Origen); 
-		mostrarGrilla(listaPlatos); 
-	}
+	
+	List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxOrigen(Origen); 
+	mostrarGrilla(listaPlatos); 
+	
 }
 
 		/*MOSTRAR GRILLA*/
@@ -286,7 +281,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	MessageBox::Show("El plato se ha sido eliminado con éxito");
 }
 
-	   /*BUSQUEDA*/
+	   /*EDITAR*/
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
@@ -313,3 +308,4 @@ private: System::Void frmMantProductos_Load(System::Object^ sender, System::Even
 }
 };
 }
+

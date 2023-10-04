@@ -126,7 +126,6 @@ namespace SistemaMonederoView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Comensal", L"Administrador", L"Todos" });
 			this->comboBox1->Location = System::Drawing::Point(185, 50);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(149, 24);

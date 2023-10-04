@@ -29,7 +29,7 @@ List<Plato^>^ PlatoController::buscarPlatosxOrigen(String^ OrigenBuscado) {
         String^ Origen = datos[2];
         String^ Precio = datos[3];
 
-        if (Origen->Contains(OrigenBuscado)) {
+        if ((Origen == OrigenBuscado) || (OrigenBuscado == "Todos")){
             Plato^ objPlato = gcnew Plato(codigo, Nombre, Origen, Precio);
             listaPlatosEncontrados->Add(objPlato);
         }
