@@ -225,6 +225,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	objPlatoController->editarPlato(objPlato);
 	MessageBox::Show("El plato ha sido modificado con exito");
 	this->Close();
+
 	/*frmMantProductos^ objPlatoView = gcnew frmMantProductos();
 	frmPrincipal->ventanaMantProductos->button2_Click(sender, e);*/
 
