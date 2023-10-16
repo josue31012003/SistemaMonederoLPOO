@@ -304,7 +304,6 @@ private: System::Void frmMantProductos_Load(System::Object^ sender, System::Even
 	for (int i = 0; i < listaOrigenes->Count; i++) {
 		this->comboBox2->Items->Add(listaOrigenes[i]);
 	}
-	this->comboBox2->Items->Add("Todos");
 }
 };
 }
