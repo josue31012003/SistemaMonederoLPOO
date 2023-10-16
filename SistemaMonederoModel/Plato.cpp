@@ -6,7 +6,7 @@ Plato::Plato() {
 
 }
 
-Plato::Plato(int codigo, String^ Nombre, String^ Origen, String^ Precio) {
+Plato::Plato(int codigo, String^ Nombre, String^ Origen, double Precio) {
 	this->codigo = codigo;
 	this->Nombre = Nombre;
 	this->Origen = Origen;
@@ -40,9 +40,9 @@ void Plato::setOrigen(String^ Origen) {
 }
 
 
-String^ Plato::getPrecio() {
+double Plato::getPrecio() {
 	return this->Precio;
 }
-void Plato::setPrecio(String^ Precio) {
+void Plato::setPrecio(double Precio) {
 	this->Precio = Precio;
 }

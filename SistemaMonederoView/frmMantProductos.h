@@ -258,7 +258,7 @@ private: void mostrarGrilla(List<Plato^>^ listaPlatos) {
 		filaGrilla[0] = Convert::ToString(objPlato->getCodigo());
 		filaGrilla[1] = objPlato->getNombre();
 		filaGrilla[2] = objPlato->getOrigen();
-		filaGrilla[3] = objPlato->getPrecio();
+		filaGrilla[3] = Convert::ToString(objPlato->getPrecio());
 		this->dataGridView1->Rows->Add(filaGrilla);
 	}
 

@@ -14,7 +14,7 @@ namespace SistemaMonederoModel {
 		String^ FechaNacimiento;
 		String^ DNI;
 		String^ IdentificacionRFID;
-		String^ TipoUsuario; 
+		String^ TipoUsuario;
 
 	public:
 		Usuario();

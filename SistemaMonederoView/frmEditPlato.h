@@ -216,7 +216,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	int codigoPlato = Convert::ToInt32(this->textBox1->Text);
 	String^ Nombre = this->textBox2->Text;
 	String^ Origen = this->textBox3->Text;
-	String^ Precio = this->textBox4->Text;
+	double Precio = Convert::ToDouble(this->textBox4->Text);
 
 	Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio);
 	PlatoController^ objPlatoController = gcnew PlatoController();
@@ -241,7 +241,7 @@ private: System::Void frmEditPlato_Load(System::Object^ sender, System::EventArg
 	this->textBox1->Text = Convert::ToString(this->objPlato->getCodigo());
 	this->textBox2->Text = this->objPlato->getNombre();
 	this->textBox3->Text = this->objPlato->getOrigen();
-	this->textBox4->Text = this->objPlato->getPrecio();
+	this->textBox4->Text = Convert::ToString(this->objPlato->getPrecio());
 
 }
 

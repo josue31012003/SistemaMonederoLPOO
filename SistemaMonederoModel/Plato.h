@@ -10,12 +10,12 @@ namespace SistemaMonederoModel {
 		int codigo;
 		String^ Nombre;
 		String^ Origen;
-		String^ Precio;
+		double Precio;
 
 		//Siempre hay 2 constructores, uno vacio y otro con todo ojo O_O
 	public:
 		Plato();
-		Plato(int codigo, String^ Precio, String^ Origen, String^ Nombre);
+		Plato(int codigo, String^ Nombre, String^ Origen, double Precio);
 
 		int getCodigo();
 		void setCodigo(int codigo);
@@ -26,8 +26,8 @@ namespace SistemaMonederoModel {
 		String^ getOrigen();
 		void setOrigen(String^ Origen);
 
-		String^ getPrecio();
-		void setPrecio(String^ Precio);
+		double getPrecio();
+		void setPrecio(double Precio);
 
 	};
 }

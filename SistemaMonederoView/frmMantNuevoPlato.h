@@ -204,7 +204,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	int codigo = Convert::ToInt32(this->textBox1->Text);
 	String^ Nombre = this->textBox2->Text;
 	String^ Origen = this->textBox3->Text;
-	String^ Precio = this->textBox4->Text;
+	double Precio = Convert::ToDouble(this->textBox4->Text);
 
 	Plato^ objPlato = gcnew Plato(codigo, Nombre, Origen, Precio);
 
