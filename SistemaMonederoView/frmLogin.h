@@ -9,6 +9,7 @@ namespace SistemaMonederoView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SistemaMonederoController;
 
 	/// <summary>
 	/// Resumen de frmLogin

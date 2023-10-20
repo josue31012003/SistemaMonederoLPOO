@@ -109,6 +109,11 @@ Usuario^ UsuarioController :: buscarUsuarioxCodigo(int Codigo) {
 	}
 }
 
+Usuario^ UsuarioController::buscarUsuarioxNombre(int nombre) {
+
+}
+
+
 void UsuarioController :: actualizarUsuario(Usuario^ ObjUsuario) {
 	List <Usuario^>^ listaUsuarios = buscarAll();
 	for (int i = 0; i < listaUsuarios->Count; i++) {
