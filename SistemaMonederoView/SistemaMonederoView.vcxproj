@@ -125,6 +125,7 @@
     <ClCompile Include="frmEditarTarjeta.cpp" />
     <ClCompile Include="frmEditarUsuario.cpp" />
     <ClCompile Include="frmEditPlato.cpp" />
+    <ClCompile Include="frmLogin.cpp" />
     <ClCompile Include="frmMantenimientoMaquinas.cpp" />
     <ClCompile Include="frmMantenimientoNuevoUsuario.cpp" />
     <ClCompile Include="frmMantenimientoTarjetas.cpp" />
@@ -147,6 +148,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmEditPlato.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmLogin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMantenimientoMaquinas.h">
@@ -187,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditPlato.resx">
       <DependentUpon>frmEditPlato.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoMaquinas.resx">
       <DependentUpon>frmMantenimientoMaquinas.h</DependentUpon>
