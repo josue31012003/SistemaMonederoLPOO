@@ -110,7 +110,8 @@ Usuario^ UsuarioController :: buscarUsuarioxCodigo(int Codigo) {
 }
 
 Usuario^ UsuarioController::buscarUsuarioxNombre(int nombre) {
-
+	Usuario^ objUsuario = gcnew Usuario();
+	return objUsuario;
 }
 
 
