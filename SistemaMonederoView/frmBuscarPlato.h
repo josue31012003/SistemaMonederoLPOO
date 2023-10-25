@@ -26,6 +26,15 @@ namespace SistemaMonederoView {
 			//
 		}
 
+		frmBuscarPlato(Plato^ objPlato)
+		{
+			InitializeComponent();
+			this->objPlato = objPlato; 
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}
+
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -49,6 +58,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::Button^ button1;
+	private: Plato^ objPlato; 
 
 	private:
 		/// <summary>
@@ -98,13 +108,14 @@ namespace SistemaMonederoView {
 			this->button2->TabIndex = 8;
 			this->button2->Text = L"Buscar";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &frmBuscarPlato::button2_Click);
 			// 
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Location = System::Drawing::Point(190, 83);
+			this->comboBox2->Location = System::Drawing::Point(151, 84);
 			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(121, 24);
+			this->comboBox2->Size = System::Drawing::Size(174, 24);
 			this->comboBox2->TabIndex = 5;
 			// 
 			// label1
@@ -167,12 +178,13 @@ namespace SistemaMonederoView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(307, 411);
+			this->button1->Location = System::Drawing::Point(307, 385);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 9;
 			this->button1->Text = L"Aceptar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmBuscarPlato::button1_Click);
 			// 
 			// frmBuscarPlato
 			// 
@@ -198,9 +210,48 @@ namespace SistemaMonederoView {
 		List<Plato^>^ listaPlatos = objPlatoController->buscarAll();
 		this->comboBox2->Items->Clear();
 		for (int i = 0; i < listaPlatos->Count; i++) {
-			this->comboBox2->Items->Add(listaPlatos[i]->getNombre());
+			this->comboBox2->Items->Add(listaPlatos[i]->getOrigen());
 		}
 
 	}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ Origen = this->comboBox2->Text;
+	PlatoController^ ObjPlatoController = gcnew PlatoController();
+
+	List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxOrigen(Origen);
+	mostrarGrilla(listaPlatos);
+
+}
+
+	 /*MOSTRAR GRILLA*/
+	private: void mostrarGrilla(List<Plato^>^ listaPlatos) {
+		this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
+		for (int i = 0; i < listaPlatos->Count; i++) {
+			Plato^ objPlato = listaPlatos[i];
+			array<String^>^ filaGrilla = gcnew array<String^>(5);
+			filaGrilla[0] = Convert::ToString(objPlato->getCodigo());
+			filaGrilla[1] = objPlato->getNombre();
+			filaGrilla[2] = objPlato->getOrigen();
+			filaGrilla[3] = Convert::ToString(objPlato->getPrecio());
+			filaGrilla[4] = Convert::ToString(objPlato->getCantPlatosVendidos());
+			this->dataGridView1->Rows->Add(filaGrilla);
+		}
+
+	}
+
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
+	int codigoSeleccionado = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	PlatoController^ objPlatoController = gcnew PlatoController();
+	Plato^ objPlatoSeleccionado = objPlatoController->buscarPlatoxCodigo(codigoSeleccionado);
+	this->objPlato->setCodigo(objPlatoSeleccionado->getCodigo());
+	this->objPlato->setNombre(objPlatoSeleccionado->getNombre());
+	this->objPlato->setOrigen(objPlatoSeleccionado->getOrigen());
+	this->objPlato->setPrecio(objPlatoSeleccionado->getPrecio());
+	this->objPlato->setCantPlatosVendidos(objPlatoSeleccionado->getCantPlatosVendidos());
+	this->Close();
+
+}
 };
 }

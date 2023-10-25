@@ -61,9 +61,9 @@ namespace SistemaMonederoView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -84,14 +84,14 @@ namespace SistemaMonederoView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Búsqueda";
 			// 
-			// label1
+			// button1
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(31, 53);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(49, 16);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Sede : ";
+			this->button1->Location = System::Drawing::Point(341, 50);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 2;
+			this->button1->Text = L"Buscar";
+			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// comboBox1
 			// 
@@ -101,14 +101,14 @@ namespace SistemaMonederoView {
 			this->comboBox1->Size = System::Drawing::Size(190, 24);
 			this->comboBox1->TabIndex = 1;
 			// 
-			// button1
+			// label1
 			// 
-			this->button1->Location = System::Drawing::Point(341, 50);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 2;
-			this->button1->Text = L"Buscar";
-			this->button1->UseVisualStyleBackColor = true;
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(31, 53);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(49, 16);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Sede : ";
 			// 
 			// dataGridView1
 			// 
@@ -121,7 +121,7 @@ namespace SistemaMonederoView {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(445, 139);
+			this->dataGridView1->Size = System::Drawing::Size(437, 139);
 			this->dataGridView1->TabIndex = 1;
 			// 
 			// Column1

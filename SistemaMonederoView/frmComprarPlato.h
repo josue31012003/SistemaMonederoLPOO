@@ -26,6 +26,8 @@ namespace SistemaMonederoView {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+
+			this->objPlato = gcnew Plato(); 
 		}
 
 	protected:
@@ -57,6 +59,8 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label5;
+	private: Plato^ objPlato; 
+
 
 	private:
 		/// <summary>
@@ -150,6 +154,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox4
 			// 
+			this->textBox4->Enabled = false;
 			this->textBox4->Location = System::Drawing::Point(448, 43);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(153, 22);
@@ -157,6 +162,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox3
 			// 
+			this->textBox3->Enabled = false;
 			this->textBox3->Location = System::Drawing::Point(448, 89);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(153, 22);
@@ -164,6 +170,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox2
 			// 
+			this->textBox2->Enabled = false;
 			this->textBox2->Location = System::Drawing::Point(119, 89);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(153, 22);
@@ -171,6 +178,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox1
 			// 
+			this->textBox1->Enabled = false;
 			this->textBox1->Location = System::Drawing::Point(119, 43);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(153, 22);
@@ -260,6 +268,7 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmComprarPlato";
 			this->Text = L"frmComprarPlato";
+			this->Load += gcnew System::EventHandler(this, &frmComprarPlato::frmComprarPlato_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -276,12 +285,22 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	//	ventanaBuscarPlato->MdiParent = this; //Opcional
 	ventanaBuscarSede->Show();
 
+
+
+
+
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	frmBuscarPlato^ ventanaBuscarPlato = gcnew frmBuscarPlato();     
-//	ventanaBuscarPlato->MdiParent = this; //Opcional
+	frmBuscarPlato^ ventanaBuscarPlato = gcnew frmBuscarPlato(this -> objPlato);     
 	ventanaBuscarPlato->Show();
+
+	//regresamos con info rescatada: 
+
+	this->textBox4->Text = this->objPlato->getNombre(); 
+	this->textBox3->Text = Convert::ToString(this->objPlato->getPrecio()); 
+}
+private: System::Void frmComprarPlato_Load(System::Object^ sender, System::EventArgs^ e) { 
 }
 };
 }
