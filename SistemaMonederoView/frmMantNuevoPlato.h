@@ -205,8 +205,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ Nombre = this->textBox2->Text;
 	String^ Origen = this->textBox3->Text;
 	double Precio = Convert::ToDouble(this->textBox4->Text);
+	double cantPlatosVendidos = 0; 
 
-	Plato^ objPlato = gcnew Plato(codigo, Nombre, Origen, Precio);
+	Plato^ objPlato = gcnew Plato(codigo, Nombre, Origen, Precio, cantPlatosVendidos);
 
 	PlatoController^ objPlatoController = gcnew PlatoController();
 	objPlatoController->agregarPlato(objPlato);

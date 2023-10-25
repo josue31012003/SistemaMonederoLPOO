@@ -121,6 +121,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="frmBuscarPlato.cpp" />
+    <ClCompile Include="frmBuscarSede.cpp" />
+    <ClCompile Include="frmComprarPlato.cpp" />
     <ClCompile Include="frmEditarMaquina.cpp" />
     <ClCompile Include="frmEditarTarjeta.cpp" />
     <ClCompile Include="frmEditarUsuario.cpp" />
@@ -138,6 +141,15 @@
     <ClCompile Include="TestValerie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="frmBuscarPlato.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmBuscarSede.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmComprarPlato.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmEditarMaquina.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -182,6 +194,15 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmBuscarPlato.resx">
+      <DependentUpon>frmBuscarPlato.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarSede.resx">
+      <DependentUpon>frmBuscarSede.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComprarPlato.resx">
+      <DependentUpon>frmComprarPlato.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditarMaquina.resx">
       <DependentUpon>frmEditarMaquina.h</DependentUpon>
     </EmbeddedResource>

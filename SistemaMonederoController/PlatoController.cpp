@@ -39,7 +39,8 @@ List<Plato^>^ PlatoController::buscarAll() {
         String^ Nombre = datos[1];
         String^ Origen = datos[2];
         double Precio = Convert::ToDouble(datos[3]);
-        Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio);
+        double cantPlatosVendidos = Convert::ToDouble(datos[4]);
+        Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio, cantPlatosVendidos);
         listaPlatosEncontrados->Add(objPlato);
     }
 

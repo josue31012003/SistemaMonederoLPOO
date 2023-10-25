@@ -3,6 +3,7 @@
 #include "frmMantenimientoMaquinas.h"
 #include "frmMantenimientoTarjetas.h"
 #include "frmMantProductos.h"
+#include "frmComprarPlato.h"
 
 
 namespace SistemaMonederoView {
@@ -52,6 +53,7 @@ namespace SistemaMonederoView {
 
 	private: System::Windows::Forms::ToolStripMenuItem^ platosToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ maquinaToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ comprarProductoToolStripMenuItem;
 
 	protected:
 
@@ -78,6 +80,7 @@ namespace SistemaMonederoView {
 			this->platosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->maquinaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ayudaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->comprarProductoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -90,28 +93,29 @@ namespace SistemaMonederoView {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(770, 24);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(1027, 30);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// archivoToolStripMenuItem
 			// 
 			this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
-			this->archivoToolStripMenuItem->Size = System::Drawing::Size(60, 20);
+			this->archivoToolStripMenuItem->Size = System::Drawing::Size(73, 26);
 			this->archivoToolStripMenuItem->Text = L"Archivo";
 			// 
 			// operacionesToolStripMenuItem
 			// 
+			this->operacionesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->comprarProductoToolStripMenuItem });
 			this->operacionesToolStripMenuItem->Name = L"operacionesToolStripMenuItem";
-			this->operacionesToolStripMenuItem->Size = System::Drawing::Size(85, 20);
+			this->operacionesToolStripMenuItem->Size = System::Drawing::Size(106, 26);
 			this->operacionesToolStripMenuItem->Text = L"Operaciones";
 			// 
 			// tendenciaToolStripMenuItem
 			// 
 			this->tendenciaToolStripMenuItem->Name = L"tendenciaToolStripMenuItem";
-			this->tendenciaToolStripMenuItem->Size = System::Drawing::Size(72, 20);
-			this->tendenciaToolStripMenuItem->Text = L"Tendencia";
+			this->tendenciaToolStripMenuItem->Size = System::Drawing::Size(82, 26);
+			this->tendenciaToolStripMenuItem->Text = L"Reportes";
 			// 
 			// mantenimientoToolStripMenuItem
 			// 
@@ -120,53 +124,60 @@ namespace SistemaMonederoView {
 					this->tarjetasToolStripMenuItem, this->platosToolStripMenuItem, this->maquinaToolStripMenuItem
 			});
 			this->mantenimientoToolStripMenuItem->Name = L"mantenimientoToolStripMenuItem";
-			this->mantenimientoToolStripMenuItem->Size = System::Drawing::Size(101, 20);
+			this->mantenimientoToolStripMenuItem->Size = System::Drawing::Size(124, 26);
 			this->mantenimientoToolStripMenuItem->Text = L"Mantenimiento";
 			this->mantenimientoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::mantenimientoToolStripMenuItem_Click);
 			// 
 			// usuariosToolStripMenuItem
 			// 
 			this->usuariosToolStripMenuItem->Name = L"usuariosToolStripMenuItem";
-			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(158, 26);
 			this->usuariosToolStripMenuItem->Text = L"Usuarios";
 			this->usuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::usuariosToolStripMenuItem_Click);
 			// 
 			// tarjetasToolStripMenuItem
 			// 
 			this->tarjetasToolStripMenuItem->Name = L"tarjetasToolStripMenuItem";
-			this->tarjetasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->tarjetasToolStripMenuItem->Size = System::Drawing::Size(158, 26);
 			this->tarjetasToolStripMenuItem->Text = L"Tarjetas";
 			this->tarjetasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::tarjetasToolStripMenuItem_Click);
 			// 
 			// platosToolStripMenuItem
 			// 
 			this->platosToolStripMenuItem->Name = L"platosToolStripMenuItem";
-			this->platosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->platosToolStripMenuItem->Size = System::Drawing::Size(158, 26);
 			this->platosToolStripMenuItem->Text = L"Productos";
 			this->platosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::platosToolStripMenuItem_Click);
 			// 
 			// maquinaToolStripMenuItem
 			// 
 			this->maquinaToolStripMenuItem->Name = L"maquinaToolStripMenuItem";
-			this->maquinaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->maquinaToolStripMenuItem->Size = System::Drawing::Size(158, 26);
 			this->maquinaToolStripMenuItem->Text = L"Maquina";
 			this->maquinaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::maquinaToolStripMenuItem_Click);
 			// 
 			// ayudaToolStripMenuItem
 			// 
 			this->ayudaToolStripMenuItem->Name = L"ayudaToolStripMenuItem";
-			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(53, 20);
+			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(65, 26);
 			this->ayudaToolStripMenuItem->Text = L"Ayuda";
+			// 
+			// comprarProductoToolStripMenuItem
+			// 
+			this->comprarProductoToolStripMenuItem->Name = L"comprarProductoToolStripMenuItem";
+			this->comprarProductoToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->comprarProductoToolStripMenuItem->Text = L"Comprar producto";
+			this->comprarProductoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::comprarProductoToolStripMenuItem_Click);
 			// 
 			// frmPrincipal
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(770, 495);
+			this->ClientSize = System::Drawing::Size(1027, 609);
 			this->Controls->Add(this->menuStrip1);
 			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"frmPrincipal";
 			this->Text = L"frmPrincipal";
 			this->menuStrip1->ResumeLayout(false);
@@ -207,6 +218,11 @@ private: System::Void maquinaToolStripMenuItem_Click(System::Object^ sender, Sys
 }
 private: System::Void mantenimientoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	
+}
+private: System::Void comprarProductoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	frmComprarPlato^ ventanaComprarPlato = gcnew frmComprarPlato();     //Incluir "  #include "frmMantEdificios"  "   
+	ventanaComprarPlato->Show();
 }
 };
 }

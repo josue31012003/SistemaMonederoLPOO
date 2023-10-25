@@ -1,0 +1,2 @@
+#include "frmComprarPlato.h"
+
