@@ -159,9 +159,9 @@ namespace SistemaMonederoView {
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(60, 87);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(50, 16);
+			this->label1->Size = System::Drawing::Size(71, 16);
 			this->label1->TabIndex = 2;
-			this->label1->Text = L"Origen:";
+			this->label1->Text = L"Ubicacion:";
 			this->label1->Click += gcnew System::EventHandler(this, &frmMantProductos::label1_Click);
 			// 
 			// groupBox1
@@ -169,7 +169,7 @@ namespace SistemaMonederoView {
 			this->groupBox1->Controls->Add(this->button2);
 			this->groupBox1->Controls->Add(this->comboBox2);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Location = System::Drawing::Point(214, 39);
+			this->groupBox1->Location = System::Drawing::Point(125, 29);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(467, 176);
 			this->groupBox1->TabIndex = 5;
@@ -309,13 +309,13 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	   /*PERSISTENCIA DE ITEMS DE CRITERIO DE BUSQUEDA*/
 private: System::Void frmMantProductos_Load(System::Object^ sender, System::EventArgs^ e) {
 
-	PlatoController^ objPlatoController = gcnew PlatoController();
-	List<String^>^ listaOrigenes = objPlatoController->obtenerOrigenes();
+	MaquinaController^ objMaquinaController = gcnew MaquinaController();
+	List<String^>^ listaUbiaciones = objMaquinaController->obtenerUbicaciones();
 
 	this->comboBox2->Items->Clear();
 
-	for (int i = 0; i < listaOrigenes->Count; i++) {
-		this->comboBox2->Items->Add(listaOrigenes[i]);
+	for (int i = 0; i < listaUbiaciones->Count; i++) {
+		this->comboBox2->Items->Add(listaUbiaciones[i]);
 	}
 }
 };

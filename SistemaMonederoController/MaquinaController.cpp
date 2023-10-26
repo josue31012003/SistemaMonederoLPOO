@@ -118,12 +118,12 @@ void MaquinaController::actualizarMaquina(Maquina^ ObjMaquina) {
 
 List<String^>^ MaquinaController::obtenerTipos() {
 
-	List<Maquina^>^ listaPlatos = buscarAll();
+	List<Maquina^>^ listaMaquinas = buscarAll();
 	List<String^>^ listaTipos = gcnew List<String^>();
 
-	for (int i = 0; i < listaPlatos->Count; i++) {
+	for (int i = 0; i < listaMaquinas->Count; i++) {
 
-		String^ TipoMaquina = listaPlatos[i]->gettipoMaquina();
+		String^ TipoMaquina = listaMaquinas[i]->gettipoMaquina();
 
 		int existe = 0;
 		for (int j = 0; j < listaTipos->Count; j++) {
@@ -139,4 +139,28 @@ List<String^>^ MaquinaController::obtenerTipos() {
 	}
 
 	return listaTipos;
+}
+
+List<String^>^ MaquinaController::obtenerUbicaciones() {
+	List<Maquina^>^ listaMaquinas = buscarAll();
+	List<String^>^ listaUbicaciones = gcnew List<String^>();
+
+	for (int i = 0; i < listaMaquinas->Count; i++) {
+
+		String^ UbicacionMaquina = listaMaquinas[i]->getUbicacionMaquina();
+
+		int existe = 0;
+		for (int j = 0; j < listaUbicaciones->Count; j++) {
+
+			if (listaUbicaciones[j] == UbicacionMaquina) {
+				existe = 1;
+			}
+		}
+		if (existe == 0) {
+			listaUbicaciones->Add(UbicacionMaquina);
+		}
+
+	}
+
+	return listaUbicaciones;
 }

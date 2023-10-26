@@ -19,6 +19,7 @@ namespace SistemaMonederoController {
 		Maquina^ buscarMaquinaxCodigo(int Codigo);
 		void actualizarMaquina(Maquina^ ObjMaquina);
 		List<String^>^ obtenerTipos();
+		List<String^>^ obtenerUbicaciones();
 
 	};
 
