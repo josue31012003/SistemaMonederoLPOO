@@ -93,18 +93,21 @@ namespace SistemaMonederoView {
 			this->groupBox1->Controls->Add(this->button2);
 			this->groupBox1->Controls->Add(this->comboBox2);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Location = System::Drawing::Point(117, 26);
+			this->groupBox1->Location = System::Drawing::Point(88, 21);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(467, 176);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Size = System::Drawing::Size(350, 143);
 			this->groupBox1->TabIndex = 7;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Criterios de búsqueda";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(354, 84);
+			this->button2->Location = System::Drawing::Point(266, 68);
+			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(56, 19);
 			this->button2->TabIndex = 8;
 			this->button2->Text = L"Buscar";
 			this->button2->UseVisualStyleBackColor = true;
@@ -113,17 +116,20 @@ namespace SistemaMonederoView {
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Location = System::Drawing::Point(151, 84);
+			this->comboBox2->Location = System::Drawing::Point(113, 68);
+			this->comboBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(174, 24);
+			this->comboBox2->Size = System::Drawing::Size(132, 21);
 			this->comboBox2->TabIndex = 5;
+			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &frmBuscarPlato::comboBox2_SelectedIndexChanged);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(60, 87);
+			this->label1->Location = System::Drawing::Point(45, 71);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(50, 16);
+			this->label1->Size = System::Drawing::Size(41, 13);
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"Origen:";
 			// 
@@ -134,11 +140,12 @@ namespace SistemaMonederoView {
 				this->Column4,
 					this->Column1, this->Column3, this->Column2, this->Column5
 			});
-			this->dataGridView1->Location = System::Drawing::Point(28, 218);
+			this->dataGridView1->Location = System::Drawing::Point(21, 177);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(649, 140);
+			this->dataGridView1->Size = System::Drawing::Size(487, 114);
 			this->dataGridView1->TabIndex = 6;
 			// 
 			// Column4
@@ -178,9 +185,10 @@ namespace SistemaMonederoView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(307, 385);
+			this->button1->Location = System::Drawing::Point(230, 313);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(56, 19);
 			this->button1->TabIndex = 9;
 			this->button1->Text = L"Aceptar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -188,12 +196,13 @@ namespace SistemaMonederoView {
 			// 
 			// frmBuscarPlato
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(713, 460);
+			this->ClientSize = System::Drawing::Size(535, 374);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->dataGridView1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"frmBuscarPlato";
 			this->Text = L"frmBuscarPlato";
 			this->Load += gcnew System::EventHandler(this, &frmBuscarPlato::frmBuscarPlato_Load);
@@ -252,6 +261,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	this->objPlato->setCantPlatosVendidos(objPlatoSeleccionado->getCantPlatosVendidos());
 	this->Close();
 
+}
+private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

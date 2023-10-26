@@ -283,7 +283,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	frmBuscarSede^ ventanaBuscarSede = gcnew frmBuscarSede(); 
 	//	ventanaBuscarPlato->MdiParent = this; //Opcional
-	ventanaBuscarSede->Show();
+	ventanaBuscarSede->ShowDialog();
 
 
 
@@ -293,7 +293,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	frmBuscarPlato^ ventanaBuscarPlato = gcnew frmBuscarPlato(this -> objPlato);     
-	ventanaBuscarPlato->Show();
+	ventanaBuscarPlato->ShowDialog();
 
 	//regresamos con info rescatada: 
 
