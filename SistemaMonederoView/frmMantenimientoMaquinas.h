@@ -110,7 +110,7 @@ namespace SistemaMonederoView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(160, 70);
+			this->comboBox1->Location = System::Drawing::Point(163, 70);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(180, 24);
 			this->comboBox1->TabIndex = 13;
@@ -118,11 +118,11 @@ namespace SistemaMonederoView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(21, 76);
+			this->label4->Location = System::Drawing::Point(9, 71);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(121, 19);
+			this->label4->Size = System::Drawing::Size(132, 20);
 			this->label4->TabIndex = 3;
 			this->label4->Text = L"Tipo de Maquina";
 			// 
@@ -173,11 +173,11 @@ namespace SistemaMonederoView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(230, 202);
+			this->button2->Location = System::Drawing::Point(222, 203);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(108, 31);
 			this->button2->TabIndex = 16;
-			this->button2->Text = L"Actualizar";
+			this->button2->Text = L"Editar";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &frmMantenimientoMaquinas::button2_Click);
 			// 
@@ -187,7 +187,7 @@ namespace SistemaMonederoView {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(105, 31);
 			this->button1->TabIndex = 15;
-			this->button1->Text = L"Añadir";
+			this->button1->Text = L"Nuevo";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &frmMantenimientoMaquinas::button1_Click);
 			// 

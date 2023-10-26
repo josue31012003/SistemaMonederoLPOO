@@ -110,17 +110,17 @@ namespace SistemaMonederoView {
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label10->Location = System::Drawing::Point(73, 301);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(44, 21);
+			this->label10->Size = System::Drawing::Size(48, 20);
 			this->label10->TabIndex = 42;
 			this->label10->Text = L"RFID";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(323, 411);
+			this->button2->Location = System::Drawing::Point(264, 411);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(80, 24);
 			this->button2->TabIndex = 41;
@@ -155,28 +155,28 @@ namespace SistemaMonederoView {
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label9->Location = System::Drawing::Point(73, 260);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(36, 21);
+			this->label9->Size = System::Drawing::Size(38, 20);
 			this->label9->TabIndex = 37;
 			this->label9->Text = L"DNI";
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label8->Location = System::Drawing::Point(73, 210);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(160, 21);
+			this->label8->Size = System::Drawing::Size(164, 20);
 			this->label8->TabIndex = 36;
 			this->label8->Text = L"Fecha de nacimiento";
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(166, 411);
+			this->button1->Location = System::Drawing::Point(127, 411);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(80, 24);
 			this->button1->TabIndex = 35;
@@ -216,55 +216,55 @@ namespace SistemaMonederoView {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label7->Location = System::Drawing::Point(73, 348);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(120, 21);
+			this->label7->Size = System::Drawing::Size(124, 20);
 			this->label7->TabIndex = 30;
 			this->label7->Text = L"Tipo de usuario";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(73, 65);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(68, 21);
+			this->label5->Size = System::Drawing::Size(68, 20);
 			this->label5->TabIndex = 29;
 			this->label5->Text = L"Nombre";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(73, 159);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(132, 21);
+			this->label4->Size = System::Drawing::Size(134, 20);
 			this->label4->TabIndex = 28;
 			this->label4->Text = L"Apellido Materno";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(73, 111);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(128, 21);
+			this->label2->Size = System::Drawing::Size(131, 20);
 			this->label2->TabIndex = 27;
 			this->label2->Text = L"Apellido Paterno";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(73, 25);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(59, 21);
+			this->label1->Size = System::Drawing::Size(61, 20);
 			this->label1->TabIndex = 26;
 			this->label1->Text = L"Código";
 			// 

@@ -40,7 +40,7 @@ namespace SistemaMonederoView {
 	protected:
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
+
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker2;
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
 	private: System::Windows::Forms::TextBox^ textBox1;
@@ -48,6 +48,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
 
 	private:
 		/// <summary>
@@ -65,7 +66,7 @@ namespace SistemaMonederoView {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->dateTimePicker2 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
@@ -98,7 +99,7 @@ namespace SistemaMonederoView {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->textBox2);
+			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->dateTimePicker2);
 			this->groupBox1->Controls->Add(this->dateTimePicker1);
 			this->groupBox1->Controls->Add(this->textBox1);
@@ -113,12 +114,15 @@ namespace SistemaMonederoView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos de la Nueva Tarjeta";
 			// 
-			// textBox2
+			// comboBox1
 			// 
-			this->textBox2->Location = System::Drawing::Point(154, 211);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(173, 22);
-			this->textBox2->TabIndex = 7;
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Activo", L"Inactivo" });
+			this->comboBox1->Location = System::Drawing::Point(154, 207);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(173, 24);
+			this->comboBox1->TabIndex = 8;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmNuevaTarjeta::comboBox1_SelectedIndexChanged);
 			// 
 			// dateTimePicker2
 			// 
@@ -199,15 +203,17 @@ namespace SistemaMonederoView {
 		int codigoTarjeta = Convert::ToInt32(this->textBox1->Text);
 		String^ fechaAlta = this->dateTimePicker1->Text;
 		String^ fechaBaja = this->dateTimePicker2->Text;
-		String^ Estado = this->textBox2->Text;
+		String^ Estado = this->comboBox1->Text;
 		Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigoTarjeta, fechaAlta, fechaBaja, Estado);
 		TarjetaController^ ObjTarjetaController = gcnew TarjetaController();
 		ObjTarjetaController->agregarTarjeta(ObjTarjeta);
-		MessageBox::Show("La Tarjeta se ha agregado con exito");
+		MessageBox::Show("La tarjeta ha sido añadida exitosamente.");
 		this->Close();
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

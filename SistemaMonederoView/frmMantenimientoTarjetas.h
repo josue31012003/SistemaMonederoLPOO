@@ -96,11 +96,11 @@ namespace SistemaMonederoView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(53, 70);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(55, 19);
+			this->label4->Size = System::Drawing::Size(61, 20);
 			this->label4->TabIndex = 3;
 			this->label4->Text = L"Estado";
 			// 
@@ -110,7 +110,7 @@ namespace SistemaMonederoView {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(105, 31);
 			this->button1->TabIndex = 4;
-			this->button1->Text = L"Añadir";
+			this->button1->Text = L"Nuevo";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &frmMantenimientoTarjetas::button1_Click);
 			// 
@@ -120,7 +120,7 @@ namespace SistemaMonederoView {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(108, 31);
 			this->button2->TabIndex = 7;
-			this->button2->Text = L"Actualizar";
+			this->button2->Text = L"Editar";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &frmMantenimientoTarjetas::button2_Click);
 			// 

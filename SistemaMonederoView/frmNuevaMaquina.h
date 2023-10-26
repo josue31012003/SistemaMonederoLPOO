@@ -121,6 +121,7 @@ namespace SistemaMonederoView {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(173, 24);
 			this->comboBox1->TabIndex = 9;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmNuevaMaquina::comboBox1_SelectedIndexChanged);
 			// 
 			// textBox3
 			// 
@@ -174,6 +175,7 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmNuevaMaquina";
 			this->Text = L"frmNuevaMaquina";
+			this->Load += gcnew System::EventHandler(this, &frmNuevaMaquina::frmNuevaMaquina_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
@@ -194,6 +196,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void frmNuevaMaquina_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

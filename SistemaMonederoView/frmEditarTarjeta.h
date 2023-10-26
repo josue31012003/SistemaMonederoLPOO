@@ -48,7 +48,7 @@ namespace SistemaMonederoView {
 	protected:
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
+
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker2;
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
 	private: System::Windows::Forms::TextBox^ textBox1;
@@ -57,6 +57,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
 	private: Tarjeta^ objTarjeta;//este atributo lo agregamos para manejar la informacion//
+	private: System::Windows::Forms::ComboBox^ comboBox1;
 
 	private:
 		/// <summary>
@@ -74,7 +75,6 @@ namespace SistemaMonederoView {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->dateTimePicker2 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
@@ -82,6 +82,7 @@ namespace SistemaMonederoView {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -107,7 +108,7 @@ namespace SistemaMonederoView {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->textBox2);
+			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->dateTimePicker2);
 			this->groupBox1->Controls->Add(this->dateTimePicker1);
 			this->groupBox1->Controls->Add(this->textBox1);
@@ -121,13 +122,6 @@ namespace SistemaMonederoView {
 			this->groupBox1->TabIndex = 6;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos de la Nueva Tarjeta";
-			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(154, 211);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(173, 22);
-			this->textBox2->TabIndex = 7;
 			// 
 			// dateTimePicker2
 			// 
@@ -189,6 +183,15 @@ namespace SistemaMonederoView {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Codigo:";
 			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(154, 211);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(173, 24);
+			this->comboBox1->TabIndex = 7;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Activo", L"Inactivo" });
+			// 
 			// frmEditarTarjeta
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -210,17 +213,17 @@ namespace SistemaMonederoView {
 			this->textBox1->Text = Convert::ToString(this->objTarjeta->getcodigo());
 			this->dateTimePicker1->Text = this->objTarjeta->getfechaAlta();
 			this->dateTimePicker2->Text = this->objTarjeta->getfechaBaja();
-			this->textBox2->Text = this->objTarjeta->getEstado();
+			this->comboBox1->Text = this->objTarjeta->getEstado();
 		}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		int codigoTarjeta = Convert::ToInt32(this->textBox1->Text);
 		String^ fechaAlta = this->dateTimePicker1->Text;
 		String^ fechaBaja = this->dateTimePicker2->Text;
-		String^ Estado = this->textBox2->Text;
+		String^ Estado = this->comboBox1->Text;
 		Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigoTarjeta, fechaAlta, fechaBaja, Estado);
 		TarjetaController^ objTarjetaController = gcnew TarjetaController();
 		objTarjetaController->actualizarTarjeta(ObjTarjeta);
-		MessageBox::Show("La Tarjeta se ha actualizado con éxito");
+		MessageBox::Show("La tarjeta ha sido actualizada exitosamente.");
 		this->Close();
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
