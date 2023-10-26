@@ -109,9 +109,16 @@ Usuario^ UsuarioController :: buscarUsuarioxCodigo(int Codigo) {
 	}
 }
 
-Usuario^ UsuarioController::buscarUsuarioxNombre(int nombre) {
-	Usuario^ objUsuario = gcnew Usuario();
-	return objUsuario;
+Usuario^ UsuarioController::buscarUsuarioxNombre(String^ nombre) {
+	List <Usuario^>^ listaUsuarios = buscarAll();
+	for (int i = 0; i < listaUsuarios->Count; i++) {
+		if (listaUsuarios[i]->getNombre() == nombre) {
+			return listaUsuarios[i];
+		}
+	}
+	if (listaUsuarios->Count == 0) {
+		return nullptr;
+	}
 }
 
 

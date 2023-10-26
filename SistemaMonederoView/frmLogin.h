@@ -1,5 +1,6 @@
 #pragma once
 #include "frmPrincipal.h"
+#include "frmPrincipal2.h"
 
 namespace SistemaMonederoView {
 
@@ -188,16 +189,29 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ username = textBox1->Text;
 	String^ password = textBox2->Text;
 
-	if ((username == "USER" && password == "USER") || (username == "" && password == "")) {
-		MessageBox::Show("Bienvenido " + username);
-		this-> Hide();
-		frmPrincipal^ ventanaPrincipal = gcnew frmPrincipal();
-		ventanaPrincipal->ShowDialog();
-	}
-	else {
+	Usuario^ objUsuario = gcnew Usuario();
+	UsuarioController^ objUsuarioController = gcnew UsuarioController();
+
+	objUsuario = objUsuarioController->buscarUsuarioxNombre(username);
+
+	if (objUsuario == nullptr) {
 		MessageBox::Show("Usuario y contraseña incorrectos.");
 	}
-
+	else {
+		if (objUsuario->getTipoUsuario() == "Administrador" && password == username) {
+			MessageBox::Show("Bienvenido " + username);
+			this->Hide();
+			frmPrincipal^ ventanaPrincipal = gcnew frmPrincipal();
+			ventanaPrincipal->ShowDialog();
+		}
+		else if (objUsuario->getTipoUsuario() == "Comensal" && password == username) {
+			MessageBox::Show("Bienvenido " + username);
+			this->Hide();
+			frmPrincipal2^ ventanaPrincipal2 = gcnew frmPrincipal2(objUsuario);
+			ventanaPrincipal2->ShowDialog();
+		}
+		this->Show();
+	}
 	
 }
 
