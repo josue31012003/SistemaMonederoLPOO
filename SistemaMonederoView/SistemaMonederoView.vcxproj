@@ -118,6 +118,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +138,10 @@
     <ClCompile Include="frmMantProductos.cpp" />
     <ClCompile Include="frmNuevaMaquina.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
+    <ClCompile Include="frmReporteActividadMaquinas.cpp" />
+    <ClCompile Include="frmReporteActividadTarjetas.cpp" />
+    <ClCompile Include="frmReporteTipoUsuario.cpp" />
+    <ClCompile Include="frmReporteVentasxPlato.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TestValerie.cpp" />
   </ItemGroup>
@@ -192,6 +197,18 @@
     <ClInclude Include="frmPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmReporteActividadMaquinas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmReporteActividadTarjetas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmReporteTipoUsuario.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmReporteVentasxPlato.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmBuscarPlato.resx">
@@ -242,6 +259,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteActividadMaquinas.resx">
+      <DependentUpon>frmReporteActividadMaquinas.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteActividadTarjetas.resx">
+      <DependentUpon>frmReporteActividadTarjetas.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteTipoUsuario.resx">
+      <DependentUpon>frmReporteTipoUsuario.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteVentasxPlato.resx">
+      <DependentUpon>frmReporteVentasxPlato.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

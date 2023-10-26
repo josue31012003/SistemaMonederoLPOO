@@ -4,6 +4,10 @@
 #include "frmMantenimientoTarjetas.h"
 #include "frmMantProductos.h"
 #include "frmComprarPlato.h"
+#include "frmReporteVentasxPlato.h"
+#include "frmReporteTipoUsuario.h"
+#include "frmReporteActividadMaquinas.h"
+#include "frmReporteActividadTarjetas.h"
 
 
 namespace SistemaMonederoView {
@@ -54,6 +58,10 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::ToolStripMenuItem^ platosToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ maquinaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ comprarProductoToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ reporteDeVentasPorPlatoToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ reporteDeActividadDeUsuariosToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ reporteDeActividadDeMáquinasToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ reporteDeToolStripMenuItem;
 
 	protected:
 
@@ -75,12 +83,16 @@ namespace SistemaMonederoView {
 			this->operacionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->comprarProductoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->tendenciaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->reporteDeVentasPorPlatoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->reporteDeActividadDeUsuariosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->reporteDeActividadDeMáquinasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mantenimientoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->usuariosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->tarjetasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->platosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->maquinaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ayudaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->reporteDeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -120,9 +132,34 @@ namespace SistemaMonederoView {
 			// 
 			// tendenciaToolStripMenuItem
 			// 
+			this->tendenciaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->reporteDeVentasPorPlatoToolStripMenuItem,
+					this->reporteDeActividadDeUsuariosToolStripMenuItem, this->reporteDeActividadDeMáquinasToolStripMenuItem, this->reporteDeToolStripMenuItem
+			});
 			this->tendenciaToolStripMenuItem->Name = L"tendenciaToolStripMenuItem";
 			this->tendenciaToolStripMenuItem->Size = System::Drawing::Size(82, 24);
 			this->tendenciaToolStripMenuItem->Text = L"Reportes";
+			// 
+			// reporteDeVentasPorPlatoToolStripMenuItem
+			// 
+			this->reporteDeVentasPorPlatoToolStripMenuItem->Name = L"reporteDeVentasPorPlatoToolStripMenuItem";
+			this->reporteDeVentasPorPlatoToolStripMenuItem->Size = System::Drawing::Size(320, 26);
+			this->reporteDeVentasPorPlatoToolStripMenuItem->Text = L"Reporte de ventas por plato";
+			this->reporteDeVentasPorPlatoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::reporteDeVentasPorPlatoToolStripMenuItem_Click);
+			// 
+			// reporteDeActividadDeUsuariosToolStripMenuItem
+			// 
+			this->reporteDeActividadDeUsuariosToolStripMenuItem->Name = L"reporteDeActividadDeUsuariosToolStripMenuItem";
+			this->reporteDeActividadDeUsuariosToolStripMenuItem->Size = System::Drawing::Size(305, 26);
+			this->reporteDeActividadDeUsuariosToolStripMenuItem->Text = L"Reporte de usuarios";
+			this->reporteDeActividadDeUsuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::reporteDeActividadDeUsuariosToolStripMenuItem_Click);
+			// 
+			// reporteDeActividadDeMáquinasToolStripMenuItem
+			// 
+			this->reporteDeActividadDeMáquinasToolStripMenuItem->Name = L"reporteDeActividadDeMáquinasToolStripMenuItem";
+			this->reporteDeActividadDeMáquinasToolStripMenuItem->Size = System::Drawing::Size(305, 26);
+			this->reporteDeActividadDeMáquinasToolStripMenuItem->Text = L"Reporte de máquinas";
+			this->reporteDeActividadDeMáquinasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::reporteDeActividadDeMáquinasToolStripMenuItem_Click);
 			// 
 			// mantenimientoToolStripMenuItem
 			// 
@@ -168,6 +205,13 @@ namespace SistemaMonederoView {
 			this->ayudaToolStripMenuItem->Name = L"ayudaToolStripMenuItem";
 			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(65, 24);
 			this->ayudaToolStripMenuItem->Text = L"Ayuda";
+			// 
+			// reporteDeToolStripMenuItem
+			// 
+			this->reporteDeToolStripMenuItem->Name = L"reporteDeToolStripMenuItem";
+			this->reporteDeToolStripMenuItem->Size = System::Drawing::Size(305, 26);
+			this->reporteDeToolStripMenuItem->Text = L"Reporte de actividad de tarjetas";
+			this->reporteDeToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::reporteDeToolStripMenuItem_Click);
 			// 
 			// frmPrincipal
 			// 
@@ -221,8 +265,35 @@ private: System::Void mantenimientoToolStripMenuItem_Click(System::Object^ sende
 }
 private: System::Void comprarProductoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	
-	frmComprarPlato^ ventanaComprarPlato = gcnew frmComprarPlato();     //Incluir "  #include "frmMantEdificios"  "   
+	frmComprarPlato^ ventanaComprarPlato = gcnew frmComprarPlato();       
 	ventanaComprarPlato->Show();
+}
+private: System::Void reporteDeVentasPorPlatoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	frmReporteVentasxPlato^ ventanaReporteVentasxPlato = gcnew frmReporteVentasxPlato(); 
+	ventanaReporteVentasxPlato->MdiParent = this; //Opcional
+	ventanaReporteVentasxPlato->Show();
+
+}
+private: System::Void reporteDeActividadDeUsuariosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	frmReporteTipoUsuario^ ventanaReporteTipoUsuario = gcnew frmReporteTipoUsuario(); 
+	ventanaReporteTipoUsuario->MdiParent = this; //Opcional
+	ventanaReporteTipoUsuario->Show();
+	
+}
+private: System::Void reporteDeActividadDeMáquinasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	frmReporteActividadMaquinas^ ventanaReporteActividadMaquinas = gcnew frmReporteActividadMaquinas();     
+	ventanaReporteActividadMaquinas->MdiParent = this; //Opcional
+	ventanaReporteActividadMaquinas->Show();
+
+}
+private: System::Void reporteDeToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	frmReporteActividadTarjetas^ ventanaReporteActividadTarjetas = gcnew frmReporteActividadTarjetas();     //Incluir "  #include "frmMantEdificios"  "  
+	ventanaReporteActividadTarjetas->MdiParent = this; //Opcional
+	ventanaReporteActividadTarjetas->Show();
 }
 };
 }

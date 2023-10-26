@@ -1,0 +1,2 @@
+#include "frmReporteActividadMaquinas.h"
+

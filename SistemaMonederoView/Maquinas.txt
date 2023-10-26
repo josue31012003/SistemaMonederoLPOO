@@ -1,6 +1,9 @@
-111344;Comedor Central;Maquina de Compra
-1111000;Comedor Artes;Maquina de Recarga
-1111232;Comedor Letras;Maquina de Compra
-2222045;Comedor Artes Nuevo;Maquina de Compra
-2120002;Comedor Artes Nuevo;Maquina de Recarga
-111099;Comedor Letras;Maquina de Recarga
+111344;Comedor Central;Máquina de Compra
+1111000;Comedor Artes;Máquina de Recarga
+1111232;Comedor Letras;Máquina de Compra
+2222045;Comedor Artes Nuevo;Máquina de Compra
+2120002;Comedor Artes Nuevo;Máquina de Compra
+111099;Comedor Letras;Máquina de Recarga
+233045;Comedor Central;Máquina de Compra
+278002;Comedor Artes Nuevo;Máquina de Compra
+121419;Comedor Letras;Máquina de Recarga

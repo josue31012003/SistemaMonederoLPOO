@@ -1,0 +1,2 @@
+#include "frmReporteVentasxPlato.h"
+
