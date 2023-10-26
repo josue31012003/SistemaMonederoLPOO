@@ -137,6 +137,7 @@
     <ClCompile Include="frmMantProductos.cpp" />
     <ClCompile Include="frmNuevaMaquina.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
+    <ClCompile Include="frmPrincipal2.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TestValerie.cpp" />
   </ItemGroup>
@@ -192,6 +193,9 @@
     <ClInclude Include="frmPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmPrincipal2.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmBuscarPlato.resx">
@@ -242,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal2.resx">
+      <DependentUpon>frmPrincipal2.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
