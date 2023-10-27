@@ -372,34 +372,34 @@ private: System::Void verHistorialToolStripMenuItem_Click(System::Object^ sender
 }
 private: System::Void historialDeTransaccionToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	frmHistorialTransaccion^ ventanaHistorialTransaccion = gcnew frmHistorialTransaccion();     
-	ventanaHistorialTransaccion->Show();
+	ventanaHistorialTransaccion->ShowDialog();
 }
 private: System::Void reporteDeVentasPorPlatoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	frmReporteVentasxPlato^ ventanaReporteVentasxPlato = gcnew frmReporteVentasxPlato(); 
-	ventanaReporteVentasxPlato->MdiParent = this; //Opcional
-	ventanaReporteVentasxPlato->Show();
+	//ventanaReporteVentasxPlato->MdiParent = this; //Opcional
+	ventanaReporteVentasxPlato->ShowDialog();
 
 }
 private: System::Void reporteDeActividadDeUsuariosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	
 	frmReporteTipoUsuario^ ventanaReporteTipoUsuario = gcnew frmReporteTipoUsuario(); 
-	ventanaReporteTipoUsuario->MdiParent = this; //Opcional
-	ventanaReporteTipoUsuario->Show();
+	//ventanaReporteTipoUsuario->MdiParent = this; //Opcional
+	ventanaReporteTipoUsuario->ShowDialog();
 	
 }
 private: System::Void reporteDeActividadDeMáquinasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	frmReporteActividadMaquinas^ ventanaReporteActividadMaquinas = gcnew frmReporteActividadMaquinas();     
-	ventanaReporteActividadMaquinas->MdiParent = this; //Opcional
-	ventanaReporteActividadMaquinas->Show();
+	//ventanaReporteActividadMaquinas->MdiParent = this; //Opcional
+	ventanaReporteActividadMaquinas->ShowDialog();
 
 }
 private: System::Void reporteDeToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	frmReporteActividadTarjetas^ ventanaReporteActividadTarjetas = gcnew frmReporteActividadTarjetas();     //Incluir "  #include "frmMantEdificios"  "  
-	ventanaReporteActividadTarjetas->MdiParent = this; //Opcional
-	ventanaReporteActividadTarjetas->Show();
+	//ventanaReporteActividadTarjetas->MdiParent = this; //Opcional
+	ventanaReporteActividadTarjetas->ShowDialog();
 }
 };
 }

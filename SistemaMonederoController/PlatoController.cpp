@@ -20,6 +20,18 @@ List<Plato^>^ PlatoController::buscarPlatosxOrigen(String^ OrigenBuscado) {
     return listaPlatosBuscados;
 }
 
+List<Plato^>^ PlatoController::buscarPlatosxUbicacion(String^ UbicacionBuscada) {
+
+    List<Plato^>^ listaPlatosBuscados = gcnew List<Plato^>();
+    List<Plato^>^ listaPlatos = buscarAll();
+    for (int i = 0; i < listaPlatos->Count; i++) {
+        if ((listaPlatos[i]->getOrigen() == UbicacionBuscada) || (UbicacionBuscada == "Todos")) {
+            listaPlatosBuscados->Add(listaPlatos[i]);
+        }
+    }
+    return listaPlatosBuscados;
+}
+
 List<Plato^>^ PlatoController::buscarAll() {
     /*En esta lista vamos a colocar la información de los Platos que encontremos en el archivo de texto*/
 

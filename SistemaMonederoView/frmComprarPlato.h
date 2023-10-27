@@ -66,8 +66,8 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::MenuStrip^ menuStrip1;
-	private: System::Windows::Forms::ToolStripMenuItem^ modificarPlatosToolStripMenuItem;
+
+
 
 
 	private:
@@ -95,12 +95,9 @@ namespace SistemaMonederoView {
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->modificarPlatosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox2
@@ -220,22 +217,6 @@ namespace SistemaMonederoView {
 			this->label2->TabIndex = 11;
 			this->label2->Text = L"Plato seleccionado:";
 			// 
-			// menuStrip1
-			// 
-			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->modificarPlatosToolStripMenuItem });
-			this->menuStrip1->Location = System::Drawing::Point(0, 0);
-			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(721, 28);
-			this->menuStrip1->TabIndex = 12;
-			this->menuStrip1->Text = L"menuStrip1";
-			// 
-			// modificarPlatosToolStripMenuItem
-			// 
-			this->modificarPlatosToolStripMenuItem->Name = L"modificarPlatosToolStripMenuItem";
-			this->modificarPlatosToolStripMenuItem->Size = System::Drawing::Size(132, 24);
-			this->modificarPlatosToolStripMenuItem->Text = L"Modificar platos";
-			// 
 			// frmComprarPlato
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -246,8 +227,6 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->menuStrip1);
-			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"frmComprarPlato";
 			this->Text = L"frmComprarPlato";
 			this->Load += gcnew System::EventHandler(this, &frmComprarPlato::frmComprarPlato_Load);
@@ -255,8 +234,6 @@ namespace SistemaMonederoView {
 			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			this->menuStrip1->ResumeLayout(false);
-			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

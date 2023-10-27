@@ -13,6 +13,8 @@ namespace SistemaMonederoController {
 
 		List<Plato^>^ buscarPlatosxOrigen(String^ Origen);
 
+		List<Plato^>^ buscarPlatosxUbicacion(String^ UbicacionBuscada);
+
 		List<Plato^>^ buscarAll();
 
 		void escribirArchivo(List<Plato^>^ listaPlatos);
