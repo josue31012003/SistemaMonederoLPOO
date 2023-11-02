@@ -161,6 +161,7 @@ List<String^>^ MaquinaController::obtenerUbicaciones() {
 		}
 
 	}
+	listaUbicaciones->Add("Todos");
 
 	return listaUbicaciones;
 }

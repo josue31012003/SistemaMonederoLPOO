@@ -254,10 +254,10 @@ private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e)
 
 	   /*BUSCAR*/
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ Origen = this->comboBox2->Text;
+	String^ Ubicacion = this->comboBox2->Text;
 	PlatoController^ ObjPlatoController = gcnew PlatoController();
 	
-	List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxOrigen(Origen); 
+	List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxUbicacion(Ubicacion);
 	mostrarGrilla(listaPlatos); 
 	
 }

@@ -27,7 +27,15 @@ namespace SistemaMonederoView {
 			//TODO: agregar código de constructor aquí
 			//
 
-			this->objPlato = gcnew Plato(); 
+		}
+		frmComprarPlato(String^ objUbicacion)
+		{
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+
+			this->objUbicacion = objUbicacion;
 		}
 
 	protected:
@@ -59,7 +67,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label5;
-	private: Plato^ objPlato; 
+	private: String^ objUbicacion;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
@@ -181,6 +189,7 @@ namespace SistemaMonederoView {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(303, 278);
 			this->dataGridView1->TabIndex = 9;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmComprarPlato::dataGridView1_CellContentClick);
@@ -242,19 +251,25 @@ namespace SistemaMonederoView {
 
 private: void mostrarGrilla(List<Plato^>^ listaPlatos) {
 	this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
+
 	for (int i = 0; i < listaPlatos->Count; i++) {
+
 		Plato^ objPlato = listaPlatos[i];
-		array<String^>^ filaGrilla = gcnew array<String^>(4);
-		filaGrilla[0] = Convert::ToString(objPlato->getCodigo());
-		filaGrilla[1] = objPlato->getNombre();
-		filaGrilla[2] = objPlato->getOrigen();
-		filaGrilla[3] = Convert::ToString(objPlato->getPrecio());
+		array<String^>^ filaGrilla = gcnew array<String^>(2);
+
+		filaGrilla[0] = Convert::ToString(objPlato->getNombre());
+		filaGrilla[1] = Convert::ToString(objPlato->getPrecio());
 		this->dataGridView1->Rows->Add(filaGrilla);
 	}
 
 }
 
-private: System::Void frmComprarPlato_Load(System::Object^ sender, System::EventArgs^ e) { 
+private: System::Void frmComprarPlato_Load(System::Object^ sender, System::EventArgs^ e) {
+	PlatoController^ ObjPlatoController = gcnew PlatoController();
+	List<Plato^>^ listPlatos = ObjPlatoController->buscarPlatosxUbicacion(objUbicacion);
+
+	mostrarGrilla(listPlatos);
+
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 

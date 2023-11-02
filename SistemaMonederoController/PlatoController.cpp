@@ -22,14 +22,32 @@ List<Plato^>^ PlatoController::buscarPlatosxOrigen(String^ OrigenBuscado) {
 
 List<Plato^>^ PlatoController::buscarPlatosxUbicacion(String^ UbicacionBuscada) {
 
-    List<Plato^>^ listaPlatosBuscados = gcnew List<Plato^>();
-    List<Plato^>^ listaPlatos = buscarAll();
-    for (int i = 0; i < listaPlatos->Count; i++) {
-        if ((listaPlatos[i]->getOrigen() == UbicacionBuscada) || (UbicacionBuscada == "Todos")) {
-            listaPlatosBuscados->Add(listaPlatos[i]);
+    List<Plato^>^ listaPlatos = gcnew List<Plato^>();
+
+    array<String^>^ lineas = File::ReadAllLines("PlatosxUbicacion.txt");
+    String^ separadores = ";"; /*Aqui defino el caracter por el cual voy a separar la informacion de cada linea*/
+
+    /*Esta instruccion for each nos permite ir elemento por elemento de un array*/
+
+    for each (String ^ lineaPlato in lineas) {
+
+        /*Voy a separar cada elemento del String por ; con el split*/
+
+        array<String^>^ datos = lineaPlato->Split(separadores->ToCharArray());
+
+        int codigoPlato = Convert::ToInt32(datos[0]);
+        String^ ubicacion = datos[1];
+
+        PlatoController^ objPlatoController = gcnew PlatoController();
+        
+        Plato^ objPlato = buscarPlatoxCodigo(codigoPlato);
+
+        if ((ubicacion == UbicacionBuscada) || (UbicacionBuscada == "Todos")) {
+            listaPlatos->Add(objPlato);
         }
     }
-    return listaPlatosBuscados;
+
+    return listaPlatos;
 }
 
 List<Plato^>^ PlatoController::buscarAll() {
@@ -59,7 +77,7 @@ List<Plato^>^ PlatoController::buscarAll() {
     return listaPlatosEncontrados;
 }
 
-void PlatoController::escribirArchivo(List<Plato^>^ lista) {
+void PlatoController::escribirPlatos(List<Plato^>^ lista) {
 
     array<String^>^ lineasArchivo = gcnew array<String^>(lista->Count);
 
@@ -75,6 +93,22 @@ void PlatoController::escribirArchivo(List<Plato^>^ lista) {
 
 }
 
+void PlatoController::escribirPlatosxUbicacion(List<Plato^>^ lista, String^ Ubicacion) {
+
+    array<String^>^ lineasArchivo = gcnew array<String^>(lista->Count);
+
+    for (int i = 0; i < lista->Count; i++) {
+
+        Plato^ objPlato = lista[i];
+
+        lineasArchivo[i] = objPlato->getCodigo() + ";" + Ubicacion;
+
+    }
+
+    File::WriteAllLines("PlatosxUbicacion.txt", lineasArchivo);
+
+}
+
 void PlatoController::eliminarPlatoFisico(int codigo) {
 
     List<Plato^>^ listaPlatos = buscarAll();
@@ -87,7 +121,7 @@ void PlatoController::eliminarPlatoFisico(int codigo) {
 
         }
 
-        escribirArchivo(listaPlatos);
+        escribirPlatos(listaPlatos);
 
     }
 
@@ -99,7 +133,7 @@ void PlatoController::agregarPlato(Plato^ objPlato) {
 
     listaPlatos->Add(objPlato);
 
-    escribirArchivo(listaPlatos);
+    escribirPlatos(listaPlatos);
 
 }
 
@@ -139,7 +173,7 @@ void PlatoController::editarPlato(Plato^ objPlato) {
         }
     }
 
-    escribirArchivo(listaPlatos);
+    escribirPlatos(listaPlatos);
 }
 
 /*BUSQUEDA DE ITEMS SEGUN CRITERIO DE BUSQUEDA*/

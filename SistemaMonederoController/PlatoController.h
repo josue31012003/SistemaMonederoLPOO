@@ -17,7 +17,9 @@ namespace SistemaMonederoController {
 
 		List<Plato^>^ buscarAll();
 
-		void escribirArchivo(List<Plato^>^ listaPlatos);
+		void escribirPlatos(List<Plato^>^ listaPlatos);
+
+		void escribirPlatosxUbicacion(List<Plato^>^ lista, String^ Ubicacion);
 
 		void eliminarPlatoFisico(int codigo);
 
