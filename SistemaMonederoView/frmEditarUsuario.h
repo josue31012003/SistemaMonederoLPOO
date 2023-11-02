@@ -330,7 +330,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	UsuarioController^ ObjUsuarioController = gcnew UsuarioController();
 
 	ObjUsuarioController->actualizarUsuario(ObjUsuario);
-	MessageBox::Show("El proyecto se ha actualizado con éxito"); 
+	MessageBox::Show("El usuario se ha actualizado con éxito"); 
 	this->Close(); 
 }
 };
