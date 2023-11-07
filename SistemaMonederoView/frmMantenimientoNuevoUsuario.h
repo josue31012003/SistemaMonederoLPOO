@@ -155,6 +155,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox1
 			// 
+			this->textBox1->Enabled = false;
 			this->textBox1->Location = System::Drawing::Point(249, 30);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(175, 22);
@@ -310,7 +311,8 @@ private: System::Void dateTimePicker1_ValueChanged(System::Object^ sender, Syste
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		
-	int codigoUsuario = Convert::ToInt32(this->textBox1->Text);  
+	UsuarioController^ objUsuarioController = gcnew UsuarioController();
+//	int codigoUsuario = Convert::ToInt32(this->textBox1->Text);  
 	String^ Nombre = this->textBox2->Text;
 	String^ ApPaterno = this->textBox4->Text; 
 	String^ ApMaterno = this->textBox3->Text; 
@@ -320,9 +322,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ TipoUsuario = this->comboBox1->Text;
 //	String^ Usuario = this->textBox6->Text; 
 //	String^ Password = this->textBox7->Text; 
-	Usuario^ ObjUsuario = gcnew Usuario(codigoUsuario, Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario);
-	UsuarioController^ ObjUsuarioController = gcnew UsuarioController(); 
-	ObjUsuarioController->agregarUsuario(ObjUsuario);
+//	Usuario^ ObjUsuario = gcnew Usuario(Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario);
+//	UsuarioController^ ObjUsuarioController = gcnew UsuarioController(); 
+//	ObjUsuarioController->agregarUsuario(ObjUsuario);
+	objUsuarioController->registrarUsuarioBD(Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario);
 	MessageBox::Show("El usuario se ha agregado con éxito"); 
 	this->Close();  
 

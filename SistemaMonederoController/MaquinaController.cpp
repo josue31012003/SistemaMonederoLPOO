@@ -4,9 +4,6 @@ using namespace SistemaMonederoController;
 using namespace SistemaMonederoModel;
 using namespace System::IO;  /*Espacio de nombres que sirve para manejar archivos de texto*/
 
-MaquinaController::MaquinaController() {
-
-}
 
 List<Maquina^>^ MaquinaController::buscarMaquinas(String^ tipoMaquina) {
 
@@ -165,3 +162,159 @@ List<String^>^ MaquinaController::obtenerUbicaciones() {
 
 	return listaUbicaciones;
 }
+
+
+//IMPLEMENTACIÓN DE MÉTODOS DE BASE DE DATOS 
+MaquinaController::MaquinaController() {
+	this->objConexion = gcnew SqlConnection();
+}
+
+void MaquinaController::abrirConexionBD() {
+
+	/*Cadena de conexion: Servidor de BD, usuario de BD, password BD, nombre de la BD*/
+	this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20205788;User Id=a20205788;Password=gbVVvdoY";
+	this->objConexion->Open(); /*Apertura de la conexion a BD*/
+
+}
+void MaquinaController::cerrarConexionBD() {
+	this->objConexion->Close();
+}
+
+List<Maquina^>^ MaquinaController::buscarMaquinaxtipoBD(String^ TipodeMaquina) {
+
+	List<Maquina^>^ listaMaquinas = gcnew List<Maquina^>();
+
+	abrirConexionBD();
+
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	if (TipodeMaquina == "Todos") {
+		objSentencia->CommandText = "SELECT * from Maquinas";
+	}
+	else {
+		objSentencia->CommandText = "SELECT * from Maquinas WHERE tipoMaquina like '%" + TipodeMaquina + "%'";
+	}
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+
+	while (objData->Read()) {
+		int codigo = safe_cast<int>(objData[0]);
+		String^ ubicacion = safe_cast<String^>(objData[1]);
+		String^ tipoMaquina = safe_cast<String^>(objData[2]);
+		Maquina^ objMaquina = gcnew Maquina(codigo, ubicacion, tipoMaquina);
+		listaMaquinas->Add(objMaquina);
+	}
+
+	cerrarConexionBD();
+
+	return listaMaquinas;
+}
+
+void MaquinaController::registrarMaquinaBD(String^ UbicacionMaquina, String^ tipoMaquina) {
+
+	abrirConexionBD();
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->CommandText = "INSERT INTO Maquinas (ubicacion, tipoMaquina) VALUES('" + UbicacionMaquina + "', '" + tipoMaquina + "')";
+	objSentencia->Connection = this->objConexion;
+	objSentencia->ExecuteNonQuery();
+	cerrarConexionBD();
+		
+}
+
+void MaquinaController::eliminarMaquinaBD(int codigo) {
+	abrirConexionBD();
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->CommandText = "DELETE Maquinas WHERE codigo = " + codigo;
+	objSentencia->Connection = this->objConexion;
+	objSentencia->ExecuteNonQuery();
+	cerrarConexionBD(); 
+
+}
+
+Maquina^ MaquinaController::buscarMaquinaxCodigoBD(int codigo) {
+	Maquina^ objMaquina; 
+	abrirConexionBD();
+
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "SELECT * from Maquinas WHERE codigo =" + codigo; 
+
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+
+	while (objData->Read()) {
+		int codigo = safe_cast<int>(objData[0]);
+		String^ ubicacion = safe_cast<String^>(objData[1]);
+		String^ tipoMaquina = safe_cast<String^>(objData[2]);
+		objMaquina = gcnew Maquina(codigo, ubicacion, tipoMaquina);
+	}
+	cerrarConexionBD();
+	return objMaquina;
+
+}
+void MaquinaController::ActualizarMaquinaBD(int Codigo, String^ UbicacionMaquina, String^ tipoMaquina) {
+	abrirConexionBD();
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->CommandText = "UPDATE Maquinas SET ubicacion='" + UbicacionMaquina + "',tipoMaquina='" + tipoMaquina +"' WHERE codigo =" + Codigo;
+	objSentencia->Connection = this->objConexion;
+	objSentencia->ExecuteNonQuery();
+	cerrarConexionBD();
+}
+
+List<Maquina^>^ MaquinaController::buscarAllBD() {
+
+	List<Maquina^>^ listaMaquinas = gcnew List<Maquina^>();
+
+	abrirConexionBD(); 
+
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "SELECT * from Maquinas ";
+	
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+
+	while (objData->Read()) {
+		int codigo = safe_cast<int>(objData[0]);
+		String^ ubicacion = safe_cast<String^>(objData[1]);
+		String^ tipoMaquina = safe_cast<String^>(objData[2]);
+		Maquina^ objMaquina = gcnew Maquina(codigo, ubicacion, tipoMaquina);
+		listaMaquinas->Add(objMaquina);
+	}
+
+	cerrarConexionBD();
+
+	return listaMaquinas;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

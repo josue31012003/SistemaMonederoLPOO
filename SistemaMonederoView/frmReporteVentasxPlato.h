@@ -119,7 +119,7 @@ namespace SistemaMonederoView {
 #pragma endregion
 	private: System::Void frmReporteVentasxPlato_Load(System::Object^ sender, System::EventArgs^ e) {
 		PlatoController^ objPlatoController = gcnew PlatoController();
-		List<Plato^>^ listaPlatos = objPlatoController->buscarAll(); 
+		List<Plato^>^ listaPlatos = objPlatoController->buscarAllBD(); 
 		for (int i = 0; i < listaPlatos->Count; i++) {
 			this->chart1->Series["Cantidad de platos vendidos"]->Points->Add(listaPlatos[i]->getCantPlatosVendidos());
 			this->chart1->Series["Cantidad de platos vendidos"]->Points[i]->AxisLabel = listaPlatos[i]->getNombre();
@@ -129,7 +129,7 @@ namespace SistemaMonederoView {
 
 		//PIE 
 		PlatoController^ objPlatoController2 = gcnew PlatoController();
-		List<Plato^>^ listaPlatos2 = objPlatoController2->buscarAll();
+		List<Plato^>^ listaPlatos2 = objPlatoController2->buscarAllBD();
 		for (int i = 0; i < listaPlatos2->Count; i++) {
 			this->chart2->Series["Series1"]->Points->Add(listaPlatos2[i]->getCantPlatosVendidos());
 			this->chart2->Series["Series1"]->Points[i]->AxisLabel = listaPlatos2[i]->getNombre();

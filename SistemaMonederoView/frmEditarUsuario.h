@@ -25,15 +25,24 @@ namespace SistemaMonederoView {
 			//
 		}
 
-		frmEditarUsuario(Usuario^ ObjUsuario)
+	/*	frmEditarUsuario(Usuario^ ObjUsuario)
 		{
 			InitializeComponent();
 			this->ObjUsuario = ObjUsuario; 
+
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}*/
+		frmEditarUsuario(int codigo)
+		{
+			InitializeComponent();
+			this-> codigo = codigo; 
+
 			//
 			//TODO: agregar código de constructor aquí
 			//
 		}
-
 
 	protected:
 		/// <summary>
@@ -66,7 +75,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
 	private: Usuario^ ObjUsuario; //Este atributo lo agregamos porque necesitamos manejar la información del objeto - transferir info entre ventanas- 
-
+	private: int codigo; 
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -300,15 +309,18 @@ namespace SistemaMonederoView {
 		}
 #pragma endregion
 	private: System::Void frmEditarUsuario_Load(System::Object^ sender, System::EventArgs^ e) {
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		Usuario^ ObjUsuario = objUsuarioController->buscarUsuarioxCodigoBD(this->codigo); 
 
-		this->textBox1-> Text = Convert::ToString(this->ObjUsuario->getCodigo()); 
-		this->textBox2-> Text= this->ObjUsuario->getNombre(); 
-		this->textBox4->Text = this->ObjUsuario->getApPaterno();
-		this->textBox3->Text = this->ObjUsuario->getApMaterno();
-		this->dateTimePicker1->Text = this->ObjUsuario->getFechaNacimiento(); 
-		this->textBox8->Text = this->ObjUsuario->getDNI();
-		this->textBox5->Text = this->ObjUsuario->getIdentificacionRFID();
-		this->comboBox1->Text = this->ObjUsuario->getTipoUsuario();
+		this->textBox1-> Text = Convert::ToString(ObjUsuario->getCodigo()); 
+		this->textBox2-> Text= ObjUsuario->getNombre(); 
+		this->textBox4->Text = ObjUsuario->getApPaterno();
+		this->textBox3->Text = ObjUsuario->getApMaterno();
+		this->dateTimePicker1->Text = ObjUsuario->getFechaNacimiento(); 
+		this->textBox8->Text = ObjUsuario->getDNI();
+		this->textBox5->Text = ObjUsuario->getIdentificacionRFID();
+		this->comboBox1->Text = ObjUsuario->getTipoUsuario();
+
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close(); 
@@ -326,10 +338,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	//	String^ Usuario = this->textBox6->Text; 
 	//	String^ Password = this->textBox7->Text;
 
-	Usuario^ ObjUsuario = gcnew Usuario(codigoUsuario, Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario); 
+	//Usuario^ ObjUsuario = gcnew Usuario(codigoUsuario, Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario); 
 	UsuarioController^ ObjUsuarioController = gcnew UsuarioController();
-
-	ObjUsuarioController->actualizarUsuario(ObjUsuario);
+	ObjUsuarioController->ActualizarUsuarioBD(codigoUsuario, Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario);
+//	ObjUsuarioController->actualizarUsuario(ObjUsuario);
 	MessageBox::Show("El usuario se ha actualizado con éxito"); 
 	this->Close(); 
 }

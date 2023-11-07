@@ -121,7 +121,7 @@ namespace SistemaMonederoView {
 	private: System::Void frmReporteActividadMaquinas_Load(System::Object^ sender, System::EventArgs^ e) {
 
 		MaquinaController^ objMaquinaController = gcnew MaquinaController();
-		List<Maquina^>^ listaMaquinas = objMaquinaController->buscarAll();
+		List<Maquina^>^ listaMaquinas = objMaquinaController->buscarAllBD(); 
 		
 
 		//Lógica para hallar el tipo de usuario

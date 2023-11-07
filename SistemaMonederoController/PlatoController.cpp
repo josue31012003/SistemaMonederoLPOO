@@ -4,10 +4,6 @@
 using namespace SistemaMonederoController;
 using namespace System::IO; /*Este espacio de nombres sirve para manejar los archivos de texto*/
 
-PlatoController::PlatoController() {
-
-}
-
 List<Plato^>^ PlatoController::buscarPlatosxOrigen(String^ OrigenBuscado) {
 
     List<Plato^>^ listaPlatosBuscados = gcnew List<Plato^>();
@@ -203,5 +199,60 @@ List<String^>^ PlatoController::obtenerOrigenes() {
     listaOrigenes->Add("Todos");
 
     return listaOrigenes;
+
+}
+
+
+
+
+
+// IMPLEMENTACIONES EN BASE DE DATOS 
+
+PlatoController::PlatoController() {
+    this->objConexion= gcnew SqlConnection(); 
+
+}
+
+void PlatoController::abrirConexionBD() {
+
+    /*Cadena de conexion: Servidor de BD, usuario de BD, password BD, nombre de la BD*/
+    this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20205788;User Id=a20205788;Password=gbVVvdoY";
+    this->objConexion->Open(); /*Apertura de la conexion a BD*/
+
+}
+void PlatoController::cerrarConexionBD() {
+    this->objConexion->Close();
+}
+
+
+List<Plato^>^ PlatoController::buscarAllBD() {
+
+    List<Plato^>^ listaPlatos = gcnew List<Plato^>();
+    abrirConexionBD();
+
+    /*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+    SqlCommand^ objSentencia = gcnew SqlCommand();
+    /*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+    objSentencia->Connection = this->objConexion;
+    /*Aqui voy a indicar la sentencia que voy a ejecutar*/
+    objSentencia->CommandText = "SELECT * from Platos";
+    /*Aqui ejecuto la sentencia en la Base de Datos*/
+    /*Para Select siempre sera ExecuteReader*/
+    /*Para select siempre va a devolver un SqlDataReader*/
+    SqlDataReader^ objData = objSentencia->ExecuteReader();
+
+    while (objData->Read()) {
+        int codigo = safe_cast<int>(objData[0]);
+        String^ nombre = safe_cast<String^>(objData[1]);
+        String^ origen = safe_cast<String^>(objData[2]);
+        double precio = safe_cast<double>(objData[3]);
+        double cantPlatosVendidos = safe_cast<double>(objData[4]);;
+        Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio,cantPlatosVendidos);
+        listaPlatos->Add(objPlato);
+    }
+
+    cerrarConexionBD();
+
+    return listaPlatos;
 
 }

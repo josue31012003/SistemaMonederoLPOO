@@ -24,10 +24,18 @@ namespace SistemaMonederoView {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		frmEditarMaquina(Maquina^ objMaquina)
+		//frmEditarMaquina(Maquina^ objMaquina)
+		//{
+		//	InitializeComponent();
+		//	this->objMaquina = objMaquina;
+		//	//
+		//	//TODO: agregar código de constructor aquí
+		//	//
+		//}
+		frmEditarMaquina(int codigo)
 		{
 			InitializeComponent();
-			this->objMaquina = objMaquina;
+			this->codigo = codigo;
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -55,6 +63,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label1;
 	private: Maquina^ objMaquina;//este atributo lo agregamos para manejar la informacion//
+	private: int codigo; 
 
 	private:
 		/// <summary>
@@ -119,7 +128,7 @@ namespace SistemaMonederoView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Maquina de Compra", L"Maquina de Recarga" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Máquina de Compra", L"Máquina de Recarga" });
 			this->comboBox1->Location = System::Drawing::Point(154, 151);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(173, 24);
@@ -184,20 +193,22 @@ namespace SistemaMonederoView {
 		}
 #pragma endregion
 	private: System::Void frmEditarMaquina_Load(System::Object^ sender, System::EventArgs^ e) {
-			this->textBox1->Text = Convert::ToString(this->objMaquina->getCodigo());
-			this->textBox3->Text = this->objMaquina->getUbicacionMaquina();
-			this->comboBox1->Text = this->objMaquina->gettipoMaquina();
+		MaquinaController^ objMaquinaController = gcnew MaquinaController(); 
+		Maquina^ ObjMaquina = objMaquinaController->buscarMaquinaxCodigoBD(this->codigo); 
+			this->textBox1->Text = Convert::ToString(ObjMaquina->getCodigo()); 
+			this->textBox3->Text = ObjMaquina->getUbicacionMaquina(); 
+			this->comboBox1->Text = ObjMaquina->gettipoMaquina(); 
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	int codigoMaquina = Convert::ToInt32(this->textBox1->Text);
 	String^ UbicacionMaquina = this->textBox3->Text;
 	String^ tipoMaquina = this->comboBox1->Text;
-	Maquina^ ObjMaquina = gcnew Maquina(codigoMaquina, UbicacionMaquina, tipoMaquina);
 	MaquinaController^ objMaquinaController = gcnew MaquinaController();
-	objMaquinaController->actualizarMaquina(ObjMaquina);
+	objMaquinaController->ActualizarMaquinaBD(codigoMaquina, UbicacionMaquina, tipoMaquina); 
 	MessageBox::Show("La Maquina se ha actualizado con éxito");
 	this->Close();
 }

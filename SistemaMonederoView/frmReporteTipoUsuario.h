@@ -119,7 +119,7 @@ namespace SistemaMonederoView {
 	private: System::Void frmReporteTipoUsuario_Load(System::Object^ sender, System::EventArgs^ e) {
 
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
-		List<Usuario^>^ listaUsuarios = objUsuarioController->buscarAll(); 
+		List<Usuario^>^ listaUsuarios = objUsuarioController->buscarAllBD();
 
 		//Lógica para hallar el tipo de usuario
 		int contadorAdministradores = 0;

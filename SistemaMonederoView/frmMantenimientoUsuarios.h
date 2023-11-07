@@ -270,36 +270,42 @@ namespace SistemaMonederoView {
 		
 		String^ TipoUsuario = this->comboBox1->Text; //De esta manera se obtiene el texto de la casilla
 		UsuarioController^ ObjUsuarioController = gcnew UsuarioController();
-		if (TipoUsuario == "Todos") {//Condicional necesario para agregar la opción "TODOS"
+		List<Usuario^>^ listaUsuarios = ObjUsuarioController->buscarUsuarioxtipoBD(TipoUsuario);   
+		mostrarGrilla(listaUsuarios); 
+
+		
+		/*if (TipoUsuario == "Todos") {//Condicional necesario para agregar la opción "TODOS"
 			List<Usuario^>^ ListaUsuarios = ObjUsuarioController->buscarAll();
 			mostrarGrilla(ListaUsuarios); 
 		}
 		else {
 			List<Usuario^>^ ListaUsuarios = ObjUsuarioController->buscarUsuarios(TipoUsuario);
 			mostrarGrilla(ListaUsuarios); 
-		}
+		}*/
 		  
+
+
 		
 	}
 
-		   private: void mostrarGrilla(List<Usuario^>^ ListaUsuarios) {
-			   this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
-			   for (int i = 0; i < ListaUsuarios->Count; i++) {
-				   Usuario^ objUsuario = ListaUsuarios[i];
-				   array<String^>^ filaGrilla = gcnew array<String^>(8);
-				   filaGrilla[0] = Convert::ToString(objUsuario->getCodigo());
-				   filaGrilla[1] = objUsuario->getNombre();
-				   filaGrilla[2] = objUsuario->getApPaterno(); 
-				   filaGrilla[3] = objUsuario->getApMaterno(); 
-				   filaGrilla[4] = objUsuario->getFechaNacimiento(); 
-				   filaGrilla[5] = objUsuario->getDNI();
-				   filaGrilla[6] = objUsuario->getIdentificacionRFID();
-				   filaGrilla[7] = objUsuario->getTipoUsuario(); 
-				   this->dataGridView1->Rows->Add(filaGrilla);
+	private: void mostrarGrilla(List<Usuario^>^ ListaUsuarios) {
+		this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
+		for (int i = 0; i < ListaUsuarios->Count; i++) {
+			Usuario^ objUsuario = ListaUsuarios[i];
+			array<String^>^ filaGrilla = gcnew array<String^>(8);
+			filaGrilla[0] = Convert::ToString(objUsuario->getCodigo());
+			filaGrilla[1] = objUsuario->getNombre();
+			filaGrilla[2] = objUsuario->getApPaterno(); 
+			filaGrilla[3] = objUsuario->getApMaterno(); 
+			filaGrilla[4] = objUsuario->getFechaNacimiento(); 
+			filaGrilla[5] = objUsuario->getDNI();
+			filaGrilla[6] = objUsuario->getIdentificacionRFID();
+			filaGrilla[7] = objUsuario->getTipoUsuario(); 
+			this->dataGridView1->Rows->Add(filaGrilla);
 
-			   }
+		}
 
-		   }
+	}
 
 
 
@@ -318,10 +324,11 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	//CÓDIGO PARA ELIMINAR
-	UsuarioController^ objeto; 
+	UsuarioController^ objeto = gcnew UsuarioController();
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoUsuarioEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
-	objeto -> eliminarUsuarioFisico (codigoUsuarioEliminar);
+//	objeto -> eliminarUsuarioFisico (codigoUsuarioEliminar);
+	objeto->eliminarUsuarioBD(codigoUsuarioEliminar);
 	MessageBox::Show("El usuario seleccionado ha sido eliminado con éxito");
 
 	}
@@ -329,9 +336,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 
 		int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 		int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
-		UsuarioController^ ObjUsuarioController = gcnew UsuarioController(); 
-		Usuario^ ObjUsuario = ObjUsuarioController->buscarUsuarioxCodigo(codigoEditar);
-		frmEditarUsuario^ ventanaEditarUsuario = gcnew frmEditarUsuario(ObjUsuario);
+		frmEditarUsuario^ ventanaEditarUsuario = gcnew frmEditarUsuario(codigoEditar);
 		ventanaEditarUsuario->ShowDialog(); 
 
 	}

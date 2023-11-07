@@ -24,10 +24,19 @@ namespace SistemaMonederoView {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		frmEditarTarjeta(Tarjeta^ objTarjeta)
+	/*	frmEditarTarjeta(Tarjeta^ objTarjeta)
 		{
 			InitializeComponent();
 			this->objTarjeta = objTarjeta;
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}*/
+
+		frmEditarTarjeta(int codigo)
+		{
+			InitializeComponent();
+			this->codigo = codigo;
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -58,6 +67,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Label^ label1;
 	private: Tarjeta^ objTarjeta;//este atributo lo agregamos para manejar la informacion//
 	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: int codigo; 
 
 	private:
 		/// <summary>
@@ -210,19 +220,24 @@ namespace SistemaMonederoView {
 		}
 #pragma endregion
 		private: System::Void frmEditarTarjeta_Load(System::Object^ sender, System::EventArgs^ e) {
-			this->textBox1->Text = Convert::ToString(this->objTarjeta->getcodigo());
-			this->dateTimePicker1->Text = this->objTarjeta->getfechaAlta();
-			this->dateTimePicker2->Text = this->objTarjeta->getfechaBaja();
-			this->comboBox1->Text = this->objTarjeta->getEstado();
+			TarjetaController^ objTarjetaController = gcnew TarjetaController(); 
+			Tarjeta^ objTarjeta = objTarjetaController->buscarTarjetaxCodigoBD(this->codigo); 
+
+			this->textBox1->Text = Convert::ToString(objTarjeta->getcodigo());
+			this->dateTimePicker1->Text = objTarjeta->getfechaAlta();
+			this->dateTimePicker2->Text = objTarjeta->getfechaBaja();
+			this->comboBox1->Text = objTarjeta->getEstado();
 		}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
 		int codigoTarjeta = Convert::ToInt32(this->textBox1->Text);
 		String^ fechaAlta = this->dateTimePicker1->Text;
 		String^ fechaBaja = this->dateTimePicker2->Text;
 		String^ Estado = this->comboBox1->Text;
 		Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigoTarjeta, fechaAlta, fechaBaja, Estado);
 		TarjetaController^ objTarjetaController = gcnew TarjetaController();
-		objTarjetaController->actualizarTarjeta(ObjTarjeta);
+		objTarjetaController->ActualizarTarjetaBD(codigoTarjeta, fechaAlta, fechaBaja, Estado); 
+//		objTarjetaController->actualizarTarjeta(ObjTarjeta);
 		MessageBox::Show("La tarjeta ha sido actualizada exitosamente.");
 		this->Close();
 	}

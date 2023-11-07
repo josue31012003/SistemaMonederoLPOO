@@ -116,7 +116,7 @@ namespace SistemaMonederoView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Maquina de Compra", L"Maquina de Recarga" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Máquina de Compra", L"Máquina de Recarga" });
 			this->comboBox1->Location = System::Drawing::Point(154, 151);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(173, 24);
@@ -142,6 +142,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox1
 			// 
+			this->textBox1->Enabled = false;
 			this->textBox1->Location = System::Drawing::Point(154, 43);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(173, 22);
@@ -185,12 +186,12 @@ namespace SistemaMonederoView {
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	int codigoMaquina = Convert::ToInt32(this->textBox1->Text);
+//	int codigoMaquina = Convert::ToInt32(this->textBox1->Text);
 	String^ UbicacionMaquina = this->textBox3->Text;
 	String^ tipoMaquina = this->comboBox1->Text;
-	Maquina^ ObjMaquina = gcnew Maquina(codigoMaquina, UbicacionMaquina, tipoMaquina);
+//	Maquina^ ObjMaquina = gcnew Maquina(codigoMaquina, UbicacionMaquina, tipoMaquina);
 	MaquinaController^ ObjMaquinaController = gcnew MaquinaController();
-	ObjMaquinaController->agregarMaquina(ObjMaquina);
+	ObjMaquinaController->registrarMaquinaBD(UbicacionMaquina, tipoMaquina); 
 	MessageBox::Show("La Maquina se ha agregado con exito");
 	this->Close();
 }

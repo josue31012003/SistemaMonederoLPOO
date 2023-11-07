@@ -95,7 +95,7 @@ namespace SistemaMonederoView {
 	private: System::Void frmReporteActividadTarjetas_Load(System::Object^ sender, System::EventArgs^ e) {
 
 		TarjetaController^ objTarjetaController = gcnew TarjetaController();
-		List<Tarjeta^>^ listaTarjetas = objTarjetaController->buscarAll();
+		List<Tarjeta^>^ listaTarjetas = objTarjetaController->buscarAllBD(); 
 
 
 		//Lógica para hallar el tipo de usuario

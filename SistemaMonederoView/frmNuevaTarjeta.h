@@ -142,6 +142,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox1
 			// 
+			this->textBox1->Enabled = false;
 			this->textBox1->Location = System::Drawing::Point(154, 43);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(173, 22);
@@ -200,13 +201,13 @@ namespace SistemaMonederoView {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		int codigoTarjeta = Convert::ToInt32(this->textBox1->Text);
+//		int codigoTarjeta = Convert::ToInt32(this->textBox1->Text);
 		String^ fechaAlta = this->dateTimePicker1->Text;
 		String^ fechaBaja = this->dateTimePicker2->Text;
 		String^ Estado = this->comboBox1->Text;
-		Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigoTarjeta, fechaAlta, fechaBaja, Estado);
+//		Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigoTarjeta, fechaAlta, fechaBaja, Estado);
 		TarjetaController^ ObjTarjetaController = gcnew TarjetaController();
-		ObjTarjetaController->agregarTarjeta(ObjTarjeta);
+		ObjTarjetaController->registrarTarjetaBD(fechaAlta, fechaBaja, Estado);
 		MessageBox::Show("La tarjeta ha sido añadida exitosamente.");
 		this->Close();
 	}

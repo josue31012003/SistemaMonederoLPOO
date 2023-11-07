@@ -6,7 +6,13 @@ using namespace SistemaMonederoModel;
 
 namespace SistemaMonederoController {
 
+	using namespace System::Data::SqlClient;
+	using namespace System;
+
 	public ref class PlatoController {
+
+	private:
+		SqlConnection^ objConexion;
 
 	public:
 		PlatoController();
@@ -30,6 +36,13 @@ namespace SistemaMonederoController {
 		void editarPlato(Plato^ objPlato);
 
 		List<String^>^ obtenerOrigenes();
+
+
+		//FUNCIONES DE BASE DE DATOS
+		void abrirConexionBD();
+		void cerrarConexionBD();
+
+		List<Plato^>^ buscarAllBD();
 
 	};
 

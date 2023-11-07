@@ -114,6 +114,7 @@ namespace SistemaMonederoView {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(180, 24);
 			this->comboBox1->TabIndex = 13;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmMantenimientoMaquinas::comboBox1_SelectedIndexChanged);
 			// 
 			// label4
 			// 
@@ -137,7 +138,7 @@ namespace SistemaMonederoView {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(429, 203);
+			this->dataGridView1->Size = System::Drawing::Size(428, 203);
 			this->dataGridView1->TabIndex = 18;
 			// 
 			// Column1
@@ -216,44 +217,41 @@ namespace SistemaMonederoView {
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ tipoMaquina = this->comboBox1->Text;
 	MaquinaController^ ObjMaquinaController = gcnew MaquinaController();
+	List<Maquina^>^ listaMaquina = ObjMaquinaController->buscarMaquinaxtipoBD(tipoMaquina);
+	mostrarGrilla(listaMaquina); 
+
+
 //	List<Maquina^>^ listaMaquina = ObjMaquinaController->buscarMaquinas(tipoMaquina);
 //	mostrarGrilla(listaMaquina);
-	if (tipoMaquina == "Todos") {//Condicional necesario para agregar la opción "TODOS"
-		List<Maquina^>^ listaMaquina = ObjMaquinaController->buscarAll();
-		mostrarGrilla(listaMaquina);
-	}
-	else {
-		List<Maquina^>^ listaMaquina = ObjMaquinaController->buscarMaquinas(tipoMaquina); 
-		mostrarGrilla(listaMaquina); 
-	}
+	//if (tipoMaquina == "Todos") {//Condicional necesario para agregar la opción "TODOS"
+	//	List<Maquina^>^ listaMaquina = ObjMaquinaController->buscarAll();
+	//	mostrarGrilla(listaMaquina);
+	//}
+	//else {
+	//	List<Maquina^>^ listaMaquina = ObjMaquinaController->buscarMaquinas(tipoMaquina); 
+	//	mostrarGrilla(listaMaquina); 
+	//}
 
 }
 		private: void mostrarGrilla(List<Maquina^>^ listaMaquinas) {
-
 			this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
-
 			for (int i = 0; i < listaMaquinas->Count; i++) {
-
 				Maquina^ objMaquina = listaMaquinas[i];
-
 				array<String^>^ filaGrilla = gcnew array<String^>(4);
-
 				filaGrilla[0] = Convert::ToString(objMaquina->getCodigo());
-
 				filaGrilla[1] = objMaquina->getUbicacionMaquina();
-
 				filaGrilla[2] = objMaquina->gettipoMaquina();
-
 				this->dataGridView1->Rows->Add(filaGrilla);
 
 			}
 		}
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	MaquinaController^ objeto;
+ 	MaquinaController^ objeto;
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoMaquinaEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
 	MaquinaController^ objMaquinaController = gcnew MaquinaController();
-	objeto->eliminarMaquinaFisico(codigoMaquinaEliminar);
+//	objeto->eliminarMaquinaFisico(codigoMaquinaEliminar);
+	objMaquinaController->eliminarMaquinaBD(codigoMaquinaEliminar);
 	MessageBox::Show("La Maquina ha sido eliminado con éxito");
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -263,9 +261,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
-	MaquinaController^ objMaquinaController = gcnew MaquinaController();
-	Maquina^ ObjMaquina = objMaquinaController->buscarMaquinaxCodigo(codigoEditar);
-	frmEditarMaquina^ ventanaEditarMaquina = gcnew frmEditarMaquina(ObjMaquina);
+	frmEditarMaquina^ ventanaEditarMaquina = gcnew frmEditarMaquina(codigoEditar);
 	ventanaEditarMaquina->ShowDialog();
 }
 private: System::Void frmMantenimientoMaquinas_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -279,6 +275,8 @@ private: System::Void frmMantenimientoMaquinas_Load(System::Object^ sender, Syst
 		this->comboBox1->Items->Add(listaTipos[i]);
 	}
 	this->comboBox1->Items->Add("Todos");
+}
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
