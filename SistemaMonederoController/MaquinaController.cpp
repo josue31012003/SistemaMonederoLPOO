@@ -139,7 +139,7 @@ List<String^>^ MaquinaController::obtenerTipos() {
 }
 
 List<String^>^ MaquinaController::obtenerUbicaciones() {
-	List<Maquina^>^ listaMaquinas = buscarAll();
+	List<Maquina^>^ listaMaquinas = buscarAllBD();
 	List<String^>^ listaUbicaciones = gcnew List<String^>();
 
 	for (int i = 0; i < listaMaquinas->Count; i++) {
@@ -300,12 +300,52 @@ List<Maquina^>^ MaquinaController::buscarAllBD() {
 	cerrarConexionBD();
 
 	return listaMaquinas;
-
-
 }
 
+List<String^>^ MaquinaController::ObtenerUbicacionesBD() {
 
+	// Crear lista para almacenar ubicaciones
+	List<String^>^ ubicaciones = gcnew List<String^>();
 
+	// Abrir conexión BD
+	abrirConexionBD();
+
+		// Crear comando
+		SqlCommand^ objSentencia = gcnew SqlCommand();
+		objSentencia->CommandText = "SELECT ubicacion FROM Maquinas";
+		objSentencia->Connection = this->objConexion;
+		// Ejecutar y obtener reader
+		SqlDataReader^ reader = objSentencia->ExecuteReader();
+
+		// Leer filas
+		while (reader->Read()) {
+
+			String^ ubi = reader->GetString(0);
+
+			int existe = 0;
+			for (int i = 0; i < ubicaciones->Count; i++) {
+				if (ubi == ubicaciones[i]) {
+					existe = 1;
+					break;
+				}
+			}
+			// Solo agregar si no existe
+			if (!existe) {
+				ubicaciones->Add(ubi);
+			}
+
+		}
+
+		// Cerrar reader
+		reader->Close();
+
+		// Cerrar conexión BD
+		cerrarConexionBD();
+
+		// Devolver lista de ubicaciones
+		return ubicaciones;
+
+}
 
 
 

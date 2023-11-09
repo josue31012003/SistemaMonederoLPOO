@@ -226,33 +226,176 @@ void PlatoController::cerrarConexionBD() {
 
 
 List<Plato^>^ PlatoController::buscarAllBD() {
-
     List<Plato^>^ listaPlatos = gcnew List<Plato^>();
+
     abrirConexionBD();
 
-    /*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
     SqlCommand^ objSentencia = gcnew SqlCommand();
-    /*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
     objSentencia->Connection = this->objConexion;
-    /*Aqui voy a indicar la sentencia que voy a ejecutar*/
-    objSentencia->CommandText = "SELECT * from Platos";
-    /*Aqui ejecuto la sentencia en la Base de Datos*/
-    /*Para Select siempre sera ExecuteReader*/
-    /*Para select siempre va a devolver un SqlDataReader*/
-    SqlDataReader^ objData = objSentencia->ExecuteReader();
+    objSentencia->CommandText = "SELECT * FROM Platos";
 
-    while (objData->Read()) {
-        int codigo = safe_cast<int>(objData[0]);
-        String^ nombre = safe_cast<String^>(objData[1]);
-        String^ origen = safe_cast<String^>(objData[2]);
-        double precio = safe_cast<double>(objData[3]);
-        double cantPlatosVendidos = safe_cast<double>(objData[4]);;
-        Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio,cantPlatosVendidos);
-        listaPlatos->Add(objPlato);
+    try {
+        SqlDataReader^ reader = objSentencia->ExecuteReader();
+
+        while (reader->Read()) {
+            int codigo = safe_cast<int>(reader["codigo"]);
+            String^ nombre = safe_cast<String^>(reader["nombre"]);
+            String^ origen = safe_cast<String^>(reader["origen"]);
+            double precio = safe_cast<double>(reader["precio"]);
+            double cantPlatosVendidos = safe_cast<double>(reader["cantPlatosVendidos"]);
+            Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos);
+            listaPlatos->Add(objPlato);
+        }
+    }
+    catch (Exception^ ex) {
+        // Manejo de excepciones (puedes imprimir el error, lanzar una excepción personalizada, etc.)
+    }
+    finally {
+        cerrarConexionBD();
     }
 
-    cerrarConexionBD();
-
     return listaPlatos;
-
 }
+
+
+double PlatoController::ObtenerCantidadPorCodigoBD(int codigo) {
+    abrirConexionBD();
+    SqlCommand^ objSentencia = gcnew SqlCommand();
+    objSentencia->CommandText = "SELECT cantPlatosVendidos FROM Platos WHERE codigo = @codigo";
+    objSentencia->Connection = this->objConexion;
+    objSentencia->Parameters->AddWithValue("@codigo", codigo);
+
+    try {
+        double cantPlatosVendidos = (double)objSentencia->ExecuteScalar();
+        return cantPlatosVendidos;
+    } catch (Exception^ ex) {
+        // Manejo de excepciones (puedes imprimir el error, lanzar una excepción personalizada, etc.)
+    } finally {
+        cerrarConexionBD();
+    }
+
+    return 0.0;  // Valor por defecto o manejo de error
+}
+
+
+
+void PlatoController::ModificarCantidad(int codigo, double cantPlatosVendidos) {
+    // Abrir conexión BD   
+    abrirConexionBD();
+
+    // Incrementar la cantidad después de abrir la conexión
+    cantPlatosVendidos++;
+
+    SqlCommand^ objSentencia = gcnew SqlCommand();
+
+    // Sentencia SQL para incrementar cantidad
+    objSentencia->CommandText = "UPDATE Platos SET cantPlatosVendidos = @cantVendidos WHERE codigo = @codigo";
+    objSentencia->Connection = this->objConexion;
+
+    // Utilizar parámetros en la consulta SQL
+    objSentencia->Parameters->AddWithValue("@cantVendidos", cantPlatosVendidos);
+    objSentencia->Parameters->AddWithValue("@codigo", codigo);
+
+    // Ejecutar la consulta
+    objSentencia->ExecuteNonQuery();
+
+    // Cerrar conexión
+    cerrarConexionBD();
+}
+
+
+Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
+    Plato^ objPlato = nullptr;
+    abrirConexionBD();
+
+    SqlCommand^ objSentencia = gcnew SqlCommand();
+    objSentencia->Connection = this->objConexion;
+    objSentencia->CommandText = "SELECT * FROM Platos WHERE codigo = @codigo";
+    objSentencia->Parameters->AddWithValue("@codigo", codigo);
+
+    try {
+        SqlDataReader^ objData = objSentencia->ExecuteReader();
+
+        while (objData->Read()) {
+            int codigoPlato = safe_cast<int>(objData["codigo"]);
+            String^ nombre = safe_cast<String^>(objData["nombre"]);
+            String^ origen = safe_cast<String^>(objData["origen"]);
+            double precio = safe_cast<double>(objData["precio"]);
+            double cantPlatosVendidos = safe_cast<double>(objData["cantPlatosVendidos"]);
+
+            objPlato = gcnew Plato(codigoPlato, nombre, origen, precio, cantPlatosVendidos);
+        }
+    }
+    catch (Exception^ ex) {
+        // Manejo de excepciones (puedes imprimir el error, lanzar una excepción personalizada, etc.)
+    }
+    finally {
+        cerrarConexionBD();
+    }
+
+    return objPlato;
+}
+
+
+   
+    List<Plato^>^ PlatoController::buscarPlatosxUbicacionBD(String^ ubi) {
+        List<Plato^>^ listPlatos = gcnew List<Plato^>();
+        abrirConexionBD();
+
+        // Crear comando con parámetro
+        SqlCommand^ objSentencia = gcnew SqlCommand();
+        objSentencia->CommandText = "SELECT p.codigo, p.nombre, p.origen, p.precio, p.cantPlatosVendidos FROM Maquinas m INNER JOIN Platos p ON m.codigoPlato = p.codigo WHERE m.ubicacion = @ubicacion";
+        objSentencia->Connection = this->objConexion;
+        objSentencia->Parameters->AddWithValue("@ubicacion", ubi);
+
+        // Ejecutar y obtener reader
+        SqlDataReader^ objData = objSentencia->ExecuteReader();
+
+        while (objData->Read()) {
+            // Agregar plato a lista
+            int codigo = safe_cast<int>(objData["codigo"]);
+            String^ nombre = safe_cast<String^>(objData["nombre"]);
+            String^ origen = safe_cast<String^>(objData["origen"]);
+            double precio = safe_cast<double>(objData["precio"]);
+            double cantPlatosVendidos = safe_cast<double>(objData["cantPlatosVendidos"]);
+            Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos);
+            listPlatos->Add(objPlato);
+        }
+
+        // Cerrar reader
+        objData->Close();
+
+        // Cerrar conexión BD
+        cerrarConexionBD();
+
+        return listPlatos;
+    }
+
+    void PlatoController::registrarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos) {
+
+        abrirConexionBD();
+        SqlCommand^ objSentencia = gcnew SqlCommand();
+        objSentencia->CommandText = "INSERT INTO Platos (nombre, origen, precio, cantPlatosVendidos) VALUES('" + Nombre + "', '" + Origen + "', '" + Precio + "', '" + cantPlatosVendidos + "')";
+        objSentencia->Connection = this->objConexion;
+        objSentencia->ExecuteNonQuery();
+        cerrarConexionBD();
+
+    }
+    void PlatoController::eliminarPlatoBD(int codigo) {
+    
+        abrirConexionBD();
+        SqlCommand^ objSentencia = gcnew SqlCommand();
+        objSentencia->CommandText = "DELETE Platos	 WHERE codigo = " + codigo;
+        objSentencia->Connection = this->objConexion;
+        objSentencia->ExecuteNonQuery();
+        cerrarConexionBD();
+    }
+    void PlatoController::ActualizarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio) {
+        abrirConexionBD();
+        SqlCommand^ objSentencia = gcnew SqlCommand();
+        objSentencia->CommandText = "UPDATE Platos SET nombre='" + Nombre + "',origen='" + Origen + "',precio='" + Precio + "' WHERE codigo =" + codigo;
+        objSentencia->Connection = this->objConexion;
+        objSentencia->ExecuteNonQuery();
+        cerrarConexionBD();
+    }
+

@@ -217,13 +217,13 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ Nombre = this->textBox2->Text;
 	String^ Origen = this->textBox3->Text;
 	double Precio = Convert::ToDouble(this->textBox4->Text);
-	double cantPlatosVendidos = 0;
+	double CantPlatosVendidos;
 
-	Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio, cantPlatosVendidos);
+	Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio, CantPlatosVendidos);
 	PlatoController^ objPlatoController = gcnew PlatoController();
 
 	/*MODIFICAR VALORES DE ATRIBUTOS DE OBJETO. VER MAS EN PLATOCONTROLLER.CPP*/
-	objPlatoController->editarPlato(objPlato);
+	objPlatoController->ActualizarPlatoBD(codigoPlato, Nombre, Origen, Precio);
 	MessageBox::Show("El plato ha sido modificado con exito");
 	this->Close();
 

@@ -220,7 +220,7 @@ namespace SistemaMonederoView {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ TipodeUsuario = this->comboBox1->Text;
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
-		List<Usuario^>^ listaUsuarios = objUsuarioController->buscarUsuarios(TipodeUsuario);
+		List<Usuario^>^ listaUsuarios = objUsuarioController->buscarUsuarioxtipoBD(TipodeUsuario);
 		mostrarGrilla(listaUsuarios);
 }
 	private: void mostrarGrilla(List<Usuario^>^ listaUsuarios) {

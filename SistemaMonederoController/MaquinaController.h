@@ -37,6 +37,7 @@ namespace SistemaMonederoController {
 		Maquina^ buscarMaquinaxCodigoBD(int codigo);
 		void ActualizarMaquinaBD(int Codigo, String^ UbicacionMaquina, String^ tipoMaquina);
 		List<Maquina^>^ buscarAllBD();
+		List<String^>^ MaquinaController::ObtenerUbicacionesBD();
 
 	};
 

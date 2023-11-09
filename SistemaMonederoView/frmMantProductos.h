@@ -257,7 +257,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	String^ Ubicacion = this->comboBox2->Text;
 	PlatoController^ ObjPlatoController = gcnew PlatoController();
 	
-	List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxUbicacion(Ubicacion);
+	List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxUbicacionBD(Ubicacion);
 	mostrarGrilla(listaPlatos); 
 	
 }
@@ -267,11 +267,12 @@ private: void mostrarGrilla(List<Plato^>^ listaPlatos) {
 	this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
 	for (int i = 0; i < listaPlatos->Count; i++) {
 		Plato^ objPlato = listaPlatos[i];
-		array<String^>^ filaGrilla = gcnew array<String^>(4);
+		array<String^>^ filaGrilla = gcnew array<String^>(5);
 		filaGrilla[0] = Convert::ToString(objPlato->getCodigo());
 		filaGrilla[1] = objPlato->getNombre();
 		filaGrilla[2] = objPlato->getOrigen();
 		filaGrilla[3] = Convert::ToString(objPlato->getPrecio());
+		filaGrilla[4] = Convert::ToString(objPlato->getCantPlatosVendidos());
 		this->dataGridView1->Rows->Add(filaGrilla);
 	}
 
@@ -289,7 +290,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
-	ObjPlatoController->eliminarPlatoFisico(codigoEliminar);
+	ObjPlatoController->eliminarPlatoBD(codigoEliminar);
 
 	MessageBox::Show("El plato se ha sido eliminado con éxito");
 }
@@ -300,7 +301,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
 	PlatoController^ ObjPlatoController = gcnew PlatoController();
-	Plato^ objPlato = ObjPlatoController->buscarPlatoxCodigo(codigoEditar);
+	Plato^ objPlato = ObjPlatoController->buscarPlatoxCodigoBD(codigoEditar);
 
 	frmEditPlato^ ventanaEditPlato = gcnew frmEditPlato(objPlato);
 	ventanaEditPlato->ShowDialog();

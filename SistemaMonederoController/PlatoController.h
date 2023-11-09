@@ -41,9 +41,15 @@ namespace SistemaMonederoController {
 		//FUNCIONES DE BASE DE DATOS
 		void abrirConexionBD();
 		void cerrarConexionBD();
+		void ModificarCantidad(int codigo, double cantPlatosVendidos);
+		double ObtenerCantidadPorCodigoBD(int codigo);
 
+		Plato^ buscarPlatoxCodigoBD(int codigo);
+		List<Plato^>^ buscarPlatosxUbicacionBD(String^ ubicacion);
 		List<Plato^>^ buscarAllBD();
-
+		void registrarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos);
+		void eliminarPlatoBD(int codigo);
+		void ActualizarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio);
 	};
 
 }
