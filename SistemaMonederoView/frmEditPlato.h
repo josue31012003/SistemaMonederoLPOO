@@ -210,31 +210,31 @@ namespace SistemaMonederoView {
 #pragma endregion
 
 		/*GRABAR O GUARDAR MODIFICACIONES HECHAS DESPUES DEL LOAD*/
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		// Validar que los campos de texto no estén vacíos
+		if (textBox1->Text == "" || textBox2->Text == "" || textBox3->Text == "" || textBox4->Text == "") {
+			MessageBox::Show("Por favor, complete todos los campos antes de guardar los datos.");
+		}
+		else {
 
-	/*PERSISTENCIA DE DATOS MODIFICADOS*/
-	int codigoPlato = Convert::ToInt32(this->textBox1->Text);
-	String^ Nombre = this->textBox2->Text;
-	String^ Origen = this->textBox3->Text;
-	double Precio = Convert::ToDouble(this->textBox4->Text);
-	double CantPlatosVendidos;
+			// Convertir y obtener los valores de los campos de texto
+			int codigoPlato = Convert::ToInt32(textBox1->Text);
+			String^ Nombre = textBox2->Text;
+			String^ Origen = textBox3->Text;
+			double Precio = Convert::ToDouble(textBox4->Text);
 
-	Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio, CantPlatosVendidos);
-	PlatoController^ objPlatoController = gcnew PlatoController();
+			// Crear el objeto Plato
+			Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio, 0); // Se establece CantPlatosVendidos a 0, puedes ajustar según tus necesidades
 
-	/*MODIFICAR VALORES DE ATRIBUTOS DE OBJETO. VER MAS EN PLATOCONTROLLER.CPP*/
-	objPlatoController->ActualizarPlatoBD(codigoPlato, Nombre, Origen, Precio);
-	MessageBox::Show("El plato ha sido modificado con exito");
-	this->Close();
+			// Actualizar los valores en la base de datos
+			PlatoController^ objPlatoController = gcnew PlatoController();
+			objPlatoController->ActualizarPlatoBD(codigoPlato, Nombre, Origen, Precio);
 
-	/*frmMantProductos^ objPlatoView = gcnew frmMantProductos();
-	frmPrincipal->ventanaMantProductos->button2_Click(sender, e);*/
+			MessageBox::Show("El plato ha sido modificado con éxito");
+			this->Close();
+		}
+	}
 
-	/*MODELO DE MODIFICACION SIN CREACION DE FUNCION (NO OLVIDAR ESCRIBIR EN ARCHIVO TXT)
-	this->objPlato->setCodigo(Convert::ToInt32(objPlato->getCodigo()));
-	this->objPlato->setNombre(objPlato->getNombre());*/
-	
-}
 
 	   /*CARGAR VALORES DE ATRIBUTOS DEL OBJETO SELECCIONADO EN VENTANA*/
 private: System::Void frmEditPlato_Load(System::Object^ sender, System::EventArgs^ e) {
