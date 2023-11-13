@@ -198,12 +198,7 @@ List<String^>^ PlatoController::obtenerOrigenes() {
     return listaOrigenes;
 }
 
-
-
-
-
-// IMPLEMENTACIONES EN BASE DE DATOS 
-
+// IMPLEMENTACIONES EN BASE DE DATOS
 PlatoController::PlatoController() {
     this->objConexion= gcnew SqlConnection(); 
 
