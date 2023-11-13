@@ -231,21 +231,29 @@ namespace SistemaMonederoView {
 #pragma endregion
 
 		/*PERSISTENCIA DE DATOS, NUEVO, AGREGAR*/
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		// Validar que los campos de texto no estén vacíos
-		if (textBox1->Text == "" || textBox2->Text == "" || textBox3->Text == "" || textBox4->Text == "") {
-			MessageBox::Show("Por favor, complete todos los campos antes de guardar los datos.");
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	// Validar que los campos de texto no estén vacíos
+	if (textBox1->Text == "" || textBox2->Text == "" || textBox3->Text == "" || textBox4->Text == "" || textBox5->Text == "") {
+		MessageBox::Show("Por favor, complete todos los campos antes de guardar los datos.");
+	}
+	else {
+		// Convertir y obtener los valores de los campos de texto
+		int codigo;
+		double Precio, cantPlatosVendidos;
 
+		String^ Nombre = textBox2->Text;
+		String^ Origen = textBox3->Text;
+
+		if (!Int32::TryParse(textBox1->Text, codigo)) {
+			MessageBox::Show("Ingrese un número válido para el código.");
+		}
+		else if (!Double::TryParse(textBox4->Text, Precio)) {
+			MessageBox::Show("Ingrese un número válido para el precio.");
+		}
+		else if (!Double::TryParse(textBox5->Text, cantPlatosVendidos)) {
+			MessageBox::Show("Ingrese un número válido para la cantidad de platos.");
 		}
 		else {
-
-			// Convertir y obtener los valores de los campos de texto
-			int codigo = Convert::ToInt32(textBox1->Text);
-			String^ Nombre = textBox2->Text;
-			String^ Origen = textBox3->Text;
-			double Precio = Convert::ToDouble(textBox4->Text);
-			double cantPlatosVendidos = 0;
-
 			// Crear el objeto Plato
 			Plato^ objPlato = gcnew Plato(codigo, Nombre, Origen, Precio, cantPlatosVendidos);
 
@@ -257,6 +265,9 @@ namespace SistemaMonederoView {
 			this->Close();
 		}
 	}
+}
+
+
 
 
 	   /*CANCELAR*/

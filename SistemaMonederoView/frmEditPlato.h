@@ -209,31 +209,35 @@ namespace SistemaMonederoView {
 		}
 #pragma endregion
 
-		/*GRABAR O GUARDAR MODIFICACIONES HECHAS DESPUES DEL LOAD*/
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		// Validar que los campos de texto no estén vacíos
-		if (textBox1->Text == "" || textBox2->Text == "" || textBox3->Text == "" || textBox4->Text == "") {
+		int codigoPlato;
+		double precio;
+		if (!Int32::TryParse(textBox1->Text, codigoPlato)) {
+			MessageBox::Show("Ingrese un número válido para el código del plato.");
+		}
+		else if (!Double::TryParse(textBox4->Text, precio)) {
+			MessageBox::Show("Ingrese un número válido para el precio.");
+		}
+		else if (textBox2->Text == "" || textBox3->Text == "") {
 			MessageBox::Show("Por favor, complete todos los campos antes de guardar los datos.");
 		}
 		else {
-
 			// Convertir y obtener los valores de los campos de texto
-			int codigoPlato = Convert::ToInt32(textBox1->Text);
 			String^ Nombre = textBox2->Text;
 			String^ Origen = textBox3->Text;
-			double Precio = Convert::ToDouble(textBox4->Text);
 
 			// Crear el objeto Plato
-			Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio, 0); // Se establece CantPlatosVendidos a 0, puedes ajustar según tus necesidades
+			Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, precio, 0); // Se establece CantPlatosVendidos a 0, puedes ajustar según tus necesidades
 
 			// Actualizar los valores en la base de datos
 			PlatoController^ objPlatoController = gcnew PlatoController();
-			objPlatoController->ActualizarPlatoBD(codigoPlato, Nombre, Origen, Precio);
+			objPlatoController->ActualizarPlatoBD(codigoPlato, Nombre, Origen, precio);
 
 			MessageBox::Show("El plato ha sido modificado con éxito");
 			this->Close();
 		}
 	}
+
 
 
 	   /*CARGAR VALORES DE ATRIBUTOS DEL OBJETO SELECCIONADO EN VENTANA*/
