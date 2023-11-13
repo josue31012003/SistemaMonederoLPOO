@@ -92,9 +92,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="frmPrincipal.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="frmMantenimientoUsuarios.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>

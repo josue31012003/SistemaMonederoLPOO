@@ -8,7 +8,7 @@ Comensal::Comensal() {
 }
 Comensal::Comensal(int Codigo, String^ Nombre, String^ ApPaterno, String^ ApMaterno, String^ FechaNacimiento, String^ DNI, String^ IdentificacionRFID, String^ UsuarioComensal, String^ PasswordComensal) {
 
-	this->UsuarioComensal = UsuarioComensal; 
+	this->UsuarioComensal = UsuarioComensal;
 	this->PasswordComensal = PasswordComensal;
 
 }

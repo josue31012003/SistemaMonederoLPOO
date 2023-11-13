@@ -47,10 +47,7 @@ namespace SistemaMonederoView {
 	private: Usuario^ objUsuario;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::TextBox^ textBox1;
-
-
-
-
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	protected:
 
 	private:
@@ -105,6 +102,11 @@ namespace SistemaMonederoView {
 		}
 #pragma endregion
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void frmPrincipal2_Load(System::Object^ sender, System::EventArgs^ e) {
+		//this->textBox1->Text = Convert::ToString(this->objUsuario);
+	}
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	}

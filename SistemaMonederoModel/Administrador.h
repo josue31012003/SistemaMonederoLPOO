@@ -16,9 +16,3 @@ namespace SistemaMonederoModel {
 	};
 
 }
-
-
-
-
-
-

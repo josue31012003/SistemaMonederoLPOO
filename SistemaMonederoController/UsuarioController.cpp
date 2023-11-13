@@ -34,7 +34,7 @@ List<Usuario^>^ UsuarioController::buscarUsuarios(String^ TipodeUsuario) {
 
 	}
 
-	return listaUsuariosEncontrados; 
+	return listaUsuariosEncontrados;
 
 }
 
@@ -42,7 +42,7 @@ List<Usuario^>^ UsuarioController::buscarUsuarios(String^ TipodeUsuario) {
 //MÉTODO QUE SE ENCARGA DE BUSCAR A TODOS LOS USUARIOS DE UN TXT Y LOS PONE EN UN ARREGLO 
 
 List < Usuario^>^ UsuarioController::buscarAll() {
-	 
+
 	/*En esta lista vamos a colocar la información de lo que queremos que encontremos en el archivo de texto*/
 
 	List<Usuario^>^ listaUsuariosEncontrados = gcnew List<Usuario^>();
@@ -65,7 +65,7 @@ List < Usuario^>^ UsuarioController::buscarAll() {
 		Usuario^ objUsuario = gcnew Usuario(CodigoUsuario, Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario);
 		listaUsuariosEncontrados->Add(objUsuario);
 	}
-	return listaUsuariosEncontrados; 
+	return listaUsuariosEncontrados;
 
 
 }
@@ -89,7 +89,7 @@ void UsuarioController::eliminarUsuarioFisico(int codigo) {
 			listaUsuarios->RemoveAt(i);
 		}
 	}
-	escribirArchivo(listaUsuarios); 
+	escribirArchivo(listaUsuarios);
 }
 
 void UsuarioController::agregarUsuario(Usuario^ ObjUsuario) {
@@ -98,11 +98,11 @@ void UsuarioController::agregarUsuario(Usuario^ ObjUsuario) {
 	escribirArchivo(listaUsuarios);
 }
 
-Usuario^ UsuarioController :: buscarUsuarioxCodigo(int Codigo) {
+Usuario^ UsuarioController::buscarUsuarioxCodigo(int Codigo) {
 	List <Usuario^>^ listaUsuarios = buscarAll();
 	for (int i = 0; i < listaUsuarios->Count; i++) {
 		if (listaUsuarios[i]->getCodigo() == Codigo) {
-			return listaUsuarios[i]; 
+			return listaUsuarios[i];
 		}
 	}
 }
@@ -120,23 +120,23 @@ Usuario^ UsuarioController::buscarUsuarioxNombre(String^ nombre) {
 }
 
 
-void UsuarioController :: actualizarUsuario(Usuario^ ObjUsuario) {
+void UsuarioController::actualizarUsuario(Usuario^ ObjUsuario) {
 	List <Usuario^>^ listaUsuarios = buscarAll();
 	for (int i = 0; i < listaUsuarios->Count; i++) {
 
-		if (listaUsuarios[i]->getCodigo() == ObjUsuario -> getCodigo()) {
+		if (listaUsuarios[i]->getCodigo() == ObjUsuario->getCodigo()) {
 			//Voy a actualizar 
-			listaUsuarios[i]->setNombre(ObjUsuario -> getNombre());
+			listaUsuarios[i]->setNombre(ObjUsuario->getNombre());
 			listaUsuarios[i]->setApPaterno(ObjUsuario->getApPaterno());
 			listaUsuarios[i]->setApMaterno(ObjUsuario->getApMaterno());
 			listaUsuarios[i]->setFechaNacimiento(ObjUsuario->getFechaNacimiento());
-			listaUsuarios[i]->setDNI(ObjUsuario->getDNI()); 
+			listaUsuarios[i]->setDNI(ObjUsuario->getDNI());
 			listaUsuarios[i]->setIdentificacionRFID(ObjUsuario->getIdentificacionRFID());
 			listaUsuarios[i]->setTipoUsuario(ObjUsuario->getTipoUsuario());
-			break; 
-		}	
+			break;
+		}
 	}
-	escribirArchivo(listaUsuarios); 
+	escribirArchivo(listaUsuarios);
 }
 
 List<String^>^ UsuarioController::obtenerTiposdeUsuario() {
@@ -169,7 +169,7 @@ List<String^>^ UsuarioController::obtenerTiposdeUsuario() {
 
 //IMPLEMENTACIÓN DE MÉTODOS DE BASE DE DATOS 
 UsuarioController::UsuarioController() {
-	this->objConexion = gcnew SqlConnection(); 
+	this->objConexion = gcnew SqlConnection();
 }
 
 void UsuarioController::abrirConexionBD() {
@@ -177,32 +177,33 @@ void UsuarioController::abrirConexionBD() {
 	/*Cadena de conexion: Servidor de BD, usuario de BD, password BD, nombre de la BD*/
 	this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20205788;User Id=a20205788;Password=gbVVvdoY";
 	this->objConexion->Open(); /*Apertura de la conexion a BD*/
-	
+
 }
+
 void UsuarioController::cerrarConexionBD() {
-	this->objConexion->Close(); 
+	this->objConexion->Close();
 }
 
 List<Usuario^>^ UsuarioController::buscarUsuarioxtipoBD(String^ TipodeUsuario) {
 
-	List<Usuario^>^ listaUsuarios = gcnew List<Usuario^>(); 
+	List<Usuario^>^ listaUsuarios = gcnew List<Usuario^>();
 	abrirConexionBD();
 
 	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
-	SqlCommand^ objSentencia = gcnew SqlCommand(); 
+	SqlCommand^ objSentencia = gcnew SqlCommand();
 	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
-	objSentencia->Connection = this->objConexion; 
+	objSentencia->Connection = this->objConexion;
 	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
 	if (TipodeUsuario == "Todos") {
 		objSentencia->CommandText = "SELECT * from Usuario WHERE tipoUsuario like '%%'";
 	}
-	else { 
+	else {
 		objSentencia->CommandText = "SELECT * from Usuario WHERE tipoUsuario like '%" + TipodeUsuario + "%'";
 	}
 	/*Aqui ejecuto la sentencia en la Base de Datos*/
 	/*Para Select siempre sera ExecuteReader*/
 	/*Para select siempre va a devolver un SqlDataReader*/
-	SqlDataReader^ objData = objSentencia->ExecuteReader(); 
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
 
 	while (objData->Read()) {
 		int codigo = safe_cast<int>(objData[0]); 
@@ -219,16 +220,16 @@ List<Usuario^>^ UsuarioController::buscarUsuarioxtipoBD(String^ TipodeUsuario) {
 
 	cerrarConexionBD();
 
-	return listaUsuarios; 
+	return listaUsuarios;
 }
 
 void UsuarioController::registrarUsuarioBD(String^ Nombre, String^ ApPaterno, String^ ApMaterno, String^ FechaNacimiento, String^ DNI, String^ IdentificacionRFID, String^ TipoUsuario) {
-	abrirConexionBD();  
+	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand();
-	objSentencia->CommandText = "INSERT INTO Usuario (nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, DNI, RFID, tipoUsuario) VALUES('"+Nombre+"', '"+ ApPaterno +"', '"+ApMaterno+"','"+FechaNacimiento+"','"+DNI+"','"+IdentificacionRFID+"','"+TipoUsuario+"')";
+	objSentencia->CommandText = "INSERT INTO Usuario (nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, DNI, RFID, tipoUsuario) VALUES('" + Nombre + "', '" + ApPaterno + "', '" + ApMaterno + "','" + FechaNacimiento + "','" + DNI + "','" + IdentificacionRFID + "','" + TipoUsuario + "')";
 	objSentencia->Connection = this->objConexion;
-	objSentencia->ExecuteNonQuery(); 
-	cerrarConexionBD();  
+	objSentencia->ExecuteNonQuery();
+	cerrarConexionBD();
 }
 
 
@@ -243,7 +244,7 @@ void UsuarioController::eliminarUsuarioBD(int codigo) {
 
 Usuario^ UsuarioController::buscarUsuarioxCodigoBD(int codigo) {
 
-	Usuario^ objUsuario; 
+	Usuario^ objUsuario;
 	abrirConexionBD();
 
 	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
@@ -280,7 +281,7 @@ Usuario^ UsuarioController::buscarUsuarioxCodigoBD(int codigo) {
 void UsuarioController::ActualizarUsuarioBD(int codigo, String^ Nombre, String^ ApPaterno, String^ ApMaterno, String^ FechaNacimiento, String^ DNI, String^ IdentificacionRFID, String^ TipoUsuario) {
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand();
-	objSentencia->CommandText = "UPDATE Usuario SET nombre='"+Nombre+"',apellidoPaterno='"+ApPaterno+"',apellidoMaterno='"+ApMaterno+"', fechaNacimiento='"+FechaNacimiento+"', DNI='"+DNI+"', RFID='"+IdentificacionRFID+"', tipoUsuario='"+TipoUsuario+"' WHERE codigo =" + codigo;
+	objSentencia->CommandText = "UPDATE Usuario SET nombre='" + Nombre + "',apellidoPaterno='" + ApPaterno + "',apellidoMaterno='" + ApMaterno + "', fechaNacimiento='" + FechaNacimiento + "', DNI='" + DNI + "', RFID='" + IdentificacionRFID + "', tipoUsuario='" + TipoUsuario + "' WHERE codigo =" + codigo;
 	objSentencia->Connection = this->objConexion;
 	objSentencia->ExecuteNonQuery();
 	cerrarConexionBD();
@@ -315,9 +316,6 @@ List<Usuario^>^ UsuarioController::buscarAllBD() {
 		Usuario^ objUsuario = gcnew Usuario(codigo, nombre, apPaterno, apMaterno, fechaNacimiento, DNI, RFID, tipoUsuario);
 		listaUsuarios->Add(objUsuario);
 	}
-
 	cerrarConexionBD();
-
 	return listaUsuarios;
-
 }
