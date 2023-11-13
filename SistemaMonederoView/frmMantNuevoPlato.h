@@ -241,6 +241,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		int codigo;
 		double Precio, cantPlatosVendidos;
 
+
 		String^ Nombre = textBox2->Text;
 		String^ Origen = textBox3->Text;
 
