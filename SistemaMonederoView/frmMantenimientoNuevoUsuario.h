@@ -64,12 +64,12 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::TextBox^ textBox6;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Label^ label11;
-	private: System::Windows::Forms::Label^ label12;
-	private: System::Windows::Forms::Label^ label13;
-	private: System::Windows::Forms::Label^ label14;
+
+
+
+
+
+
 
 	private:
 		/// <summary>
@@ -102,12 +102,6 @@ namespace SistemaMonederoView {
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -274,7 +268,6 @@ namespace SistemaMonederoView {
 			this->label10->Size = System::Drawing::Size(48, 20);
 			this->label10->TabIndex = 24;
 			this->label10->Text = L"RFID";
-			this->label10->Visible = false;
 			this->label10->Click += gcnew System::EventHandler(this, &frmMantenimientoNuevoUsuario::label10_Click);
 			// 
 			// textBox6
@@ -283,85 +276,12 @@ namespace SistemaMonederoView {
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(175, 22);
 			this->textBox6->TabIndex = 26;
-			this->textBox6->Visible = false;
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->ForeColor = System::Drawing::Color::Red;
-			this->label3->Location = System::Drawing::Point(430, 79);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(20, 16);
-			this->label3->TabIndex = 27;
-			this->label3->Text = L"(*)";
-			this->label3->Visible = false;
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->ForeColor = System::Drawing::Color::Red;
-			this->label6->Location = System::Drawing::Point(430, 124);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(20, 16);
-			this->label6->TabIndex = 28;
-			this->label6->Text = L"(*)";
-			this->label6->Visible = false;
-			// 
-			// label11
-			// 
-			this->label11->AutoSize = true;
-			this->label11->ForeColor = System::Drawing::Color::Red;
-			this->label11->Location = System::Drawing::Point(430, 175);
-			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(20, 16);
-			this->label11->TabIndex = 29;
-			this->label11->Text = L"(*)";
-			this->label11->Visible = false;
-			// 
-			// label12
-			// 
-			this->label12->AutoSize = true;
-			this->label12->ForeColor = System::Drawing::Color::Red;
-			this->label12->Location = System::Drawing::Point(430, 271);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(20, 16);
-			this->label12->TabIndex = 30;
-			this->label12->Text = L"(*)";
-			this->label12->Visible = false;
-			// 
-			// label13
-			// 
-			this->label13->AutoSize = true;
-			this->label13->ForeColor = System::Drawing::Color::Red;
-			this->label13->Location = System::Drawing::Point(430, 319);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(20, 16);
-			this->label13->TabIndex = 31;
-			this->label13->Text = L"(*)";
-			this->label13->Visible = false;
-			// 
-			// label14
-			// 
-			this->label14->AutoSize = true;
-			this->label14->ForeColor = System::Drawing::Color::Red;
-			this->label14->Location = System::Drawing::Point(430, 367);
-			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(20, 16);
-			this->label14->TabIndex = 32;
-			this->label14->Text = L"(*)";
-			this->label14->Visible = false;
 			// 
 			// frmMantenimientoNuevoUsuario
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(536, 469);
-			this->Controls->Add(this->label14);
-			this->Controls->Add(this->label13);
-			this->Controls->Add(this->label12);
-			this->Controls->Add(this->label11);
-			this->Controls->Add(this->label6);
-			this->Controls->Add(this->label3);
 			this->Controls->Add(this->textBox6);
 			this->Controls->Add(this->textBox5);
 			this->Controls->Add(this->label10);
@@ -399,8 +319,6 @@ private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void dateTimePicker1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	int fullboxes = 0;
-	UsuarioController^ objUsuarioController = gcnew UsuarioController();
 	String^ Nombre;
 	String^ ApPaterno;
 	String^ ApMaterno;
@@ -408,58 +326,28 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ DNI;
 	String^ TipoUsuario;
 	String^ IdentificacionRFID;
-	while (fullboxes == 0) {
-		UsuarioController^ objUsuarioController = gcnew UsuarioController();
-		//	int codigoUsuario = Convert::ToInt32(this->textBox1->Text);  
+	
+	if (TipoUsuario == "Comensal") {
+		String^ IdentificacionRFID = this->textBox6->Text;
+	}
+	else {
+		String^ IdentificacionRFID = nullptr;
+	}
+	if (this->comboBox1->Text == "" || this->textBox5->Text == "" || this->textBox2->Text == "" || this->textBox3->Text == "" || this->textBox4->Text == ""){
+		MessageBox::Show("Debe rellenar los campos obligatorios para poder agregar un usuario.");
+	}
+	else {
 		String^ Nombre = this->textBox2->Text;
 		String^ ApPaterno = this->textBox3->Text;
 		String^ ApMaterno = this->textBox4->Text;
 		String^ FechaNacimiento = this->dateTimePicker1->Text;
 		String^ DNI = this->textBox5->Text;
 		String^ TipoUsuario = this->comboBox1->Text;
-		String^ IdentificacionRFID = nullptr;
-		fullboxes = 1;
-		if (this->textBox2->Text == nullptr) {
-			MessageBox::Show("Debe rellenar los campos obligatorios (*) para poder agregar un usuario.");
-			this->label3->Visible = true;
-			fullboxes = 0;
-		}
-		if (this->textBox3->Text == nullptr) {
-			MessageBox::Show("Debe rellenar los campos obligatorios (*) para poder agregar un usuario.");
-			this->label6->Visible = true;
-			fullboxes = 0;
-		}
-		if (this->textBox4->Text == nullptr) {
-			MessageBox::Show("Debe rellenar los campos obligatorios (*) para poder agregar un usuario.");
-			this->label11->Visible = true;
-			fullboxes = 0;
-		}
-		if (this->textBox5->Text == nullptr) {
-			MessageBox::Show("Debe rellenar los campos obligatorios (*) para poder agregar un usuario.");
-			this->label12->Visible = true;
-			fullboxes = 0;
-		}
-		if (this->comboBox1->Text == nullptr) {
-			MessageBox::Show("Debe rellenar los campos obligatorios (*) para poder agregar un usuario.");
-			this->label13->Visible = true;
-			fullboxes = 0;
-		}
-		if (TipoUsuario == "Comensal") {
-			this->label10->Visible = true;
-			this->textBox6->Visible = true;
-			String^ IdentificacionRFID = this->textBox6->Text;
-			if (this->textBox6->Text == nullptr) {
-				MessageBox::Show("Debe rellenar los campos obligatorios (*) para poder agregar un usuario.");
-				this->label14->Visible = true;
-				fullboxes = 0;
-			}
-		}
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		objUsuarioController->registrarUsuarioBD(Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario);
+		MessageBox::Show("El usuario se ha agregado con éxito");
+		this->Close();
 	}
-	
-	objUsuarioController->registrarUsuarioBD(Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario);
-	MessageBox::Show("El usuario se ha agregado con éxito"); 
-	this->Close();
-	
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close(); 
