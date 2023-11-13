@@ -19,12 +19,12 @@ namespace SistemaMonederoModel {
 	public:
 		Usuario();
 		Usuario(int Codigo, String^ Nombre, String^ ApPaterno, String^ ApMaterno, String^ FechaNacimiento, String^ DNI, String^ IdentificacionRFID, String^ TipoUsuario);
+		
+		int getCodigo(); 
+		void setCodigo(int Codigo); 
 
-		int getCodigo();
-		void setCodigo(int Codigo);
-
-		String^ getNombre();
-		void setNombre(String^ Nombre);
+		String^ getNombre(); 
+		void setNombre(String^ Nombre);	
 
 		String^ getApPaterno();
 		void setApPaterno(String^ ApPaterno);

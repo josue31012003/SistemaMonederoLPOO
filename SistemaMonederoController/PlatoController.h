@@ -51,4 +51,5 @@ namespace SistemaMonederoController {
 		void eliminarPlatoBD(int codigo);
 		void ActualizarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio);
 	};
+
 }

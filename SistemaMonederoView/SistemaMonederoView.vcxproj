@@ -203,6 +203,9 @@
     <ClInclude Include="frmNuevaTarjeta.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmPrincipal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmPrincipal2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -271,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNuevaTarjeta.resx">
       <DependentUpon>frmNuevaTarjeta.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal2.resx">
       <DependentUpon>frmPrincipal2.h</DependentUpon>

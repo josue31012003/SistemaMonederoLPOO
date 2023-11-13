@@ -35,7 +35,7 @@ List<Plato^>^ PlatoController::buscarPlatosxUbicacion(String^ UbicacionBuscada) 
         String^ ubicacion = datos[1];
 
         PlatoController^ objPlatoController = gcnew PlatoController();
-
+        
         Plato^ objPlato = buscarPlatoxCodigo(codigoPlato);
 
         if ((ubicacion == UbicacionBuscada) || (UbicacionBuscada == "Todos")) {
@@ -111,7 +111,7 @@ void PlatoController::eliminarPlatoFisico(int codigo) {
 
     for (int i = 0; i < listaPlatos->Count; i++) {
 
-        if (listaPlatos[i]->getCodigo() == codigo) {
+        if (listaPlatos[i] -> getCodigo() == codigo) {
 
             listaPlatos->RemoveAt(i);
 
@@ -173,29 +173,33 @@ void PlatoController::editarPlato(Plato^ objPlato) {
 }
 
 /*BUSQUEDA DE ITEMS SEGUN CRITERIO DE BUSQUEDA*/
+
 List<String^>^ PlatoController::obtenerOrigenes() {
 
     List<Plato^>^ listaPlatos = buscarAll();
     List<String^>^ listaOrigenes = gcnew List<String^>();
 
-    for (int i = 0; i < listaPlatos->Count; i++) {
+    for (int i = 0; i < listaPlatos->Count; i++){
 
         String^ Origen = listaPlatos[i]->getOrigen();
 
         int existe = 0;
         for (int j = 0; j < listaOrigenes->Count; j++) {
-
-            if (listaOrigenes[j] == Origen) {
+            
+            if (listaOrigenes[j]==Origen) {
                 existe = 1;
             }
         }
-        if (existe == 0) {
+        if (existe==0) {
             listaOrigenes->Add(Origen);
         }
 
     }
+
     listaOrigenes->Add("Todos");
+
     return listaOrigenes;
+
 }
 
 
@@ -264,11 +268,9 @@ double PlatoController::ObtenerCantidadPorCodigoBD(int codigo) {
     try {
         double cantPlatosVendidos = (double)objSentencia->ExecuteScalar();
         return cantPlatosVendidos;
-    }
-    catch (Exception^ ex) {
+    } catch (Exception^ ex) {
         // Manejo de excepciones (puedes imprimir el error, lanzar una excepción personalizada, etc.)
-    }
-    finally {
+    } finally {
         cerrarConexionBD();
     }
 
@@ -335,65 +337,65 @@ Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
 }
 
 
+   
+    List<Plato^>^ PlatoController::buscarPlatosxUbicacionBD(String^ ubi) {
+        List<Plato^>^ listPlatos = gcnew List<Plato^>();
+        abrirConexionBD();
 
-List<Plato^>^ PlatoController::buscarPlatosxUbicacionBD(String^ ubi) {
-    List<Plato^>^ listPlatos = gcnew List<Plato^>();
-    abrirConexionBD();
+        // Crear comando con parámetro
+        SqlCommand^ objSentencia = gcnew SqlCommand();
+        objSentencia->CommandText = "SELECT p.codigo, p.nombre, p.origen, p.precio, p.cantPlatosVendidos FROM Maquinas m INNER JOIN Platos p ON m.codigoPlato = p.codigo WHERE m.ubicacion = @ubicacion";
+        objSentencia->Connection = this->objConexion;
+        objSentencia->Parameters->AddWithValue("@ubicacion", ubi);
 
-    // Crear comando con parámetro
-    SqlCommand^ objSentencia = gcnew SqlCommand();
-    objSentencia->CommandText = "SELECT p.codigo, p.nombre, p.origen, p.precio, p.cantPlatosVendidos FROM Maquinas m INNER JOIN Platos p ON m.codigoPlato = p.codigo WHERE m.ubicacion = @ubicacion";
-    objSentencia->Connection = this->objConexion;
-    objSentencia->Parameters->AddWithValue("@ubicacion", ubi);
+        // Ejecutar y obtener reader
+        SqlDataReader^ objData = objSentencia->ExecuteReader();
 
-    // Ejecutar y obtener reader
-    SqlDataReader^ objData = objSentencia->ExecuteReader();
+        while (objData->Read()) {
+            // Agregar plato a lista
+            int codigo = safe_cast<int>(objData["codigo"]);
+            String^ nombre = safe_cast<String^>(objData["nombre"]);
+            String^ origen = safe_cast<String^>(objData["origen"]);
+            double precio = safe_cast<double>(objData["precio"]);
+            double cantPlatosVendidos = safe_cast<double>(objData["cantPlatosVendidos"]);
+            Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos);
+            listPlatos->Add(objPlato);
+        }
 
-    while (objData->Read()) {
-        // Agregar plato a lista
-        int codigo = safe_cast<int>(objData["codigo"]);
-        String^ nombre = safe_cast<String^>(objData["nombre"]);
-        String^ origen = safe_cast<String^>(objData["origen"]);
-        double precio = safe_cast<double>(objData["precio"]);
-        double cantPlatosVendidos = safe_cast<double>(objData["cantPlatosVendidos"]);
-        Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos);
-        listPlatos->Add(objPlato);
+        // Cerrar reader
+        objData->Close();
+
+        // Cerrar conexión BD
+        cerrarConexionBD();
+
+        return listPlatos;
     }
 
-    // Cerrar reader
-    objData->Close();
+    void PlatoController::registrarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos) {
 
-    // Cerrar conexión BD
-    cerrarConexionBD();
+        abrirConexionBD();
+        SqlCommand^ objSentencia = gcnew SqlCommand();
+        objSentencia->CommandText = "INSERT INTO Platos (nombre, origen, precio, cantPlatosVendidos) VALUES('" + Nombre + "', '" + Origen + "', '" + Precio + "', '" + cantPlatosVendidos + "')";
+        objSentencia->Connection = this->objConexion;
+        objSentencia->ExecuteNonQuery();
+        cerrarConexionBD();
 
-    return listPlatos;
-}
-
-void PlatoController::registrarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos) {
-
-    abrirConexionBD();
-    SqlCommand^ objSentencia = gcnew SqlCommand();
-    objSentencia->CommandText = "INSERT INTO Platos (nombre, origen, precio, cantPlatosVendidos) VALUES('" + Nombre + "', '" + Origen + "', '" + Precio + "', '" + cantPlatosVendidos + "')";
-    objSentencia->Connection = this->objConexion;
-    objSentencia->ExecuteNonQuery();
-    cerrarConexionBD();
-
-}
-void PlatoController::eliminarPlatoBD(int codigo) {
-
-    abrirConexionBD();
-    SqlCommand^ objSentencia = gcnew SqlCommand();
-    objSentencia->CommandText = "DELETE Platos	 WHERE codigo = " + codigo;
-    objSentencia->Connection = this->objConexion;
-    objSentencia->ExecuteNonQuery();
-    cerrarConexionBD();
-}
-void PlatoController::ActualizarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio) {
-    abrirConexionBD();
-    SqlCommand^ objSentencia = gcnew SqlCommand();
-    objSentencia->CommandText = "UPDATE Platos SET nombre='" + Nombre + "',origen='" + Origen + "',precio='" + Precio + "' WHERE codigo =" + codigo;
-    objSentencia->Connection = this->objConexion;
-    objSentencia->ExecuteNonQuery();
-    cerrarConexionBD();
-}
+    }
+    void PlatoController::eliminarPlatoBD(int codigo) {
+    
+        abrirConexionBD();
+        SqlCommand^ objSentencia = gcnew SqlCommand();
+        objSentencia->CommandText = "DELETE Platos	 WHERE codigo = " + codigo;
+        objSentencia->Connection = this->objConexion;
+        objSentencia->ExecuteNonQuery();
+        cerrarConexionBD();
+    }
+    void PlatoController::ActualizarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio) {
+        abrirConexionBD();
+        SqlCommand^ objSentencia = gcnew SqlCommand();
+        objSentencia->CommandText = "UPDATE Platos SET nombre='" + Nombre + "',origen='" + Origen + "',precio='" + Precio + "' WHERE codigo =" + codigo;
+        objSentencia->Connection = this->objConexion;
+        objSentencia->ExecuteNonQuery();
+        cerrarConexionBD();
+    }
 

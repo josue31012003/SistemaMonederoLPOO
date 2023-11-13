@@ -1,6 +1,7 @@
 #include "Administrador.h"
+//#include "Usuario.h"
 
-using namespace SistemaMonederoModel;
+using namespace SistemaMonederoModel; 
 
 Administrador::Administrador() :Usuario() {
 
