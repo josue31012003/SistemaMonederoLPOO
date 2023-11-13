@@ -6,7 +6,6 @@ using namespace System;
 namespace SistemaMonederoModel {
 
 	public ref class Comensal :Usuario {
-
 	private:
 		String^ UsuarioComensal;
 		String^ PasswordComensal;
