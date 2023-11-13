@@ -104,8 +104,8 @@ namespace SistemaMonederoView {
 			this->ayudaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -206,28 +206,28 @@ namespace SistemaMonederoView {
 			// usuariosToolStripMenuItem
 			// 
 			this->usuariosToolStripMenuItem->Name = L"usuariosToolStripMenuItem";
-			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(128, 22);
+			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->usuariosToolStripMenuItem->Text = L"Usuarios";
 			this->usuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::usuariosToolStripMenuItem_Click);
 			// 
 			// tarjetasToolStripMenuItem
 			// 
 			this->tarjetasToolStripMenuItem->Name = L"tarjetasToolStripMenuItem";
-			this->tarjetasToolStripMenuItem->Size = System::Drawing::Size(128, 22);
+			this->tarjetasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->tarjetasToolStripMenuItem->Text = L"Tarjetas";
 			this->tarjetasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::tarjetasToolStripMenuItem_Click);
 			// 
 			// platosToolStripMenuItem
 			// 
 			this->platosToolStripMenuItem->Name = L"platosToolStripMenuItem";
-			this->platosToolStripMenuItem->Size = System::Drawing::Size(128, 22);
-			this->platosToolStripMenuItem->Text = L"Productos";
+			this->platosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->platosToolStripMenuItem->Text = L"Platos";
 			this->platosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::platosToolStripMenuItem_Click);
 			// 
 			// maquinaToolStripMenuItem
 			// 
 			this->maquinaToolStripMenuItem->Name = L"maquinaToolStripMenuItem";
-			this->maquinaToolStripMenuItem->Size = System::Drawing::Size(128, 22);
+			this->maquinaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->maquinaToolStripMenuItem->Text = L"Maquina";
 			this->maquinaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::maquinaToolStripMenuItem_Click);
 			// 
@@ -260,6 +260,13 @@ namespace SistemaMonederoView {
 			this->dataGridView1->TabIndex = 11;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmPrincipal::dataGridView1_CellContentClick);
 			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Ubicacion";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 180;
+			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
@@ -268,13 +275,6 @@ namespace SistemaMonederoView {
 			this->label1->Size = System::Drawing::Size(264, 13);
 			this->label1->TabIndex = 14;
 			this->label1->Text = L"Seleccione la ubicacion en la se realizara las compras:";
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Ubicacion";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 180;
 			// 
 			// frmPrincipal
 			// 
@@ -286,7 +286,7 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"frmPrincipal";
 			this->Text = L"Ventana Principal";
 			this->Load += gcnew System::EventHandler(this, &frmPrincipal::frmPrincipal_Load);

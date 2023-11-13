@@ -344,6 +344,8 @@ private: System::Void frmMantenimientoUsuarios_Load(System::Object^ sender, Syst
 
 	UsuarioController^ objUsuarioController = gcnew UsuarioController();
 	List<String^>^ listaOrigenes = objUsuarioController->obtenerTiposdeUsuario();
+	List<Usuario^>^ listaUsuarios = objUsuarioController->buscarAllBD();
+	mostrarGrilla(listaUsuarios);
 
 	this->comboBox1->Items->Clear();
 

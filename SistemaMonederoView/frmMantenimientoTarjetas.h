@@ -232,6 +232,12 @@ namespace SistemaMonederoView {
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void frmMantenimientoTarjetas_Load(System::Object^ sender, System::EventArgs^ e) {
+	
+	TarjetaController^ ObjTarjetaController = gcnew TarjetaController();
+	List<Tarjeta^>^ listaTarjeta = ObjTarjetaController->buscarAllBD();
+	mostrarGrilla(listaTarjeta);
+
+
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ Estado = this->comboBox1->Text;

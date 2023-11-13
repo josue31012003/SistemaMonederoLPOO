@@ -275,9 +275,11 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	ventanaEditarMaquina->ShowDialog();
 }
 private: System::Void frmMantenimientoMaquinas_Load(System::Object^ sender, System::EventArgs^ e) {
-
+	
 	MaquinaController^ objMaquinaController = gcnew MaquinaController();
 	List<String^>^ listaTipos = objMaquinaController->obtenerTipos();
+	List<Maquina^>^ listaMaquina = objMaquinaController->buscarAllBD();
+	mostrarGrilla(listaMaquina);
 
 	this->comboBox1->Items->Clear();
 

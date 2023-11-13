@@ -313,6 +313,10 @@ private: System::Void frmMantProductos_Load(System::Object^ sender, System::Even
 	MaquinaController^ objMaquinaController = gcnew MaquinaController();
 	List<String^>^ listaUbiaciones = objMaquinaController->obtenerUbicaciones();
 
+	PlatoController^ ObjPlatoController = gcnew PlatoController();
+	List<Plato^>^ listaPlatos = ObjPlatoController->buscarAllBD();
+	mostrarGrilla(listaPlatos);
+
 	this->comboBox2->Items->Clear();
 
 	for (int i = 0; i < listaUbiaciones->Count; i++) {
