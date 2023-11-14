@@ -357,11 +357,19 @@ private: void mostrarGrilla(List<String^>^ listaUbicaciones) {
 }
 
 private: System::Void frmPrincipal_Load(System::Object^ sender, System::EventArgs^ e) {
-
 	MaquinaController^ objMaquinaController = gcnew MaquinaController();
-	List<String^>^ listaUbiaciones = objMaquinaController->ObtenerUbicacionesBD();
-	mostrarGrilla(listaUbiaciones);
+	List<String^>^ listaUbicaciones = objMaquinaController->ObtenerUbicacionesBD();
 
+	// Verificar si la lista no es nullptr antes de mostrar la grilla
+	if (listaUbicaciones != nullptr)
+	{
+		mostrarGrilla(listaUbicaciones);
+	}
+	else
+	{
+		// Manejar la situación donde la lista es nullptr
+		MessageBox::Show("La lista de ubicaciones es nula.");
+	}
 }
 private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 

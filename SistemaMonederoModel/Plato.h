@@ -1,35 +1,40 @@
 #pragma once
 
-using namespace System; //Esto es para la clase String
+using namespace System;
+using namespace System::Collections::Generic;
 
 namespace SistemaMonederoModel {
 
-	public ref class Plato {
+    public ref class Plato {
 
-	private:
-		int codigo;
-		String^ Nombre;
-		String^ Origen;
-		double Precio;
-		double cantPlatosVendidos;
-		int codigoUbicacion;
+    private:
+        int codigo;
+        String^ Nombre;
+        String^ Origen;
+        double Precio;
+        double cantPlatosVendidos;
+        double cantPlatosDisponible;
+        int codigoUbicacion;
+
+        // Variable para contar los platos seleccionados
+        Dictionary<String^, int>^ conteoPlatos = gcnew Dictionary<String^, int>();
 
 		//Siempre hay 2 constructores, uno vacio y otro con todo ojo O_O
-	public:
-		Plato();
-		Plato(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, int codigoUbicacion);
+    public:
+        Plato();
+        Plato(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, double cantPlatosDisponible, int codigoUbicacion);
 
-		int getCodigo();
-		void setCodigo(int codigo);
+        int getCodigo();
+        void setCodigo(int codigo);
 
-		String^ Plato::getNombre();
-		void setNombre(String^ Nombre);
+        String^ Plato::getNombre();
+        void setNombre(String^ Nombre);
 
-		String^ getOrigen();
-		void setOrigen(String^ Origen);
+        String^ getOrigen();
+        void setOrigen(String^ Origen);
 
-		double getPrecio();
-		void setPrecio(double Precio);
+        double getPrecio();
+        void setPrecio(double Precio);
 
 		double getCantPlatosVendidos();
 		void setCantPlatosVendidos(double cantPlatosVendidos);
@@ -38,5 +43,7 @@ namespace SistemaMonederoModel {
 		int getCodUbicacion();
 		void setCodUbicacion(int codigoUbicacion);
 
-	};
+        double getCantPlatosDisponible();
+        void setCantPlatosDisponible(double cantPlatosDisponible);
+    };
 }
