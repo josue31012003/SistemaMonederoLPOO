@@ -247,7 +247,7 @@ List<Plato^>^ PlatoController::buscarAllBD() {
             double precio = safe_cast<double>(reader["precio"]);
             double cantPlatosVendidos = safe_cast<double>(reader["cantPlatosVendidos"]);
             double cantPlatosDisponibles = safe_cast<double>(reader["cantPlatosDisponibles"]);
-            int codigoUbicacion = safe_cast<double>(reader["codigoUbicacion"]);
+            int codigoUbicacion = safe_cast<int>(reader["codigoUbicacion"]);
             Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos, cantPlatosDisponibles, codigoUbicacion);
 
             listaPlatos->Add(objPlato);

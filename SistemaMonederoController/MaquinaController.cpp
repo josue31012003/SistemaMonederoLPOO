@@ -1,4 +1,5 @@
 #include "MaquinaController.h"
+#include "UbicacionController.h"
 
 using namespace SistemaMonederoController;
 using namespace SistemaMonederoModel;
@@ -138,30 +139,6 @@ List<String^>^ MaquinaController::obtenerTipos() {
 	return listaTipos;
 }
 
-List<int>^ MaquinaController::obtenerUbicaciones() {
-	List<Maquina^>^ listaMaquinas = buscarAllBD();
-	List<int>^ listaUbicaciones = gcnew List<int>();
-
-	for (int i = 0; i < listaMaquinas->Count; i++) {
-
-		int codigoUbicacion = listaMaquinas[i]->getCodigoUbicacion();
-
-		int existe = 0;
-		for (int j = 0; j < listaUbicaciones->Count; j++) {
-
-			if (listaUbicaciones[j] == codigoUbicacion) {
-				existe = 1;
-			}
-		}
-		if (existe == 0) {
-			listaUbicaciones->Add(codigoUbicacion);
-		}
-
-	}
-
-	return listaUbicaciones;
-}
-
 
 //IMPLEMENTACIÓN DE MÉTODOS DE BASE DE DATOS 
 MaquinaController::MaquinaController() {
@@ -216,10 +193,14 @@ List<Maquina^>^ MaquinaController::buscarMaquinaxtipoBD(String^ TipodeMaquina) {
 
 void MaquinaController::registrarMaquinaBD(String^ UbicacionMaquina, String^ tipoMaquina) {
 
+	UbicacionController^ objUbicacionController = gcnew UbicacionController();
+	Ubicacion^ objUbicacion = objUbicacionController->buscarUbicacionxNombreBD(UbicacionMaquina);
+
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand();
-	objSentencia->CommandText = "INSERT INTO Maquinas (ubicacion, tipoMaquina) VALUES('" + UbicacionMaquina + "', '" + tipoMaquina + "')";
+	objSentencia->CommandText = "INSERT INTO Maquinas (codigoUbicacion, tipoMaquina) VALUES(@codigoUbicacion, '" + tipoMaquina + "')";
 	objSentencia->Connection = this->objConexion;
+	objSentencia->Parameters->AddWithValue("@codigoUbicacion", objUbicacion->getCodigo());
 	objSentencia->ExecuteNonQuery();
 	cerrarConexionBD();
 		
@@ -263,8 +244,12 @@ Maquina^ MaquinaController::buscarMaquinaxCodigoBD(int codigo) {
 }
 void MaquinaController::ActualizarMaquinaBD(int Codigo, String^ UbicacionMaquina, String^ tipoMaquina) {
 	abrirConexionBD();
+
+	UbicacionController^ objUbicacionController = gcnew UbicacionController();
+	Ubicacion^ objUbicacion = objUbicacionController->buscarUbicacionxNombreBD(UbicacionMaquina);
+
 	SqlCommand^ objSentencia = gcnew SqlCommand();
-	objSentencia->CommandText = "UPDATE Maquinas SET ubicacion='" + UbicacionMaquina + "',tipoMaquina='" + tipoMaquina +"' WHERE codigo =" + Codigo;
+	objSentencia->CommandText = "UPDATE Maquinas SET codigoUbicacion=" + objUbicacion->getCodigo() + ",tipoMaquina='" + tipoMaquina + "' WHERE codigo =" + Codigo;
 	objSentencia->Connection = this->objConexion;
 	objSentencia->ExecuteNonQuery();
 	cerrarConexionBD();
@@ -346,7 +331,50 @@ List<String^>^ MaquinaController::ObtenerUbicacionesBD() {
 
 }
 
+List<String^>^ MaquinaController::ObtenerTiposBD() {
 
+	// Crear lista para almacenar ubicaciones
+	List<String^>^ tipos = gcnew List<String^>();
+
+	// Abrir conexión BD
+	abrirConexionBD();
+
+	// Crear comando
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->CommandText = "SELECT tipoMaquina FROM Maquinas";
+	objSentencia->Connection = this->objConexion;
+	// Ejecutar y obtener reader
+	SqlDataReader^ reader = objSentencia->ExecuteReader();
+
+	// Leer filas
+	while (reader->Read()) {
+
+		String^ tipo = reader->GetString(0);
+
+		int existe = 0;
+		for (int i = 0; i < tipos->Count; i++) {
+			if (tipo == tipos[i]) {
+				existe = 1;
+				break;
+			}
+		}
+		// Solo agregar si no existe
+		if (!existe) {
+			tipos->Add(tipo);
+		}
+
+	}
+
+	// Cerrar reader
+	reader->Close();
+
+	// Cerrar conexión BD
+	cerrarConexionBD();
+
+	// Devolver lista de ubicaciones
+	return tipos;
+
+}
 
 
 

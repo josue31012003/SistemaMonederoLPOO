@@ -122,7 +122,7 @@ namespace SistemaMonederoView {
 		List<Plato^>^ listaPlatos = objPlatoController->buscarAllBD(); 
 		for (int i = 0; i < listaPlatos->Count; i++) {
 			this->chart1->Series["Cantidad de platos vendidos"]->Points->Add(listaPlatos[i]->getCantPlatosVendidos());
-			this->chart1->Series["Cantidad de platos vendidos"]->Points[i]->AxisLabel = listaPlatos[i]->getNombre();
+			this->chart1->Series["Cantidad de platos vendidos"]->Points[i]->AxisLabel = (listaPlatos[i]->getNombre());
 			this->chart1->Series["Cantidad de platos vendidos"]->Points[i]->LegendText = listaPlatos[i]->getNombre();
 			this->chart1->Series["Cantidad de platos vendidos"]->Points[i]->Label = Convert::ToString(listaPlatos[i]->getCantPlatosVendidos());
 		}
@@ -136,9 +136,6 @@ namespace SistemaMonederoView {
 			this->chart2->Series["Series1"]->Points[i]->LegendText = listaPlatos2[i]->getNombre();
 			this->chart2->Series["Series1"]->Points[i]->Label = Convert::ToString(listaPlatos2[i]->getCantPlatosVendidos());
 		}
-
-
-
 	}
 	private: System::Void chart2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}

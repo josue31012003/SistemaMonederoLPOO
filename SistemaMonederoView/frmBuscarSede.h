@@ -173,7 +173,7 @@ namespace SistemaMonederoView {
 	private: System::Void frmBuscarSede_Load(System::Object^ sender, System::EventArgs^ e) {
 		//LOAD UBICAIONES 
 		MaquinaController^ objMaquinaController = gcnew MaquinaController();
-		List<Maquina^>^ listaUbicaciones = objMaquinaController->buscarAll();
+		List<Maquina^>^ listaUbicaciones = objMaquinaController->buscarAllBD();
 		this->comboBox1->Items->Clear();
 		for (int i = 0; i < listaUbicaciones->Count; i++) {
 			this->comboBox1->Items->Add(listaUbicaciones[i]->getCodigoUbicacion());

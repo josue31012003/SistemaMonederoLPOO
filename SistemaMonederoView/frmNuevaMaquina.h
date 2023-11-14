@@ -190,8 +190,12 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ UbicacionMaquina = this->textBox3->Text;
 	String^ tipoMaquina = this->comboBox1->Text;
 //	Maquina^ ObjMaquina = gcnew Maquina(codigoMaquina, UbicacionMaquina, tipoMaquina);
+
+	UbicacionController^ objUbicacionController = gcnew UbicacionController();
+	Ubicacion^ objUbicacion = objUbicacionController->buscarUbicacionxNombreBD(UbicacionMaquina);
+
 	MaquinaController^ ObjMaquinaController = gcnew MaquinaController();
-	ObjMaquinaController->registrarMaquinaBD(UbicacionMaquina, tipoMaquina); 
+	ObjMaquinaController->registrarMaquinaBD(objUbicacion->getNombre(), tipoMaquina);
 	MessageBox::Show("La Maquina se ha agregado con exito");
 	this->Close();
 }

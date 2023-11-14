@@ -29,7 +29,10 @@ namespace SistemaMonederoController {
 		Ubicacion^ buscarUbicacionxNombreBD(String^ nombre);
 
 		//List<Plato^>^ buscarPlatosxUbicacionBD(String^ ubicacion);
-		//List<Plato^>^ buscarAllBD();
+		List<Ubicacion^>^ buscarAllBD();
+		List<String^>^ obtenerUbicaciones();
+
+		
 		//void registrarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, double cantPlatosDisponible, int codigoUbicacion);
 		//void eliminarPlatoBD(int codigo);
 		//void ActualizarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosDisponible);

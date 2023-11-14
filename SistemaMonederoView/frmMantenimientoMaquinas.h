@@ -249,7 +249,10 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 				Maquina^ objMaquina = listaMaquinas[i];
 				array<String^>^ filaGrilla = gcnew array<String^>(4);
 				filaGrilla[0] = Convert::ToString(objMaquina->getCodigo());
-				filaGrilla[1] = Convert::ToString(objMaquina->getCodigoUbicacion());
+
+				UbicacionController^ objUbicacionController = gcnew UbicacionController();
+
+				filaGrilla[1] = Convert::ToString(objUbicacionController->buscarUbicacionxCodigoBD(objMaquina->getCodigoUbicacion())->getNombre());
 				filaGrilla[2] = objMaquina->gettipoMaquina();
 				this->dataGridView1->Rows->Add(filaGrilla);
 
@@ -277,7 +280,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void frmMantenimientoMaquinas_Load(System::Object^ sender, System::EventArgs^ e) {
 	
 	MaquinaController^ objMaquinaController = gcnew MaquinaController();
-	List<String^>^ listaTipos = objMaquinaController->obtenerTipos();
+	List<String^>^ listaTipos = objMaquinaController->ObtenerTiposBD();
 	List<Maquina^>^ listaMaquina = objMaquinaController->buscarAllBD();
 	mostrarGrilla(listaMaquina);
 

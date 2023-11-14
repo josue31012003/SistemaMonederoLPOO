@@ -477,20 +477,21 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			// Obtener la fila seleccionada en la grilla2
 			int filaSeleccionada = this->dataGridView2->SelectedRows[0]->Index;
 
-			// Obtener el código del plato seleccionado en la grilla2
-			String^ codigoPlato = this->dataGridView2->Rows[filaSeleccionada]->Cells[0]->Value->ToString();
+			if (this->dataGridView2->Rows[filaSeleccionada]->Cells[0]->Value != nullptr) {
+				// Obtener el código del plato seleccionado en la grilla2
+				String^ codigoPlato = this->dataGridView2->Rows[filaSeleccionada]->Cells[0]->Value->ToString();
 
-			// Crear una instancia de PlatoController
-			PlatoController^ objPlatoController = gcnew PlatoController();
+				// Crear una instancia de PlatoController
+				PlatoController^ objPlatoController = gcnew PlatoController();
 
-			// Restar el conteo anterior del plato eliminado
-			int conteoAnterior = PlatoController::ConteoPlatosSeleccionados(codigoPlato);
-			objPlatoController->restarConteoPlatosSeleccionados(codigoPlato, conteoAnterior);
+				// Restar el conteo anterior del plato eliminado
+				int conteoAnterior = PlatoController::ConteoPlatosSeleccionados(codigoPlato);
+				objPlatoController->restarConteoPlatosSeleccionados(codigoPlato, conteoAnterior);
 
-			// Eliminar la fila seleccionada de la grilla2
-			this->dataGridView2->Rows->RemoveAt(filaSeleccionada);
+				// Eliminar la fila seleccionada de la grilla2
+				this->dataGridView2->Rows->RemoveAt(filaSeleccionada);
+			}
 		}
-		
 	}
 
 

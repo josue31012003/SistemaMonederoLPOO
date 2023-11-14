@@ -26,7 +26,6 @@ namespace SistemaMonederoController {
 		Maquina^ buscarMaquinaxCodigo(int Codigo);
 		void actualizarMaquina(Maquina^ ObjMaquina);
 		List<String^>^ obtenerTipos();
-		List<int>^ obtenerUbicaciones();
 
 		//Métodos de base de datos 
 		void abrirConexionBD();
@@ -37,7 +36,8 @@ namespace SistemaMonederoController {
 		Maquina^ buscarMaquinaxCodigoBD(int codigo);
 		void ActualizarMaquinaBD(int Codigo, String^ UbicacionMaquina, String^ tipoMaquina);
 		List<Maquina^>^ buscarAllBD();
-		List<String^>^ MaquinaController::ObtenerUbicacionesBD();
+		List<String^>^ ObtenerUbicacionesBD();
+		List<String^>^ ObtenerTiposBD();
 
 	};
 

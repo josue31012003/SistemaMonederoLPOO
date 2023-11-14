@@ -273,7 +273,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	PlatoController^ ObjPlatoController = gcnew PlatoController();
 	
 	List<Plato^>^ listaPlatos = ObjPlatoController->buscarPlatosxUbicacionBD(Ubicacion);
-	mostrarGrilla(listaPlatos); 
+	mostrarGrilla(listaPlatos);
 	
 }
 
@@ -325,8 +325,8 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	   /*PERSISTENCIA DE ITEMS DE CRITERIO DE BUSQUEDA*/
 private: System::Void frmMantProductos_Load(System::Object^ sender, System::EventArgs^ e) {
 
-	MaquinaController^ objMaquinaController = gcnew MaquinaController();
-	List<int>^ listaUbiaciones = objMaquinaController->obtenerUbicaciones();
+	UbicacionController^ objUbicacionController = gcnew UbicacionController();
+	List<String^>^ listaUbicaciones = objUbicacionController->obtenerUbicaciones();
 
 	PlatoController^ ObjPlatoController = gcnew PlatoController();
 	List<Plato^>^ listaPlatos = ObjPlatoController->buscarAllBD();
@@ -334,8 +334,8 @@ private: System::Void frmMantProductos_Load(System::Object^ sender, System::Even
 
 	this->comboBox2->Items->Clear();
 
-	for (int i = 0; i < listaUbiaciones->Count; i++) {
-		this->comboBox2->Items->Add(listaUbiaciones[i]);
+	for (int i = 0; i < listaUbicaciones->Count; i++) {
+		this->comboBox2->Items->Add(listaUbicaciones[i]);
 	}
 }
 };
