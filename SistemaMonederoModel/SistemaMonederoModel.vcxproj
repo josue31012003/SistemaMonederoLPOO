@@ -120,6 +120,7 @@
     <ClInclude Include="MaquinaRecarga.h" />
     <ClInclude Include="Plato.h" />
     <ClInclude Include="Tarjeta.h" />
+    <ClInclude Include="Ubicacion.h" />
     <ClInclude Include="Usuario.h" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +132,7 @@
     <ClCompile Include="MaquinaRecarga.cpp" />
     <ClCompile Include="Plato.cpp" />
     <ClCompile Include="Tarjeta.cpp" />
+    <ClCompile Include="Ubicacion.cpp" />
     <ClCompile Include="Usuario.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
