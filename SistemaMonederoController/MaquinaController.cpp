@@ -289,9 +289,9 @@ List<Maquina^>^ MaquinaController::buscarAllBD() {
 	SqlDataReader^ objData = objSentencia->ExecuteReader();
 
 	while (objData->Read()) {
-		int codigo = safe_cast<int>(objData[0]);
-		int codigoUbicacion = safe_cast<int>(objData[2]);
-		String^ tipoMaquina = safe_cast<String^>(objData[2]);
+		int codigo = safe_cast<int>(objData["codigo"]);
+		int codigoUbicacion = safe_cast<int>(objData["codigoUbicacion"]);
+		String^ tipoMaquina = safe_cast<String^>(objData["tipoMaquina"]);
 		Maquina^ objMaquina = gcnew Maquina(codigo, codigoUbicacion, tipoMaquina);
 		listaMaquinas->Add(objMaquina);
 	}
@@ -311,7 +311,7 @@ List<String^>^ MaquinaController::ObtenerUbicacionesBD() {
 
 		// Crear comando
 		SqlCommand^ objSentencia = gcnew SqlCommand();
-		objSentencia->CommandText = "SELECT ubicacion FROM Maquinas";
+		objSentencia->CommandText = "SELECT nombre FROM Ubicacion";
 		objSentencia->Connection = this->objConexion;
 		// Ejecutar y obtener reader
 		SqlDataReader^ reader = objSentencia->ExecuteReader();

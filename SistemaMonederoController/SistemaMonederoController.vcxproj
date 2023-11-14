@@ -115,12 +115,14 @@
     <ClInclude Include="MaquinaController.h" />
     <ClInclude Include="PlatoController.h" />
     <ClInclude Include="TarjetaController.h" />
+    <ClInclude Include="UbicacionController.h" />
     <ClInclude Include="UsuarioController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MaquinaController.cpp" />
     <ClCompile Include="PlatoController.cpp" />
     <ClCompile Include="TarjetaController.cpp" />
+    <ClCompile Include="UbicacionController.cpp" />
     <ClCompile Include="UsuarioController.cpp" />
   </ItemGroup>
   <ItemGroup>

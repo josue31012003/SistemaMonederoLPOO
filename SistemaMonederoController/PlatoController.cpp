@@ -1,5 +1,6 @@
 #include <iostream>
 #include "PlatoController.h"
+#include "UbicacionController.h"
 
 using namespace SistemaMonederoController;
 using namespace System::IO; /*Este espacio de nombres sirve para manejar los archivos de texto*/
@@ -381,9 +382,11 @@ Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
 
         // Crear comando con parámetro
         SqlCommand^ objSentencia = gcnew SqlCommand();
-        objSentencia->CommandText = "SELECT p.codigo, p.nombre, p.origen, p.precio, p.cantPlatosVendidos, p.cantPlatosDisponibles FROM Maquinas m INNER JOIN Platos p ON m.codigoPlato = p.codigo WHERE m.ubicacion = @ubicacion";
+        UbicacionController^ objUbicacionController = gcnew UbicacionController();
+        Ubicacion^ objUbicacion = objUbicacionController->buscarUbicacionxNombreBD(ubi);
+        objSentencia->CommandText = "SELECT * FROM Platos WHERE codigoUbicacion = @codigoUbicacion";
         objSentencia->Connection = this->objConexion;
-        objSentencia->Parameters->AddWithValue("@ubicacion", ubi);
+        objSentencia->Parameters->AddWithValue("@codigoUbicacion", objUbicacion->getCodigo());
 
         // Ejecutar y obtener reader
         SqlDataReader^ objData = objSentencia->ExecuteReader();
@@ -396,7 +399,7 @@ Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
             double precio = safe_cast<double>(objData["precio"]);
             double cantPlatosVendidos = safe_cast<double>(objData["cantPlatosVendidos"]);
             double cantPlatosDisponibles = safe_cast<double>(objData["cantPlatosDisponibles"]);
-            int codigoUbicacion = safe_cast<double>(objData["codigoUbicacion"]);
+            int codigoUbicacion = safe_cast<int>(objData["codigoUbicacion"]);
             Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos, cantPlatosDisponibles, codigoUbicacion);
             listPlatos->Add(objPlato);
         }
@@ -410,11 +413,11 @@ Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
         return listPlatos;
     }
 
-    void PlatoController::registrarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, double cantPlatosDisponibles) {
+    void PlatoController::registrarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, double cantPlatosDisponibles, int codigoUbicacion) {
 
         abrirConexionBD();
         SqlCommand^ objSentencia = gcnew SqlCommand();
-        objSentencia->CommandText = "INSERT INTO Platos (nombre, origen, precio, cantPlatosVendidos, cantPlatosDisponibles) VALUES('" + Nombre + "', '" + Origen + "', '" + Precio + "', '" + cantPlatosVendidos + "', '" + cantPlatosDisponibles + "')";
+        objSentencia->CommandText = "INSERT INTO Platos (nombre, origen, precio, cantPlatosVendidos, cantPlatosDisponibles, codigoUbicacion) VALUES('" + Nombre + "', '" + Origen + "', '" + Precio + "', '" + cantPlatosVendidos + "', '" + cantPlatosDisponibles + "', '" + codigoUbicacion + "')";
         objSentencia->Connection = this->objConexion;
         objSentencia->ExecuteNonQuery();
         cerrarConexionBD();

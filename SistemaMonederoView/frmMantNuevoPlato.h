@@ -267,7 +267,7 @@ namespace SistemaMonederoView {
 
 			// Registrar el plato en la base de datos
 			PlatoController^ objPlatoController = gcnew PlatoController();
-			objPlatoController->registrarPlatoBD(codigo, Nombre, Origen, Precio, cantPlatosVendidos, cantPlatosDisponible);
+			objPlatoController->registrarPlatoBD(codigo, Nombre, Origen, Precio, cantPlatosVendidos, cantPlatosDisponible, 0);
 
 			MessageBox::Show("El plato ha sido agregado con éxito");
 			this->Close();
