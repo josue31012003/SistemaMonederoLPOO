@@ -11,15 +11,13 @@ namespace SistemaMonederoModel {
 	private:
 		int Codigo;
 		String^ Fecha;
-		double Valor;
-		String^ UsuarioAsociado;
-		String^ IDMaquina;
-		Usuario^ ObjUsuario;
-		MaquinaCompra^ ObjMaquinaCompra;
-		MaquinaRecarga^ ObjMaquinaRecarga;
+		double Monto;
+		int codigoPlato;
+		int codigoUsuario;
+		int codigoMaquina;
 	public:
 		HistorialTransaccion();
-		HistorialTransaccion(int Codigo, String^ Fecha, double Valor, String^ UsuarioAsociado, String^ IDMaquina, Usuario^ ObjUsuario, MaquinaCompra^ ObjMaquinaCompra, MaquinaRecarga^ ObjMaquinaRecarga);
+		HistorialTransaccion(int Codigo, String^ Fecha, double Monto, int codigoPlato, int codigoUsuario, int codigoMaquina);
 
 	};
 }

@@ -5,10 +5,10 @@ using namespace SistemaMonederoModel;
 Maquina::Maquina() {
 
 }
-Maquina::Maquina(int Codigo, String^ UbicacionMaquina, String^ tipoMaquina) {
+Maquina::Maquina(int Codigo, int codigoUbicacion, String^ tipoMaquina) {
 
 	this->Codigo = Codigo;
-	this->UbicacionMaquina = UbicacionMaquina;
+	this->codigoUbicacion = codigoUbicacion;
 	this->tipoMaquina = tipoMaquina;
 }
 
@@ -22,11 +22,11 @@ void Maquina::setCodigo(int Codigo) {
 }
 
 
-String^ Maquina::getUbicacionMaquina() {
-	return this->UbicacionMaquina;
+int Maquina::getCodigoUbicacion() {
+	return this->codigoUbicacion;
 }
-void Maquina::setUbicacionMaquina(String^ UbicacionMaquina) {
-	this->UbicacionMaquina = UbicacionMaquina;
+void Maquina::setCodigoUbicacion(int codigoUbicacion) {
+	this->codigoUbicacion = codigoUbicacion;
 }
 
 

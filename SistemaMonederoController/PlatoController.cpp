@@ -66,7 +66,8 @@ List<Plato^>^ PlatoController::buscarAll() {
         String^ Origen = datos[2];
         double Precio = Convert::ToDouble(datos[3]);
         double cantPlatosVendidos = Convert::ToDouble(datos[4]);
-        Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio, cantPlatosVendidos);
+        int codigoUbicacion = Convert::ToDouble(datos[5]);
+        Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio, cantPlatosVendidos, codigoUbicacion);
         listaPlatosEncontrados->Add(objPlato);
     }
 
@@ -243,7 +244,9 @@ List<Plato^>^ PlatoController::buscarAllBD() {
             String^ origen = safe_cast<String^>(reader["origen"]);
             double precio = safe_cast<double>(reader["precio"]);
             double cantPlatosVendidos = safe_cast<double>(reader["cantPlatosVendidos"]);
-            Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos);
+            int codigoUbicacion = safe_cast<double>(reader["codigoUbicacion"]);
+            Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos, codigoUbicacion);
+
             listaPlatos->Add(objPlato);
         }
     }
@@ -317,13 +320,13 @@ Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
         SqlDataReader^ objData = objSentencia->ExecuteReader();
 
         while (objData->Read()) {
-            int codigoPlato = safe_cast<int>(objData["codigo"]);
+            int codigo = safe_cast<int>(objData["codigo"]);
             String^ nombre = safe_cast<String^>(objData["nombre"]);
             String^ origen = safe_cast<String^>(objData["origen"]);
             double precio = safe_cast<double>(objData["precio"]);
             double cantPlatosVendidos = safe_cast<double>(objData["cantPlatosVendidos"]);
-
-            objPlato = gcnew Plato(codigoPlato, nombre, origen, precio, cantPlatosVendidos);
+            int codigoUbicacion = safe_cast<double>(objData["codigoUbicacion"]);
+            objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos, codigoUbicacion);
         }
     }
     catch (Exception^ ex) {
@@ -358,7 +361,8 @@ Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
             String^ origen = safe_cast<String^>(objData["origen"]);
             double precio = safe_cast<double>(objData["precio"]);
             double cantPlatosVendidos = safe_cast<double>(objData["cantPlatosVendidos"]);
-            Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos);
+            int codigoUbicacion = safe_cast<double>(objData["codigoUbicacion"]);
+            Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos, codigoUbicacion);
             listPlatos->Add(objPlato);
         }
 

@@ -311,7 +311,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void frmMantProductos_Load(System::Object^ sender, System::EventArgs^ e) {
 
 	MaquinaController^ objMaquinaController = gcnew MaquinaController();
-	List<String^>^ listaUbiaciones = objMaquinaController->obtenerUbicaciones();
+	List<int>^ listaUbiaciones = objMaquinaController->obtenerUbicaciones();
 
 	PlatoController^ ObjPlatoController = gcnew PlatoController();
 	List<Plato^>^ listaPlatos = ObjPlatoController->buscarAllBD();

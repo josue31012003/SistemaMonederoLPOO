@@ -7,18 +7,18 @@ namespace SistemaMonederoModel {
 
 	protected: //Esto es por la herencia
 		int Codigo;
-		String^ UbicacionMaquina;
+		int codigoUbicacion;
 		String^ tipoMaquina;
 
 	public:
 		Maquina();
-		Maquina(int Codigo, String^ UbicacionMaquina, String^ tipoMaquina);
+		Maquina(int Codigo, int codigoUbicacion, String^ tipoMaquina);
 
 		int getCodigo();
 		void setCodigo(int Codigo);
 
-		String^ getUbicacionMaquina();
-		void setUbicacionMaquina(String^ UbicacionMaquina);
+		int getCodigoUbicacion();
+		void setCodigoUbicacion(int codigoUbicacion);
 
 		String^ gettipoMaquina();
 		void settipoMaquina(String^ tipoMaquina);

@@ -176,7 +176,7 @@ namespace SistemaMonederoView {
 		List<Maquina^>^ listaUbicaciones = objMaquinaController->buscarAll();
 		this->comboBox1->Items->Clear();
 		for (int i = 0; i < listaUbicaciones->Count; i++) {
-			this->comboBox1->Items->Add(listaUbicaciones[i]->getUbicacionMaquina());
+			this->comboBox1->Items->Add(listaUbicaciones[i]->getCodigoUbicacion());
 		}
 	}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {

@@ -19,13 +19,13 @@ List<Maquina^>^ MaquinaController::buscarMaquinas(String^ tipoMaquina) {
 		array<String^>^ datos = lineaMaquinas->Split(separadores->ToCharArray());
 
 		int CodigoMaquina = Convert::ToInt32(datos[0]);
-		String^ UbicacionMaquina = datos[1];
+		int codigoUbicacion = Convert::ToInt32(datos[1]);
 		String^ TipoMaquina = datos[2];
 		
 
 		if (TipoMaquina->Contains(tipoMaquina)) {
 			int CodigoMaquina = Convert::ToInt32(datos[0]);
-			Maquina^ objMaquina = gcnew Maquina(CodigoMaquina, UbicacionMaquina, TipoMaquina);
+			Maquina^ objMaquina = gcnew Maquina(CodigoMaquina, codigoUbicacion, TipoMaquina);
 			listaMaquinasEncontradas->Add(objMaquina);
 		}
 
@@ -51,9 +51,9 @@ List < Maquina^>^ MaquinaController::buscarAll() {
 		array<String^>^ datos = lineaMaquina->Split(separadores->ToCharArray());
 
 		int CodigoMaquina = Convert::ToInt32(datos[0]);
-		String^ UbicacionMaquina = datos[1];
+		int codigoUbicacion = Convert::ToInt32(datos[1]);
 		String^ TipoMaquina = datos[2];
-		Maquina^ objMaquina = gcnew Maquina(CodigoMaquina, UbicacionMaquina, TipoMaquina);
+		Maquina^ objMaquina = gcnew Maquina(CodigoMaquina, codigoUbicacion, TipoMaquina);
 		listaMaquinasEncontradas->Add(objMaquina);
 	}
 	return listaMaquinasEncontradas;
@@ -66,7 +66,7 @@ void MaquinaController::escribirArchivo(List<Maquina^>^ Lista) {
 	array<String^>^ lineasArchivo = gcnew array<String^>(Lista->Count);
 	for (int i = 0; i < Lista->Count; i++) {
 		Maquina^ objeto = Lista[i];
-		lineasArchivo[i] = objeto->getCodigo() + ";" + objeto->getUbicacionMaquina() + ";" + objeto->gettipoMaquina();
+		lineasArchivo[i] = objeto->getCodigo() + ";" + objeto->getCodigoUbicacion() + ";" + objeto->gettipoMaquina();
 	}
 	File::WriteAllLines("Maquinas.txt", lineasArchivo);
 
@@ -104,7 +104,7 @@ void MaquinaController::actualizarMaquina(Maquina^ ObjMaquina) {
 
 		if (listaMaquinas[i]->getCodigo() == ObjMaquina->getCodigo()) {
 			//Voy a actualizar 
-			listaMaquinas[i]->setUbicacionMaquina(ObjMaquina->getUbicacionMaquina());
+			listaMaquinas[i]->setCodigoUbicacion(ObjMaquina->getCodigoUbicacion());
 			listaMaquinas[i]->settipoMaquina(ObjMaquina->gettipoMaquina());
 
 			break;
@@ -138,27 +138,26 @@ List<String^>^ MaquinaController::obtenerTipos() {
 	return listaTipos;
 }
 
-List<String^>^ MaquinaController::obtenerUbicaciones() {
+List<int>^ MaquinaController::obtenerUbicaciones() {
 	List<Maquina^>^ listaMaquinas = buscarAllBD();
-	List<String^>^ listaUbicaciones = gcnew List<String^>();
+	List<int>^ listaUbicaciones = gcnew List<int>();
 
 	for (int i = 0; i < listaMaquinas->Count; i++) {
 
-		String^ UbicacionMaquina = listaMaquinas[i]->getUbicacionMaquina();
+		int codigoUbicacion = listaMaquinas[i]->getCodigoUbicacion();
 
 		int existe = 0;
 		for (int j = 0; j < listaUbicaciones->Count; j++) {
 
-			if (listaUbicaciones[j] == UbicacionMaquina) {
+			if (listaUbicaciones[j] == codigoUbicacion) {
 				existe = 1;
 			}
 		}
 		if (existe == 0) {
-			listaUbicaciones->Add(UbicacionMaquina);
+			listaUbicaciones->Add(codigoUbicacion);
 		}
 
 	}
-	listaUbicaciones->Add("Todos");
 
 	return listaUbicaciones;
 }
@@ -204,9 +203,9 @@ List<Maquina^>^ MaquinaController::buscarMaquinaxtipoBD(String^ TipodeMaquina) {
 
 	while (objData->Read()) {
 		int codigo = safe_cast<int>(objData[0]);
-		String^ ubicacion = safe_cast<String^>(objData[1]);
+		int codigoUbicacion = safe_cast<int>(objData[1]);
 		String^ tipoMaquina = safe_cast<String^>(objData[2]);
-		Maquina^ objMaquina = gcnew Maquina(codigo, ubicacion, tipoMaquina);
+		Maquina^ objMaquina = gcnew Maquina(codigo, codigoUbicacion, tipoMaquina);
 		listaMaquinas->Add(objMaquina);
 	}
 
@@ -254,9 +253,9 @@ Maquina^ MaquinaController::buscarMaquinaxCodigoBD(int codigo) {
 
 	while (objData->Read()) {
 		int codigo = safe_cast<int>(objData[0]);
-		String^ ubicacion = safe_cast<String^>(objData[1]);
+		int codigoUbicacion = safe_cast<int>(objData[1]);
 		String^ tipoMaquina = safe_cast<String^>(objData[2]);
-		objMaquina = gcnew Maquina(codigo, ubicacion, tipoMaquina);
+		objMaquina = gcnew Maquina(codigo, codigoUbicacion, tipoMaquina);
 	}
 	cerrarConexionBD();
 	return objMaquina;
@@ -291,9 +290,9 @@ List<Maquina^>^ MaquinaController::buscarAllBD() {
 
 	while (objData->Read()) {
 		int codigo = safe_cast<int>(objData[0]);
-		String^ ubicacion = safe_cast<String^>(objData[1]);
+		int codigoUbicacion = safe_cast<int>(objData[2]);
 		String^ tipoMaquina = safe_cast<String^>(objData[2]);
-		Maquina^ objMaquina = gcnew Maquina(codigo, ubicacion, tipoMaquina);
+		Maquina^ objMaquina = gcnew Maquina(codigo, codigoUbicacion, tipoMaquina);
 		listaMaquinas->Add(objMaquina);
 	}
 

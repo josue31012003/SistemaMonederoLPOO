@@ -12,11 +12,12 @@ namespace SistemaMonederoModel {
 		String^ Origen;
 		double Precio;
 		double cantPlatosVendidos;
+		int codigoUbicacion;
 
 		//Siempre hay 2 constructores, uno vacio y otro con todo ojo O_O
 	public:
 		Plato();
-		Plato(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos);
+		Plato(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, int codigoUbicacion);
 
 		int getCodigo();
 		void setCodigo(int codigo);
@@ -32,6 +33,10 @@ namespace SistemaMonederoModel {
 
 		double getCantPlatosVendidos();
 		void setCantPlatosVendidos(double cantPlatosVendidos);
+		//DBNull::Value, equivalente de nullptr en SQL
+		//String::Empty
+		int getCodUbicacion();
+		void setCodUbicacion(int codigoUbicacion);
 
 	};
 }

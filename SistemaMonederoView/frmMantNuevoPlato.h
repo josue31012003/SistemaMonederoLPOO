@@ -255,7 +255,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		}
 		else {
 			// Crear el objeto Plato
-			Plato^ objPlato = gcnew Plato(codigo, Nombre, Origen, Precio, cantPlatosVendidos);
+			Plato^ objPlato = gcnew Plato(codigo, Nombre, Origen, Precio, cantPlatosVendidos, 0);
 
 			// Registrar el plato en la base de datos
 			PlatoController^ objPlatoController = gcnew PlatoController();

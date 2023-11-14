@@ -61,6 +61,9 @@ namespace SistemaMonederoView {
 	/*AGREGAR OBJETO DEL CONSTRUCTOR QUE RECIBE PARAMETRO*/
 	private: Plato^ objPlato;
 
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -85,6 +88,8 @@ namespace SistemaMonederoView {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -110,6 +115,8 @@ namespace SistemaMonederoView {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->comboBox1);
+			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->textBox4);
 			this->groupBox1->Controls->Add(this->textBox3);
 			this->groupBox1->Controls->Add(this->textBox2);
@@ -120,28 +127,28 @@ namespace SistemaMonederoView {
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Location = System::Drawing::Point(62, 47);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(380, 348);
+			this->groupBox1->Size = System::Drawing::Size(380, 397);
 			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos del plato";
 			// 
 			// textBox4
 			// 
-			this->textBox4->Location = System::Drawing::Point(168, 277);
+			this->textBox4->Location = System::Drawing::Point(168, 262);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(142, 22);
 			this->textBox4->TabIndex = 7;
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(168, 212);
+			this->textBox3->Location = System::Drawing::Point(168, 201);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(142, 22);
 			this->textBox3->TabIndex = 6;
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(168, 147);
+			this->textBox2->Location = System::Drawing::Point(168, 142);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(142, 22);
 			this->textBox2->TabIndex = 5;
@@ -158,7 +165,7 @@ namespace SistemaMonederoView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(46, 280);
+			this->label4->Location = System::Drawing::Point(46, 262);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(49, 16);
 			this->label4->TabIndex = 3;
@@ -167,7 +174,7 @@ namespace SistemaMonederoView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(46, 214);
+			this->label3->Location = System::Drawing::Point(46, 201);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(50, 16);
 			this->label3->TabIndex = 2;
@@ -176,7 +183,7 @@ namespace SistemaMonederoView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(46, 151);
+			this->label2->Location = System::Drawing::Point(46, 140);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(59, 16);
 			this->label2->TabIndex = 1;
@@ -190,6 +197,24 @@ namespace SistemaMonederoView {
 			this->label1->Size = System::Drawing::Size(54, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Código:";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(46, 323);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(71, 16);
+			this->label5->TabIndex = 8;
+			this->label5->Text = L"Ubicación:";
+			this->label5->Click += gcnew System::EventHandler(this, &frmEditPlato::label5_Click);
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(168, 323);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(142, 24);
+			this->comboBox1->TabIndex = 10;
 			// 
 			// frmEditPlato
 			// 
@@ -227,7 +252,7 @@ namespace SistemaMonederoView {
 			String^ Origen = textBox3->Text;
 
 			// Crear el objeto Plato
-			Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, precio, 0); // Se establece CantPlatosVendidos a 0, puedes ajustar según tus necesidades
+			Plato^ objPlato = gcnew Plato(codigoPlato,  Nombre, Origen, precio, 0, 0); // Se establece CantPlatosVendidos a 0, puedes ajustar según tus necesidades
 
 			// Actualizar los valores en la base de datos
 			PlatoController^ objPlatoController = gcnew PlatoController();
@@ -257,6 +282,8 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 }
 
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

@@ -6,12 +6,13 @@ Plato::Plato() {
 
 }
 
-Plato::Plato(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos) {
+Plato::Plato(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, int codigoUbicacion) {
 	this->codigo = codigo;
 	this->Nombre = Nombre;
 	this->Origen = Origen;
 	this->Precio = Precio;
-	this->cantPlatosVendidos = cantPlatosVendidos; 
+	this->cantPlatosVendidos = cantPlatosVendidos;
+	this->codigoUbicacion = codigoUbicacion;
 }
 
 /*Las propiedades son metodos que nos permiten acceder y modificar
@@ -53,4 +54,11 @@ double Plato::getCantPlatosVendidos() {
 }
 void Plato::setCantPlatosVendidos(double cantPlatosVendidos) {
 	this->cantPlatosVendidos = cantPlatosVendidos;
+}
+
+int Plato::getCodUbicacion() {
+	return this->codigoUbicacion;
+}
+void Plato::setCodUbicacion(int codigoUbicacion) {
+	this->codigoUbicacion = codigoUbicacion;
 }

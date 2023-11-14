@@ -196,7 +196,7 @@ namespace SistemaMonederoView {
 		MaquinaController^ objMaquinaController = gcnew MaquinaController(); 
 		Maquina^ ObjMaquina = objMaquinaController->buscarMaquinaxCodigoBD(this->codigo); 
 			this->textBox1->Text = Convert::ToString(ObjMaquina->getCodigo()); 
-			this->textBox3->Text = ObjMaquina->getUbicacionMaquina(); 
+			this->textBox3->Text = Convert::ToString(ObjMaquina->getCodigoUbicacion());
 			this->comboBox1->Text = ObjMaquina->gettipoMaquina(); 
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
