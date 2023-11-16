@@ -6,6 +6,7 @@ namespace SistemaMonederoView {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
@@ -63,8 +64,10 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::TextBox^ textBox6;
+
 	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::ComboBox^ comboBox2;
+
 
 	private:
 		/// <summary>
@@ -82,7 +85,6 @@ namespace SistemaMonederoView {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
@@ -95,6 +97,7 @@ namespace SistemaMonederoView {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -122,7 +125,7 @@ namespace SistemaMonederoView {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->textBox6);
+			this->groupBox1->Controls->Add(this->comboBox2);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->textBox5);
 			this->groupBox1->Controls->Add(this->comboBox1);
@@ -143,14 +146,6 @@ namespace SistemaMonederoView {
 			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos del plato";
-			// 
-			// textBox6
-			// 
-			this->textBox6->Location = System::Drawing::Point(262, 336);
-			this->textBox6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(76, 22);
-			this->textBox6->TabIndex = 13;
 			// 
 			// label6
 			// 
@@ -257,6 +252,14 @@ namespace SistemaMonederoView {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Código:";
 			// 
+			// comboBox2
+			// 
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Location = System::Drawing::Point(195, 338);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(143, 24);
+			this->comboBox2->TabIndex = 13;
+			// 
 			// frmEditPlato
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -271,7 +274,6 @@ namespace SistemaMonederoView {
 			this->Name = L"frmEditPlato";
 			this->Text = L"frmEditPlato";
 			this->Load += gcnew System::EventHandler(this, &frmEditPlato::frmEditPlato_Load);
-			//this->Click += gcnew System::EventHandler(this, &frmEditPlato::label6_Click);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
@@ -297,9 +299,10 @@ namespace SistemaMonederoView {
 			String^ Origen = textBox3->Text;
 			double Precio = Convert::ToDouble(textBox4->Text);
 			double cantPlatosDisponible = Convert::ToDouble(textBox5->Text);
+			//double cantPlatosVendidos = Convert::ToDouble(this->objPlato->getCantPlatosVendidos());
 
 			// Crear el objeto Plato
-			Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio, 0, cantPlatosDisponible, 0); // Se establece CantPlatosVendidos a 0, puedes ajustar según tus necesidades
+			//Plato^ objPlato = gcnew Plato(codigoPlato, Nombre, Origen, Precio, cantPlatosVendidos, cantPlatosDisponible, 0); // Se establece CantPlatosVendidos a 0, puedes ajustar según tus necesidades
 
 			// Actualizar los valores en la base de datos
 			PlatoController^ objPlatoController = gcnew PlatoController();
@@ -315,12 +318,23 @@ namespace SistemaMonederoView {
 	   /*CARGAR VALORES DE ATRIBUTOS DEL OBJETO SELECCIONADO EN VENTANA*/
 private: System::Void frmEditPlato_Load(System::Object^ sender, System::EventArgs^ e) {
 
+	UbicacionController^ objUbicacionController = gcnew UbicacionController();
+	List<String^>^ listaUbicaciones = objUbicacionController->obtenerUbicaciones();
+
+	this->comboBox2->Items->Clear();
+	for (int i = 0; i < listaUbicaciones->Count; i++) {
+		this->comboBox2->Items->Add(listaUbicaciones[i]);
+	}
+
+	int codigoUbicacion = this->objPlato->getCodUbicacion();
+	Ubicacion^ ubicacion = objUbicacionController->buscarUbicacionxCodigoBD(codigoUbicacion);
+
 	this->textBox1->Text = Convert::ToString(this->objPlato->getCodigo());
 	this->textBox2->Text = this->objPlato->getNombre();
 	this->textBox3->Text = this->objPlato->getOrigen();
 	this->textBox4->Text = Convert::ToString(this->objPlato->getPrecio());
 	this->textBox5->Text = Convert::ToString(this->objPlato->getCantPlatosDisponible());
-
+	this->comboBox2->Text = ubicacion->getNombre();
 }
 
 	   /*CANCELAR*/

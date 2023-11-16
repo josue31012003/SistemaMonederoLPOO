@@ -359,7 +359,7 @@ Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
             double precio = safe_cast<double>(objData["precio"]);
             double cantPlatosVendidos = safe_cast<double>(objData["cantPlatosVendidos"]);
             double cantPlatosDisponibles = safe_cast<double>(objData["cantPlatosDisponibles"]);
-            int codigoUbicacion = safe_cast<double>(objData["codigoUbicacion"]);
+            int codigoUbicacion = safe_cast<int>(objData["codigoUbicacion"]);
            
             objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos, cantPlatosDisponibles, codigoUbicacion);
         }
