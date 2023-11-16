@@ -219,7 +219,7 @@ namespace SistemaMonederoView {
         String^ Estado = this->comboBox1->Text;
         Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigoTarjeta, fechaAlta, fechaBaja, Estado);
         TarjetaController^ ObjTarjetaController = gcnew TarjetaController();
-        ObjTarjetaController->agregarTarjeta(ObjTarjeta);
+        ObjTarjetaController->registrarTarjetaBD(fechaAlta, fechaBaja, Estado);
         MessageBox::Show("La tarjeta ha sido añadida exitosamente.");
         serialPort1->Close();
         this->Close();
