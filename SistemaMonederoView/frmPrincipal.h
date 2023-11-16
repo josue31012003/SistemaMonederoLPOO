@@ -60,15 +60,33 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::ToolStripMenuItem^ maquinaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ comprarProductoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ historialDeTransaccionToolStripMenuItem;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
 
-	private: System::Windows::Forms::Label^ label1;
+
+
+
 	private: System::Windows::Forms::ToolStripMenuItem^ reporteDeVentasPorPlatoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ reporteDeActividadDeUsuariosToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ reporteDeActividadDeMáquinasToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ reporteDeToolStripMenuItem;
+	private: System::Windows::Forms::TabControl^ tabControl1;
+	private: System::Windows::Forms::TabPage^ tabPage1;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::TabPage^ tabPage2;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	protected:
@@ -102,11 +120,16 @@ namespace SistemaMonederoView {
 			this->platosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->maquinaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ayudaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
+			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
+			this->tabControl1->SuspendLayout();
+			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -119,15 +142,15 @@ namespace SistemaMonederoView {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(565, 24);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(753, 28);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// archivoToolStripMenuItem
 			// 
 			this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
-			this->archivoToolStripMenuItem->Size = System::Drawing::Size(60, 20);
+			this->archivoToolStripMenuItem->Size = System::Drawing::Size(73, 24);
 			this->archivoToolStripMenuItem->Text = L"Archivo";
 			// 
 			// operacionesToolStripMenuItem
@@ -137,20 +160,20 @@ namespace SistemaMonederoView {
 					this->historialDeTransaccionToolStripMenuItem
 			});
 			this->operacionesToolStripMenuItem->Name = L"operacionesToolStripMenuItem";
-			this->operacionesToolStripMenuItem->Size = System::Drawing::Size(85, 20);
+			this->operacionesToolStripMenuItem->Size = System::Drawing::Size(106, 24);
 			this->operacionesToolStripMenuItem->Text = L"Operaciones";
 			// 
 			// comprarProductoToolStripMenuItem
 			// 
 			this->comprarProductoToolStripMenuItem->Name = L"comprarProductoToolStripMenuItem";
-			this->comprarProductoToolStripMenuItem->Size = System::Drawing::Size(199, 22);
+			this->comprarProductoToolStripMenuItem->Size = System::Drawing::Size(250, 26);
 			this->comprarProductoToolStripMenuItem->Text = L"Comprar producto";
 			this->comprarProductoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::comprarProductoToolStripMenuItem_Click);
 			// 
 			// historialDeTransaccionToolStripMenuItem
 			// 
 			this->historialDeTransaccionToolStripMenuItem->Name = L"historialDeTransaccionToolStripMenuItem";
-			this->historialDeTransaccionToolStripMenuItem->Size = System::Drawing::Size(199, 22);
+			this->historialDeTransaccionToolStripMenuItem->Size = System::Drawing::Size(250, 26);
 			this->historialDeTransaccionToolStripMenuItem->Text = L"Historial de Transaccion";
 			this->historialDeTransaccionToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::historialDeTransaccionToolStripMenuItem_Click);
 			// 
@@ -161,34 +184,34 @@ namespace SistemaMonederoView {
 					this->reporteDeActividadDeUsuariosToolStripMenuItem, this->reporteDeActividadDeMáquinasToolStripMenuItem, this->reporteDeToolStripMenuItem
 			});
 			this->tendenciaToolStripMenuItem->Name = L"tendenciaToolStripMenuItem";
-			this->tendenciaToolStripMenuItem->Size = System::Drawing::Size(65, 20);
+			this->tendenciaToolStripMenuItem->Size = System::Drawing::Size(82, 24);
 			this->tendenciaToolStripMenuItem->Text = L"Reportes";
 			// 
 			// reporteDeVentasPorPlatoToolStripMenuItem
 			// 
 			this->reporteDeVentasPorPlatoToolStripMenuItem->Name = L"reporteDeVentasPorPlatoToolStripMenuItem";
-			this->reporteDeVentasPorPlatoToolStripMenuItem->Size = System::Drawing::Size(239, 22);
+			this->reporteDeVentasPorPlatoToolStripMenuItem->Size = System::Drawing::Size(305, 26);
 			this->reporteDeVentasPorPlatoToolStripMenuItem->Text = L"Reporte de ventas por plato";
 			this->reporteDeVentasPorPlatoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::reporteDeVentasPorPlatoToolStripMenuItem_Click);
 			// 
 			// reporteDeActividadDeUsuariosToolStripMenuItem
 			// 
 			this->reporteDeActividadDeUsuariosToolStripMenuItem->Name = L"reporteDeActividadDeUsuariosToolStripMenuItem";
-			this->reporteDeActividadDeUsuariosToolStripMenuItem->Size = System::Drawing::Size(239, 22);
+			this->reporteDeActividadDeUsuariosToolStripMenuItem->Size = System::Drawing::Size(305, 26);
 			this->reporteDeActividadDeUsuariosToolStripMenuItem->Text = L"Reporte de usuarios";
 			this->reporteDeActividadDeUsuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::reporteDeActividadDeUsuariosToolStripMenuItem_Click);
 			// 
 			// reporteDeActividadDeMáquinasToolStripMenuItem
 			// 
 			this->reporteDeActividadDeMáquinasToolStripMenuItem->Name = L"reporteDeActividadDeMáquinasToolStripMenuItem";
-			this->reporteDeActividadDeMáquinasToolStripMenuItem->Size = System::Drawing::Size(239, 22);
+			this->reporteDeActividadDeMáquinasToolStripMenuItem->Size = System::Drawing::Size(305, 26);
 			this->reporteDeActividadDeMáquinasToolStripMenuItem->Text = L"Reporte de máquinas";
 			this->reporteDeActividadDeMáquinasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::reporteDeActividadDeMáquinasToolStripMenuItem_Click);
 			// 
 			// reporteDeToolStripMenuItem
 			// 
 			this->reporteDeToolStripMenuItem->Name = L"reporteDeToolStripMenuItem";
-			this->reporteDeToolStripMenuItem->Size = System::Drawing::Size(239, 22);
+			this->reporteDeToolStripMenuItem->Size = System::Drawing::Size(305, 26);
 			this->reporteDeToolStripMenuItem->Text = L"Reporte de actividad de tarjetas";
 			this->reporteDeToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::reporteDeToolStripMenuItem_Click);
 			// 
@@ -199,66 +222,108 @@ namespace SistemaMonederoView {
 					this->tarjetasToolStripMenuItem, this->platosToolStripMenuItem, this->maquinaToolStripMenuItem
 			});
 			this->mantenimientoToolStripMenuItem->Name = L"mantenimientoToolStripMenuItem";
-			this->mantenimientoToolStripMenuItem->Size = System::Drawing::Size(101, 20);
+			this->mantenimientoToolStripMenuItem->Size = System::Drawing::Size(124, 24);
 			this->mantenimientoToolStripMenuItem->Text = L"Mantenimiento";
 			this->mantenimientoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::mantenimientoToolStripMenuItem_Click);
 			// 
 			// usuariosToolStripMenuItem
 			// 
 			this->usuariosToolStripMenuItem->Name = L"usuariosToolStripMenuItem";
-			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(150, 26);
 			this->usuariosToolStripMenuItem->Text = L"Usuarios";
 			this->usuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::usuariosToolStripMenuItem_Click);
 			// 
 			// tarjetasToolStripMenuItem
 			// 
 			this->tarjetasToolStripMenuItem->Name = L"tarjetasToolStripMenuItem";
-			this->tarjetasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->tarjetasToolStripMenuItem->Size = System::Drawing::Size(150, 26);
 			this->tarjetasToolStripMenuItem->Text = L"Tarjetas";
 			this->tarjetasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::tarjetasToolStripMenuItem_Click);
 			// 
 			// platosToolStripMenuItem
 			// 
 			this->platosToolStripMenuItem->Name = L"platosToolStripMenuItem";
-			this->platosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->platosToolStripMenuItem->Size = System::Drawing::Size(150, 26);
 			this->platosToolStripMenuItem->Text = L"Platos";
 			this->platosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::platosToolStripMenuItem_Click);
 			// 
 			// maquinaToolStripMenuItem
 			// 
 			this->maquinaToolStripMenuItem->Name = L"maquinaToolStripMenuItem";
-			this->maquinaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->maquinaToolStripMenuItem->Size = System::Drawing::Size(150, 26);
 			this->maquinaToolStripMenuItem->Text = L"Maquina";
 			this->maquinaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::maquinaToolStripMenuItem_Click);
 			// 
 			// ayudaToolStripMenuItem
 			// 
 			this->ayudaToolStripMenuItem->Name = L"ayudaToolStripMenuItem";
-			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(53, 20);
+			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(65, 24);
 			this->ayudaToolStripMenuItem->Text = L"Ayuda";
+			// 
+			// tabControl1
+			// 
+			this->tabControl1->Controls->Add(this->tabPage1);
+			this->tabControl1->Controls->Add(this->tabPage2);
+			this->tabControl1->Location = System::Drawing::Point(25, 43);
+			this->tabControl1->Name = L"tabControl1";
+			this->tabControl1->SelectedIndex = 0;
+			this->tabControl1->Size = System::Drawing::Size(704, 478);
+			this->tabControl1->TabIndex = 15;
+			// 
+			// tabPage1
+			// 
+			this->tabPage1->Controls->Add(this->label1);
+			this->tabPage1->Controls->Add(this->button2);
+			this->tabPage1->Controls->Add(this->dataGridView1);
+			this->tabPage1->Location = System::Drawing::Point(4, 25);
+			this->tabPage1->Name = L"tabPage1";
+			this->tabPage1->Size = System::Drawing::Size(696, 449);
+			this->tabPage1->TabIndex = 0;
+			this->tabPage1->Text = L"Compra";
+			this->tabPage1->UseVisualStyleBackColor = true;
+			// 
+			// tabPage2
+			// 
+			this->tabPage2->Location = System::Drawing::Point(4, 25);
+			this->tabPage2->Name = L"tabPage2";
+			this->tabPage2->Size = System::Drawing::Size(696, 449);
+			this->tabPage2->TabIndex = 0;
+			this->tabPage2->Text = L"Recarga";
+			this->tabPage2->UseVisualStyleBackColor = true;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(33, 37);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(335, 16);
+			this->label1->TabIndex = 17;
+			this->label1->Text = L"Seleccione la ubicacion en la se realizara las compras:";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(237, 351);
+			this->button2->Location = System::Drawing::Point(298, 378);
+			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(93, 23);
-			this->button2->TabIndex = 12;
+			this->button2->Size = System::Drawing::Size(124, 28);
+			this->button2->TabIndex = 16;
 			this->button2->Text = L"Seleccionar";
 			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &frmPrincipal::button2_Click_1);
+			this->button2->Click += gcnew System::EventHandler(this, &frmPrincipal::button2_Click_2);
 			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column1 });
-			this->dataGridView1->Location = System::Drawing::Point(170, 134);
+			this->dataGridView1->Location = System::Drawing::Point(209, 111);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(233, 181);
-			this->dataGridView1->TabIndex = 11;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmPrincipal::dataGridView1_CellContentClick);
+			this->dataGridView1->Size = System::Drawing::Size(311, 223);
+			this->dataGridView1->TabIndex = 15;
 			// 
 			// Column1
 			// 
@@ -267,31 +332,23 @@ namespace SistemaMonederoView {
 			this->Column1->Name = L"Column1";
 			this->Column1->Width = 180;
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(38, 74);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(264, 13);
-			this->label1->TabIndex = 14;
-			this->label1->Text = L"Seleccione la ubicacion en la se realizara las compras:";
-			// 
 			// frmPrincipal
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(565, 443);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->dataGridView1);
+			this->ClientSize = System::Drawing::Size(753, 545);
+			this->Controls->Add(this->tabControl1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"frmPrincipal";
 			this->Text = L"Ventana Principal";
 			this->Load += gcnew System::EventHandler(this, &frmPrincipal::frmPrincipal_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			this->tabControl1->ResumeLayout(false);
+			this->tabPage1->ResumeLayout(false);
+			this->tabPage1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -371,15 +428,7 @@ private: System::Void frmPrincipal_Load(System::Object^ sender, System::EventArg
 		MessageBox::Show("La lista de ubicaciones es nula.");
 	}
 }
-private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 
-	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
-	String^ objUbicacion = this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString();
-
-	frmComprarPlato^ ventanaCompraPlato = gcnew frmComprarPlato(objUbicacion);
-	ventanaCompraPlato->ShowDialog();
-
-}
 private: System::Void verHistorialToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void historialDeTransaccionToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -412,6 +461,13 @@ private: System::Void reporteDeToolStripMenuItem_Click(System::Object^ sender, S
 	frmReporteActividadTarjetas^ ventanaReporteActividadTarjetas = gcnew frmReporteActividadTarjetas();     //Incluir "  #include "frmMantEdificios"  "  
 	//ventanaReporteActividadTarjetas->MdiParent = this; //Opcional
 	ventanaReporteActividadTarjetas->ShowDialog();
+}
+private: System::Void button2_Click_2(System::Object^ sender, System::EventArgs^ e) {
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
+	String^ objUbicacion = this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString();
+
+	frmComprarPlato^ ventanaCompraPlato = gcnew frmComprarPlato(objUbicacion);
+	ventanaCompraPlato->ShowDialog();
 }
 };
 }

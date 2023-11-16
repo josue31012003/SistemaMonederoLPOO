@@ -58,7 +58,6 @@ namespace SistemaMonederoController {
 		void restarConteoPlatosSeleccionados(String^ codigoPlato, int cantidad);
 		void reiniciarConteoPlatos();
 
-
 	};
 
 }
