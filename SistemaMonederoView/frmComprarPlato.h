@@ -23,8 +23,10 @@ namespace SistemaMonederoView {
 		frmComprarPlato(void)
 		{
 			InitializeComponent();
+			
+
 			//
-			//TODO: agregar código de constructor aquí
+			
 			//
 
 		}
@@ -53,10 +55,12 @@ namespace SistemaMonederoView {
 		/// </summary>
 		~frmComprarPlato()
 		{
+			serialPort1->Close();
 			if (components)
 			{
 				delete components;
 			}
+			
 		}
 
 	protected:
@@ -88,6 +92,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::IO::Ports::SerialPort^ serialPort1;
 
 
 
@@ -128,6 +133,8 @@ namespace SistemaMonederoView {
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->serialPort1 = gcnew System::IO::Ports::SerialPort();
+
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
@@ -141,11 +148,11 @@ namespace SistemaMonederoView {
 			this->groupBox2->Controls->Add(this->textBox5);
 			this->groupBox2->Controls->Add(this->label6);
 			this->groupBox2->Controls->Add(this->label5);
-			this->groupBox2->Location = System::Drawing::Point(11, 322);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(2);
+			this->groupBox2->Location = System::Drawing::Point(15, 396);
+			this->groupBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(2);
-			this->groupBox2->Size = System::Drawing::Size(334, 145);
+			this->groupBox2->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox2->Size = System::Drawing::Size(445, 178);
 			this->groupBox2->TabIndex = 1;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Datos de comprador";
@@ -153,10 +160,9 @@ namespace SistemaMonederoView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(39, 27);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(52, 33);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(272, 26);
+			this->label1->Size = System::Drawing::Size(345, 32);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"Pase su tarjeta por el sensor para mostrar su informacion\r\ny confirmar su identid"
 				L"ad";
@@ -166,47 +172,45 @@ namespace SistemaMonederoView {
 			// textBox6
 			// 
 			this->textBox6->Enabled = false;
-			this->textBox6->Location = System::Drawing::Point(152, 113);
-			this->textBox6->Margin = System::Windows::Forms::Padding(2);
+			this->textBox6->Location = System::Drawing::Point(203, 139);
+			this->textBox6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(116, 20);
+			this->textBox6->Size = System::Drawing::Size(153, 22);
 			this->textBox6->TabIndex = 6;
 			// 
 			// textBox5
 			// 
 			this->textBox5->Enabled = false;
-			this->textBox5->Location = System::Drawing::Point(152, 75);
-			this->textBox5->Margin = System::Windows::Forms::Padding(2);
+			this->textBox5->Location = System::Drawing::Point(203, 92);
+			this->textBox5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(116, 20);
+			this->textBox5->Size = System::Drawing::Size(153, 22);
 			this->textBox5->TabIndex = 5;
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(70, 113);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label6->Location = System::Drawing::Point(93, 139);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(74, 13);
+			this->label6->Size = System::Drawing::Size(91, 16);
 			this->label6->TabIndex = 1;
 			this->label6->Text = L"RFID Usuario ";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(70, 77);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Location = System::Drawing::Point(93, 95);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(40, 13);
+			this->label5->Size = System::Drawing::Size(51, 16);
 			this->label5->TabIndex = 0;
 			this->label5->Text = L"Código";
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(315, 484);
-			this->button3->Margin = System::Windows::Forms::Padding(2);
+			this->button3->Location = System::Drawing::Point(420, 596);
+			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(103, 54);
+			this->button3->Size = System::Drawing::Size(137, 66);
 			this->button3->TabIndex = 7;
 			this->button3->Text = L"CONFIRMAR COMPRA";
 			this->button3->UseVisualStyleBackColor = true;
@@ -219,13 +223,13 @@ namespace SistemaMonederoView {
 				this->Column1,
 					this->Column2, this->Column3
 			});
-			this->dataGridView1->Location = System::Drawing::Point(34, 26);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(1, 2, 2, 2);
+			this->dataGridView1->Location = System::Drawing::Point(45, 32);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(1, 2, 3, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(288, 226);
+			this->dataGridView1->Size = System::Drawing::Size(384, 278);
 			this->dataGridView1->TabIndex = 9;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmComprarPlato::dataGridView1_CellContentClick);
 			// 
@@ -257,13 +261,13 @@ namespace SistemaMonederoView {
 				this->dataGridViewTextBoxColumn1,
 					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3
 			});
-			this->dataGridView2->Location = System::Drawing::Point(29, 36);
-			this->dataGridView2->Margin = System::Windows::Forms::Padding(1, 2, 2, 2);
+			this->dataGridView2->Location = System::Drawing::Point(39, 44);
+			this->dataGridView2->Margin = System::Windows::Forms::Padding(1, 2, 3, 2);
 			this->dataGridView2->Name = L"dataGridView2";
 			this->dataGridView2->RowHeadersWidth = 51;
 			this->dataGridView2->RowTemplate->Height = 24;
 			this->dataGridView2->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView2->Size = System::Drawing::Size(288, 350);
+			this->dataGridView2->Size = System::Drawing::Size(384, 431);
 			this->dataGridView2->TabIndex = 10;
 			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmComprarPlato::dataGridView2_CellContentClick);
 			// 
@@ -292,21 +296,21 @@ namespace SistemaMonederoView {
 			// 
 			this->groupBox1->Controls->Add(this->button2);
 			this->groupBox1->Controls->Add(this->dataGridView2);
-			this->groupBox1->Location = System::Drawing::Point(369, 26);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(2);
+			this->groupBox1->Location = System::Drawing::Point(492, 32);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(2);
-			this->groupBox1->Size = System::Drawing::Size(341, 441);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Size = System::Drawing::Size(455, 543);
 			this->groupBox1->TabIndex = 11;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Carrito de compras";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(98, 397);
-			this->button2->Margin = System::Windows::Forms::Padding(2);
+			this->button2->Location = System::Drawing::Point(131, 489);
+			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(152, 32);
+			this->button2->Size = System::Drawing::Size(203, 39);
 			this->button2->TabIndex = 13;
 			this->button2->Text = L"Eliminar seleccion";
 			this->button2->UseVisualStyleBackColor = true;
@@ -314,10 +318,10 @@ namespace SistemaMonederoView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(84, 266);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Location = System::Drawing::Point(112, 327);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(152, 32);
+			this->button1->Size = System::Drawing::Size(203, 39);
 			this->button1->TabIndex = 12;
 			this->button1->Text = L"Seleccionar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -325,18 +329,17 @@ namespace SistemaMonederoView {
 			// 
 			// frmComprarPlato
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(738, 548);
+			this->ClientSize = System::Drawing::Size(984, 674);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->groupBox2);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"frmComprarPlato";
 			this->Text = L"frmComprarPlato";
-			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &frmComprarPlato::frmComprarPlato_FormClosing);
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &frmComprarPlato::frmComprarPlato_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &frmComprarPlato::frmComprarPlato_Load);
 			this->groupBox2->ResumeLayout(false);
@@ -345,7 +348,26 @@ namespace SistemaMonederoView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->ResumeLayout(false);
+			
 
+		}
+		void InicializeSerial(void) {
+			SerialController^ arduino = gcnew SerialController();
+			serialPort1->PortName = arduino->ObtenerPuertoSerial(); 
+			serialPort1->BaudRate = 9600; 
+			serialPort1->DataBits = 8;
+			serialPort1->Parity = System::IO::Ports::Parity::None; 
+			serialPort1->StopBits = System::IO::Ports::StopBits::One; 
+			
+			try {
+				serialPort1->Open();
+			}
+			catch (Exception^ ex)
+			{
+			
+			}
+			serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &frmComprarPlato::serialPort1_DataReceived);
+			
 		}
 #pragma endregion
 
@@ -428,6 +450,7 @@ private: void mostrarGrilla(List<Plato^>^ listPlatos) {
 		List<Plato^>^ listPlatos = ObjPlatoController->buscarPlatosxUbicacionBD(objUbicacion);
 		mostrarGrilla(listPlatos);
 		ObjPlatoController->reiniciarConteoPlatos();
+		InicializeSerial();
 
 
 	}
@@ -458,6 +481,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 
 	// Mostrar un mensaje de éxito o realizar otras acciones finales
 	MessageBox::Show("Se realizo la compra exitosamente");
+	serialPort1->Close();
 	this->dataGridView2->Rows->Clear();
 	this->dataGridView2->Refresh();
 }
@@ -524,13 +548,31 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 
 
 private: System::Void frmComprarPlato_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+	serialPort1->Close();
 
 
 
 }
-private: System::Void frmComprarPlato_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 
 
+
+
+private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
+	String^ receivedData = serialPort1->ReadLine();
+	if (this->IsHandleCreated) {
+		this->Invoke(gcnew Action<String^>(this, &frmComprarPlato::UpdateTextBox), receivedData);
+	}
+	
+
+	
 }
+
+
+private: System::Void UpdateTextBox(String^ data) {
+	if (data != "")
+		textBox6->Text = data;
+}
+
+
 };
 }

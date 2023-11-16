@@ -1,5 +1,6 @@
 #pragma once
 
+
 namespace SistemaMonederoView {
 
 	using namespace System;
@@ -21,7 +22,6 @@ namespace SistemaMonederoView {
 		{
 			InitializeComponent();
 			//
-			//TODO: agregar código de constructor aquí
 			//
 		}
 	/*	frmEditarTarjeta(Tarjeta^ objTarjeta)
@@ -246,3 +246,4 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 }
 };
 }
+
