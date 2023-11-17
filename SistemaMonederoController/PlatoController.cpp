@@ -413,10 +413,11 @@ Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
         return listPlatos;
     }
 
-    void PlatoController::registrarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, double cantPlatosDisponibles, int codigoUbicacion) {
+    void PlatoController::registrarPlatoBD(String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, double cantPlatosDisponibles, int codigoUbicacion) {
+
+        SqlCommand^ objSentencia = gcnew SqlCommand();
 
         abrirConexionBD();
-        SqlCommand^ objSentencia = gcnew SqlCommand();
         objSentencia->CommandText = "INSERT INTO Platos (nombre, origen, precio, cantPlatosVendidos, cantPlatosDisponibles, codigoUbicacion) VALUES('" + Nombre + "', '" + Origen + "', '" + Precio + "', '" + cantPlatosVendidos + "', '" + cantPlatosDisponibles + "', '" + codigoUbicacion + "')";
         objSentencia->Connection = this->objConexion;
         objSentencia->ExecuteNonQuery();
@@ -432,10 +433,10 @@ Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
         objSentencia->ExecuteNonQuery();
         cerrarConexionBD();
     }
-    void PlatoController::ActualizarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosDisponible) {
+    void PlatoController::ActualizarPlatoBD(int codigo, String^ Origen, double Precio, double cantPlatosDisponible) {
         abrirConexionBD();
         SqlCommand^ objSentencia = gcnew SqlCommand();
-        objSentencia->CommandText = "UPDATE Platos SET nombre='" + Nombre + "',origen='" + Origen + "',precio='" + Precio + "',cantPlatosDisponibles='" + cantPlatosDisponible + "' WHERE codigo =" + codigo;
+        objSentencia->CommandText = "UPDATE Platos SET origen='" + Origen + "',precio='" + Precio + "',cantPlatosDisponibles='" + cantPlatosDisponible + "' WHERE codigo =" + codigo;
         objSentencia->Connection = this->objConexion;
         objSentencia->ExecuteNonQuery();
         cerrarConexionBD();

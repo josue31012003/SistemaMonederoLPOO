@@ -301,7 +301,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 
 	   /*ELIMINAR*/
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	PlatoController^ ObjPlatoController;
+	PlatoController^ ObjPlatoController = gcnew PlatoController();
 
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());

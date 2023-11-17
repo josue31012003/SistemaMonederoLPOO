@@ -118,6 +118,7 @@
     <ClInclude Include="Maquina.h" />
     <ClInclude Include="MaquinaCompra.h" />
     <ClInclude Include="MaquinaRecarga.h" />
+    <ClInclude Include="nombrePlato.h" />
     <ClInclude Include="Plato.h" />
     <ClInclude Include="Tarjeta.h" />
     <ClInclude Include="Ubicacion.h" />
@@ -130,6 +131,7 @@
     <ClCompile Include="Maquina.cpp" />
     <ClCompile Include="MaquinaCompra.cpp" />
     <ClCompile Include="MaquinaRecarga.cpp" />
+    <ClCompile Include="nombrePlato.cpp" />
     <ClCompile Include="Plato.cpp" />
     <ClCompile Include="Tarjeta.cpp" />
     <ClCompile Include="Ubicacion.cpp" />

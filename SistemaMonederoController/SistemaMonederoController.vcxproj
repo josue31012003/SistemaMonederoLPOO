@@ -113,6 +113,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="MaquinaController.h" />
+    <ClInclude Include="nombrePlatoController.h" />
     <ClInclude Include="PlatoController.h" />
     <ClInclude Include="SerialController.h" />
     <ClInclude Include="TarjetaController.h" />
@@ -121,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MaquinaController.cpp" />
+    <ClCompile Include="nombrePlatoController.cpp" />
     <ClCompile Include="PlatoController.cpp" />
     <ClCompile Include="SerialController.cpp" />
     <ClCompile Include="TarjetaController.cpp" />

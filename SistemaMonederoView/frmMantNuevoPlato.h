@@ -41,7 +41,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::TextBox^ textBox4;
 	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox2;
+
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label3;
@@ -53,6 +53,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::ComboBox^ comboBox2;
 	protected:
 
 	private:
@@ -70,11 +71,13 @@ namespace SistemaMonederoView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -82,20 +85,18 @@ namespace SistemaMonederoView {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->comboBox2);
 			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->textBox5);
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->textBox4);
 			this->groupBox1->Controls->Add(this->textBox3);
-			this->groupBox1->Controls->Add(this->textBox2);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Controls->Add(this->label3);
@@ -109,11 +110,41 @@ namespace SistemaMonederoView {
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos del plato";
-			this->groupBox1->Enter += gcnew System::EventHandler(this, &frmMantNuevoPlato::groupBox1_Enter);
+			
+			// 
+			// comboBox2
+			// 
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Location = System::Drawing::Point(169, 100);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(143, 24);
+			this->comboBox2->TabIndex = 12;
+			
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
+				L"Comedor Central", L"Comedor Artes", L"Comedor Letras",
+					L"Tinkuy"
+			});
+			this->comboBox1->Location = System::Drawing::Point(191, 328);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 24);
+			this->comboBox1->TabIndex = 11;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(46, 328);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(71, 16);
+			this->label6->TabIndex = 10;
+			this->label6->Text = L"Ubicación:";
 			// 
 			// textBox5
 			// 
-			this->textBox5->Location = System::Drawing::Point(241, 270);
+			this->textBox5->Location = System::Drawing::Point(241, 271);
 			this->textBox5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->Size = System::Drawing::Size(71, 22);
@@ -143,14 +174,6 @@ namespace SistemaMonederoView {
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(143, 22);
 			this->textBox3->TabIndex = 6;
-			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(169, 102);
-			this->textBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(143, 22);
-			this->textBox2->TabIndex = 5;
 			// 
 			// textBox1
 			// 
@@ -219,27 +242,6 @@ namespace SistemaMonederoView {
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &frmMantNuevoPlato::button2_Click);
 			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(46, 328);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(71, 16);
-			this->label6->TabIndex = 10;
-			this->label6->Text = L"Ubicación:";
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
-				L"Comedor Central", L"Comedor Artes", L"Comedor Letras",
-					L"Tinkuy"
-			});
-			this->comboBox1->Location = System::Drawing::Point(191, 328);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(121, 24);
-			this->comboBox1->TabIndex = 11;
-			// 
 			// frmMantNuevoPlato
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -262,7 +264,7 @@ namespace SistemaMonederoView {
 		/*PERSISTENCIA DE DATOS, NUEVO, AGREGAR*/
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		// Validar que los campos de texto no estén vacíos
-		if (textBox1->Text == "" || textBox2->Text == "" || textBox3->Text == "" || textBox4->Text == "") {
+		if (textBox1->Text == "" || comboBox2->Text == "" || textBox3->Text == "" || textBox4->Text == "") {
 			MessageBox::Show("Por favor, complete todos los campos antes de guardar los datos.");
 
 		}
@@ -270,16 +272,13 @@ namespace SistemaMonederoView {
 
 			// Convertir y obtener los valores de los campos de texto
 			int codigo = Convert::ToInt32(textBox1->Text);
-			String^ Nombre = textBox2->Text;
+			String^ Nombre = comboBox2->Text;
 			String^ Origen = textBox3->Text;
 			double Precio = Convert::ToDouble(textBox4->Text);
 			double cantPlatosDisponible = Convert::ToDouble(textBox5->Text);
 			double cantPlatosVendidos = 0;
 
-		if (!Int32::TryParse(textBox1->Text, codigo)) {
-			MessageBox::Show("Ingrese un número válido para el código.");
-		}
-		else if (!Double::TryParse(textBox4->Text, Precio)) {
+		if (!Double::TryParse(textBox4->Text, Precio)) {
 			MessageBox::Show("Ingrese un número válido para el precio.");
 		}
 		else if (!Double::TryParse(textBox5->Text, cantPlatosVendidos)) {
@@ -291,16 +290,20 @@ namespace SistemaMonederoView {
 
 			// Registrar el plato en la base de datos
 			PlatoController^ objPlatoController = gcnew PlatoController();
-			objPlatoController->registrarPlatoBD(codigo, Nombre, Origen, Precio, cantPlatosVendidos, cantPlatosDisponible, 0);
+			objPlatoController->registrarPlatoBD(Nombre, Origen, Precio, cantPlatosVendidos, cantPlatosDisponible, 0);
 
+			nombrePlatoController^ objNombrePlatoController = gcnew nombrePlatoController();
+			if (objNombrePlatoController->nombreExiste(this->comboBox2->Text)) {
+			}
+			else{
+				objNombrePlatoController->agregarNombre(this->comboBox2->Text);
+			}
+			
 			MessageBox::Show("El plato ha sido agregado con éxito");
 			this->Close();
 		}
 	}
 }
-
-
-
 
 	   /*CANCELAR*/
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -312,8 +315,20 @@ private: System::Void frmMantNuevoPlato_Load(System::Object^ sender, System::Eve
 	List<Plato^>^ listaPlatos = objPlatoController->buscarAllBD();
 
 	this->textBox1->Text = Convert::ToString(listaPlatos->Count + 1);
+	ActualizarCombo();
 }
-private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
+
+void ActualizarCombo() {
+
+	nombrePlatoController^ objNombrePlatoController = gcnew nombrePlatoController();
+	List<nombrePlato^>^ nombresPlatos = objNombrePlatoController->buscarAllBD();
+
+	comboBox2->Items->Clear();
+	for (int i = 0; i < nombresPlatos->Count; i++) {
+		nombrePlato^ nombrePlato = nombresPlatos[i];
+		this->comboBox2->Items->Add(nombresPlatos[i]->nombre);
+	}
 }
+
 };
 }

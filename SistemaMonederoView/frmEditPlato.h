@@ -285,12 +285,8 @@ namespace SistemaMonederoView {
 #pragma endregion
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		int codigoPlato;
 		double precio;
-		if (!Int32::TryParse(textBox1->Text, codigoPlato)) {
-			MessageBox::Show("Ingrese un número válido para el código del plato.");
-		}
-		else if (!Double::TryParse(textBox4->Text, precio)) {
+		if (!Double::TryParse(textBox4->Text, precio)) {
 			MessageBox::Show("Ingrese un número válido para el precio.");
 		}
 		else if (textBox2->Text == "" || textBox3->Text == "") {
@@ -298,9 +294,8 @@ namespace SistemaMonederoView {
 		}
 		else {
 			// Convertir y obtener los valores de los campos de texto
-			String^ Nombre = textBox2->Text;
+			int codigoPlato = Convert::ToInt32(textBox1->Text);
 			String^ Origen = textBox3->Text;
-			double Precio = Convert::ToDouble(textBox4->Text);
 			double cantPlatosDisponible = Convert::ToDouble(textBox5->Text);
 			//double cantPlatosVendidos = Convert::ToDouble(this->objPlato->getCantPlatosVendidos());
 
@@ -309,7 +304,7 @@ namespace SistemaMonederoView {
 
 			// Actualizar los valores en la base de datos
 			PlatoController^ objPlatoController = gcnew PlatoController();
-			objPlatoController->ActualizarPlatoBD(codigoPlato, Nombre, Origen, precio, cantPlatosDisponible);
+			objPlatoController->ActualizarPlatoBD(codigoPlato, Origen, precio, cantPlatosDisponible);
 
 			MessageBox::Show("El plato ha sido modificado con éxito");
 			this->Close();
@@ -321,8 +316,6 @@ private: System::Void frmEditPlato_Load(System::Object^ sender, System::EventArg
 
 	UbicacionController^ objUbicacionController = gcnew UbicacionController();
 	List<String^>^ listaUbicaciones = objUbicacionController->obtenerUbicaciones();
-
-	
 
 	int codigoUbicacion = this->objPlato->getCodUbicacion();
 	Ubicacion^ ubicacion = objUbicacionController->buscarUbicacionxCodigoBD(codigoUbicacion);
