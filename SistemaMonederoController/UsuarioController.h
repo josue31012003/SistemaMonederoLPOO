@@ -16,18 +16,7 @@ namespace SistemaMonederoController {
 
 		public: 
 			UsuarioController();
-			List<Usuario^>^ buscarUsuarios(String^ TipodeUsuario);
-			/*Estos métodos ayudan mucho siempre */
-			List < Usuario^>^ buscarAll(); 
-			void escribirArchivo(List<Usuario^>^ ListaUsuarios ); 
-			void eliminarUsuarioFisico(int codigo); 
-			void agregarUsuario(Usuario^ ObjUsuario);  
-			Usuario^ buscarUsuarioxCodigo(int Codigo); 
-			void actualizarUsuario(Usuario^ ObjUsuario);
-			List<String^>^ obtenerTiposdeUsuario();
-			Usuario^ buscarUsuarioxNombre(String^ nombre);
-
-
+			
 			//Métodos de base de datos 
 
 			void abrirConexionBD(); 
@@ -38,6 +27,7 @@ namespace SistemaMonederoController {
 			Usuario^ buscarUsuarioxCodigoBD(int codigo);
 			void ActualizarUsuarioBD(int codigo, String^ Nombre, String^ ApPaterno, String^ ApMaterno, String^ FechaNacimiento, String^ DNI, String^ IdentificacionRFID, String^ TipoUsuario);
 			List<Usuario^>^ buscarAllBD();
+			Usuario^ buscarUsuarioxNombre(String^ nombre);
 	};	
 
 }

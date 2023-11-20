@@ -1,5 +1,5 @@
 #pragma once
-#include "frmBuscarPlato.h"
+//#include "frmBuscarPlato.h"
 #include "frmBuscarSede.h"
 
 
@@ -93,6 +93,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::IO::Ports::SerialPort^ serialPort1;
+	private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -106,7 +107,7 @@ namespace SistemaMonederoView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -115,6 +116,7 @@ namespace SistemaMonederoView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
@@ -133,8 +135,7 @@ namespace SistemaMonederoView {
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->serialPort1 = gcnew System::IO::Ports::SerialPort();
-
+			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
@@ -218,6 +219,7 @@ namespace SistemaMonederoView {
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::DisplayedCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
 				this->Column1,
@@ -238,24 +240,25 @@ namespace SistemaMonederoView {
 			this->Column1->HeaderText = L"Codigo";
 			this->Column1->MinimumWidth = 6;
 			this->Column1->Name = L"Column1";
-			this->Column1->Width = 60;
+			this->Column1->Width = 80;
 			// 
 			// Column2
 			// 
 			this->Column2->HeaderText = L"Nombre";
 			this->Column2->MinimumWidth = 6;
 			this->Column2->Name = L"Column2";
-			this->Column2->Width = 115;
+			this->Column2->Width = 85;
 			// 
 			// Column3
 			// 
 			this->Column3->HeaderText = L"Precio";
 			this->Column3->MinimumWidth = 6;
 			this->Column3->Name = L"Column3";
-			this->Column3->Width = 60;
+			this->Column3->Width = 75;
 			// 
 			// dataGridView2
 			// 
+			this->dataGridView2->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::DisplayedCells;
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
 				this->dataGridViewTextBoxColumn1,
@@ -276,21 +279,21 @@ namespace SistemaMonederoView {
 			this->dataGridViewTextBoxColumn1->HeaderText = L"Codigo";
 			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
-			this->dataGridViewTextBoxColumn1->Width = 60;
+			this->dataGridViewTextBoxColumn1->Width = 80;
 			// 
 			// dataGridViewTextBoxColumn2
 			// 
 			this->dataGridViewTextBoxColumn2->HeaderText = L"Nombre";
 			this->dataGridViewTextBoxColumn2->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
-			this->dataGridViewTextBoxColumn2->Width = 115;
+			this->dataGridViewTextBoxColumn2->Width = 85;
 			// 
 			// dataGridViewTextBoxColumn3
 			// 
 			this->dataGridViewTextBoxColumn3->HeaderText = L"Cantidad";
 			this->dataGridViewTextBoxColumn3->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
-			this->dataGridViewTextBoxColumn3->Width = 60;
+			this->dataGridViewTextBoxColumn3->Width = 90;
 			// 
 			// groupBox1
 			// 
@@ -348,7 +351,6 @@ namespace SistemaMonederoView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->ResumeLayout(false);
-			
 
 		}
 		void InicializeSerial(void) {

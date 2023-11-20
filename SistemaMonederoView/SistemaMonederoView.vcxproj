@@ -122,7 +122,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="frmBuscarPlato.cpp" />
     <ClCompile Include="frmBuscarSede.cpp" />
     <ClCompile Include="frmBuscarUsuarios.cpp" />
     <ClCompile Include="frmComprarPlato.cpp" />
@@ -146,12 +145,8 @@
     <ClCompile Include="frmReporteTipoUsuario.cpp" />
     <ClCompile Include="frmReporteVentasxPlato.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TestValerie.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="frmBuscarPlato.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="frmBuscarSede.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -223,9 +218,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmBuscarPlato.resx">
-      <DependentUpon>frmBuscarPlato.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarSede.resx">
       <DependentUpon>frmBuscarSede.h</DependentUpon>
     </EmbeddedResource>

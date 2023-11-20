@@ -15,16 +15,7 @@ namespace SistemaMonederoController {
 		SqlConnection^ objConexion;  //Se agrega para trabajar con Base de Datos 
 	public:
 		TarjetaController();
-		List<Tarjeta^>^ buscarTarjetas(String^ Estado);
-		List<Tarjeta^>^ buscarAll();
-		void escribirArchivo(List<Tarjeta^>^ listaTarjetas);
-		void eliminarTarjetaFisica(int Codigo);
-		void agregarTarjeta(Tarjeta^ ObjTarjeta);
-		Tarjeta^ buscarTarjetaxCodigo(int codigo);
-		void actualizarTarjeta(Tarjeta^ ObjTarjeta);
-
-
-
+		
 		//Métodos de base de datos 
 
 		void abrirConexionBD();

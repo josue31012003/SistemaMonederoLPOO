@@ -17,15 +17,6 @@ namespace SistemaMonederoController {
 
 	public:
 		MaquinaController();
-		List<Maquina^>^ buscarMaquinas(String^ tipoMaquina);
-		/*Estos métodos ayudan mucho siempre */
-		List < Maquina^>^ buscarAll();
-		void escribirArchivo(List<Maquina^>^ ListaMaquinas);
-		void eliminarMaquinaFisico(int Codigo);
-		void agregarMaquina(Maquina^ ObjMaquina);
-		Maquina^ buscarMaquinaxCodigo(int Codigo);
-		void actualizarMaquina(Maquina^ ObjMaquina);
-		List<String^>^ obtenerTipos();
 
 		//Métodos de base de datos 
 		void abrirConexionBD();

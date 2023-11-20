@@ -19,27 +19,6 @@ namespace SistemaMonederoController {
 	public:
 		PlatoController();
 
-		List<Plato^>^ buscarPlatosxOrigen(String^ Origen);
-
-		List<Plato^>^ buscarPlatosxUbicacion(String^ UbicacionBuscada);
-
-		List<Plato^>^ buscarAll();
-
-		void escribirPlatos(List<Plato^>^ listaPlatos);
-
-		void escribirPlatosxUbicacion(List<Plato^>^ lista, String^ Ubicacion);
-
-		void eliminarPlatoFisico(int codigo);
-
-		void agregarPlato(Plato^ objPlato);
-
-		Plato^ buscarPlatoxCodigo(int codigo);
-
-		void editarPlato(Plato^ objPlato);
-
-		List<String^>^ obtenerOrigenes();
-
-
 		//FUNCIONES DE BASE DE DATOS
 		void abrirConexionBD();
 		void cerrarConexionBD();
@@ -50,7 +29,7 @@ namespace SistemaMonederoController {
 		Plato^ buscarPlatoxCodigoBD(int codigo);
 		List<Plato^>^ buscarPlatosxUbicacionBD(String^ ubicacion);
 		List<Plato^>^ buscarAllBD();
-		void registrarPlatoBD(String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, double cantPlatosDisponible, int codigoUbicacion);
+		void registrarPlatoBD(String^ Nombre, String^ Origen, double Precio, double cantPlatosDisponible, int codigoUbicacion);
 		void eliminarPlatoBD(int codigo);
 		void ActualizarPlatoBD(int codigo, String^ Origen, double Precio, double cantPlatosDisponible);
 		static void incrementarConteoPlatosSeleccionados(String^ codigoPlato);

@@ -126,6 +126,7 @@ namespace SistemaMonederoView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Administrador", L"Comensal" });
 			this->comboBox1->Location = System::Drawing::Point(185, 50);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(149, 24);
@@ -173,6 +174,7 @@ namespace SistemaMonederoView {
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
 				this->Column8,
@@ -182,6 +184,7 @@ namespace SistemaMonederoView {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(1008, 242);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmMantenimientoUsuarios::dataGridView1_CellContentClick);
@@ -198,7 +201,7 @@ namespace SistemaMonederoView {
 			this->Column1->HeaderText = L"Nombre";
 			this->Column1->MinimumWidth = 6;
 			this->Column1->Name = L"Column1";
-			this->Column1->Width = 125;
+			this->Column1->Width = 85;
 			// 
 			// Column2
 			// 
@@ -212,35 +215,35 @@ namespace SistemaMonederoView {
 			this->Column3->HeaderText = L"Apellido Materno";
 			this->Column3->MinimumWidth = 6;
 			this->Column3->Name = L"Column3";
-			this->Column3->Width = 125;
+			this->Column3->Width = 127;
 			// 
 			// Column4
 			// 
 			this->Column4->HeaderText = L"Fecha Nacimiento";
 			this->Column4->MinimumWidth = 6;
 			this->Column4->Name = L"Column4";
-			this->Column4->Width = 125;
+			this->Column4->Width = 133;
 			// 
 			// Column5
 			// 
 			this->Column5->HeaderText = L"DNI";
 			this->Column5->MinimumWidth = 6;
 			this->Column5->Name = L"Column5";
-			this->Column5->Width = 125;
+			this->Column5->Width = 59;
 			// 
 			// Column6
 			// 
 			this->Column6->HeaderText = L"RFID";
 			this->Column6->MinimumWidth = 6;
 			this->Column6->Name = L"Column6";
-			this->Column6->Width = 125;
+			this->Column6->Width = 67;
 			// 
 			// Column7
 			// 
 			this->Column7->HeaderText = L"Tipo Usuario";
 			this->Column7->MinimumWidth = 6;
 			this->Column7->Name = L"Column7";
-			this->Column7->Width = 125;
+			this->Column7->Width = 105;
 			// 
 			// frmMantenimientoUsuarios
 			// 
@@ -343,17 +346,10 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void frmMantenimientoUsuarios_Load(System::Object^ sender, System::EventArgs^ e) {
 
 	UsuarioController^ objUsuarioController = gcnew UsuarioController();
-	List<String^>^ listaOrigenes = objUsuarioController->obtenerTiposdeUsuario();
+	
 	List<Usuario^>^ listaUsuarios = objUsuarioController->buscarAllBD();
 	mostrarGrilla(listaUsuarios);
 
-	this->comboBox1->Items->Clear();
-
-	for (int i = 0; i < listaOrigenes->Count; i++) {
-
-		this->comboBox1->Items->Add(listaOrigenes[i]);
-	}
-	this->comboBox1->Items->Add("Todos");
 }
 };
 }

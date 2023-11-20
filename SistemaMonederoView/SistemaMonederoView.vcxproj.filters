@@ -36,9 +36,6 @@
     <ClCompile Include="frmNuevaMaquina.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="TestValerie.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="frmEditarTarjeta.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -76,9 +73,6 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="frmReporteVentasxPlato.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="frmBuscarPlato.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="frmBuscarSede.cpp">
@@ -135,9 +129,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="frmComprarPlato.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmBuscarPlato.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="frmBuscarSede.h">

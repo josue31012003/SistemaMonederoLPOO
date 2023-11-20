@@ -11,8 +11,6 @@ namespace SistemaMonederoController {
 
 	public ref class UbicacionController {
 
-		static Dictionary<String^, int>^ conteoPlatos = gcnew Dictionary<String^, int>();
-
 	private:
 		SqlConnection^ objConexion;
 
