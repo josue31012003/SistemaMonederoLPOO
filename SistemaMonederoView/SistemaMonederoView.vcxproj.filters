@@ -90,6 +90,9 @@
     <ClCompile Include="frmAdmin.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="frmRecarga.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmMantenimientoUsuarios.h">
@@ -165,6 +168,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="frmPrincipal.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="frmRecarga.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

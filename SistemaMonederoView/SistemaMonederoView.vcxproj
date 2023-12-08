@@ -142,6 +142,7 @@
     <ClCompile Include="frmMantProductos.cpp" />
     <ClCompile Include="frmNuevaMaquina.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
+    <ClCompile Include="frmRecarga.cpp" />
     <ClCompile Include="frmReporteActividadMaquinas.cpp" />
     <ClCompile Include="frmReporteActividadTarjetas.cpp" />
     <ClCompile Include="frmReporteTipoUsuario.cpp" />
@@ -212,6 +213,9 @@
     <ClInclude Include="frmPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmRecarga.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmReporteActividadMaquinas.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -251,6 +255,9 @@
     <EmbeddedResource Include="frmEditPlato.resx">
       <DependentUpon>frmEditPlato.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmHistorial.resx">
+      <DependentUpon>frmHistorial.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmHistorialTransaccion.resx">
       <DependentUpon>frmHistorialTransaccion.h</DependentUpon>
     </EmbeddedResource>
@@ -283,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecarga.resx">
+      <DependentUpon>frmRecarga.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteActividadMaquinas.resx">
       <DependentUpon>frmReporteActividadMaquinas.h</DependentUpon>
