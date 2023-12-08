@@ -203,8 +203,12 @@ Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
             double cantPlatosVendidos = safe_cast<double>(objData["cantPlatosVendidos"]);
             double cantPlatosDisponibles = safe_cast<double>(objData["cantPlatosDisponibles"]);
             int codigoUbicacion = safe_cast<int>(objData["codigoUbicacion"]);
+
             Plato^ objPlato = gcnew Plato(codigo, nombre, origen, precio, cantPlatosVendidos, cantPlatosDisponibles, codigoUbicacion);
-            listPlatos->Add(objPlato);
+            if (cantPlatosDisponibles != 0) {
+                listPlatos->Add(objPlato);
+            }
+            
         }
 
         // Cerrar reader
@@ -246,7 +250,10 @@ Plato^ PlatoController::buscarPlatoxCodigoBD(int codigo) {
     }
     void PlatoController::incrementarConteoPlatosSeleccionados(String^ codigoPlato) {
         if (conteoPlatos->ContainsKey(codigoPlato)) {
-            conteoPlatos[codigoPlato]++;
+            PlatoController^ objPlatoController = gcnew PlatoController();
+            if (conteoPlatos[codigoPlato] < (objPlatoController->buscarPlatoxCodigoBD(Convert::ToInt32(codigoPlato))->getCantPlatosDisponible())) {
+                conteoPlatos[codigoPlato]++;
+            }
         }
         else {
             conteoPlatos[codigoPlato] = 1;

@@ -94,9 +94,11 @@ namespace SistemaMonederoView {
 			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Location = System::Drawing::Point(25, 37);
+			this->groupBox1->Location = System::Drawing::Point(33, 46);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(498, 243);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Size = System::Drawing::Size(664, 299);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos del Usuario";
@@ -104,49 +106,47 @@ namespace SistemaMonederoView {
 			// textBox4
 			// 
 			this->textBox4->Enabled = false;
-			this->textBox4->Location = System::Drawing::Point(179, 155);
-			this->textBox4->Margin = System::Windows::Forms::Padding(2);
+			this->textBox4->Location = System::Drawing::Point(239, 191);
+			this->textBox4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(160, 20);
+			this->textBox4->Size = System::Drawing::Size(212, 22);
 			this->textBox4->TabIndex = 17;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(88, 158);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Location = System::Drawing::Point(117, 194);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(92, 13);
+			this->label5->Size = System::Drawing::Size(115, 16);
 			this->label5->TabIndex = 16;
 			this->label5->Text = L"Apellido Materno :";
 			// 
 			// textBox3
 			// 
 			this->textBox3->Enabled = false;
-			this->textBox3->Location = System::Drawing::Point(179, 115);
-			this->textBox3->Margin = System::Windows::Forms::Padding(2);
+			this->textBox3->Location = System::Drawing::Point(239, 142);
+			this->textBox3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(160, 20);
+			this->textBox3->Size = System::Drawing::Size(212, 22);
 			this->textBox3->TabIndex = 15;
 			this->textBox3->TextChanged += gcnew System::EventHandler(this, &frmHistorialTransaccion::textBox3_TextChanged);
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(88, 118);
-			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label4->Location = System::Drawing::Point(117, 145);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(90, 13);
+			this->label4->Size = System::Drawing::Size(113, 16);
 			this->label4->TabIndex = 14;
 			this->label4->Text = L"Apellido Paterno :";
 			this->label4->Click += gcnew System::EventHandler(this, &frmHistorialTransaccion::label4_Click);
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(371, 73);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Location = System::Drawing::Point(495, 90);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(56, 19);
+			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 13;
 			this->button1->Text = L"Buscar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -156,68 +156,67 @@ namespace SistemaMonederoView {
 			// 
 			this->dateTimePicker1->Enabled = false;
 			this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Short;
-			this->dateTimePicker1->Location = System::Drawing::Point(206, 190);
-			this->dateTimePicker1->Margin = System::Windows::Forms::Padding(2);
+			this->dateTimePicker1->Location = System::Drawing::Point(275, 234);
+			this->dateTimePicker1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->Size = System::Drawing::Size(107, 20);
+			this->dateTimePicker1->Size = System::Drawing::Size(141, 22);
 			this->dateTimePicker1->TabIndex = 12;
 			// 
 			// textBox2
 			// 
 			this->textBox2->Enabled = false;
-			this->textBox2->Location = System::Drawing::Point(179, 74);
-			this->textBox2->Margin = System::Windows::Forms::Padding(2);
+			this->textBox2->Location = System::Drawing::Point(239, 91);
+			this->textBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(160, 20);
+			this->textBox2->Size = System::Drawing::Size(212, 22);
 			this->textBox2->TabIndex = 11;
 			// 
 			// textBox1
 			// 
 			this->textBox1->Enabled = false;
-			this->textBox1->Location = System::Drawing::Point(179, 38);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2);
+			this->textBox1->Location = System::Drawing::Point(239, 47);
+			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(107, 20);
+			this->textBox1->Size = System::Drawing::Size(141, 22);
 			this->textBox1->TabIndex = 10;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(88, 190);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(117, 234);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(114, 13);
+			this->label3->Size = System::Drawing::Size(141, 16);
 			this->label3->TabIndex = 9;
 			this->label3->Text = L"Fecha de Nacimiento: ";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(88, 77);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(117, 95);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(50, 13);
+			this->label2->Size = System::Drawing::Size(62, 16);
 			this->label2->TabIndex = 8;
 			this->label2->Text = L"Nombre :";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(88, 38);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(117, 47);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(46, 13);
+			this->label1->Size = System::Drawing::Size(57, 16);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"Código :";
 			// 
 			// frmHistorialTransaccion
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(552, 653);
+			this->ClientSize = System::Drawing::Size(736, 804);
 			this->Controls->Add(this->groupBox1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"frmHistorialTransaccion";
 			this->Text = L"frmHistorialTransaccion";
+			this->Load += gcnew System::EventHandler(this, &frmHistorialTransaccion::frmHistorialTransaccion_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
@@ -237,6 +236,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	this->textBox3->Text = this->objUsuario->getApPaterno();
 	this->textBox4->Text = this->objUsuario->getApMaterno();
 	this->dateTimePicker1->Text = this->objUsuario->getFechaNacimiento();
+}
+private: System::Void frmHistorialTransaccion_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

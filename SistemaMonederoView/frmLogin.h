@@ -1,6 +1,6 @@
 #pragma once
-#include "frmPrincipal.h"
-#include "frmPrincipal2.h"
+//#include "frmPrincipal.h"
+#include "frmAdmin.h"
 
 namespace SistemaMonederoView {
 
@@ -10,7 +10,9 @@ namespace SistemaMonederoView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Collections::Generic;
 	using namespace SistemaMonederoController;
+	using namespace SistemaMonederoModel;
 
 	/// <summary>
 	/// Resumen de frmLogin
@@ -198,18 +200,11 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		MessageBox::Show("Usuario y contraseña incorrectos.");
 	}
 	else {
-		if (objUsuario->getTipoUsuario() == "Administrador" && password == username) {
-			MessageBox::Show("Bienvenido " + username);
-			this->Hide();
-			frmPrincipal^ ventanaPrincipal = gcnew frmPrincipal();
-			ventanaPrincipal->ShowDialog();
-		}
-		else if (objUsuario->getTipoUsuario() == "Comensal" && password == username) {
-			MessageBox::Show("Bienvenido " + username);
-			this->Hide();
-			frmPrincipal2^ ventanaPrincipal2 = gcnew frmPrincipal2(objUsuario);
-			ventanaPrincipal2->ShowDialog();
-		}
+		MessageBox::Show("Bienvenido " + username);
+		this->Hide();
+		frmAdmin^ ventanaAdministrar = gcnew frmAdmin();
+		ventanaAdministrar->ShowDialog();
+		
 		this->Show();
 	}
 	

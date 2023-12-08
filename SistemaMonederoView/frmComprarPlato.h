@@ -93,6 +93,7 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::IO::Ports::SerialPort^ serialPort1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -136,6 +137,7 @@ namespace SistemaMonederoView {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
@@ -221,9 +223,9 @@ namespace SistemaMonederoView {
 			// 
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::DisplayedCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->Column1,
-					this->Column2, this->Column3
+					this->Column2, this->Column3, this->Column4
 			});
 			this->dataGridView1->Location = System::Drawing::Point(45, 32);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(1, 2, 3, 2);
@@ -330,6 +332,13 @@ namespace SistemaMonederoView {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &frmComprarPlato::button1_Click);
 			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Disponible";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 101;
+			// 
 			// frmComprarPlato
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -379,10 +388,11 @@ private: void mostrarGrilla(List<Plato^>^ listPlatos) {
 
 	for (int i = 0; i < listPlatos->Count; i++) {
 		Plato^ objPlato = listPlatos[i];
-		array<String^>^ filaGrilla = gcnew array<String^>(3);
+		array<String^>^ filaGrilla = gcnew array<String^>(4);
 		filaGrilla[0] = Convert::ToString(objPlato->getCodigo());
 		filaGrilla[1] = objPlato->getNombre();
 		filaGrilla[2] = Convert::ToString(objPlato->getPrecio());
+		filaGrilla[3] = Convert::ToString(objPlato->getCantPlatosDisponible());
 		this->dataGridView1->Rows->Add(filaGrilla);
 	}
 }
@@ -420,7 +430,7 @@ private: void mostrarGrilla(List<Plato^>^ listPlatos) {
 			// Crear una nueva fila en la grilla2 con los datos de la fila seleccionada en la grilla1
 			array<String^>^ filaGrilla2 = gcnew array<String^>(3);
 
-			for (int i = 0; i < fila->Cells->Count; i++) {
+			for (int i = 0; i < fila->Cells->Count-1; i++) {
 				if (fila->Cells[i]->Value != nullptr) {
 					filaGrilla2[i] = fila->Cells[i]->Value->ToString();
 				}
@@ -515,7 +525,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 				objPlatoController->restarConteoPlatosSeleccionados(codigoPlato, conteoAnterior);
 
 				// Eliminar la fila seleccionada de la grilla2
-				this->dataGridView2->Rows->RemoveAt(filaSeleccionada);
+				mostrarFilaEnGrilla2(dataGridView2->CurrentRow);
 			}
 		}
 	}
@@ -541,6 +551,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 					// Llamar a mostrarFilaEnGrilla2 para actualizar dataGridView2 con la fila seleccionada
 					mostrarFilaEnGrilla2(this->dataGridView1->Rows[filaSeleccionada]);
 				}
+				
 			}
 		}
 		catch (Exception^ ex) {
