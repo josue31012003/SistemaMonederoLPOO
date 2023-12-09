@@ -85,3 +85,9 @@ Usuario::Usuario(int Codigo, String^ Nombre, String^ ApPaterno, String^ ApMatern
 			this->TipoUsuario = TipoUsuario;
 		}
 
+		/*List<Transaccion^>^ Usuario::getHistorialTransacciones() {
+			return this->historialTransacciones;
+		}
+		void Usuario::setHistorialTransacciones(List<Transaccion^>^ historialTransacciones) {
+			this->historialTransacciones = historialTransacciones;
+		}*/

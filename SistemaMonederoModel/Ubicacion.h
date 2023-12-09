@@ -16,6 +16,7 @@ namespace SistemaMonederoModel {
 
 		int getCodigo();
 		void setCodigo(int codigo);
+
 		String^ getNombre();
 		void setNombre(String^ Nombre);
 	};

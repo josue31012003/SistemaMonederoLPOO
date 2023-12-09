@@ -1,7 +1,9 @@
 #pragma once
 #include "Tarjeta.h"
+#include "Transaccion.h"
 
 using namespace System;
+using namespace System::Collections::Generic;
 
 namespace SistemaMonederoModel {
 	public ref class Usuario {
@@ -15,6 +17,7 @@ namespace SistemaMonederoModel {
 		String^ DNI;
 		String^ IdentificacionRFID;
 		String^ TipoUsuario;
+		List<Transaccion^>^ historialTransacciones;
 
 	public:
 		Usuario();
@@ -43,5 +46,8 @@ namespace SistemaMonederoModel {
 
 		String^ getTipoUsuario();
 		void setTipoUsuario(String^ TipoUsuario);
+
+		/*List<Transaccion^>^ getHistorialTransacciones();
+		void setHistorialTransacciones(List<Transaccion^>^ historialTransacciones);*/
 	};
 }

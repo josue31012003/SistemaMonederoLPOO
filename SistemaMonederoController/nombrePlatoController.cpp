@@ -8,9 +8,9 @@ nombrePlatoController::nombrePlatoController() {
 }
 
 void nombrePlatoController::abrirConexionBD() {
-	/*Cadena de conexion: Servidor de BD, usuario de BD, password BD, nombre de la BD*/
-	this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20205788;User Id=a20205788;Password=gbVVvdoY";
-	this->objConexion->Open(); /*Apertura de la conexion a BD*/
+    /*Cadena de conexion: Servidor de BD, usuario de BD, password BD, nombre de la BD*/
+    this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20205788;User Id=a20205788;Password=gbVVvdoY";
+    this->objConexion->Open(); /*Apertura de la conexion a BD*/
 }
 void nombrePlatoController::cerrarConexionBD() {
 	this->objConexion->Close();

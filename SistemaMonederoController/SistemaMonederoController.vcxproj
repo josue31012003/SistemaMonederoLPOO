@@ -115,8 +115,10 @@
     <ClInclude Include="MaquinaController.h" />
     <ClInclude Include="nombrePlatoController.h" />
     <ClInclude Include="PlatoController.h" />
+    <ClInclude Include="PlatoVendidoController.h" />
     <ClInclude Include="SerialController.h" />
     <ClInclude Include="TarjetaController.h" />
+    <ClInclude Include="TransaccionController.h" />
     <ClInclude Include="UbicacionController.h" />
     <ClInclude Include="UsuarioController.h" />
   </ItemGroup>
@@ -124,8 +126,10 @@
     <ClCompile Include="MaquinaController.cpp" />
     <ClCompile Include="nombrePlatoController.cpp" />
     <ClCompile Include="PlatoController.cpp" />
+    <ClCompile Include="PlatoVendidoController.cpp" />
     <ClCompile Include="SerialController.cpp" />
     <ClCompile Include="TarjetaController.cpp" />
+    <ClCompile Include="TransaccionController.cpp" />
     <ClCompile Include="UbicacionController.cpp" />
     <ClCompile Include="UsuarioController.cpp" />
   </ItemGroup>
