@@ -8,7 +8,7 @@ namespace SistemaMonederoController
     {
     public:
         String^ ObtenerPuertoSerial();
-
+        
     private:
 
     };
