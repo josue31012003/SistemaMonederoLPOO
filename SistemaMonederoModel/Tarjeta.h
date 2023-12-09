@@ -12,6 +12,7 @@ namespace SistemaMonederoModel {
 		String^ fechaAlta;
 		String^ fechaBaja;
 		String^ Estado;
+		String^ codigoUsuario;
 
 	public:
 		Tarjeta();

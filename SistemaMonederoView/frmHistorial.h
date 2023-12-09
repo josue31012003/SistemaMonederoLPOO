@@ -52,16 +52,6 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 
-
-
-
-
-
-
-
-
-
-
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -78,6 +68,8 @@ namespace SistemaMonederoView {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
@@ -85,12 +77,12 @@ namespace SistemaMonederoView {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
 			this->Fecha = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -129,7 +121,6 @@ namespace SistemaMonederoView {
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(153, 22);
 			this->textBox6->TabIndex = 6;
-			this->textBox6->TabIndexChanged += gcnew System::EventHandler(this, &frmHistorial::textBox6_TabIndexChanged);
 			this->textBox6->TextChanged += gcnew System::EventHandler(this, &frmHistorial::textBox6_TextChanged);
 			// 
 			// textBox5
@@ -161,24 +152,37 @@ namespace SistemaMonederoView {
 			// 
 			// dataGridView1
 			// 
-			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::DisplayedCells;
-			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::DisplayedCells;
+			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Fecha,
 					this->Column1, this->Column2, this->Column3, this->Column4
 			});
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle2;
 			this->dataGridView1->Location = System::Drawing::Point(163, 243);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->Size = System::Drawing::Size(643, 237);
 			this->dataGridView1->TabIndex = 3;
-			dataGridView1->DefaultCellStyle->WrapMode = DataGridViewTriState::True;
-			// 
-			// serialPort1
-			// 
-			this->serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &frmHistorial::serialPort1_DataReceived);
+			this->dataGridView1->CellFormatting += gcnew System::Windows::Forms::DataGridViewCellFormattingEventHandler(this, &frmHistorial::dataGridView1_CellFormatting);
 			// 
 			// Fecha
 			// 
@@ -215,6 +219,10 @@ namespace SistemaMonederoView {
 			this->Column4->Name = L"Column4";
 			this->Column4->Width = 97;
 			// 
+			// serialPort1
+			// 
+			this->serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &frmHistorial::serialPort1_DataReceived);
+			// 
 			// frmHistorial
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -224,9 +232,7 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->groupBox2);
 			this->Name = L"frmHistorial";
 			this->Text = L"frmHistorial";
-			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &frmHistorial::frmHistorial_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &frmHistorial::frmHistorial_Load);
-			this->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &frmHistorial::frmHistorial_MouseMove);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -250,16 +256,30 @@ namespace SistemaMonederoView {
 			textBox6->Text = data;
 		}
 	}
-	private: System::Void frmHistorial_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
-		serialPort1->Close();
-	}
+
 	private: System::Void frmHistorial_Load(System::Object^ sender, System::EventArgs^ e) {
+		int columnIndex = 1; // Indica el índice de la columna que quieres analizar
+
+		int maxTextLength = 0;
+
+		if (textBox6->Text != "") {
+			for (int i = 0; i < dataGridView1->Rows->Count; i++) {
+				String^ text = dataGridView1->Rows[i]->Cells[columnIndex]->Value->ToString();
+				int length = text->Length;
+				if (length > maxTextLength) {
+					maxTextLength = length;
+				}
+			}
+
+			// Establece el ancho de la columna en función de la longitud máxima encontrada
+			dataGridView1->Columns[columnIndex]->Width = maxTextLength * 10; // Ajusta someFactor según tu preferencia
+		}
 
 	}
 
-	private: void mostrarGrilla(List<Transaccion^>^ listTransacciones) {
+	private: List<PlatoVendido^>^ mostrarGrilla(List<Transaccion^>^ listTransacciones) {
 		this->dataGridView1->Rows->Clear(); /* Elimino toda la información de la grilla1 */
-
+		List<PlatoVendido^>^ listaPlatosVendidos = nullptr;
 		for (int i = 0; i < listTransacciones->Count; i++) {
 
 			Transaccion^ objTransaccion = listTransacciones[i];
@@ -268,7 +288,7 @@ namespace SistemaMonederoView {
 			filaGrilla[0] = objTransaccion->getFecha();
 
 			PlatoVendidoController^ objPlatoVendidoController = gcnew PlatoVendidoController();
-			List<PlatoVendido^>^ listaPlatosVendidos = objPlatoVendidoController->buscarPlatosVendidosxTransaccion(objTransaccion->getCodigo());
+			listaPlatosVendidos = objPlatoVendidoController->buscarPlatosVendidosxTransaccion(objTransaccion->getCodigo());
 
 			String^ StringlistaPlatosVendidos = "";
 			for each (PlatoVendido ^ platoVendido in listaPlatosVendidos) {
@@ -293,16 +313,9 @@ namespace SistemaMonederoView {
 
 			this->dataGridView1->Rows->Add(filaGrilla);
 		}
+		return listaPlatosVendidos;
 	}
 
-	private: System::Void textBox6_TabIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-
-
-	}
-	private: System::Void frmHistorial_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-
-
-	}
 	private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		if (textBox6->Text != "") {
 			try {
@@ -311,7 +324,25 @@ namespace SistemaMonederoView {
 				int codigoUsuario = objUsuarioController->buscarUsuarioxRFIDBD(textBox6->Text)->getCodigo();
 
 				TransaccionController^ objTransaccionController = gcnew TransaccionController();
-				mostrarGrilla(objTransaccionController->buscarTransaccionesxUsuario(codigoUsuario));
+
+				List<PlatoVendido^>^ listaPlatosVendidos = mostrarGrilla(objTransaccionController->buscarTransaccionesxUsuario(codigoUsuario));
+
+				int columnIndex = 1; // Indica el índice de la columna que quieres analizar
+
+				int maxTextLength = 0;
+
+				String^ StringPlatoVendido = nullptr;
+				for each (PlatoVendido ^ platoVendido in listaPlatosVendidos) {
+
+					StringPlatoVendido = Convert::ToString(platoVendido->getCantidad()) + " " + platoVendido->getNombre();
+					int length = StringPlatoVendido->Length;
+					if (length > maxTextLength) {
+						maxTextLength = length;
+					}
+				}
+
+				// Establece el ancho de la columna en función de la longitud máxima encontrada
+				dataGridView1->Columns[columnIndex]->Width = maxTextLength * 7; // Ajusta someFactor según tu preferencia
 			}
 			catch (Exception^ ex) {
 
@@ -319,6 +350,21 @@ namespace SistemaMonederoView {
 			finally {
 
 			}
+		}
+	}
+	private: System::Void dataGridView1_CellFormatting(System::Object^ sender, System::Windows::Forms::DataGridViewCellFormattingEventArgs^ e) {
+
+		if (e->ColumnIndex == 1 &&
+			e->RowIndex >= 0 &&
+			e->Value != nullptr) {
+
+			// Obtener el valor actual de la celda
+			String^ cellValue = dynamic_cast<String^>(e->Value);
+			cellValue = cellValue->Replace("\n", Environment::NewLine);
+
+			// Aplicar el estilo de la celda para el ajuste de texto y las múltiples líneas
+			e->CellStyle->WrapMode = DataGridViewTriState::True;
+			e->Value = cellValue;
 		}
 	}
 	};
