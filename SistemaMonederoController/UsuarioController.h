@@ -28,6 +28,7 @@ namespace SistemaMonederoController {
 			void ActualizarUsuarioBD(int codigo, String^ Nombre, String^ ApPaterno, String^ ApMaterno, String^ FechaNacimiento, String^ DNI, String^ IdentificacionRFID, String^ TipoUsuario);
 			List<Usuario^>^ buscarAllBD();
 			Usuario^ buscarUsuarioxNombre(String^ nombre);
+			Usuario^ buscarUsuarioxRFIDBD(String^ codigoRFID);
 	};	
 
 }

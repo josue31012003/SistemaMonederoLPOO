@@ -1,4 +1,5 @@
 #pragma once
+#include"frmRecargaConfirmacion.h"
 
 namespace SistemaMonederoView {
 
@@ -38,11 +39,14 @@ namespace SistemaMonederoView {
 	protected:
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::TextBox^ textBox6;
-	private: System::Windows::Forms::TextBox^ textBox5;
+
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
+
+
+
+
+
+	private: System::Windows::Forms::Button^ button1;
 
 	private:
 		/// <summary>
@@ -60,11 +64,8 @@ namespace SistemaMonederoView {
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -72,14 +73,12 @@ namespace SistemaMonederoView {
 			// 
 			this->groupBox2->Controls->Add(this->label1);
 			this->groupBox2->Controls->Add(this->textBox6);
-			this->groupBox2->Controls->Add(this->textBox5);
 			this->groupBox2->Controls->Add(this->label6);
-			this->groupBox2->Controls->Add(this->label5);
 			this->groupBox2->Location = System::Drawing::Point(45, 25);
 			this->groupBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox2->Size = System::Drawing::Size(445, 178);
+			this->groupBox2->Size = System::Drawing::Size(445, 145);
 			this->groupBox2->TabIndex = 3;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Datos de comprador";
@@ -97,76 +96,60 @@ namespace SistemaMonederoView {
 			// 
 			// textBox6
 			// 
-			this->textBox6->Enabled = false;
-			this->textBox6->Location = System::Drawing::Point(203, 139);
+			this->textBox6->Location = System::Drawing::Point(188, 91);
 			this->textBox6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(153, 22);
 			this->textBox6->TabIndex = 6;
 			// 
-			// textBox5
-			// 
-			this->textBox5->Enabled = false;
-			this->textBox5->Location = System::Drawing::Point(203, 92);
-			this->textBox5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(153, 22);
-			this->textBox5->TabIndex = 5;
-			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(93, 139);
+			this->label6->Location = System::Drawing::Point(78, 91);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(91, 16);
 			this->label6->TabIndex = 1;
 			this->label6->Text = L"RFID Usuario ";
 			// 
-			// label5
+			// button1
 			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(93, 95);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(51, 16);
-			this->label5->TabIndex = 0;
-			this->label5->Text = L"Código";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(0, 0);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(44, 16);
-			this->label2->TabIndex = 4;
-			this->label2->Text = L"label2";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(71, 264);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(375, 32);
-			this->label3->TabIndex = 5;
-			this->label3->Text = L"Ingrese las monedas a través de la ranura y presione el botón\r\n\"Confirmar\" cuando"
-				L" haya terminado de ingresar el monto";
-			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->button1->Location = System::Drawing::Point(216, 209);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(101, 26);
+			this->button1->TabIndex = 8;
+			this->button1->Text = L"Continuar";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmRecarga::button1_Click);
 			// 
 			// frmRecarga
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(547, 454);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
+			this->ClientSize = System::Drawing::Size(528, 260);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox2);
 			this->Name = L"frmRecarga";
 			this->Text = L"frmRecarga";
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	//Para llamar la ventana "Recarga Confirmación":
+	String^ codigoRFID = this->textBox6->Text;  //obtenemos el RFID con el que vamos a buscar la tarjeta
+	frmRecargaConfirmacion^ ventanaRecargaConfirmacion = gcnew frmRecargaConfirmacion(codigoRFID);
+	ventanaRecargaConfirmacion->ShowDialog();
+
+
+
+
+
+}
+};
 }

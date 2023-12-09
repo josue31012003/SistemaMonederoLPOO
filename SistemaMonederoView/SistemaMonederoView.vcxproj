@@ -143,6 +143,7 @@
     <ClCompile Include="frmNuevaMaquina.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="frmRecarga.cpp" />
+    <ClCompile Include="frmRecargaConfirmacion.cpp" />
     <ClCompile Include="frmReporteActividadMaquinas.cpp" />
     <ClCompile Include="frmReporteActividadTarjetas.cpp" />
     <ClCompile Include="frmReporteTipoUsuario.cpp" />
@@ -214,6 +215,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmRecarga.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmRecargaConfirmacion.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmReporteActividadMaquinas.h">
@@ -293,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRecarga.resx">
       <DependentUpon>frmRecarga.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecargaConfirmacion.resx">
+      <DependentUpon>frmRecargaConfirmacion.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteActividadMaquinas.resx">
       <DependentUpon>frmReporteActividadMaquinas.h</DependentUpon>

@@ -26,5 +26,6 @@ namespace SistemaMonederoController {
 		Tarjeta^ buscarTarjetaxCodigoBD(int codigo);
 		void ActualizarTarjetaBD(int codigo, String^ fechaAlta, String^ fechaBaja, String^ Estado);
 		List<Tarjeta^>^ buscarAllBD();
+		double obtenerSaldoxRFID(String^ codigoRFID);
 	};
 }

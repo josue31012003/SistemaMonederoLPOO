@@ -156,6 +156,42 @@ List<Tarjeta^>^ TarjetaController::buscarAllBD() {
 }
 
 
+double TarjetaController::obtenerSaldoxRFID(String^ codigoRFID) {
+
+	//List<Tarjeta^>^ listaTarjetas = gcnew List<Tarjeta^>();
+	double saldo = 0; 
+
+	abrirConexionBD(); 
+
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand(); 
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;  
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select t.*, u.* from  Tarjeta T, Usuario U where U.RFID = '" + codigoRFID + "' and T.codigoUsuario = U.RFID";
+
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+
+	while (objData->Read()) {
+		int codigo = safe_cast<int>(objData[0]);
+		//		String^ codigoRFID = safe_cast<String^>(objData[1]);
+		String^ fechaAlta = safe_cast<String^>(objData[1]);
+		String^ fechaBaja = safe_cast<String^>(objData[2]);
+		String^ estado = safe_cast<String^>(objData[3]);
+		double Saldo = safe_cast<double>(objData[5]);
+	//	Tarjeta^ objTarjeta = gcnew Tarjeta(codigo, fechaAlta, fechaBaja, estado);
+	//	listaTarjetas->Add(objTarjeta);
+		saldo = Saldo; 
+	}
+
+	cerrarConexionBD();
+
+	return saldo; 
+}
+
 
 
 
