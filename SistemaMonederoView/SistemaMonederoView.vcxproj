@@ -214,9 +214,6 @@
     <ClInclude Include="frmPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="frmRecarga.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="frmRecargaConfirmacion.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -294,9 +291,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmRecarga.resx">
-      <DependentUpon>frmRecarga.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRecargaConfirmacion.resx">
       <DependentUpon>frmRecargaConfirmacion.h</DependentUpon>

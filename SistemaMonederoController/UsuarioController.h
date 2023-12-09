@@ -22,7 +22,6 @@ namespace SistemaMonederoController {
 			void abrirConexionBD(); 
 			void cerrarConexionBD(); 
 			List<Usuario^>^ buscarUsuarioxtipoBD(String^ TipodeUsuario);
-			Usuario^ buscarUsuarioxRFIDBD(String^ RFID);
 			void registrarUsuarioBD(String^ Nombre, String^ ApPaterno, String^ ApMaterno, String^ FechaNacimiento, String^ DNI, String^ IdentificacionRFID, String^ TipoUsuario);
 			void eliminarUsuarioBD(int codigo); 
 			Usuario^ buscarUsuarioxCodigoBD(int codigo);

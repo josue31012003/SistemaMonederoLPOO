@@ -272,7 +272,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	double saldoRecarga = objTarjetaController->obtenerSaldoxRFID(codigoRFID); 
 //	double SaldoActual = objUsuario -> get
 	double saldoActual = Saldo + saldoRecarga;   //Este es el saldo al finalizar la recarga 
-	//extraaa
+	//
 
 
 }
