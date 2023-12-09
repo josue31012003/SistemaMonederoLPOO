@@ -93,6 +93,8 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::IO::Ports::SerialPort^ serialPort1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
+	private: System::Windows::Forms::Label^ label2;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -128,6 +130,7 @@ namespace SistemaMonederoView {
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
 			this->dataGridViewTextBoxColumn1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -136,7 +139,8 @@ namespace SistemaMonederoView {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
@@ -169,16 +173,15 @@ namespace SistemaMonederoView {
 			this->label1->Text = L"Pase su tarjeta por el sensor para mostrar su informacion\r\ny confirmar su identid"
 				L"ad";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->label1->Click += gcnew System::EventHandler(this, &frmComprarPlato::label1_Click);
 			// 
 			// textBox6
 			// 
-			this->textBox6->Enabled = false;
 			this->textBox6->Location = System::Drawing::Point(203, 139);
 			this->textBox6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(153, 22);
 			this->textBox6->TabIndex = 6;
+			this->textBox6->TextChanged += gcnew System::EventHandler(this, &frmComprarPlato::textBox6_TextChanged);
 			// 
 			// textBox5
 			// 
@@ -203,9 +206,9 @@ namespace SistemaMonederoView {
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(93, 95);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(51, 16);
+			this->label5->Size = System::Drawing::Size(30, 16);
 			this->label5->TabIndex = 0;
-			this->label5->Text = L"Código";
+			this->label5->Text = L"DNI";
 			// 
 			// button3
 			// 
@@ -234,7 +237,6 @@ namespace SistemaMonederoView {
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(384, 278);
 			this->dataGridView1->TabIndex = 9;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmComprarPlato::dataGridView1_CellContentClick);
 			// 
 			// Column1
 			// 
@@ -257,6 +259,13 @@ namespace SistemaMonederoView {
 			this->Column3->Name = L"Column3";
 			this->Column3->Width = 75;
 			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Disponible";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 101;
+			// 
 			// dataGridView2
 			// 
 			this->dataGridView2->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::DisplayedCells;
@@ -273,7 +282,6 @@ namespace SistemaMonederoView {
 			this->dataGridView2->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView2->Size = System::Drawing::Size(384, 431);
 			this->dataGridView2->TabIndex = 10;
-			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmComprarPlato::dataGridView2_CellContentClick);
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
@@ -331,18 +339,31 @@ namespace SistemaMonederoView {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &frmComprarPlato::button1_Click);
 			// 
-			// Column4
+			// dateTimePicker1
 			// 
-			this->Column4->HeaderText = L"Disponible";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->Width = 101;
+			this->dateTimePicker1->Enabled = false;
+			this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Short;
+			this->dateTimePicker1->Location = System::Drawing::Point(53, 640);
+			this->dateTimePicker1->Name = L"dateTimePicker1";
+			this->dateTimePicker1->Size = System::Drawing::Size(115, 22);
+			this->dateTimePicker1->TabIndex = 13;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(12, 645);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(35, 16);
+			this->label2->TabIndex = 14;
+			this->label2->Text = L"Hoy:";
 			// 
 			// frmComprarPlato
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(984, 674);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->dateTimePicker1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->dataGridView1);
@@ -359,6 +380,7 @@ namespace SistemaMonederoView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 		void InicializeSerial(void) {
@@ -466,11 +488,26 @@ private: void mostrarGrilla(List<Plato^>^ listPlatos) {
 
 	}
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	// Crear una instancia de PlatoController
+	double monto = 0;
+
+	UbicacionController^ objUbicacionController = gcnew UbicacionController();
+	int codigoUbicacion = objUbicacionController->buscarUbicacionxNombreBD(this->objUbicacion)->getCodigo();
+
+	UsuarioController^ objUsuarioController = gcnew UsuarioController();
+	int codigoUsuario = objUsuarioController->buscarUsuarioxRFIDBD(textBox6->Text)->getCodigo();
+
 	PlatoController^ objPlatoController = gcnew PlatoController();
-	
+	List<PlatoVendido^>^ listaPlatosVendidos = gcnew List<PlatoVendido^>();
+	int codigoTransaccion;
+	Transaccion^ objTransaccion;
 	// Recorrer todas las filas del DataGridView2
+	
 	for each (DataGridViewRow ^ row in dataGridView2->Rows) {
+
+		PlatoVendido^ objPlatoVendido;
+
 		try {
 			if (row->Cells[0]->Value != nullptr && row->Cells[2]->Value != nullptr) {
 				int codigoPlato = Convert::ToInt32(row->Cells[0]->Value);
@@ -478,10 +515,16 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 				double cantidadSeleccionada = Convert::ToInt32(row->Cells[2]->Value);
 				double CantPlatosVendidos = objPlatoController->ObtenerCantidadPorCodigoBD(codigoPlato);
 				double CantPlatosDisponible = objPlatoController->ObtenerCantidadDisponiblePorCodigoBD(codigoPlato);
+
+				double precio = objPlatoController->buscarPlatoxCodigoBD(codigoPlato)->getPrecio();
 				objPlatoController->ModificarCantidad(codigoPlato, cantidadSeleccionada, CantPlatosVendidos, CantPlatosDisponible);
 
-				// También puedes mostrar información o realizar otras acciones según tus requerimientos
-				MessageBox::Show("Plato: " + Nombre + ", Cantidad: " + cantidadSeleccionada);
+				
+				objPlatoVendido = gcnew PlatoVendido(codigoPlato, Nombre, cantidadSeleccionada, codigoTransaccion);
+
+				monto += precio * cantidadSeleccionada;
+
+				listaPlatosVendidos->Add(objPlatoVendido);
 			}
 		}
 		catch (System::FormatException^ ex) {
@@ -489,7 +532,16 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		}
 	}
 
+	objTransaccion = gcnew Transaccion(codigoTransaccion, dateTimePicker1->Text, "Compra", monto, codigoUsuario, codigoUbicacion);
+	TransaccionController^ objTransaccionController = gcnew TransaccionController();
+	codigoTransaccion = objTransaccionController->agregarTransaccion(objTransaccion);
 
+	for each (PlatoVendido ^ objPlatoVendido in listaPlatosVendidos) {
+		objPlatoVendido->setCodigoTransaccion(codigoTransaccion);
+		PlatoVendidoController^ objPlatoVendidoController = gcnew PlatoVendidoController();
+		objPlatoVendidoController->agregarPlatoVendido(objPlatoVendido);
+	}
+	
 	// Mostrar un mensaje de éxito o realizar otras acciones finales
 	MessageBox::Show("Se realizo la compra exitosamente");
 	serialPort1->Close();
@@ -498,14 +550,6 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 }
 
 
-	private: System::Void label1_Click(System::Object ^ sender, System::EventArgs ^ e) {
-	}
-	private: System::Void dataGridView1_CellContentClick(System::Object ^ sender, System::Windows::Forms::DataGridViewCellEventArgs ^ e) {
-	}
-	private: System::Void button2_Click(System::Object ^ sender, System::EventArgs ^ e) {
-	}
-	private: System::Void dataGridView2_CellContentClick(System::Object ^ sender, System::Windows::Forms::DataGridViewCellEventArgs ^ e) {
-	}
 	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 		// Verificar si hay una fila seleccionada en la grilla2
 		if (this->dataGridView2->SelectedRows->Count > 0) {
@@ -559,32 +603,30 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	}
 
 
-private: System::Void frmComprarPlato_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+private: System::Void frmComprarPlato_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e)
+{
 	serialPort1->Close();
-
-
-
 }
 
-
-
-
 private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
+
 	String^ receivedData = serialPort1->ReadLine();
 	if (this->IsHandleCreated) {
 		this->Invoke(gcnew Action<String^>(this, &frmComprarPlato::UpdateTextBox), receivedData);
 	}
-	
-
-	
 }
 
 
 private: System::Void UpdateTextBox(String^ data) {
-	if (data != "")
+
+	if (data != "") {
+
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		textBox5->Text = objUsuarioController->buscarUsuarioxRFIDBD(data)->getDNI();
 		textBox6->Text = data;
+	}
 }
-
-
+private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

@@ -11,7 +11,7 @@ namespace SistemaMonederoModel {
 	private:
 		
 		String^ fechaCompra;
-		List<Plato^> listaPlatos;
+		List<Plato^>^ listaPlatos;
 		int cantPlatos;
 		
 	public:

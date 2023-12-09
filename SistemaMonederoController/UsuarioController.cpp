@@ -110,7 +110,18 @@ Usuario^ UsuarioController::buscarUsuarioxCodigoBD(int codigo) {
 	return objUsuario;
 }
 
+Usuario^ UsuarioController::buscarUsuarioxRFIDBD(String^ RFID) {
 
+	List<Usuario^>^ Usuarios = buscarAllBD(); // Obtén la lista de categorías
+
+	// Recorre la lista de categorías para verificar si ya existe una con el mismo nombre
+	for each (Usuario^ usuario in Usuarios) {
+		if (usuario->getIdentificacionRFID() == RFID) {
+			return usuario; // Devuelve la coincidencia
+		}
+	}
+
+}
 void UsuarioController::ActualizarUsuarioBD(int codigo, String^ Nombre, String^ ApPaterno, String^ ApMaterno, String^ FechaNacimiento, String^ DNI, String^ IdentificacionRFID, String^ TipoUsuario) {
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand();

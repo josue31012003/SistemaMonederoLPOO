@@ -8,6 +8,9 @@ namespace SistemaMonederoView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Collections::Generic;
+	using namespace SistemaMonederoController;
+	using namespace SistemaMonederoModel;
 
 	/// <summary>
 	/// Summary for frmRecarga
@@ -42,13 +45,16 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
+	private: System::IO::Ports::SerialPort^ serialPort1;
+	private: System::ComponentModel::IContainer^ components;
+
+
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -57,6 +63,7 @@ namespace SistemaMonederoView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
@@ -64,7 +71,7 @@ namespace SistemaMonederoView {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -127,40 +134,35 @@ namespace SistemaMonederoView {
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(93, 95);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(51, 16);
+			this->label5->Size = System::Drawing::Size(30, 16);
 			this->label5->TabIndex = 0;
-			this->label5->Text = L"Código";
+			this->label5->Text = L"DNI";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(0, 0);
+			this->label2->Location = System::Drawing::Point(71, 264);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(44, 16);
-			this->label2->TabIndex = 4;
-			this->label2->Text = L"label2";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(71, 264);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(375, 32);
-			this->label3->TabIndex = 5;
-			this->label3->Text = L"Ingrese las monedas a través de la ranura y presione el botón\r\n\"Confirmar\" cuando"
+			this->label2->Size = System::Drawing::Size(375, 32);
+			this->label2->TabIndex = 5;
+			this->label2->Text = L"Ingrese las monedas a través de la ranura y presione el botón\r\n\"Confirmar\" cuando"
 				L" haya terminado de ingresar el monto";
-			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// serialPort1
+			// 
+			this->serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &frmRecarga::serialPort1_DataReceived);
 			// 
 			// frmRecarga
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(547, 454);
-			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->groupBox2);
 			this->Name = L"frmRecarga";
 			this->Text = L"frmRecarga";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &frmRecarga::frmRecarga_FormClosed);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->ResumeLayout(false);
@@ -168,5 +170,27 @@ namespace SistemaMonederoView {
 
 		}
 #pragma endregion
-	};
+
+private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
+
+	String^ receivedData = serialPort1->ReadLine();
+	if (this->IsHandleCreated) {
+		this->Invoke(gcnew Action<String^>(this, &frmRecarga::UpdateTextBox), receivedData);
+	}
+}
+
+private: System::Void UpdateTextBox(String^ data) {
+
+	if (data != "") {
+
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		textBox5->Text = objUsuarioController->buscarUsuarioxRFIDBD(data)->getDNI();
+		textBox6->Text = data;
+	}
+}
+
+private: System::Void frmRecarga_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+	serialPort1->Close();
+}
+};
 }

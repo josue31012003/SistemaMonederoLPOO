@@ -114,26 +114,28 @@
   <ItemGroup>
     <ClInclude Include="Administrador.h" />
     <ClInclude Include="Comensal.h" />
-    <ClInclude Include="HistorialTransaccion.h" />
+    <ClInclude Include="PlatoVendido.h" />
     <ClInclude Include="Maquina.h" />
     <ClInclude Include="MaquinaCompra.h" />
     <ClInclude Include="MaquinaRecarga.h" />
     <ClInclude Include="nombrePlato.h" />
     <ClInclude Include="Plato.h" />
     <ClInclude Include="Tarjeta.h" />
+    <ClInclude Include="Transaccion.h" />
     <ClInclude Include="Ubicacion.h" />
     <ClInclude Include="Usuario.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Administrador.cpp" />
     <ClCompile Include="Comensal.cpp" />
-    <ClCompile Include="HistorialTransaccion.cpp" />
+    <ClCompile Include="PlatoVendido.cpp" />
     <ClCompile Include="Maquina.cpp" />
     <ClCompile Include="MaquinaCompra.cpp" />
     <ClCompile Include="MaquinaRecarga.cpp" />
     <ClCompile Include="nombrePlato.cpp" />
     <ClCompile Include="Plato.cpp" />
     <ClCompile Include="Tarjeta.cpp" />
+    <ClCompile Include="Transaccion.cpp" />
     <ClCompile Include="Ubicacion.cpp" />
     <ClCompile Include="Usuario.cpp" />
   </ItemGroup>
