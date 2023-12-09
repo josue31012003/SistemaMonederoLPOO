@@ -50,9 +50,9 @@ namespace SistemaMonederoController {
 		Plato^ buscarPlatoxCodigoBD(int codigo);
 		List<Plato^>^ buscarPlatosxUbicacionBD(String^ ubicacion);
 		List<Plato^>^ buscarAllBD();
-		void registrarPlatoBD(String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, double cantPlatosDisponible, int codigoUbicacion);
+		void registrarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosVendidos, double cantPlatosDisponible, int codigoUbicacion);
 		void eliminarPlatoBD(int codigo);
-		void ActualizarPlatoBD(int codigo, String^ Origen, double Precio, double cantPlatosDisponible);
+		void ActualizarPlatoBD(int codigo, String^ Nombre, String^ Origen, double Precio, double cantPlatosDisponible);
 		static void incrementarConteoPlatosSeleccionados(String^ codigoPlato);
 		static int ConteoPlatosSeleccionados(String^ codigoPlato);
 		void restarConteoPlatosSeleccionados(String^ codigoPlato, int cantidad);
