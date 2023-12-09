@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SistemaMonederoModel", "..\MonederoElectronico\SistemaMonederoModel\SistemaMonederoModel.vcxproj", "{44887C75-7C77-4017-9072-0F9B33CCD70C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SistemaMonederoModel", "SistemaMonederoModel\SistemaMonederoModel.vcxproj", "{44887C75-7C77-4017-9072-0F9B33CCD70C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SistemaMonederoController", "..\MonederoElectronico\SistemaMonederoController\SistemaMonederoController.vcxproj", "{3E7F5437-738C-42FA-9DE1-268F9EF8BCCC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SistemaMonederoController", "SistemaMonederoController\SistemaMonederoController.vcxproj", "{3E7F5437-738C-42FA-9DE1-268F9EF8BCCC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SistemaMonederoView", "..\MonederoElectronico\SistemaMonederoView\SistemaMonederoView.vcxproj", "{DC5B7F2D-12C6-4594-BFA3-BAD66092010A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SistemaMonederoView", "SistemaMonederoView\SistemaMonederoView.vcxproj", "{DC5B7F2D-12C6-4594-BFA3-BAD66092010A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
