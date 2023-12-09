@@ -53,6 +53,15 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 
 
+
+
+
+
+
+
+
+
+
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -120,6 +129,7 @@ namespace SistemaMonederoView {
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(153, 22);
 			this->textBox6->TabIndex = 6;
+			this->textBox6->TabIndexChanged += gcnew System::EventHandler(this, &frmHistorial::textBox6_TabIndexChanged);
 			this->textBox6->TextChanged += gcnew System::EventHandler(this, &frmHistorial::textBox6_TextChanged);
 			// 
 			// textBox5
@@ -164,7 +174,7 @@ namespace SistemaMonederoView {
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->Size = System::Drawing::Size(643, 237);
 			this->dataGridView1->TabIndex = 3;
-			this->dataGridView1->DefaultCellStyle->WrapMode = DataGridViewTriState::True;
+			dataGridView1->DefaultCellStyle->WrapMode = DataGridViewTriState::True;
 			// 
 			// serialPort1
 			// 
@@ -216,6 +226,7 @@ namespace SistemaMonederoView {
 			this->Text = L"frmHistorial";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &frmHistorial::frmHistorial_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &frmHistorial::frmHistorial_Load);
+			this->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &frmHistorial::frmHistorial_MouseMove);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -239,68 +250,76 @@ namespace SistemaMonederoView {
 			textBox6->Text = data;
 		}
 	}
-private: System::Void frmHistorial_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
-	serialPort1->Close();
-}
-private: System::Void frmHistorial_Load(System::Object^ sender, System::EventArgs^ e) {
-
-}
-
-private: void mostrarGrilla(List<Transaccion^>^ listTransacciones) {
-	this->dataGridView1->Rows->Clear(); /* Elimino toda la información de la grilla1 */
-
-	for (int i = 0; i < listTransacciones->Count; i++) {
-
-		Transaccion^ objTransaccion = listTransacciones[i];
-		array<String^>^ filaGrilla = gcnew array<String^>(5);
-		
-		filaGrilla[0] = objTransaccion->getFecha();
-
-		PlatoVendidoController^ objPlatoVendidoController = gcnew PlatoVendidoController();
-		List<PlatoVendido^>^ listaPlatosVendidos = objPlatoVendidoController->buscarPlatosVendidosxTransaccion(objTransaccion->getCodigo());
-
-		String^ StringlistaPlatosVendidos = "";
-		for each (PlatoVendido ^ platoVendido in listaPlatosVendidos) {
-			if (StringlistaPlatosVendidos == "") {
-				StringlistaPlatosVendidos += Convert::ToString(platoVendido->getCantidad()) + " " + platoVendido->getNombre();
-			}
-			else {
-				StringlistaPlatosVendidos += Environment::NewLine + Convert::ToString(platoVendido->getCantidad()) + " " + platoVendido->getNombre();
-			}
-		}
-
-		filaGrilla[1] = StringlistaPlatosVendidos;
-		filaGrilla[2] = objTransaccion->getTipo();
-		filaGrilla[3] = Convert::ToString(objTransaccion->getMonto());
-
-		MaquinaController^ objMaquinaController = gcnew MaquinaController();
-		UbicacionController^ objUbicacionController = gcnew UbicacionController();
-
-		String^ ubicacion = objUbicacionController->buscarUbicacionxCodigoBD(objTransaccion->getCodigoUbicacion())->getNombre();
-
-		filaGrilla[4] = ubicacion;
-
-		this->dataGridView1->Rows->Add(filaGrilla);
+	private: System::Void frmHistorial_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		serialPort1->Close();
 	}
-}
+	private: System::Void frmHistorial_Load(System::Object^ sender, System::EventArgs^ e) {
 
-private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	if (textBox6->Text != "") {
-		try {
+	}
 
-			UsuarioController^ objUsuarioController = gcnew UsuarioController();
-			int codigoUsuario = objUsuarioController->buscarUsuarioxRFIDBD(textBox6->Text)->getCodigo();
+	private: void mostrarGrilla(List<Transaccion^>^ listTransacciones) {
+		this->dataGridView1->Rows->Clear(); /* Elimino toda la información de la grilla1 */
 
-			TransaccionController^ objTransaccionController = gcnew TransaccionController();
-			mostrarGrilla(objTransaccionController->buscarTransaccionesxUsuario(codigoUsuario));
-		}
-		catch (Exception^ ex) {
+		for (int i = 0; i < listTransacciones->Count; i++) {
 
-		}
-		finally {
+			Transaccion^ objTransaccion = listTransacciones[i];
+			array<String^>^ filaGrilla = gcnew array<String^>(5);
 
+			filaGrilla[0] = objTransaccion->getFecha();
+
+			PlatoVendidoController^ objPlatoVendidoController = gcnew PlatoVendidoController();
+			List<PlatoVendido^>^ listaPlatosVendidos = objPlatoVendidoController->buscarPlatosVendidosxTransaccion(objTransaccion->getCodigo());
+
+			String^ StringlistaPlatosVendidos = "";
+			for each (PlatoVendido ^ platoVendido in listaPlatosVendidos) {
+				if (StringlistaPlatosVendidos == "") {
+					StringlistaPlatosVendidos += Convert::ToString(platoVendido->getCantidad()) + " " + platoVendido->getNombre();
+				}
+				else {
+					StringlistaPlatosVendidos += "\n" + Convert::ToString(platoVendido->getCantidad()) + " " + platoVendido->getNombre();
+				}
+			}
+
+			filaGrilla[1] = StringlistaPlatosVendidos;
+			filaGrilla[2] = objTransaccion->getTipo();
+			filaGrilla[3] = Convert::ToString(objTransaccion->getMonto());
+
+			MaquinaController^ objMaquinaController = gcnew MaquinaController();
+			UbicacionController^ objUbicacionController = gcnew UbicacionController();
+
+			String^ ubicacion = objUbicacionController->buscarUbicacionxCodigoBD(objTransaccion->getCodigoUbicacion())->getNombre();
+
+			filaGrilla[4] = ubicacion;
+
+			this->dataGridView1->Rows->Add(filaGrilla);
 		}
 	}
-}
-};
+
+	private: System::Void textBox6_TabIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+
+
+	}
+	private: System::Void frmHistorial_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+
+
+	}
+	private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (textBox6->Text != "") {
+			try {
+
+				UsuarioController^ objUsuarioController = gcnew UsuarioController();
+				int codigoUsuario = objUsuarioController->buscarUsuarioxRFIDBD(textBox6->Text)->getCodigo();
+
+				TransaccionController^ objTransaccionController = gcnew TransaccionController();
+				mostrarGrilla(objTransaccionController->buscarTransaccionesxUsuario(codigoUsuario));
+			}
+			catch (Exception^ ex) {
+
+			}
+			finally {
+
+			}
+		}
+	}
+	};
 }
