@@ -130,11 +130,6 @@
     <ClCompile Include="UsuarioController.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SistemaMonederoModel\SistemaMonederoModel.vcxproj">
-      <Project>{44887c75-7c77-4017-9072-0f9b33ccd70c}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
   </ItemGroup>

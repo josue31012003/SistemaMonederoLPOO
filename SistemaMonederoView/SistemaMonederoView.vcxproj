@@ -311,9 +311,6 @@
     <ProjectReference Include="..\SistemaMonederoController\SistemaMonederoController.vcxproj">
       <Project>{3e7f5437-738c-42fa-9de1-268f9ef8bccc}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\SistemaMonederoModel\SistemaMonederoModel.vcxproj">
-      <Project>{44887c75-7c77-4017-9072-0f9b33ccd70c}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
