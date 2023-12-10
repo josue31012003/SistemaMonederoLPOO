@@ -42,6 +42,7 @@ namespace SistemaMonederoView {
 		/// </summary>
 		~frmRecargaConfirmacion()
 		{
+			serialPort1->Close();
 			if (components)
 			{
 				delete components;
@@ -65,13 +66,15 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ textBox4;
 	private: System::Windows::Forms::Label^ label7;
+	private: System::IO::Ports::SerialPort^ serialPort1;
+	private: System::ComponentModel::IContainer^ components;
 
 
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -80,6 +83,7 @@ namespace SistemaMonederoView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -94,6 +98,7 @@ namespace SistemaMonederoView {
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -244,12 +249,33 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmRecargaConfirmacion";
 			this->Text = L"frmRecargaConfirmacion";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &frmRecargaConfirmacion::frmRecargaConfirmacion_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &frmRecargaConfirmacion::frmRecargaConfirmacion_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
+		void InicializeSerial(void) {
+			SerialController^ arduino = gcnew SerialController();
+			serialPort1->PortName = arduino->ObtenerPuertoSerial2(); // Establece el nombre del puerto COM, asegúrate de que coincida con el puerto que estás utilizando.
+			serialPort1->BaudRate = 9600; // Establece la velocidad de baudios (puede variar según el dispositivo).
+			serialPort1->DataBits = 8; // Establece la longitud de datos (generalmente 8 bits).
+			serialPort1->Parity = System::IO::Ports::Parity::None; // Establece la paridad (puede variar según el dispositivo).
+			serialPort1->StopBits = System::IO::Ports::StopBits::One; // Establece el número de bits de parada.
+			try {
+				serialPort1->Open();
+
+			}
+			catch (Exception^ ex)
+			{
+
+			}
+			serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &frmRecargaConfirmacion::serialPort1_DataReceived);
+
+
+		}
+
 #pragma endregion
 	private: System::Void frmRecargaConfirmacion_Load(System::Object^ sender, System::EventArgs^ e) {
 		UsuarioController^ objUsuarioController = gcnew UsuarioController(); 
@@ -257,9 +283,11 @@ namespace SistemaMonederoView {
 		this->textBox6->Text = objUsuario->getIdentificacionRFID(); 
 		this->textBox2->Text = objUsuario->getNombre(); 
 		this->textBox3->Text = objUsuario->getApPaterno(); 
+		InicializeSerial();
 
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	serialPort1->Close();
 	this->Close(); 
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -274,9 +302,25 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	double saldoActual = Saldo + saldoRecarga;   //Este es el saldo al finalizar la recarga 
 	//
 	MessageBox::Show("Se realizó la recarga.");
+	serialPort1->Close();
 	this->Close();
 
 
+}
+		private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
+			String^ receivedData = serialPort1->ReadLine();
+
+			// Verifica si la invocación es necesaria
+			this->BeginInvoke(gcnew Action<String^>(this, &frmRecargaConfirmacion::UpdateTextBox), receivedData);
+
+		}
+				private: System::Void UpdateTextBox(String^ data) {
+					if (data != "")
+						textBox4->Text = data;
+				}
+
+private: System::Void frmRecargaConfirmacion_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	serialPort1->Close();
 }
 };
 }
