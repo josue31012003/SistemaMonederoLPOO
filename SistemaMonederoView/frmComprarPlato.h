@@ -341,7 +341,6 @@ namespace SistemaMonederoView {
 			// 
 			// dateTimePicker1
 			// 
-			this->dateTimePicker1->Enabled = false;
 			this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Short;
 			this->dateTimePicker1->Location = System::Drawing::Point(53, 640);
 			this->dateTimePicker1->Name = L"dateTimePicker1";
@@ -463,12 +462,14 @@ private: void mostrarGrilla(List<Plato^>^ listPlatos) {
 			// Obtener el conteo actual de ese plato
 			int conteo = PlatoController::ConteoPlatosSeleccionados(codigoPlato);
 
-			// Asegurarse de que la columna 2 contenga el conteo en lugar del precio
-			filaGrilla2[2] = Convert::ToString(conteo);
+			if (conteo > 0) {
+				// Asegurarse de que la columna 2 contenga el conteo en lugar del precio
+				filaGrilla2[2] = Convert::ToString(conteo);
 
-			// Agregar la nueva fila a la grilla2 sin borrar las existentes
-			this->dataGridView2->Rows->Add(filaGrilla2);
-			this->dataGridView2->Refresh();
+				// Agregar la nueva fila a la grilla2 sin borrar las existentes
+				this->dataGridView2->Rows->Add(filaGrilla2);
+				this->dataGridView2->Refresh();
+			}
 		}
 		catch (System::NullReferenceException^ ex) {
 			
@@ -489,68 +490,70 @@ private: void mostrarGrilla(List<Plato^>^ listPlatos) {
 	}
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	// Crear una instancia de PlatoController
-	double monto = 0;
+	if (dataGridView2->Rows[0] != nullptr && this->dataGridView2->Rows[0]->Cells[0] != nullptr && dataGridView2->Rows[0]->Cells[0]->Value != nullptr && textBox6->Text != nullptr) {
 
-	UbicacionController^ objUbicacionController = gcnew UbicacionController();
-	int codigoUbicacion = objUbicacionController->buscarUbicacionxNombreBD(this->objUbicacion)->getCodigo();
+		// Crear una instancia de PlatoController
+		double monto = 0;
 
-	UsuarioController^ objUsuarioController = gcnew UsuarioController();
-	int codigoUsuario = objUsuarioController->buscarUsuarioxRFIDBD(textBox6->Text)->getCodigo();
+		UbicacionController^ objUbicacionController = gcnew UbicacionController();
+		int codigoUbicacion = objUbicacionController->buscarUbicacionxNombreBD(this->objUbicacion)->getCodigo();
 
-	PlatoController^ objPlatoController = gcnew PlatoController();
-	List<PlatoVendido^>^ listaPlatosVendidos = gcnew List<PlatoVendido^>();
-	int codigoTransaccion;
-	Transaccion^ objTransaccion;
-	// Recorrer todas las filas del DataGridView2
-	
-	for each (DataGridViewRow ^ row in dataGridView2->Rows) {
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		int codigoUsuario = objUsuarioController->buscarUsuarioxRFIDBD(textBox6->Text)->getCodigo();
 
-		PlatoVendido^ objPlatoVendido;
+		PlatoController^ objPlatoController = gcnew PlatoController();
+		List<PlatoVendido^>^ listaPlatosVendidos = gcnew List<PlatoVendido^>();
+		int codigoTransaccion;
+		Transaccion^ objTransaccion;
+		// Recorrer todas las filas del DataGridView2
 
-		try {
-			if (row->Cells[0]->Value != nullptr && row->Cells[2]->Value != nullptr) {
-				int codigoPlato = Convert::ToInt32(row->Cells[0]->Value);
-				String^ Nombre = row->Cells[1]->Value->ToString();
-				double cantidadSeleccionada = Convert::ToInt32(row->Cells[2]->Value);
-				double CantPlatosVendidos = objPlatoController->ObtenerCantidadPorCodigoBD(codigoPlato);
-				double CantPlatosDisponible = objPlatoController->ObtenerCantidadDisponiblePorCodigoBD(codigoPlato);
+		for each (DataGridViewRow ^ row in dataGridView2->Rows) {
 
-				double precio = objPlatoController->buscarPlatoxCodigoBD(codigoPlato)->getPrecio();
-				objPlatoController->ModificarCantidad(codigoPlato, cantidadSeleccionada, CantPlatosVendidos, CantPlatosDisponible);
+			PlatoVendido^ objPlatoVendido;
 
-				
-				objPlatoVendido = gcnew PlatoVendido(codigoPlato, Nombre, cantidadSeleccionada, codigoTransaccion);
+			try {
+				if (row->Cells[0]->Value != nullptr && row->Cells[2]->Value != nullptr) {
+					int codigoPlato = Convert::ToInt32(row->Cells[0]->Value);
+					String^ Nombre = row->Cells[1]->Value->ToString();
+					double cantidadSeleccionada = Convert::ToInt32(row->Cells[2]->Value);
+					double CantPlatosVendidos = objPlatoController->ObtenerCantidadPorCodigoBD(codigoPlato);
+					double CantPlatosDisponible = objPlatoController->ObtenerCantidadDisponiblePorCodigoBD(codigoPlato);
 
-				monto += precio * cantidadSeleccionada;
+					double precio = objPlatoController->buscarPlatoxCodigoBD(codigoPlato)->getPrecio();
+					objPlatoController->ModificarCantidad(codigoPlato, cantidadSeleccionada, CantPlatosVendidos, CantPlatosDisponible);
 
-				listaPlatosVendidos->Add(objPlatoVendido);
+
+					objPlatoVendido = gcnew PlatoVendido(codigoPlato, Nombre, cantidadSeleccionada, codigoTransaccion);
+
+					monto += precio * cantidadSeleccionada;
+
+					listaPlatosVendidos->Add(objPlatoVendido);
+				}
+			}
+			catch (System::FormatException^ ex) {
+
 			}
 		}
-		catch (System::FormatException^ ex) {
-		
+
+		objTransaccion = gcnew Transaccion(codigoTransaccion, dateTimePicker1->Text, "Compra", monto, codigoUsuario, codigoUbicacion);
+		TransaccionController^ objTransaccionController = gcnew TransaccionController();
+		codigoTransaccion = objTransaccionController->agregarTransaccion(objTransaccion);
+
+		for each (PlatoVendido ^ objPlatoVendido in listaPlatosVendidos) {
+			objPlatoVendido->setCodigoTransaccion(codigoTransaccion);
+			PlatoVendidoController^ objPlatoVendidoController = gcnew PlatoVendidoController();
+			objPlatoVendidoController->agregarPlatoVendido(objPlatoVendido);
 		}
-	}
 
-	objTransaccion = gcnew Transaccion(codigoTransaccion, dateTimePicker1->Text, "Compra", monto, codigoUsuario, codigoUbicacion);
-	TransaccionController^ objTransaccionController = gcnew TransaccionController();
-	codigoTransaccion = objTransaccionController->agregarTransaccion(objTransaccion);
-
-	for each (PlatoVendido ^ objPlatoVendido in listaPlatosVendidos) {
-		objPlatoVendido->setCodigoTransaccion(codigoTransaccion);
-		PlatoVendidoController^ objPlatoVendidoController = gcnew PlatoVendidoController();
-		objPlatoVendidoController->agregarPlatoVendido(objPlatoVendido);
+		// Mostrar un mensaje de éxito o realizar otras acciones finales
+		MessageBox::Show("Se realizo la compra exitosamente");
+		serialPort1->Close();
+		this->dataGridView2->Rows->Clear();
+		this->dataGridView2->Refresh();
 	}
-	
-	// Mostrar un mensaje de éxito o realizar otras acciones finales
-	MessageBox::Show("Se realizo la compra exitosamente");
-	serialPort1->Close();
-	this->dataGridView2->Rows->Clear();
-	this->dataGridView2->Refresh();
 }
 
-
-	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button2_Click_1(System::Object ^ sender, System::EventArgs ^ e) {
 		// Verificar si hay una fila seleccionada en la grilla2
 		if (this->dataGridView2->SelectedRows->Count > 0) {
 			// Obtener la fila seleccionada en la grilla2
@@ -563,12 +566,20 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 				// Crear una instancia de PlatoController
 				PlatoController^ objPlatoController = gcnew PlatoController();
 
-				// Restar el conteo anterior del plato eliminado
+				// Verificar si la cantidad seleccionada es mayor que 1
 				int conteoAnterior = PlatoController::ConteoPlatosSeleccionados(codigoPlato);
-				objPlatoController->restarConteoPlatosSeleccionados(codigoPlato, conteoAnterior);
+				if (conteoAnterior > 1) {
+					// Si es mayor que 1, simplemente resta una unidad
+					objPlatoController->restarConteoPlatosSeleccionados(codigoPlato, 1);
 
-				// Eliminar la fila seleccionada de la grilla2
-				mostrarFilaEnGrilla2(dataGridView2->CurrentRow);
+					// Actualiza la celda con la nueva cantidad
+					this->dataGridView2->Rows[filaSeleccionada]->Cells[2]->Value = (conteoAnterior - 1).ToString();
+				}
+				else {
+					// Si la cantidad es 1, elimina la fila completa
+					objPlatoController->restarConteoPlatosSeleccionados(codigoPlato, 1);
+					this->dataGridView2->Rows->RemoveAt(filaSeleccionada);
+				}
 			}
 		}
 	}

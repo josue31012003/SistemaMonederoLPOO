@@ -257,6 +257,26 @@ namespace SistemaMonederoView {
 		}
 	}
 
+	private: System::Void frmHistorial_Load(System::Object^ sender, System::EventArgs^ e) {
+		/*int columnIndex = 1; // Indica el índice de la columna que quieres analizar
+
+		int maxTextLength = 0;
+
+		if (textBox6->Text != "") {
+			for (int i = 0; i < dataGridView1->Rows->Count; i++) {
+				String^ text = dataGridView1->Rows[i]->Cells[columnIndex]->Value->ToString();
+				int length = text->Length;
+				if (length > maxTextLength) {
+					maxTextLength = length;
+				}
+			}
+
+			// Establece el ancho de la columna en función de la longitud máxima encontrada
+			dataGridView1->Columns[columnIndex]->Width = maxTextLength * 10; // Ajusta someFactor según tu preferencia
+		}*/
+
+	}
+
 	private: List<PlatoVendido^>^ mostrarGrilla(List<Transaccion^>^ listTransacciones) {
 		this->dataGridView1->Rows->Clear(); /* Elimino toda la información de la grilla1 */
 		List<PlatoVendido^>^ listaPlatosVendidos = nullptr;
@@ -307,8 +327,6 @@ namespace SistemaMonederoView {
 
 				List<PlatoVendido^>^ listaPlatosVendidos = mostrarGrilla(objTransaccionController->buscarTransaccionesxUsuario(codigoUsuario));
 
-				int columnIndex = 1; // Indica el índice de la columna que quieres analizar
-
 				int maxTextLength = 0;
 
 				String^ StringPlatoVendido = nullptr;
@@ -320,9 +338,9 @@ namespace SistemaMonederoView {
 						maxTextLength = length;
 					}
 				}
-
 				// Establece el ancho de la columna en función de la longitud máxima encontrada
-				dataGridView1->Columns[columnIndex]->Width = maxTextLength * 7; // Ajusta someFactor según tu preferencia
+				dataGridView1->Columns[1]->Width = maxTextLength * 7; // Ajusta someFactor según tu preferencia
+				dataGridView1->Sort(dataGridView1->Columns[0], System::ComponentModel::ListSortDirection::Ascending);
 			}
 			catch (Exception^ ex) {
 
