@@ -29,6 +29,7 @@ namespace SistemaMonederoController {
 			List<Usuario^>^ buscarAllBD();
 			Usuario^ buscarUsuarioxNombre(String^ nombre);
 			Usuario^ buscarUsuarioxRFIDBD(String^ codigoRFID);
+			double obtenerSaldo(String^ codigoRFID);
 	};	
 
 }

@@ -224,4 +224,37 @@ Usuario^ UsuarioController::buscarUsuarioxNombre(String^ nombre)
 
 	return objUsuario;
 }
+double UsuarioController::obtenerSaldo(String^ codigoRFID) {
+	double saldo;
+
+	abrirConexionBD(); // Abrir la conexión a la base de datos
+
+	SqlCommand^ cmd = gcnew SqlCommand();
+	cmd->Connection = objConexion;
+	cmd->CommandText = "SELECT t.saldo "
+		"FROM Usuario u "
+		"INNER JOIN Tarjeta t ON u.rfid = t.codigoUsuario "
+		"WHERE u.rfid = @RFID";
+	cmd->Parameters->AddWithValue("@RFID", codigoRFID);
+
+	try {
+		SqlDataReader^ reader = cmd->ExecuteReader();
+
+		if (reader->Read()) {
+			saldo = Convert::ToDouble(reader["saldo"]);
+		}
+
+		reader->Close();
+	}
+	catch (SqlException^ e) {
+		// Manejo de excepciones
+		Console::WriteLine("Error al obtener saldo: " + e->Message);
+	}
+	finally {
+		cerrarConexionBD(); // Cerrar la conexión a la base de datos
+	}
+
+	return saldo;
+}
+
 
