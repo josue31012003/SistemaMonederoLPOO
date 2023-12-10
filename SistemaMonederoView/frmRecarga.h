@@ -22,6 +22,7 @@ namespace SistemaMonederoView {
 		frmRecarga(void)
 		{
 			InitializeComponent();
+			InicializeSerial();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -33,6 +34,7 @@ namespace SistemaMonederoView {
 		/// </summary>
 		~frmRecarga()
 		{
+			serialPort1->Close();
 			if (components)
 			{
 				delete components;
@@ -146,6 +148,26 @@ namespace SistemaMonederoView {
 			this->ResumeLayout(false);
 
 		}
+		void InicializeSerial(void) {
+			SerialController^ arduino = gcnew SerialController();
+			serialPort1->PortName = arduino->ObtenerPuertoSerial(); // Establece el nombre del puerto COM, asegúrate de que coincida con el puerto que estás utilizando.
+			serialPort1->BaudRate = 9600; // Establece la velocidad de baudios (puede variar según el dispositivo).
+			serialPort1->DataBits = 8; // Establece la longitud de datos (generalmente 8 bits).
+			serialPort1->Parity = System::IO::Ports::Parity::None; // Establece la paridad (puede variar según el dispositivo).
+			serialPort1->StopBits = System::IO::Ports::StopBits::One; // Establece el número de bits de parada.
+			try {
+				serialPort1->Open();
+
+			}
+			catch (Exception^ ex)
+			{
+
+			}
+			serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &frmRecarga::serialPort1_DataReceived);
+
+
+		}
+
 #pragma endregion
 
 	private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {

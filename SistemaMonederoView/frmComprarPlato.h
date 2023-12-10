@@ -22,6 +22,7 @@ namespace SistemaMonederoView {
 		frmComprarPlato(void)
 		{
 			InitializeComponent();
+			InicializeSerial();
 			
 
 			//
