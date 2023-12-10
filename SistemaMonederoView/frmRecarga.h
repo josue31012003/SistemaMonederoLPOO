@@ -171,11 +171,17 @@ namespace SistemaMonederoView {
 #pragma endregion
 
 	private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
-
-		String^ receivedData = serialPort1->ReadLine();
-		if (this->IsHandleCreated) {
-			this->Invoke(gcnew Action<String^>(this, &frmRecarga::UpdateTextBox), receivedData);
+		try {
+			String^ receivedData = serialPort1->ReadLine();
+			if (this->IsHandleCreated) {
+				this->Invoke(gcnew Action<String^>(this, &frmRecarga::UpdateTextBox), receivedData);
+			}
 		}
+		catch (Exception^ ex)
+		{
+
+		}
+		
 	}
 
 	private: System::Void UpdateTextBox(String^ data) {

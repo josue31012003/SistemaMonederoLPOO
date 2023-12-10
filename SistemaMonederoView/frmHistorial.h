@@ -234,6 +234,7 @@ namespace SistemaMonederoView {
 			this->Controls->Add(this->groupBox2);
 			this->Name = L"frmHistorial";
 			this->Text = L"frmHistorial";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &frmHistorial::frmHistorial_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &frmHistorial::frmHistorial_Load);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
@@ -263,11 +264,14 @@ namespace SistemaMonederoView {
 
 #pragma endregion
 	private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
-
-		String^ receivedData = serialPort1->ReadLine();
-		if (this->IsHandleCreated) {
-			this->Invoke(gcnew Action<String^>(this, &frmHistorial::UpdateTextBox), receivedData);
+		try {
+			String^ receivedData = serialPort1->ReadLine();
+			if (this->IsHandleCreated) {
+				this->Invoke(gcnew Action<String^>(this, &frmHistorial::UpdateTextBox), receivedData);
+			}
 		}
+		catch (Exception^ ex){}
+		
 	}
 
 	private: System::Void UpdateTextBox(String^ data) {
@@ -387,5 +391,8 @@ namespace SistemaMonederoView {
 			e->Value = cellValue;
 		}
 	}
-	};
+	private: System::Void frmHistorial_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		serialPort1->Close();
+	}
+};
 }

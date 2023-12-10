@@ -273,6 +273,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 //	double SaldoActual = objUsuario -> get
 	double saldoActual = Saldo + saldoRecarga;   //Este es el saldo al finalizar la recarga 
 	//
+	MessageBox::Show("Se realizó la recarga.");
+	this->Close();
 
 
 }
