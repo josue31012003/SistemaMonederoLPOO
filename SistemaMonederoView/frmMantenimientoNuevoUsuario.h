@@ -367,6 +367,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		String^ FechaNacimiento = this->dateTimePicker1->Text;
 		String^ DNI = this->textBox5->Text;
 		String^ TipoUsuario = this->comboBox1->Text;
+		String^ IdentificacionRFID = this->textBox6->Text;
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
 		objUsuarioController->registrarUsuarioBD(Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario);
 		MessageBox::Show("El usuario se ha agregado con éxito");
