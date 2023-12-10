@@ -194,4 +194,14 @@ double TarjetaController::obtenerSaldoxRFID(String^ codigoRFID) {
 
 
 
+void TarjetaController::actualizarSaldoTarjetaxRFID(String^ RFID, double saldo) {
 
+	abrirConexionBD(); 
+	SqlCommand^ objSentencia = gcnew SqlCommand(); 
+	objSentencia->CommandText = "Update Tarjeta Set Saldo = " + saldo + " where codigoUsuario = '" + RFID + "'"; 
+	objSentencia->Connection = this->objConexion; 
+	objSentencia->ExecuteNonQuery(); 
+	cerrarConexionBD(); 
+
+
+}

@@ -291,17 +291,16 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	this->Close(); 
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	double Saldo = Convert::ToDouble(this->textBox6->Text); // Este es el saldo que se ha recargado
-
+	double saldoRecarga = Convert::ToDouble(this->textBox4->Text); // Este es el saldo que se ha recargado
 	//Lógica para sumar saldo 
 	String^ RFID = this->textBox6->Text; 
 	TarjetaController^ objTarjetaController = gcnew TarjetaController();
 	TarjetaController^ objeto = gcnew TarjetaController();  //para actualizar el saldo 
-	double saldoRecarga = objTarjetaController->obtenerSaldoxRFID(codigoRFID); 
-//	double SaldoActual = objUsuario -> get
-	double saldoActual = Saldo + saldoRecarga;   //Este es el saldo al finalizar la recarga 
+	double saldoActual = objTarjetaController->obtenerSaldoxRFID(codigoRFID);  // Este es el saldo que hay en la tarjeta ANTES de la recarga
+	double saldoFinal = saldoActual + saldoRecarga;   //Este es el saldo al finalizar la recarga 
+	objeto->actualizarSaldoTarjetaxRFID(RFID, saldoFinal); //Aquí se realiza la actualización del saldo en la tarjeta 
 	//
-	MessageBox::Show("Se realizó la recarga.");
+	MessageBox::Show("Se realizó la recarga, el saldo actual es : S/." + saldoFinal);
 	serialPort1->Close();
 	this->Close();
 
