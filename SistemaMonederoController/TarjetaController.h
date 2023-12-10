@@ -21,7 +21,7 @@ namespace SistemaMonederoController {
 		void abrirConexionBD();
 		void cerrarConexionBD();
 		List<Tarjeta^>^ buscarTarjetaxEstadoBD(String^ estado);
-		void registrarTarjetaBD(String^ fechaAlta, String^ fechaBaja, String^ Estado);
+		void registrarTarjetaBD(int codigo, String^ fechaAlta, String^ fechaBaja, String^ Estado);
 		void eliminarTarjetaBD(int codigo);
 		Tarjeta^ buscarTarjetaxCodigoBD(int codigo);
 		void ActualizarTarjetaBD(int codigo, String^ fechaAlta, String^ fechaBaja, String^ Estado);

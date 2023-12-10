@@ -58,11 +58,11 @@ List<Tarjeta^>^ TarjetaController::buscarTarjetaxEstadoBD(String^ estado) {
 	return listaTarjetas;
 }
 
-void TarjetaController::registrarTarjetaBD(String^ fechaAlta, String^ fechaBaja, String^ Estado) {
+void TarjetaController::registrarTarjetaBD(int codigo, String^ fechaAlta, String^ fechaBaja, String^ Estado) {
 
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand(); 
-	objSentencia->CommandText = "INSERT INTO Tarjeta (fechaAlta, fechaBaja, estado) VALUES('" + fechaAlta + "', '" + fechaBaja + "', '" + Estado + "')";
+	objSentencia->CommandText = "INSERT INTO Tarjeta (codigo, fechaAlta, fechaBaja, estado) VALUES('" + codigo + fechaAlta + "', '" + fechaBaja + "', '" + Estado + "')";
 	objSentencia->Connection = this->objConexion; 
 	objSentencia->ExecuteNonQuery(); 
 	cerrarConexionBD(); 
