@@ -234,7 +234,7 @@ double UsuarioController::obtenerSaldo(String^ codigoRFID) {
 	cmd->CommandText = "SELECT t.saldo "
 		"FROM Usuario u "
 		"INNER JOIN Tarjeta t ON u.rfid = t.codigoUsuario "
-		"WHERE u.rfid = @RFID";
+		"WHERE u.rfid LIKE '%' + @RFID + '%'";
 	cmd->Parameters->AddWithValue("@RFID", codigoRFID);
 
 	try {
