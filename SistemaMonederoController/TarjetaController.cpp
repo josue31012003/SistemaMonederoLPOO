@@ -58,11 +58,11 @@ List<Tarjeta^>^ TarjetaController::buscarTarjetaxEstadoBD(String^ estado) {
 	return listaTarjetas;
 }
 
-void TarjetaController::registrarTarjetaBD(int codigo, String^ fechaAlta, String^ fechaBaja, String^ Estado) {
+void TarjetaController::registrarTarjetaBD( String^ fechaAlta, String^ fechaBaja, String^ Estado) {
 
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand(); 
-	objSentencia->CommandText = "INSERT INTO Tarjeta (codigo, fechaAlta, fechaBaja, estado) VALUES('" + codigo + fechaAlta + "', '" + fechaBaja + "', '" + Estado + "')";
+	objSentencia->CommandText = "INSERT INTO Tarjeta (fechaAlta, fechaBaja, estado) VALUES( '" + fechaAlta + "', '" + fechaBaja + "', '" + Estado + "')";
 	objSentencia->Connection = this->objConexion; 
 	objSentencia->ExecuteNonQuery(); 
 	cerrarConexionBD(); 
@@ -168,7 +168,7 @@ double TarjetaController::obtenerSaldoxRFID(String^ codigoRFID) {
 	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
 	objSentencia->Connection = this->objConexion;  
 	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
-	objSentencia->CommandText = "select t.*, u.* from  Tarjeta T, Usuario U where U.RFID = '" + codigoRFID + "' and T.codigoUsuario = U.RFID";
+	objSentencia->CommandText = "select * from Tarjeta where codigoUsuario = '" + codigoRFID + "'";
 
 	/*Aqui ejecuto la sentencia en la Base de Datos*/
 	/*Para Select siempre sera ExecuteReader*/
