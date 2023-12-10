@@ -121,7 +121,7 @@ Usuario^ UsuarioController::buscarUsuarioxRFIDBD(String^ codigoRFID) {
 	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
 	objSentencia->Connection = this->objConexion;
 	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
-	objSentencia->CommandText = "SELECT * from Usuario WHERE RFID = '" + codigoRFID + "'";
+	objSentencia->CommandText = "SELECT * from Usuario WHERE RFID like '" + codigoRFID + "'";
 	/*Aqui ejecuto la sentencia en la Base de Datos*/
 	/*Para Select siempre sera ExecuteReader*/
 	/*Para select siempre va a devolver un SqlDataReader*/

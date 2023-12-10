@@ -355,8 +355,9 @@ namespace SistemaMonederoView {
 			this->dateTimePicker1->Location = System::Drawing::Point(81, 542);
 			this->dateTimePicker1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->Size = System::Drawing::Size(87, 20);
+			this->dateTimePicker1->Size = System::Drawing::Size(115, 22);
 			this->dateTimePicker1->TabIndex = 13;
+			this->dateTimePicker1->Value = System::DateTime(2023, 12, 10, 18, 9, 51, 0);
 			// 
 			// label2
 			// 
@@ -540,7 +541,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		// Recorrer todas las filas del DataGridView2
 
 		for each (DataGridViewRow ^ row in dataGridView2->Rows) {
-
+			
 			PlatoVendido^ objPlatoVendido;
 
 			try {
@@ -566,8 +567,8 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 
 			}
 		}
-
-		objTransaccion = gcnew Transaccion(codigoTransaccion, dateTimePicker1->Text, "Compra", monto, codigoUsuario, codigoUbicacion);
+		String^ fecha = Convert::ToString(dateTimePicker1->Value);
+		objTransaccion = gcnew Transaccion(codigoTransaccion, fecha, "Compra", monto, codigoUsuario, codigoUbicacion);
 		TransaccionController^ objTransaccionController = gcnew TransaccionController();
 		codigoTransaccion = objTransaccionController->agregarTransaccion(objTransaccion);
 

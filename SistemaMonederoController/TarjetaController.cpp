@@ -147,14 +147,9 @@ List<Tarjeta^>^ TarjetaController::buscarAllBD() {
 		Tarjeta^ objTarjeta = gcnew Tarjeta(codigo, fechaAlta, fechaBaja, estado);
 		listaTarjetas->Add(objTarjeta);
 	}
-
 	cerrarConexionBD();
-
 	return listaTarjetas;
-
-
 }
-
 
 double TarjetaController::obtenerSaldoxRFID(String^ codigoRFID) {
 
