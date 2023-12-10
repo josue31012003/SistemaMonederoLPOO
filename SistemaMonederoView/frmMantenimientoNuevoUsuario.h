@@ -32,6 +32,7 @@ namespace SistemaMonederoView {
 		/// </summary>
 		~frmMantenimientoNuevoUsuario()
 		{
+			serialPort1->Close();
 			if (components)
 			{
 				delete components;
@@ -64,6 +65,8 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::TextBox^ textBox6;
+	private: System::IO::Ports::SerialPort^ serialPort1;
+	private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -75,7 +78,7 @@ namespace SistemaMonederoView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -84,6 +87,7 @@ namespace SistemaMonederoView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -102,6 +106,7 @@ namespace SistemaMonederoView {
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
+			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
 			this->SuspendLayout();
 			// 
 			// label1
@@ -307,6 +312,25 @@ namespace SistemaMonederoView {
 			this->PerformLayout();
 
 		}
+		void InicializeSerial(void) {
+			SerialController^ arduino = gcnew SerialController();
+			serialPort1->PortName = arduino->ObtenerPuertoSerial(); // Establece el nombre del puerto COM, asegúrate de que coincida con el puerto que estás utilizando.
+			serialPort1->BaudRate = 9600; // Establece la velocidad de baudios (puede variar según el dispositivo).
+			serialPort1->DataBits = 8; // Establece la longitud de datos (generalmente 8 bits).
+			serialPort1->Parity = System::IO::Ports::Parity::None; // Establece la paridad (puede variar según el dispositivo).
+			serialPort1->StopBits = System::IO::Ports::StopBits::One; // Establece el número de bits de parada.
+			try {
+				serialPort1->Open();
+
+			}
+			catch (Exception^ ex)
+			{
+
+			}
+			serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &frmMantenimientoNuevoUsuario::serialPort1_DataReceived);
+
+
+		}
 #pragma endregion
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -346,6 +370,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
 		objUsuarioController->registrarUsuarioBD(Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario);
 		MessageBox::Show("El usuario se ha agregado con éxito");
+		serialPort1->Close();
 		this->Close();
 	}
 }
@@ -357,6 +382,18 @@ private: System::Void label10_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void textBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void frmMantenimientoNuevoUsuario_Load(System::Object^ sender, System::EventArgs^ e) {
+	InicializeSerial();
 }
+		private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
+			String^ receivedData = serialPort1->ReadLine();
+
+			// Verifica si la invocación es necesaria
+			this->BeginInvoke(gcnew Action<String^>(this, &frmMantenimientoNuevoUsuario::UpdateTextBox), receivedData);
+
+		}
+				   private: System::Void UpdateTextBox(String^ data) {
+					   if (data != "")
+						   textBox6->Text = data;
+				   }
 };
 }

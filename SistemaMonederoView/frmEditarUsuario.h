@@ -20,6 +20,7 @@ namespace SistemaMonederoView {
 		frmEditarUsuario(void)
 		{
 			InitializeComponent();
+			InicializeSerial();
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -36,6 +37,7 @@ namespace SistemaMonederoView {
 		}*/
 		frmEditarUsuario(int codigo)
 		{
+
 			InitializeComponent();
 			this-> codigo = codigo; 
 
@@ -50,6 +52,7 @@ namespace SistemaMonederoView {
 		/// </summary>
 		~frmEditarUsuario()
 		{
+			serialPort1->Close();
 			if (components)
 			{
 				delete components;
@@ -76,11 +79,13 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Label^ label1;
 	private: Usuario^ ObjUsuario; //Este atributo lo agregamos porque necesitamos manejar la información del objeto - transferir info entre ventanas- 
 	private: int codigo; 
+	private: System::IO::Ports::SerialPort^ serialPort1;
+	private: System::ComponentModel::IContainer^ components;
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -89,6 +94,7 @@ namespace SistemaMonederoView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -107,6 +113,7 @@ namespace SistemaMonederoView {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
 			this->SuspendLayout();
 			// 
 			// textBox5
@@ -307,6 +314,27 @@ namespace SistemaMonederoView {
 			this->PerformLayout();
 
 		}
+		void InicializeSerial(void) {
+			SerialController^ arduino = gcnew SerialController();
+			serialPort1->PortName = arduino->ObtenerPuertoSerial(); // Establece el nombre del puerto COM, asegúrate de que coincida con el puerto que estás utilizando.
+			serialPort1->BaudRate = 9600; // Establece la velocidad de baudios (puede variar según el dispositivo).
+			serialPort1->DataBits = 8; // Establece la longitud de datos (generalmente 8 bits).
+			serialPort1->Parity = System::IO::Ports::Parity::None; // Establece la paridad (puede variar según el dispositivo).
+			serialPort1->StopBits = System::IO::Ports::StopBits::One; // Establece el número de bits de parada.
+			try {
+				serialPort1->Open();
+
+			}
+			catch (Exception^ ex)
+			{
+
+			}
+			serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &frmEditarUsuario::serialPort1_DataReceived);
+
+
+		}
+
+
 #pragma endregion
 	private: System::Void frmEditarUsuario_Load(System::Object^ sender, System::EventArgs^ e) {
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
@@ -320,11 +348,25 @@ namespace SistemaMonederoView {
 		this->textBox8->Text = ObjUsuario->getDNI();
 		this->textBox5->Text = ObjUsuario->getIdentificacionRFID();
 		this->comboBox1->Text = ObjUsuario->getTipoUsuario();
+		InicializeSerial();
 
 	}
+		   private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
+			   String^ receivedData = serialPort1->ReadLine();
+
+			   // Verifica si la invocación es necesaria
+			   this->BeginInvoke(gcnew Action<String^>(this, &frmEditarUsuario::UpdateTextBox), receivedData);
+
+		   }
+
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close(); 
 }
+	   private: System::Void UpdateTextBox(String^ data) {
+		   if (data != "")
+			   textBox5->Text = data;
+	   }
+
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	int codigoUsuario = Convert::ToInt32(this->textBox1->Text); 
@@ -343,6 +385,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	ObjUsuarioController->ActualizarUsuarioBD(codigoUsuario, Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario);
 //	ObjUsuarioController->actualizarUsuario(ObjUsuario);
 	MessageBox::Show("El usuario se ha actualizado con éxito"); 
+	serialPort1->Close();
 	this->Close(); 
 }
 };
