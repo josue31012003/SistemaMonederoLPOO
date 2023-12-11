@@ -118,7 +118,7 @@ Usuario^ UsuarioController::buscarUsuarioxRFIDBD(String^ codigoRFID) {
 
 	for (int i = 0; i < listaUsuarios->Count; i++) {
 
-		if (listaUsuarios[i]->getIdentificacionRFID() == codigoRFID) {
+		if (listaUsuarios[i]->getIdentificacionRFID()->Replace(" ","")->Replace("\r","") == codigoRFID) {
 			return listaUsuarios[i];
 		}
 	}
