@@ -113,36 +113,16 @@ Usuario^ UsuarioController::buscarUsuarioxCodigoBD(int codigo) {
 
 Usuario^ UsuarioController::buscarUsuarioxRFIDBD(String^ codigoRFID) { 
 
-	Usuario^ objUsuario;
+	List<Usuario^>^ listaUsuarios = buscarAllBD();
 	abrirConexionBD();
 
-	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
-	SqlCommand^ objSentencia = gcnew SqlCommand();
-	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
-	objSentencia->Connection = this->objConexion;
-	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
-	objSentencia->CommandText = "SELECT * from Usuario WHERE RFID like '" + codigoRFID + "'";
-	/*Aqui ejecuto la sentencia en la Base de Datos*/
-	/*Para Select siempre sera ExecuteReader*/
-	/*Para select siempre va a devolver un SqlDataReader*/
-	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	for (int i = 0; i < listaUsuarios->Count; i++) {
 
-	while (objData->Read()) {
-		int codigo = safe_cast<int>(objData[0]);
-		String^ nombre = safe_cast<String^>(objData[1]);
-		String^ apPaterno = safe_cast<String^>(objData[2]);
-		String^ apMaterno = safe_cast<String^>(objData[3]);
-		String^ fechaNacimiento = safe_cast<String^>(objData[4]);
-		String^ DNI = safe_cast<String^>(objData[5]);
-		String^ RFID = safe_cast<String^>(objData[6]);
-		String^ tipoUsuario = safe_cast<String^>(objData[7]);
-		objUsuario = gcnew Usuario(codigo, nombre, apPaterno, apMaterno, fechaNacimiento, DNI, RFID, tipoUsuario);
+		if (listaUsuarios[i]->getIdentificacionRFID() == codigoRFID) {
+			return listaUsuarios[i];
+		}
 	}
-
 	cerrarConexionBD();
-
-	return objUsuario;
-
 }
 
 
