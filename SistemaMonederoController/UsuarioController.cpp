@@ -204,7 +204,7 @@ Usuario^ UsuarioController::buscarUsuarioxNombre(String^ nombre)
 
 	return objUsuario;
 }
-String^ UsuarioController::obtenerSaldo(String^ codigoRFID) {
+double UsuarioController::obtenerSaldo(String^ codigoRFID) {
 	double saldo;
 
 	abrirConexionBD(); // Abrir la conexión a la base de datos
@@ -234,7 +234,7 @@ String^ UsuarioController::obtenerSaldo(String^ codigoRFID) {
 		cerrarConexionBD(); // Cerrar la conexión a la base de datos
 	}
 
-	return saldo.ToString();
+	return saldo;
 }
 
 
