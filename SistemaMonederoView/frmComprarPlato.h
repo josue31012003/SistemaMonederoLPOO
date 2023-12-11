@@ -173,6 +173,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox1
 			// 
+			this->textBox1->Enabled = false;
 			this->textBox1->Location = System::Drawing::Point(213, 192);
 			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox1->Name = L"textBox1";
@@ -203,6 +204,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox6
 			// 
+			this->textBox6->Enabled = false;
 			this->textBox6->Location = System::Drawing::Point(203, 139);
 			this->textBox6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox6->Name = L"textBox6";

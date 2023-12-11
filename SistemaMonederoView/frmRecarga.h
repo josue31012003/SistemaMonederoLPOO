@@ -104,6 +104,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox6
 			// 
+			this->textBox6->Enabled = false;
 			this->textBox6->Location = System::Drawing::Point(191, 94);
 			this->textBox6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox6->Name = L"textBox6";

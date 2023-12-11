@@ -195,14 +195,15 @@ namespace SistemaMonederoView {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(113, 289);
+			this->label5->Location = System::Drawing::Point(92, 289);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(117, 16);
+			this->label5->Size = System::Drawing::Size(141, 16);
 			this->label5->TabIndex = 20;
-			this->label5->Text = L"Monto ingresado : ";
+			this->label5->Text = L"Monto ingresado : (S/.)";
 			// 
 			// textBox4
 			// 
+			this->textBox4->Enabled = false;
 			this->textBox4->Location = System::Drawing::Point(248, 289);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(121, 22);
@@ -301,7 +302,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	double saldoFinal = saldoActual + saldoRecarga;   //Este es el saldo al finalizar la recarga 
 	objeto->actualizarSaldoTarjetaxRFID(codigoRFID, saldoFinal); //Aquí se realiza la actualización del saldo en la tarjeta 
 	//
-	MessageBox::Show("Se realizó la recarga, el saldo actual es : S/." + saldoFinal);
+	MessageBox::Show("Se realizó la recarga de S/. "+ saldoRecarga +".El saldo actual es : S/." + saldoFinal);
 	serialPort1->Close();
 	this->Close();
 

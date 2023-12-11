@@ -132,7 +132,6 @@
     <ClCompile Include="frmEditarUsuario.cpp" />
     <ClCompile Include="frmEditPlato.cpp" />
     <ClCompile Include="frmHistorial.cpp" />
-    <ClCompile Include="frmHistorialTransaccion.cpp" />
     <ClCompile Include="frmLogin.cpp" />
     <ClCompile Include="frmMantenimientoMaquinas.cpp" />
     <ClCompile Include="frmMantenimientoNuevoUsuario.cpp" />
@@ -179,9 +178,6 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmHistorial.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="frmHistorialTransaccion.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmLogin.h">
@@ -261,9 +257,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmHistorial.resx">
       <DependentUpon>frmHistorial.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmHistorialTransaccion.resx">
-      <DependentUpon>frmHistorialTransaccion.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.h</DependentUpon>

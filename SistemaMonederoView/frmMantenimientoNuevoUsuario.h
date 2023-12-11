@@ -277,6 +277,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox6
 			// 
+			this->textBox6->Enabled = false;
 			this->textBox6->Location = System::Drawing::Point(249, 367);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(175, 22);
