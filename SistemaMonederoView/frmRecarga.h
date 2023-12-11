@@ -198,7 +198,7 @@ namespace SistemaMonederoView {
 		serialPort1->Close();
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ codigoRFID = this->textBox6->Text; 
+		String^ codigoRFID = this->textBox6->Text->Replace(" ", "")->Replace("\r", "");
 		frmRecargaConfirmacion^ ventanaRecargaConfirmacion = gcnew frmRecargaConfirmacion(codigoRFID); 
 		ventanaRecargaConfirmacion->ShowDialog();  
 	}

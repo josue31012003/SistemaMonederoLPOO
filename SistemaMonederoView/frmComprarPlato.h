@@ -94,10 +94,11 @@ namespace SistemaMonederoView {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::IO::Ports::SerialPort^ serialPort1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
+
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -123,6 +124,8 @@ namespace SistemaMonederoView {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
@@ -142,10 +145,8 @@ namespace SistemaMonederoView {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
-			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
@@ -161,22 +162,40 @@ namespace SistemaMonederoView {
 			this->groupBox2->Controls->Add(this->textBox5);
 			this->groupBox2->Controls->Add(this->label6);
 			this->groupBox2->Controls->Add(this->label5);
-			this->groupBox2->Location = System::Drawing::Point(11, 322);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox2->Location = System::Drawing::Point(15, 396);
+			this->groupBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->groupBox2->Size = System::Drawing::Size(334, 199);
+			this->groupBox2->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox2->Size = System::Drawing::Size(445, 245);
 			this->groupBox2->TabIndex = 1;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Datos de comprador";
 			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(213, 192);
+			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(143, 22);
+			this->textBox1->TabIndex = 9;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &frmComprarPlato::textBox1_TextChanged);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(66, 198);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(141, 16);
+			this->label3->TabIndex = 8;
+			this->label3->Text = L"Saldo Disponible (S/.) ";
+			this->label3->Click += gcnew System::EventHandler(this, &frmComprarPlato::label3_Click);
+			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(39, 27);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(52, 33);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(272, 26);
+			this->label1->Size = System::Drawing::Size(345, 32);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"Pase su tarjeta por el sensor para mostrar su informacion\r\ny confirmar su identid"
 				L"ad";
@@ -184,48 +203,46 @@ namespace SistemaMonederoView {
 			// 
 			// textBox6
 			// 
-			this->textBox6->Location = System::Drawing::Point(152, 113);
-			this->textBox6->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textBox6->Location = System::Drawing::Point(203, 139);
+			this->textBox6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(116, 20);
+			this->textBox6->Size = System::Drawing::Size(153, 22);
 			this->textBox6->TabIndex = 6;
 			this->textBox6->TextChanged += gcnew System::EventHandler(this, &frmComprarPlato::textBox6_TextChanged);
 			// 
 			// textBox5
 			// 
 			this->textBox5->Enabled = false;
-			this->textBox5->Location = System::Drawing::Point(152, 75);
-			this->textBox5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textBox5->Location = System::Drawing::Point(203, 92);
+			this->textBox5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(116, 20);
+			this->textBox5->Size = System::Drawing::Size(153, 22);
 			this->textBox5->TabIndex = 5;
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(70, 113);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label6->Location = System::Drawing::Point(93, 139);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(74, 13);
+			this->label6->Size = System::Drawing::Size(91, 16);
 			this->label6->TabIndex = 1;
 			this->label6->Text = L"RFID Usuario ";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(70, 77);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Location = System::Drawing::Point(93, 95);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(26, 13);
+			this->label5->Size = System::Drawing::Size(30, 16);
 			this->label5->TabIndex = 0;
 			this->label5->Text = L"DNI";
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(329, 525);
-			this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button3->Location = System::Drawing::Point(439, 646);
+			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(103, 54);
+			this->button3->Size = System::Drawing::Size(137, 66);
 			this->button3->TabIndex = 7;
 			this->button3->Text = L"CONFIRMAR COMPRA";
 			this->button3->UseVisualStyleBackColor = true;
@@ -239,13 +256,13 @@ namespace SistemaMonederoView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4
 			});
-			this->dataGridView1->Location = System::Drawing::Point(34, 26);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(1, 2, 2, 2);
+			this->dataGridView1->Location = System::Drawing::Point(45, 32);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(1, 2, 3, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(288, 226);
+			this->dataGridView1->Size = System::Drawing::Size(384, 278);
 			this->dataGridView1->TabIndex = 9;
 			// 
 			// Column1
@@ -253,28 +270,28 @@ namespace SistemaMonederoView {
 			this->Column1->HeaderText = L"Codigo";
 			this->Column1->MinimumWidth = 6;
 			this->Column1->Name = L"Column1";
-			this->Column1->Width = 65;
+			this->Column1->Width = 80;
 			// 
 			// Column2
 			// 
 			this->Column2->HeaderText = L"Nombre";
 			this->Column2->MinimumWidth = 6;
 			this->Column2->Name = L"Column2";
-			this->Column2->Width = 69;
+			this->Column2->Width = 85;
 			// 
 			// Column3
 			// 
 			this->Column3->HeaderText = L"Precio";
 			this->Column3->MinimumWidth = 6;
 			this->Column3->Name = L"Column3";
-			this->Column3->Width = 62;
+			this->Column3->Width = 75;
 			// 
 			// Column4
 			// 
 			this->Column4->HeaderText = L"Disponible";
 			this->Column4->MinimumWidth = 6;
 			this->Column4->Name = L"Column4";
-			this->Column4->Width = 81;
+			this->Column4->Width = 101;
 			// 
 			// dataGridView2
 			// 
@@ -284,13 +301,13 @@ namespace SistemaMonederoView {
 				this->dataGridViewTextBoxColumn1,
 					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3
 			});
-			this->dataGridView2->Location = System::Drawing::Point(29, 36);
-			this->dataGridView2->Margin = System::Windows::Forms::Padding(1, 2, 2, 2);
+			this->dataGridView2->Location = System::Drawing::Point(39, 44);
+			this->dataGridView2->Margin = System::Windows::Forms::Padding(1, 2, 3, 2);
 			this->dataGridView2->Name = L"dataGridView2";
 			this->dataGridView2->RowHeadersWidth = 51;
 			this->dataGridView2->RowTemplate->Height = 24;
 			this->dataGridView2->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView2->Size = System::Drawing::Size(288, 350);
+			this->dataGridView2->Size = System::Drawing::Size(384, 431);
 			this->dataGridView2->TabIndex = 10;
 			// 
 			// dataGridViewTextBoxColumn1
@@ -298,41 +315,41 @@ namespace SistemaMonederoView {
 			this->dataGridViewTextBoxColumn1->HeaderText = L"Codigo";
 			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
-			this->dataGridViewTextBoxColumn1->Width = 65;
+			this->dataGridViewTextBoxColumn1->Width = 80;
 			// 
 			// dataGridViewTextBoxColumn2
 			// 
 			this->dataGridViewTextBoxColumn2->HeaderText = L"Nombre";
 			this->dataGridViewTextBoxColumn2->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
-			this->dataGridViewTextBoxColumn2->Width = 69;
+			this->dataGridViewTextBoxColumn2->Width = 85;
 			// 
 			// dataGridViewTextBoxColumn3
 			// 
 			this->dataGridViewTextBoxColumn3->HeaderText = L"Cantidad";
 			this->dataGridViewTextBoxColumn3->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
-			this->dataGridViewTextBoxColumn3->Width = 74;
+			this->dataGridViewTextBoxColumn3->Width = 90;
 			// 
 			// groupBox1
 			// 
 			this->groupBox1->Controls->Add(this->button2);
 			this->groupBox1->Controls->Add(this->dataGridView2);
-			this->groupBox1->Location = System::Drawing::Point(369, 26);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Location = System::Drawing::Point(492, 32);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->groupBox1->Size = System::Drawing::Size(341, 441);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Size = System::Drawing::Size(455, 543);
 			this->groupBox1->TabIndex = 11;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Carrito de compras";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(98, 397);
-			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button2->Location = System::Drawing::Point(131, 489);
+			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(152, 32);
+			this->button2->Size = System::Drawing::Size(203, 39);
 			this->button2->TabIndex = 13;
 			this->button2->Text = L"Eliminar seleccion";
 			this->button2->UseVisualStyleBackColor = true;
@@ -340,68 +357,46 @@ namespace SistemaMonederoView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(84, 266);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Location = System::Drawing::Point(112, 327);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(152, 32);
+			this->button1->Size = System::Drawing::Size(203, 39);
 			this->button1->TabIndex = 12;
 			this->button1->Text = L"Seleccionar";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &frmComprarPlato::button1_Click);
 			// 
-			// dateTimePicker1
-			// 
-			this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Short;
-			this->dateTimePicker1->Location = System::Drawing::Point(81, 542);
-			this->dateTimePicker1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->Size = System::Drawing::Size(115, 22);
-			this->dateTimePicker1->TabIndex = 13;
-			this->dateTimePicker1->Value = System::DateTime(2023, 12, 10, 18, 9, 51, 0);
-			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(50, 546);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(67, 672);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(29, 13);
+			this->label2->Size = System::Drawing::Size(35, 16);
 			this->label2->TabIndex = 14;
 			this->label2->Text = L"Hoy:";
 			// 
-			// textBox1
+			// dateTimePicker1
 			// 
-			this->textBox1->Location = System::Drawing::Point(160, 156);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(108, 20);
-			this->textBox1->TabIndex = 9;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &frmComprarPlato::textBox1_TextChanged);
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(70, 159);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(86, 13);
-			this->label3->TabIndex = 8;
-			this->label3->Text = L"Saldo Disponible";
-			this->label3->Click += gcnew System::EventHandler(this, &frmComprarPlato::label3_Click);
+			this->dateTimePicker1->Enabled = false;
+			this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Short;
+			this->dateTimePicker1->Location = System::Drawing::Point(128, 673);
+			this->dateTimePicker1->Name = L"dateTimePicker1";
+			this->dateTimePicker1->Size = System::Drawing::Size(94, 22);
+			this->dateTimePicker1->TabIndex = 15;
 			// 
 			// frmComprarPlato
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(738, 590);
-			this->Controls->Add(this->label2);
+			this->ClientSize = System::Drawing::Size(984, 726);
 			this->Controls->Add(this->dateTimePicker1);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->groupBox2);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"frmComprarPlato";
 			this->Text = L"frmComprarPlato";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &frmComprarPlato::frmComprarPlato_FormClosed);
@@ -527,6 +522,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 
 		// Crear una instancia de PlatoController
 		double monto = 0;
+		double cantidadInicial = 0;
 
 		UbicacionController^ objUbicacionController = gcnew UbicacionController();
 		int codigoUbicacion = objUbicacionController->buscarUbicacionxNombreBD(this->objUbicacion)->getCodigo();
@@ -539,7 +535,12 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		List<PlatoVendido^>^ listaPlatosVendidos = gcnew List<PlatoVendido^>();
 		int codigoTransaccion;
 		Transaccion^ objTransaccion;
-		// Recorrer todas las filas del DataGridView2
+
+		String^ codigoRFID = this->textBox6->Text->Replace("\r", "");
+
+		TarjetaController^ objTarjetaController = gcnew TarjetaController();
+		TarjetaController^ objeto = gcnew TarjetaController();  //para actualizar el saldo 
+		double saldoActual = objTarjetaController->obtenerSaldoxRFID(codigoRFID);
 
 		for each (DataGridViewRow ^ row in dataGridView2->Rows) {
 			
@@ -548,42 +549,102 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			try {
 				if (row->Cells[0]->Value != nullptr && row->Cells[2]->Value != nullptr) {
 					int codigoPlato = Convert::ToInt32(row->Cells[0]->Value);
-					String^ Nombre = row->Cells[1]->Value->ToString();
+					//String^ Nombre = row->Cells[1]->Value->ToString();
+					
 					double cantidadSeleccionada = Convert::ToInt32(row->Cells[2]->Value);
-					double CantPlatosVendidos = objPlatoController->ObtenerCantidadPorCodigoBD(codigoPlato);
-					double CantPlatosDisponible = objPlatoController->ObtenerCantidadDisponiblePorCodigoBD(codigoPlato);
+					//double CantPlatosVendidos = objPlatoController->ObtenerCantidadPorCodigoBD(codigoPlato);
+					//double CantPlatosDisponible = objPlatoController->ObtenerCantidadDisponiblePorCodigoBD(codigoPlato);
 
 					double precio = objPlatoController->buscarPlatoxCodigoBD(codigoPlato)->getPrecio();
-					objPlatoController->ModificarCantidad(codigoPlato, cantidadSeleccionada, CantPlatosVendidos, CantPlatosDisponible);
+					
 
 
-					objPlatoVendido = gcnew PlatoVendido(codigoPlato, Nombre, cantidadSeleccionada, codigoTransaccion);
+					//objPlatoVendido = gcnew PlatoVendido(codigoPlato, Nombre, cantidadSeleccionada, codigoTransaccion);
 
 					monto += precio * cantidadSeleccionada;
 
-					listaPlatosVendidos->Add(objPlatoVendido);
+					//objPlatoController->ModificarCantidad(codigoPlato, cantidadSeleccionada, CantPlatosVendidos, CantPlatosDisponible);
+
+					//listaPlatosVendidos->Add(objPlatoVendido);
 				}
 			}
 			catch (System::FormatException^ ex) {
 
 			}
 		}
-		String^ fecha = Convert::ToString(dateTimePicker1->Value);
-		objTransaccion = gcnew Transaccion(codigoTransaccion, fecha, "Compra", monto, codigoUsuario, codigoUbicacion);
-		TransaccionController^ objTransaccionController = gcnew TransaccionController();
-		codigoTransaccion = objTransaccionController->agregarTransaccion(objTransaccion);
-
-		for each (PlatoVendido ^ objPlatoVendido in listaPlatosVendidos) {
-			objPlatoVendido->setCodigoTransaccion(codigoTransaccion);
-			PlatoVendidoController^ objPlatoVendidoController = gcnew PlatoVendidoController();
-			objPlatoVendidoController->agregarPlatoVendido(objPlatoVendido);
-		}
+		
 
 		// Mostrar un mensaje de éxito o realizar otras acciones finales
-		MessageBox::Show("Se realizo la compra exitosamente");
+		
 		serialPort1->Close();
-		this->dataGridView2->Rows->Clear();
-		this->dataGridView2->Refresh();
+		
+
+		
+		double saldoFinal = 0;
+		if (monto> saldoActual) {
+			saldoFinal = saldoActual;
+			MessageBox::Show("Saldo insuficiente.");
+
+		}
+		else {
+
+			for each (DataGridViewRow ^ row in dataGridView2->Rows) {
+
+				PlatoVendido^ objPlatoVendido;
+
+				try {
+					if (row->Cells[0]->Value != nullptr && row->Cells[2]->Value != nullptr) {
+						int codigoPlato = Convert::ToInt32(row->Cells[0]->Value);
+						String^ Nombre = row->Cells[1]->Value->ToString();
+
+						double cantidadSeleccionada = Convert::ToInt32(row->Cells[2]->Value);
+						double CantPlatosVendidos = objPlatoController->ObtenerCantidadPorCodigoBD(codigoPlato);
+						double CantPlatosDisponible = objPlatoController->ObtenerCantidadDisponiblePorCodigoBD(codigoPlato);
+
+						double precio = objPlatoController->buscarPlatoxCodigoBD(codigoPlato)->getPrecio();
+
+
+
+						objPlatoVendido = gcnew PlatoVendido(codigoPlato, Nombre, cantidadSeleccionada, codigoTransaccion);
+
+
+						objPlatoController->ModificarCantidad(codigoPlato, cantidadSeleccionada, CantPlatosVendidos, CantPlatosDisponible);
+
+						listaPlatosVendidos->Add(objPlatoVendido);
+						cantidadInicial += cantidadSeleccionada;
+					}
+				}
+				catch (System::FormatException^ ex) {
+
+				}
+			}
+			this->dataGridView2->Rows->Clear();
+			this->dataGridView2->Refresh();
+			PlatoController^ ObjPlatoController = gcnew PlatoController();
+			List<Plato^>^ listPlatos = ObjPlatoController->buscarPlatosxUbicacionBD(objUbicacion);
+			mostrarGrilla(listPlatos);
+
+			String^ fecha = Convert::ToString(dateTimePicker1->Value);
+			objTransaccion = gcnew Transaccion(codigoTransaccion, fecha, "Compra", monto, codigoUsuario, codigoUbicacion);
+			TransaccionController^ objTransaccionController = gcnew TransaccionController();
+			codigoTransaccion = objTransaccionController->agregarTransaccion(objTransaccion);
+
+			for each (PlatoVendido ^ objPlatoVendido in listaPlatosVendidos) {
+				objPlatoVendido->setCodigoTransaccion(codigoTransaccion);
+				PlatoVendidoController^ objPlatoVendidoController = gcnew PlatoVendidoController();
+				objPlatoVendidoController->agregarPlatoVendido(objPlatoVendido);
+			}
+			saldoFinal = saldoActual - monto;   //Este es el saldo al finalizar la recarga 
+			objeto->actualizarSaldoTarjetaxRFID(codigoRFID, saldoFinal); //Aquí se realiza la actualización del saldo en la tarjeta 
+			MessageBox::Show("Se realizo la compra exitosamente");
+			textBox1->Text = saldoFinal.ToString();
+		}
+		
+		
+
+
+
+
 	}
 }
 
@@ -617,7 +678,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			}
 		}
 	}
-
+		  
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {

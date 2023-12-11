@@ -278,8 +278,8 @@ namespace SistemaMonederoView {
 
 		if (data != "") {
 			UsuarioController^ objUsuarioController = gcnew UsuarioController();
-			textBox5->Text = objUsuarioController->buscarUsuarioxRFIDBD(data)->getDNI();
-			textBox6->Text = data;
+			textBox5->Text = objUsuarioController->buscarUsuarioxRFIDBD(data->Replace(" ", "")->Replace("\r", ""))->getDNI();
+			textBox6->Text = data->Replace(" ", "")->Replace("\r", "");
 		}
 	}
 
@@ -347,7 +347,7 @@ namespace SistemaMonederoView {
 			try {
 
 				UsuarioController^ objUsuarioController = gcnew UsuarioController();
-				int codigoUsuario = objUsuarioController->buscarUsuarioxRFIDBD(textBox6->Text)->getCodigo();
+				int codigoUsuario = objUsuarioController->buscarUsuarioxRFIDBD(textBox6->Text->Replace(" ", "")->Replace("\r", ""))->getCodigo();
 
 				TransaccionController^ objTransaccionController = gcnew TransaccionController();
 
@@ -366,7 +366,7 @@ namespace SistemaMonederoView {
 				}
 				// Establece el ancho de la columna en función de la longitud máxima encontrada
 				dataGridView1->Columns[1]->Width = maxTextLength * 7; // Ajusta someFactor según tu preferencia
-				dataGridView1->Sort(dataGridView1->Columns[0], System::ComponentModel::ListSortDirection::Ascending);
+				dataGridView1->Sort(dataGridView1->Columns[0], System::ComponentModel::ListSortDirection::Descending);
 			}
 			catch (Exception^ ex) {
 
