@@ -13,6 +13,7 @@ namespace SistemaMonederoModel {
 		String^ fechaBaja;
 		String^ Estado;
 		String^ codigoUsuario;
+		String^ RFID;
 
 	public:
 		Tarjeta();
@@ -25,5 +26,7 @@ namespace SistemaMonederoModel {
 		void setfechaBaja(String^ fechaBaja);
 		String^ getEstado();
 		void setEstado(String^ Estado);
+		String^ getRFID();
+		void setRFID(String^ RFID);
 	};
 }

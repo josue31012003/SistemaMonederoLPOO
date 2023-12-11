@@ -123,7 +123,7 @@ namespace SistemaMonederoView {
 			this->groupBox1->Size = System::Drawing::Size(434, 218);
 			this->groupBox1->TabIndex = 9;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Datos de la Nueva Tarjeta";
+			this->groupBox1->Text = L"Datos de la maquina";
 			// 
 			// comboBox1
 			// 
@@ -152,6 +152,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox1
 			// 
+			this->textBox1->Enabled = false;
 			this->textBox1->Location = System::Drawing::Point(154, 43);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(173, 22);

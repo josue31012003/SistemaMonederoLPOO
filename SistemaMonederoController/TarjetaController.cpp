@@ -102,6 +102,9 @@ Tarjeta^ TarjetaController::buscarTarjetaxCodigoBD(int codigo) {
 		String^ fechaAlta = safe_cast<String^>(objData[1]);
 		String^ fechaBaja = safe_cast<String^>(objData[2]);
 		String^ estado = safe_cast<String^>(objData[3]);
+		String^ RFID = safe_cast<String^>(objData["codigoUsuario"]);
+		
+		objTarjeta->setRFID(RFID);
 		objTarjeta = gcnew Tarjeta(codigo, fechaAlta, fechaBaja, estado);
 	}
 	cerrarConexionBD();
@@ -144,7 +147,9 @@ List<Tarjeta^>^ TarjetaController::buscarAllBD() {
 		String^ fechaAlta = safe_cast<String^>(objData[1]);
 		String^ fechaBaja = safe_cast<String^>(objData[2]);
 		String^ estado = safe_cast<String^>(objData[3]);
+		String^ RFID = safe_cast<String^>(objData["codigoUsuario"]);
 		Tarjeta^ objTarjeta = gcnew Tarjeta(codigo, fechaAlta, fechaBaja, estado);
+		objTarjeta->setRFID(RFID);
 		listaTarjetas->Add(objTarjeta);
 	}
 	cerrarConexionBD();

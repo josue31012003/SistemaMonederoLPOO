@@ -115,6 +115,7 @@ namespace SistemaMonederoView {
                // 
                // dateTimePicker2
                // 
+               this->dateTimePicker2->Enabled = false;
                this->dateTimePicker2->Format = System::Windows::Forms::DateTimePickerFormat::Short;
                this->dateTimePicker2->Location = System::Drawing::Point(154, 155);
                this->dateTimePicker2->Name = L"dateTimePicker2";
@@ -184,6 +185,7 @@ namespace SistemaMonederoView {
                this->Name = L"frmNuevaTarjeta";
                this->Text = L"frmNuevaTarjeta";
                this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &frmNuevaTarjeta::frmNuevaTarjeta_FormClosed);
+               this->Load += gcnew System::EventHandler(this, &frmNuevaTarjeta::frmNuevaTarjeta_Load);
                this->groupBox1->ResumeLayout(false);
                this->groupBox1->PerformLayout();
                this->ResumeLayout(false);
@@ -220,10 +222,17 @@ namespace SistemaMonederoView {
         String^ Estado = this->comboBox1->Text;
         Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigo, fechaAlta, fechaBaja, Estado);
         TarjetaController^ ObjTarjetaController = gcnew TarjetaController();
-        ObjTarjetaController->registrarTarjetaBD(fechaAlta, fechaBaja, Estado, RFID, (double)0);
-        MessageBox::Show("La tarjeta ha sido añadida exitosamente.");
-        serialPort1->Close();
-        this->Close();
+
+        if (textBox1->Text != "" || comboBox1->Text == "") {
+            ObjTarjetaController->registrarTarjetaBD(fechaAlta, fechaBaja, Estado, RFID, (double)0);
+            MessageBox::Show("La tarjeta ha sido añadida exitosamente.");
+            serialPort1->Close();
+            this->Close();
+        }
+        else {
+            MessageBox::Show("los campos 'RFID' y 'Estado 'no pueden estar vacios.");
+        }
+        
     }
     private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
         serialPort1->Close();
@@ -248,6 +257,14 @@ namespace SistemaMonederoView {
     
 private: System::Void frmNuevaTarjeta_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
     serialPort1->Close();
+}
+private: System::Void frmNuevaTarjeta_Load(System::Object^ sender, System::EventArgs^ e) {
+    String^ fechaAlta = this->dateTimePicker1->Text;
+    array<String^>^ partes = fechaAlta->Split('/'); // Suponiendo que el separador es /
+    String^ anoBaja = Convert::ToString(Convert::ToInt32(partes[2]) + 1); // El año debería estar en la tercera posición
+
+    String^ fechaBaja = partes[0] + "/" + partes[1] + "/" + anoBaja;
+    this->dateTimePicker2->Text = fechaBaja;
 }
 };
 }

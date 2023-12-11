@@ -33,5 +33,11 @@ String^ Tarjeta::getEstado() {
 }
 void Tarjeta::setEstado(String^ Estado) {
 	this->Estado = Estado;
+}
 
+String^ Tarjeta::getRFID() {
+	return this->RFID;
+}
+void Tarjeta::setRFID(String^ RFID) {
+	this->RFID = RFID;
 }

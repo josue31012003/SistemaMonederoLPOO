@@ -145,6 +145,7 @@ namespace SistemaMonederoView {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(553, 203);
 			this->dataGridView1->TabIndex = 9;
 			// 
@@ -259,7 +260,7 @@ namespace SistemaMonederoView {
 			for (int i = 0; i < listaTarjetas->Count; i++) {
 				Tarjeta^ objTarjeta = listaTarjetas[i];
 				array<String^>^ filaGrilla = gcnew array<String^>(4);
-				filaGrilla[0] = Convert::ToString(objTarjeta->getcodigo());
+				filaGrilla[0] = Convert::ToString(objTarjeta->getRFID());
 				filaGrilla[1] = objTarjeta->getfechaAlta();
 				filaGrilla[2] = objTarjeta->getfechaBaja();
 				filaGrilla[3] = objTarjeta->getEstado();

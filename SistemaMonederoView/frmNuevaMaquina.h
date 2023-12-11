@@ -43,11 +43,11 @@ namespace SistemaMonederoView {
 
 
 
-	private: System::Windows::Forms::TextBox^ textBox1;
+
 	private: System::Windows::Forms::Label^ label4;
 
 
-	private: System::Windows::Forms::Label^ label1;
+
 	private: System::Windows::Forms::TextBox^ textBox3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
@@ -72,9 +72,7 @@ namespace SistemaMonederoView {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -103,21 +101,19 @@ namespace SistemaMonederoView {
 			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->textBox3);
 			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label4);
-			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Location = System::Drawing::Point(42, 39);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(434, 218);
 			this->groupBox1->TabIndex = 6;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Datos de la Nueva Tarjeta";
+			this->groupBox1->Text = L"Datos de la Nueva maquina";
 			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Máquina de Compra", L"Máquina de Recarga" });
-			this->comboBox1->Location = System::Drawing::Point(154, 151);
+			this->comboBox1->Location = System::Drawing::Point(188, 128);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(173, 24);
 			this->comboBox1->TabIndex = 9;
@@ -125,7 +121,7 @@ namespace SistemaMonederoView {
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(154, 96);
+			this->textBox3->Location = System::Drawing::Point(188, 73);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(173, 22);
 			this->textBox3->TabIndex = 9;
@@ -133,38 +129,21 @@ namespace SistemaMonederoView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(35, 99);
+			this->label2->Location = System::Drawing::Point(69, 76);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(71, 16);
 			this->label2->TabIndex = 8;
 			this->label2->Text = L"Ubicacion:";
 			this->label2->Click += gcnew System::EventHandler(this, &frmNuevaMaquina::label2_Click);
 			// 
-			// textBox1
-			// 
-			this->textBox1->Enabled = false;
-			this->textBox1->Location = System::Drawing::Point(154, 43);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(173, 22);
-			this->textBox1->TabIndex = 4;
-			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(35, 154);
+			this->label4->Location = System::Drawing::Point(69, 131);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(112, 16);
 			this->label4->TabIndex = 3;
 			this->label4->Text = L"Tipo de Maquina:";
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(35, 46);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(54, 16);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Codigo:";
 			// 
 			// frmNuevaMaquina
 			// 

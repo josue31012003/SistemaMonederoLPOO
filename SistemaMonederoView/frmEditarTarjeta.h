@@ -85,6 +85,7 @@ namespace SistemaMonederoView {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->dateTimePicker2 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
@@ -92,7 +93,6 @@ namespace SistemaMonederoView {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -131,7 +131,16 @@ namespace SistemaMonederoView {
 			this->groupBox1->Size = System::Drawing::Size(434, 301);
 			this->groupBox1->TabIndex = 6;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Datos de la Nueva Tarjeta";
+			this->groupBox1->Text = L"Datos de la Tarjeta";
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Activo", L"Inactivo" });
+			this->comboBox1->Location = System::Drawing::Point(154, 211);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(173, 24);
+			this->comboBox1->TabIndex = 7;
 			// 
 			// dateTimePicker2
 			// 
@@ -187,20 +196,12 @@ namespace SistemaMonederoView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
+			this->label1->Enabled = false;
 			this->label1->Location = System::Drawing::Point(35, 46);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(54, 16);
+			this->label1->Size = System::Drawing::Size(41, 16);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Codigo:";
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(154, 211);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(173, 24);
-			this->comboBox1->TabIndex = 7;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Activo", L"Inactivo" });
+			this->label1->Text = L"RFID:";
 			// 
 			// frmEditarTarjeta
 			// 
@@ -223,20 +224,21 @@ namespace SistemaMonederoView {
 			TarjetaController^ objTarjetaController = gcnew TarjetaController(); 
 			Tarjeta^ objTarjeta = objTarjetaController->buscarTarjetaxCodigoBD(this->codigo); 
 
-			this->textBox1->Text = Convert::ToString(objTarjeta->getcodigo());
+			this->textBox1->Text = Convert::ToString(objTarjeta->getRFID());
 			this->dateTimePicker1->Text = objTarjeta->getfechaAlta();
 			this->dateTimePicker2->Text = objTarjeta->getfechaBaja();
 			this->comboBox1->Text = objTarjeta->getEstado();
 		}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		int codigoTarjeta = Convert::ToInt32(this->textBox1->Text);
+		int codigo;
+		String^ RFID = this->textBox1->Text;
 		String^ fechaAlta = this->dateTimePicker1->Text;
 		String^ fechaBaja = this->dateTimePicker2->Text;
 		String^ Estado = this->comboBox1->Text;
-		Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigoTarjeta, fechaAlta, fechaBaja, Estado);
+		Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigo, fechaAlta, fechaBaja, Estado);
 		TarjetaController^ objTarjetaController = gcnew TarjetaController();
-		objTarjetaController->ActualizarTarjetaBD(codigoTarjeta, fechaAlta, fechaBaja, Estado); 
+		objTarjetaController->ActualizarTarjetaBD(codigo, fechaAlta, fechaBaja, Estado);
 //		objTarjetaController->actualizarTarjeta(ObjTarjeta);
 		MessageBox::Show("La tarjeta ha sido actualizada exitosamente.");
 		this->Close();

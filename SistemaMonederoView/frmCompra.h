@@ -70,9 +70,9 @@ namespace SistemaMonederoView {
 			this->label1->Location = System::Drawing::Point(57, 64);
 			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(335, 16);
+			this->label1->Size = System::Drawing::Size(361, 16);
 			this->label1->TabIndex = 20;
-			this->label1->Text = L"Seleccione la ubicacion en la se realizara las compras:";
+			this->label1->Text = L"Seleccione la ubicacion en la que se realizara las compras:";
 			// 
 			// button2
 			// 
