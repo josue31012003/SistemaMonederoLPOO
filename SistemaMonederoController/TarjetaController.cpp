@@ -62,7 +62,7 @@ void TarjetaController::registrarTarjetaBD( String^ fechaAlta, String^ fechaBaja
 
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand(); 
-	objSentencia->CommandText = "INSERT INTO Tarjeta (fechaAlta, fechaBaja, estado, codigoUsuario, Saldo) VALUES( '" + fechaAlta + "', '" + fechaBaja + "', '" + Estado + "', '" + codigoUsuario + "', '" + Estado + "', '" + Saldo + "')";
+	objSentencia->CommandText = "INSERT INTO Tarjeta (fechaAlta, fechaBaja, estado, codigoUsuario, Saldo) VALUES( '" + fechaAlta + "', '" + fechaBaja + "', '" + Estado + "', '" + codigoUsuario + "', '" + Saldo + "')";
 	objSentencia->Connection = this->objConexion; 
 	objSentencia->ExecuteNonQuery(); 
 	cerrarConexionBD(); 
