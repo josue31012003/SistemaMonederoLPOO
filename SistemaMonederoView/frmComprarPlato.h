@@ -579,10 +579,28 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		}
 
 		// Mostrar un mensaje de éxito o realizar otras acciones finales
+		TarjetaController^ objTarjeta = gcnew TarjetaController();
+
 		MessageBox::Show("Se realizo la compra exitosamente");
 		serialPort1->Close();
 		this->dataGridView2->Rows->Clear();
 		this->dataGridView2->Refresh();
+
+		String^ codigoRFID = this->textBox6->Text->Replace("\r", "");
+
+		TarjetaController^ objTarjetaController = gcnew TarjetaController();
+		TarjetaController^ objeto = gcnew TarjetaController();  //para actualizar el saldo 
+		double saldoActual = objTarjetaController->obtenerSaldoxRFID(codigoRFID);  // Este es el saldo que hay en la tarjeta ANTES de la recarga
+		double saldoFinal = saldoActual - monto;   //Este es el saldo al finalizar la recarga 
+		objeto->actualizarSaldoTarjetaxRFID(codigoRFID, saldoFinal);
+
+		textBox1->Text = saldoFinal.ToString();
+
+
+
+
+
+
 	}
 }
 
@@ -666,10 +684,12 @@ private: System::Void UpdateTextBox(String^ data) {
 	if (data != "") {
 
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		TarjetaController^ objTarjeta = gcnew TarjetaController();
 		textBox5->Text = objUsuarioController->buscarUsuarioxRFIDBD(data)->getDNI();
 		textBox6->Text = data;
-		double saldo = objUsuarioController->obtenerSaldo(data);
-		textBox1->Text = saldo.ToString(); // Asegúrate de convertir el saldo a String
+		String^ codigoRFID = this->textBox6->Text->Replace("\r", "");
+		double saldo = objTarjeta->obtenerSaldoxRFID(codigoRFID);
+		textBox1->Text = saldo.ToString();// Asegúrate de convertir el saldo a String
 	}
 }
 private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
