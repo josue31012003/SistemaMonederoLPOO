@@ -169,9 +169,9 @@ namespace SistemaMonederoView {
                this->label1->AutoSize = true;
                this->label1->Location = System::Drawing::Point(35, 46);
                this->label1->Name = L"label1";
-               this->label1->Size = System::Drawing::Size(54, 16);
+               this->label1->Size = System::Drawing::Size(41, 16);
                this->label1->TabIndex = 0;
-               this->label1->Text = L"Codigo:";
+               this->label1->Text = L"RFID:";
                // 
                // frmNuevaTarjeta
                // 
@@ -213,13 +213,14 @@ namespace SistemaMonederoView {
 
 #pragma endregion
     private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-        int codigoTarjeta = Convert::ToInt32(this->textBox1->Text);
+        int codigo;
+        String^ RFID = this->textBox1->Text->Replace(" ","")->Replace("\r","");
         String^ fechaAlta = this->dateTimePicker1->Text;
         String^ fechaBaja = this->dateTimePicker2->Text;
         String^ Estado = this->comboBox1->Text;
-        Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigoTarjeta, fechaAlta, fechaBaja, Estado);
+        Tarjeta^ ObjTarjeta = gcnew Tarjeta(codigo, fechaAlta, fechaBaja, Estado);
         TarjetaController^ ObjTarjetaController = gcnew TarjetaController();
-        ObjTarjetaController->registrarTarjetaBD(fechaAlta, fechaBaja, Estado);
+        ObjTarjetaController->registrarTarjetaBD(fechaAlta, fechaBaja, Estado, RFID, (double)0);
         MessageBox::Show("La tarjeta ha sido añadida exitosamente.");
         serialPort1->Close();
         this->Close();

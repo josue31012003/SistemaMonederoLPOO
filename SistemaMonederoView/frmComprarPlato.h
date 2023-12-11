@@ -532,7 +532,8 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		int codigoUbicacion = objUbicacionController->buscarUbicacionxNombreBD(this->objUbicacion)->getCodigo();
 
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
-		int codigoUsuario = objUsuarioController->buscarUsuarioxRFIDBD(textBox6->Text)->getCodigo();
+		String^ RFID = textBox6->Text->Replace(" ", "")->Replace("\r","");
+		int codigoUsuario = objUsuarioController->buscarUsuarioxRFIDBD(RFID)->getCodigo();
 
 		PlatoController^ objPlatoController = gcnew PlatoController();
 		List<PlatoVendido^>^ listaPlatosVendidos = gcnew List<PlatoVendido^>();
