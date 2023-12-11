@@ -352,7 +352,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ IdentificacionRFID;
 	
 	if (TipoUsuario == "Comensal") {
-		String^ IdentificacionRFID = this->textBox6->Text;
+		String^ IdentificacionRFID = this->textBox6->Text->Replace(" ", "")->Replace("\r", "");
 	}
 	else {
 		String^ IdentificacionRFID = nullptr;
@@ -367,7 +367,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		String^ FechaNacimiento = this->dateTimePicker1->Text;
 		String^ DNI = this->textBox5->Text;
 		String^ TipoUsuario = this->comboBox1->Text;
-		String^ IdentificacionRFID = this->textBox6->Text;
+		String^ IdentificacionRFID = this->textBox6->Text->Replace(" ","")->Replace("\r","");
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
 		objUsuarioController->registrarUsuarioBD(Nombre, ApPaterno, ApMaterno, FechaNacimiento, DNI, IdentificacionRFID, TipoUsuario);
 		MessageBox::Show("El usuario se ha agregado con éxito");
@@ -385,16 +385,16 @@ private: System::Void textBox5_TextChanged(System::Object^ sender, System::Event
 private: System::Void frmMantenimientoNuevoUsuario_Load(System::Object^ sender, System::EventArgs^ e) {
 	InicializeSerial();
 }
-		private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
-			String^ receivedData = serialPort1->ReadLine();
+private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
 
-			// Verifica si la invocación es necesaria
-			this->BeginInvoke(gcnew Action<String^>(this, &frmMantenimientoNuevoUsuario::UpdateTextBox), receivedData);
+	String^ receivedData = serialPort1->ReadLine();
+	// Verifica si la invocación es necesaria
+	this->BeginInvoke(gcnew Action<String^>(this, &frmMantenimientoNuevoUsuario::UpdateTextBox), receivedData);
 
-		}
-				   private: System::Void UpdateTextBox(String^ data) {
-					   if (data != "")
-						   textBox6->Text = data;
-				   }
+}
+private: System::Void UpdateTextBox(String^ data) {
+	if (data != "")
+		textBox6->Text = data;
+}
 };
 }

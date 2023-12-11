@@ -667,10 +667,13 @@ private: System::Void UpdateTextBox(String^ data) {
 	if (data != "") {
 
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
-		textBox5->Text = objUsuarioController->buscarUsuarioxRFIDBD(data)->getDNI();
+		TarjetaController^ objTarjeta = gcnew TarjetaController();
+		
 		textBox6->Text = data;
-		double saldo = objUsuarioController->obtenerSaldo(data);
-		textBox1->Text = saldo.ToString(); // Asegúrate de convertir el saldo a String
+		String^ codigoRFID = this->textBox6->Text->Replace("\r", "");
+		textBox5->Text = objUsuarioController->buscarUsuarioxRFIDBD(codigoRFID)->getDNI();
+		double saldo = objTarjeta->obtenerSaldoxRFID(codigoRFID);
+		textBox1->Text = saldo.ToString();// Asegúrate de convertir el saldo a String
 	}
 }
 private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
