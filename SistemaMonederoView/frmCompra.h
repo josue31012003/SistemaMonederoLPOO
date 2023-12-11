@@ -13,6 +13,7 @@ namespace SistemaMonederoView {
 	using namespace System::Collections::Generic;
 	using namespace SistemaMonederoModel;
 
+
 	/// <summary>
 	/// Summary for frmCompra
 	/// </summary>
